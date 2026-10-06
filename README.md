@@ -1,15 +1,15 @@
-# pixely_marca — línea gráfica de Pixely (privado)
+# pixely_marca — línea gráfica y assets de Pixely (privado)
 
-Sitio de referencia con logos, colores, tipografía, fondos, capturas y piezas terminadas.
-**Privado:** `noindex` + `robots.txt` bloqueado. No publicar sin protección de acceso.
+Repositorio único de marca. Todo lo gráfico sale de aquí.
 
-## Fuente única
-`tokens/tokens.json` → `npm run tokens` genera:
-- `src/tokens.css` (web y este sitio)
-- `exports/tokens.ts` (videos, Remotion → `pixely_videos/src/marca.ts`)
-- `exports/tokens.py` (PDFs e imágenes en Python)
+| Carpeta | Qué hay |
+|---|---|
+| `tokens/` | **Fuente única**: colores, fuentes y radios (`tokens.json`). `npm run tokens` genera CSS, TS y Python. |
+| `public/logos`, `public/fondos` | Logos (SVG/PNG) y fondos de anillos. `npm run logos` los regenera. |
+| `public/piezas`, `public/capturas` | PDFs, portadas, QR y capturas aprobadas. |
+| `src/`, `index.html`, `artifact/` | Manual de marca (página privada). |
+| `componentes/` | Catálogo de componentes de interfaz, pieza por pieza (`node componentes/scripts/build.mjs`). |
+| `videos/` | Proyecto Remotion para videos (`cd videos && npm install && npx remotion studio`). |
+| `.claude/skills/` | Skills de diseño, animación, 3D y video para Claude Code (ver `SKILLS.md`). |
 
-`npm run logos` regenera logos (`public/logos`) y fondos (`public/fondos`) con Python (fontTools + cairosvg).
-
-## Uso
-`npm install && npm run dev` · `npm run build` (salida en `dist/`)
+Privado: `noindex` y `robots.txt` bloqueado. No publicar sin protección de acceso.
