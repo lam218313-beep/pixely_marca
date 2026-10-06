@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Pixely · Línea gráfica</title>
+  <link rel="icon" href="/logos/p-sobre-rosa.png">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <aside class="nav" id="nav">
+    <a class="nav__logo" href="#inicio"><img src="/logos/pixely-sobre-negro.svg" alt="pixely." height="26"></a>
+    <p class="nav__tag">Línea gráfica · uso interno</p>
+    <nav id="toc"></nav>
+  </aside>
+
+  <main>
+    <section id="inicio" class="hero">
+      <svg class="hero__rings" viewBox="0 0 800 800" aria-hidden="true">
+        <g fill="none" stroke="var(--anillo)" stroke-width="2"><circle cx="560" cy="330" r="120"/><circle cx="560" cy="330" r="230"/><circle cx="560" cy="330" r="360"/><circle cx="560" cy="330" r="520"/></g>
+        <circle cx="560" cy="330" r="62" fill="var(--rosa)" fill-opacity=".2"/><circle cx="560" cy="330" r="24" fill="var(--rosa)"/>
+      </svg>
+      <p class="eyebrow">Repositorio de marca</p>
+      <h1>Todo lo gráfico de Pixely, en un solo lugar.</h1>
+      <p class="lead">Logos, colores, tipografía, fondos, capturas y piezas terminadas. Lo que está aquí es lo único que se usa para web, PDFs, imágenes y videos.</p>
+      <ul class="rules">
+        <li><b>Texto blanco sobre rosa.</b> Nunca negro sobre rosa.</li>
+        <li><b>Sin precios</b> en piezas de captación.</li>
+        <li><b>Un solo nombre:</b> Pixely y Pixely Partners.</li>
+        <li><b>Sin “IA”</b> en la narrativa comercial.</li>
+      </ul>
+    </section>
+
+    <section id="logo" data-title="Logo">
+      <h2>Logo</h2>
+      <p class="lead">El logo es la palabra <b>pixely</b> en Unbounded 800 con un punto rosa. El punto es la firma: siempre rosa sobre negro/blanco, y negro sobre rosa.</p>
+      <div class="grid g3" id="logos"></div>
+      <h3>La “p.” para redes</h3>
+      <div class="grid g4" id="pmarks"></div>
+      <div class="dos">
+        <div class="do"><h4>Sí</h4><ul><li>Dejar alrededor un espacio igual a la altura de la “i” (punto de la i).</li><li>Usar el SVG cuando se pueda; el PNG es transparente.</li><li>Tamaño mínimo: 80 px de ancho en pantalla, 20 mm en impreso.</li></ul></div>
+        <div class="dont"><h4>No</h4><ul><li>Cambiar la tipografía, estirarlo o girarlo.</li><li>Poner el punto de otro color.</li><li>Usarlo sobre fotos sin contraste.</li><li>Negro sobre rosa.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="color" data-title="Color">
+      <h2>Color</h2>
+      <p class="lead">Negro y rosa mandan. Los demás son apoyo. Clic en un color para copiar su código.</p>
+      <div class="grid g3" id="colores"></div>
+      <h3>Combinaciones permitidas</h3>
+      <div class="grid g4" id="combos"></div>
+    </section>
+
+    <section id="tipografia" data-title="Tipografía">
+      <h2>Tipografía</h2>
+      <div class="grid g2">
+        <div class="card"><p class="eyebrow">Títulos</p><p class="spec" style="font-family:var(--font-titulo);font-weight:800;font-size:clamp(34px,5vw,56px);letter-spacing:-.01em;line-height:1.05;overflow-wrap:anywhere">Unbounded</p><p class="muted">Peso 800 en títulos grandes, 600 en etiquetas en mayúsculas con espaciado 0.1em.</p><a class="btn btn--ghost" href="/fonts/unbounded-latin-wght-normal.woff2" download>Descargar fuente</a></div>
+        <div class="card"><p class="eyebrow">Texto</p><p class="spec" style="font-family:var(--font-texto);font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.05">Manrope</p><p class="muted">Peso 400 en párrafos, 700 en destacados. Cuerpo mínimo 16 px en web.</p><a class="btn btn--ghost" href="/fonts/manrope-latin-wght-normal.woff2" download>Descargar fuente</a></div>
+      </div>
+      <div class="card ejemplo">
+        <p class="eyebrow">Ejemplo de jerarquía</p>
+        <h3 class="ej-t">Tu contenido, listo antes de que lo pienses.</h3>
+        <p class="ej-p">Párrafo en Manrope 400. Frases cortas, directas y en español de Perú.</p>
+        <p class="ej-l">ETIQUETA EN UNBOUNDED 600</p>
+      </div>
+    </section>
+
+    <section id="fondos" data-title="Fondos">
+      <h2>Fondos</h2>
+      <p class="lead">El motivo de la marca: anillos concéntricos y un punto rosa que brilla. Es el mismo del login de Partners.</p>
+      <div class="grid g3" id="fondos-grid"></div>
+    </section>
+
+    <section id="componentes" data-title="Componentes">
+      <h2>Componentes</h2>
+      <p class="lead">Botones y tarjetas tal como aparecen en la web y en Partners. Radios: 16 px en controles, 24 px en tarjetas.</p>
+      <div class="card comps">
+        <button class="btn btn--rosa">Hablar por WhatsApp</button>
+        <button class="btn btn--ghost">Ver cómo funciona</button>
+        <span class="chip">En revisión</span>
+        <span class="chip chip--rosa">Aprobado</span>
+      </div>
+    </section>
+
+    <section id="capturas" data-title="Capturas">
+      <h2>Capturas de Partners</h2>
+      <p class="lead">Pantallas reales con datos de demostración. Úsalas en lugar de maquetas inventadas.</p>
+      <div class="grid g4 caps" id="caps"></div>
+    </section>
+
+    <section id="piezas" data-title="Piezas">
+      <h2>Piezas terminadas</h2>
+      <p class="lead">PDFs, portadas y QR ya aprobados. Descárgalos o toma su estilo como plantilla.</p>
+      <h3>PDFs</h3><div class="list" id="pdfs"></div>
+      <h3>Redes</h3><div class="grid g4" id="redes"></div>
+      <h3>Códigos QR</h3><div class="grid g4" id="qrs"></div>
+    </section>
+
+    <section id="video" data-title="Video y movimiento">
+      <h2>Video y movimiento</h2>
+      <div class="grid g2">
+        <div class="card"><h4>Formato</h4><ul><li>Vertical 1080×1920 a 30 fps para Reels, TikTok y Shorts.</li><li>Fondo negro con anillos; el rosa solo para lo que importa.</li><li>Fuentes Unbounded y Manrope, las mismas que la web.</li></ul></div>
+        <div class="card"><h4>Movimiento</h4><ul><li>Entradas suaves con resorte, sin rebotes exagerados.</li><li>Una idea por escena; 2–4 segundos cada una.</li><li>Cierre con el logo y el punto rosa.</li></ul></div>
+      </div>
+      <p class="muted">Se hacen con Remotion (proyecto <code>pixely_videos</code>), que lee estos mismos colores y fuentes.</p>
+    </section>
+
+    <section id="voz" data-title="Voz y tono">
+      <h2>Voz y tono</h2>
+      <div class="grid g2">
+        <div class="card"><h4>Así hablamos</h4><ul><li>Claro y directo, sin jerga técnica.</li><li>Español de Perú, tuteo cercano.</li><li>Frases cortas. Una idea por frase.</li><li>Mostramos resultados y procesos, no promesas vacías.</li></ul></div>
+        <div class="card"><h4>Evitamos</h4><ul><li>“IA” como argumento de venta.</li><li>Nombres extra de producto (solo Pixely y Pixely Partners).</li><li>Precios en piezas de captación.</li><li>Fotos genéricas de stock; mejor gráficos y capturas reales.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="tokens" data-title="Para el equipo">
+      <h2>Para el equipo</h2>
+      <p class="lead">Los colores y fuentes viven en un solo archivo. Todo lo demás sale de ahí.</p>
+      <div class="card code"><p class="eyebrow">tokens/tokens.json</p><pre id="json"></pre></div>
+      <ul class="list2">
+        <li><code>src/tokens.css</code> → web y esta página</li>
+        <li><code>exports/tokens.ts</code> → videos (Remotion)</li>
+        <li><code>exports/tokens.py</code> → PDFs e imágenes (Python)</li>
+        <li><code>npm run tokens</code> regenera los tres; <code>npm run logos</code> regenera logos y fondos.</li>
+      </ul>
+    </section>
+    <footer>Pixely · Repositorio privado · No indexar ni compartir fuera del equipo.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "pixely_marca",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens": "node scripts/tokens.mjs",
+    "logos": "python3 scripts/logos.py && python3 scripts/fondos.py",
+    "dev": "npm run tokens && vite",
+    "build": "npm run tokens && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": { "vite": "^7.0.0" }
+}

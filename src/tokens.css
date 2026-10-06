@@ -1,0 +1,16 @@
+/* GENERADO por scripts/tokens.mjs desde tokens/tokens.json. No editar a mano. */
+:root {
+  --tinta: #0A0A0C;
+  --carbon: #16161B;
+  --carbon-2: #1F1F26;
+  --rosa: #EB0C6E;
+  --blanco: #FFFFFF;
+  --gris: #B4B4BE;
+  --linea: #26262E;
+  --anillo: #34343C;
+  --tarjeta: #141417;
+  --font-titulo: 'Unbounded', system-ui, sans-serif;
+  --font-texto: 'Manrope', system-ui, sans-serif;
+  --radio-control: 16px;
+  --radio-tarjeta: 24px;
+}
