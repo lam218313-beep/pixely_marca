@@ -1,0 +1,336 @@
+{
+ "zip": "Pixely-kit-redes-sociales.zip",
+ "LOGOS": [
+  [
+   "pixely-sobre-negro",
+   "Logo para fondos oscuros",
+   "Letras blancas y punto rosa. El de siempre sobre negro o fotos oscuras.",
+   "oscuro"
+  ],
+  [
+   "pixely-sobre-blanco",
+   "Logo para fondos claros",
+   "Letras negras y punto rosa. Sobre blanco o fotos claras.",
+   "claro"
+  ],
+  [
+   "pixely-sobre-rosa",
+   "Logo con fondo rosa",
+   "Ya trae su fondo rosa: úsalo como bloque.",
+   "rosa"
+  ],
+  [
+   "pixely-blanco",
+   "Logo blanco, una tinta",
+   "Todo blanco, para encima de fotos con mucho color.",
+   "oscuro"
+  ],
+  [
+   "pixely-negro",
+   "Logo negro, una tinta",
+   "Todo negro, para impresiones a un color.",
+   "claro"
+  ],
+  [
+   "p-sobre-negro",
+   "Ícono p. sobre negro",
+   "Foto de perfil de todas las redes. Funciona en círculo.",
+   "oscuro"
+  ],
+  [
+   "p-sobre-rosa",
+   "Ícono p. sobre rosa",
+   "Variante del ícono para destacar.",
+   "rosa"
+  ]
+ ],
+ "FUENTES": [
+  {
+   "nombre": "Unbounded",
+   "uso": "Títulos, cifras y el logo",
+   "pesos": [
+    "Regular",
+    "Bold",
+    "ExtraBold"
+   ],
+   "principal": "Bold"
+  },
+  {
+   "nombre": "Manrope",
+   "uso": "Textos, etiquetas y botones",
+   "pesos": [
+    "Regular",
+    "Medium",
+    "SemiBold",
+    "Bold",
+    "ExtraBold"
+   ],
+   "principal": "Medium"
+  }
+ ],
+ "COLORES": [
+  {
+   "nombre": "Rosa Pixely",
+   "hex": "#EB0C6E",
+   "rgb": "235, 12, 110",
+   "uso": "El punto del logo, botones y una palabra clave por pieza. También fondos de impacto."
+  },
+  {
+   "nombre": "Tinta",
+   "hex": "#0A0A0C",
+   "rgb": "10, 10, 12",
+   "uso": "Fondo principal y texto sobre claro."
+  },
+  {
+   "nombre": "Carbón",
+   "hex": "#16161B",
+   "rgb": "22, 22, 27",
+   "uso": "Tarjetas sobre fondo negro."
+  },
+  {
+   "nombre": "Grafito",
+   "hex": "#1F1F26",
+   "rgb": "31, 31, 38",
+   "uso": "Tarjetas elevadas y botones secundarios."
+  },
+  {
+   "nombre": "Blanco",
+   "hex": "#FFFFFF",
+   "rgb": "255, 255, 255",
+   "uso": "Texto sobre negro y fondos claros."
+  },
+  {
+   "nombre": "Gris",
+   "hex": "#B4B4BE",
+   "rgb": "180, 180, 190",
+   "uso": "Texto secundario sobre negro."
+  },
+  {
+   "nombre": "Rosa suave",
+   "hex": "#FFC2E1",
+   "rgb": "255, 194, 225",
+   "uso": "Detalles sobre negro o sobre rosa."
+  }
+ ],
+ "FORMATOS": [
+  [
+   "post",
+   "Post y carrusel",
+   "1080 × 1350"
+  ],
+  [
+   "historia",
+   "Historia y reel",
+   "1080 × 1920"
+  ]
+ ],
+ "TAMANOS": [
+  {
+   "rol": "Cifra o palabra gigante",
+   "fuente": "Unbounded",
+   "peso": "ExtraBold",
+   "post": 180,
+   "historia": 220,
+   "espaciado": -40,
+   "interlineado": 1,
+   "muestra": "+48%"
+  },
+  {
+   "rol": "Título",
+   "fuente": "Unbounded",
+   "peso": "Bold",
+   "post": 96,
+   "historia": 112,
+   "espaciado": -40,
+   "interlineado": 1.05,
+   "muestra": "Que se note."
+  },
+  {
+   "rol": "Subtítulo",
+   "fuente": "Unbounded",
+   "peso": "Bold",
+   "post": 48,
+   "historia": 56,
+   "espaciado": -20,
+   "interlineado": 1.15,
+   "muestra": "Tu mercado, al día"
+  },
+  {
+   "rol": "Texto",
+   "fuente": "Manrope",
+   "peso": "Medium",
+   "post": 34,
+   "historia": 40,
+   "espaciado": 0,
+   "interlineado": 1.4,
+   "muestra": "Apruebas cada pieza desde el celular."
+  },
+  {
+   "rol": "Texto destacado (en rosa)",
+   "fuente": "Manrope",
+   "peso": "ExtraBold",
+   "post": 34,
+   "historia": 40,
+   "espaciado": 0,
+   "interlineado": 1.4,
+   "muestra": "datos reales de tu mercado"
+  },
+  {
+   "rol": "Etiqueta (en mayúsculas)",
+   "fuente": "Manrope",
+   "peso": "ExtraBold",
+   "post": 24,
+   "historia": 28,
+   "espaciado": 180,
+   "interlineado": 1.2,
+   "muestra": "PIXELY PARTNERS"
+  },
+  {
+   "rol": "Nota o fuente",
+   "fuente": "Manrope",
+   "peso": "Regular",
+   "post": 22,
+   "historia": 26,
+   "espaciado": 0,
+   "interlineado": 1.4,
+   "muestra": "Fuente: estudio de mercado, oct 2026"
+  }
+ ],
+ "REGLAS": [
+  "Márgenes: 80 px a cada lado en posts; en historias, 90 px a los lados y 250 px libres arriba y abajo (ahí van los botones de la app).",
+  "Un solo título por pieza, y su punto final en rosa.",
+  "Una sola palabra o frase en rosa por párrafo: la que más importa.",
+  "Texto de al menos 32 px en historias, para que se lea en el celular."
+ ],
+ "QR": [
+  [
+   "whatsapp",
+   "WhatsApp",
+   "Abre el chat con el mensaje «¡Hola Pixely! 👋 Quiero que mi negocio destaque ✨»"
+  ],
+  [
+   "web",
+   "pixely.pe",
+   "La web, marcada como visita desde un QR"
+  ],
+  [
+   "partners",
+   "Pixely Partners",
+   "partners.pixely.pe"
+  ],
+  [
+   "todas-las-redes",
+   "Todas las redes",
+   "linktr.ee/pixely_pe"
+  ],
+  [
+   "instagram",
+   "Instagram",
+   "@pixely_pe"
+  ],
+  [
+   "tiktok",
+   "TikTok",
+   "@pixely_pe"
+  ],
+  [
+   "facebook",
+   "Facebook",
+   "Pixely"
+  ],
+  [
+   "linkedin",
+   "LinkedIn",
+   "Pixely"
+  ],
+  [
+   "x",
+   "X",
+   "@pixely_pe"
+  ],
+  [
+   "youtube",
+   "YouTube",
+   "@Pixely_pe"
+  ]
+ ],
+ "REDES": [
+  {
+   "red": "WhatsApp",
+   "usuario": "+51 949 268 607",
+   "url": "https://wa.me/51949268607"
+  },
+  {
+   "red": "Correo",
+   "usuario": "hola@pixely.pe",
+   "url": "mailto:hola@pixely.pe"
+  },
+  {
+   "red": "Web",
+   "usuario": "pixely.pe",
+   "url": "https://pixely.pe"
+  },
+  {
+   "red": "Pixely Partners",
+   "usuario": "partners.pixely.pe",
+   "url": "https://partners.pixely.pe"
+  },
+  {
+   "red": "Instagram",
+   "usuario": "@pixely_pe",
+   "url": "https://www.instagram.com/pixely_pe/"
+  },
+  {
+   "red": "TikTok",
+   "usuario": "@pixely_pe",
+   "url": "https://www.tiktok.com/@pixely_pe"
+  },
+  {
+   "red": "YouTube",
+   "usuario": "@Pixely_pe",
+   "url": "https://www.youtube.com/@Pixely_pe"
+  },
+  {
+   "red": "X",
+   "usuario": "@pixely_pe",
+   "url": "https://x.com/Pixely_pe"
+  },
+  {
+   "red": "Facebook",
+   "usuario": "Pixely",
+   "url": "https://www.facebook.com/profile.php?id=61587052585063"
+  },
+  {
+   "red": "LinkedIn",
+   "usuario": "Pixely",
+   "url": "https://www.linkedin.com/company/pixely-pe"
+  },
+  {
+   "red": "Todas las redes",
+   "usuario": "linktr.ee/pixely_pe",
+   "url": "https://linktr.ee/pixely_pe"
+  }
+ ],
+ "BIOS": [
+  [
+   "Instagram (máx. 150)",
+   "Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. Escríbenos por WhatsApp."
+  ],
+  [
+   "TikTok (máx. 80)",
+   "Publicidad que vende, con datos de tu mercado. Escríbenos por WhatsApp."
+  ],
+  [
+   "X (máx. 160)",
+   "Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. pixely.pe"
+  ],
+  [
+   "Facebook, descripción breve (máx. 101)",
+   "Publicidad que vende, con datos reales de tu mercado."
+  ],
+  [
+   "LinkedIn, eslogan (máx. 120)",
+   "Publicidad que vende para negocios que ya venden, con datos reales de su mercado."
+  ]
+ ]
+}

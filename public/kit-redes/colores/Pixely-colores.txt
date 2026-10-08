@@ -1,0 +1,16 @@
+COLORES DE PIXELY
+
+Rosa Pixely  #EB0C6E   RGB 235, 12, 110
+             El punto del logo, botones y una palabra clave por pieza. También fondos de impacto.
+Tinta        #0A0A0C   RGB 10, 10, 12
+             Fondo principal y texto sobre claro.
+Carbón       #16161B   RGB 22, 22, 27
+             Tarjetas sobre fondo negro.
+Grafito      #1F1F26   RGB 31, 31, 38
+             Tarjetas elevadas y botones secundarios.
+Blanco       #FFFFFF   RGB 255, 255, 255
+             Texto sobre negro y fondos claros.
+Gris         #B4B4BE   RGB 180, 180, 190
+             Texto secundario sobre negro.
+Rosa suave   #FFC2E1   RGB 255, 194, 225
+             Detalles sobre negro o sobre rosa.

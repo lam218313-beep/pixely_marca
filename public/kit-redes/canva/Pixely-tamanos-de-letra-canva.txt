@@ -1,0 +1,22 @@
+TAMAÑOS DE LETRA PARA CANVA (en píxeles, a tamaño real del diseño)
+
+Cifra o palabra gigante
+  Unbounded ExtraBold · Post (1080 × 1350): 180 · Historia (1080 × 1920): 220 · Espaciado -40 · Altura de línea 1
+Título
+  Unbounded Bold · Post (1080 × 1350): 96 · Historia (1080 × 1920): 112 · Espaciado -40 · Altura de línea 1.05
+Subtítulo
+  Unbounded Bold · Post (1080 × 1350): 48 · Historia (1080 × 1920): 56 · Espaciado -20 · Altura de línea 1.15
+Texto
+  Manrope Medium · Post (1080 × 1350): 34 · Historia (1080 × 1920): 40 · Espaciado 0 · Altura de línea 1.4
+Texto destacado (en rosa)
+  Manrope ExtraBold · Post (1080 × 1350): 34 · Historia (1080 × 1920): 40 · Espaciado 0 · Altura de línea 1.4
+Etiqueta (en mayúsculas)
+  Manrope ExtraBold · Post (1080 × 1350): 24 · Historia (1080 × 1920): 28 · Espaciado 180 · Altura de línea 1.2
+Nota o fuente
+  Manrope Regular · Post (1080 × 1350): 22 · Historia (1080 × 1920): 26 · Espaciado 0 · Altura de línea 1.4
+
+REGLAS
+- Márgenes: 80 px a cada lado en posts; en historias, 90 px a los lados y 250 px libres arriba y abajo (ahí van los botones de la app).
+- Un solo título por pieza, y su punto final en rosa.
+- Una sola palabra o frase en rosa por párrafo: la que más importa.
+- Texto de al menos 32 px en historias, para que se lea en el celular.

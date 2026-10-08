@@ -569,10 +569,84 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .w-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--edge);font:600 .78rem Unbounded;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2)}
 .w-legal ul{display:flex;gap:16px;margin:0;padding:0;list-style:none}
 .w-legal a{color:inherit;text-decoration:none}.w-legal a:hover{color:#fff}
+
+/* ===== Página Redes sociales (kit descargable) ===== */
+.side__kit{display:flex;flex-direction:column;gap:2px;margin:0 0 6px;padding:12px;border-radius:14px;background:var(--pink);color:#fff;text-decoration:none}
+.side__kit b{font:800 14px Manrope}.side__kit small{font:700 12px Manrope;opacity:.85}
+.side__comp{display:block;margin:0 0 14px;padding:9px 10px;border-radius:12px;color:var(--text-2);text-decoration:none;font:700 14px Manrope}
+.side__comp:hover,.side__comp.on{background:var(--card);color:#fff}
+.side__kit.on{box-shadow:0 0 0 2px #fff inset}
+.kit{padding-bottom:40px}
+.kit__top{padding:56px 0 8px}
+.kit__top h1{margin:10px 0 14px;font:800 clamp(1.8rem,4vw,3rem)/1.08 Unbounded,sans-serif;letter-spacing:-.02em}.kit__top h1 span{color:var(--pink)}
+.kit__cta{margin-top:24px}
+.kit__idx{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:14px 0;border-block:1px solid var(--edge)}
+.kit__idx a{height:34px;display:inline-flex;align-items:center;padding:0 14px;border:1px solid var(--line);border-radius:99px;color:var(--text-2);text-decoration:none;font:700 13px Manrope}
+.kit__idx a:hover{color:#fff;border-color:var(--mute)}
+.kblk{padding-top:48px;scroll-margin-top:16px}
+.kblk__h h2{font:700 1.7rem Unbounded,sans-serif;letter-spacing:-.02em}
+.kblk__h p{margin:6px 0 22px;max-width:70ch;color:var(--text-3)}.kblk__h p b{color:#fff}
+.kb{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--raised);color:#fff;font:800 12px Manrope;letter-spacing:.04em;cursor:pointer}
+.kb:hover{border-color:var(--pink)}.kb:disabled{opacity:.6;cursor:progress}
+.kb--big{height:56px;padding:0 24px;border:0;border-radius:16px;background:var(--pink);font-size:15px;letter-spacing:0;box-shadow:0 12px 28px rgba(217,11,102,.35)}
+.kb--big small{font:700 13px Manrope;opacity:.85}
+.kc{height:28px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:none;color:var(--text-2);font:700 11px Manrope;cursor:pointer}
+.kc:hover{color:#fff;border-color:var(--mute)}
+.kbs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.kbs--end{margin-top:18px}
+.klogos{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.klogo,.kqr{padding:12px 12px 14px;border:1px solid var(--edge);border-radius:20px;background:var(--ink)}
+.klogo__img{display:grid;place-items:center;height:130px;padding:18px;border-radius:14px}
+.klogo__img img{display:block;width:auto;height:auto;max-width:100%;max-height:94px}
+.klogo__img--oscuro{background:#0A0A0C;box-shadow:inset 0 0 0 1px var(--edge)}
+.klogo__img--claro{background:#fff}
+.klogo__img--rosa{background:var(--card)}
+.klogo h3,.kqr h3{margin-top:12px;font:800 15px Manrope}
+.klogo p,.kqr p{margin-top:2px;color:var(--text-3);font:600 13px/1.4 Manrope}
+.kfonts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
+.kfont{padding:22px;border:1px solid var(--edge);border-radius:24px;background:var(--ink);min-width:0}
+.kfont__uso{font:800 12px Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
+.kfont h3{margin-top:8px;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1;letter-spacing:-.03em}
+.kfont__abc{margin-top:12px;font-size:1.15rem;color:var(--text-2);overflow-wrap:anywhere}
+.kfont__pesos{display:grid;gap:6px;margin-top:16px}
+.kfont__pesos li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--edge);font-size:1.05rem}
+.kcolors{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.kcolor{display:flex;gap:14px;padding:12px;border:1px solid var(--edge);border-radius:20px;background:var(--ink)}
+.kcolor i{flex:none;width:72px;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.kcolor h3{font:700 15px Unbounded;letter-spacing:-.02em}
+.kcolor__v{display:flex;align-items:center;gap:8px;margin-top:4px;font:600 13px ui-monospace,Menlo,monospace;color:var(--text-2)}.kcolor__v b{color:#fff}
+.kcolor__u{margin-top:6px;color:var(--text-3);font:600 12px/1.4 Manrope}
+.ktable{overflow-x:auto;border:1px solid var(--edge);border-radius:20px;background:var(--ink)}
+.ktable table{width:100%;min-width:720px;border-collapse:collapse;font:600 14px Manrope}
+.ktable th{padding:12px 16px;text-align:left;font:800 11px Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);border-bottom:1px solid var(--edge);white-space:nowrap}
+.ktable th small{display:block;margin-top:2px;letter-spacing:0;text-transform:none;font-weight:700}
+.ktable td{padding:12px 16px;border-bottom:1px solid var(--edge);color:var(--text-2);vertical-align:middle}
+.ktable tr:last-child td{border-bottom:0}
+.ktable .r{text-align:right;font-variant-numeric:tabular-nums}.ktable td.n{color:#fff;font:700 18px Unbounded}
+.ksample{display:block;color:#fff;font-size:20px;line-height:1.15;white-space:nowrap}
+.ktable td small{display:block;margin-top:4px;color:var(--text-3);font:700 12px Manrope}
+.krules{display:grid;gap:6px;margin-top:16px}
+.krules li{position:relative;padding-left:16px;color:var(--text-2);font-size:.92rem}
+.krules li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--pink)}
+.kqrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.kqr img{display:block;width:100%;aspect-ratio:1;max-width:100%;border-radius:12px;background:#fff}
+.kredes{display:grid;border:1px solid var(--edge);border-radius:20px;background:var(--ink)}
+.kredes li{display:grid;grid-template-columns:140px minmax(0,180px) minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 16px;border-top:1px solid var(--edge)}
+.kredes li:first-child{border-top:0}
+.kredes__r{font:800 12px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.kredes b{font:800 15px Manrope;overflow-wrap:anywhere}
+.kredes__u{color:var(--text-2);font:600 13px ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+.kbios__t{margin-top:26px;font:700 1.15rem Unbounded;letter-spacing:-.02em}
+.kbios{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:12px}
+.kbios li{display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding:14px;border:1px solid var(--edge);border-radius:18px;background:var(--ink)}
+.kbios small{font:800 11px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.kbios p{color:#fff;font:600 14px/1.5 Manrope}
+.ktoast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;max-width:calc(100% - 32px);padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--raised);color:#fff;font:800 14px Manrope;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+@media (max-width:640px){.kredes li{grid-template-columns:1fr auto}.kredes__r{grid-column:1/-1}.kredes__u{grid-column:1/-1;order:3}}
+
 </style>
 <div class="app">
-<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Componentes de interfaz</p><nav id="nav"><a href="#cat-fundamentos" data-catlink="fundamentos">Fundamentos<b>6</b></a><a href="#cat-botones" data-catlink="botones">Botones<b>6</b></a><a href="#cat-campos" data-catlink="campos">Campos y controles<b>6</b></a><a href="#cat-navegacion" data-catlink="navegacion">Navegación<b>7</b></a><a href="#cat-indicadores" data-catlink="indicadores">Etiquetas e indicadores<b>8</b></a><a href="#cat-tarjetas" data-catlink="tarjetas">Tarjetas y listas<b>7</b></a><a href="#cat-calendarios" data-catlink="calendarios">Calendarios y fechas<b>5</b></a><a href="#cat-precios" data-catlink="precios">Planes y precios<b>4</b></a><a href="#cat-datos" data-catlink="datos">Datos y gráficos<b>7</b></a><a href="#cat-overlays" data-catlink="overlays">Paneles y aprobación<b>6</b></a><a href="#cat-estados" data-catlink="estados">Estados y pantallas<b>6</b></a><a href="#cat-contenido" data-catlink="contenido">Contenido de la web<b>6</b></a></nav></aside>
-<main id="top"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
+<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p><a class="side__kit" href="#redes"><b>Redes sociales</b><small>Kit descargable</small></a><a class="side__comp" href="#top">Componentes</a><nav id="nav"><a href="#cat-fundamentos" data-catlink="fundamentos">Fundamentos<b>6</b></a><a href="#cat-botones" data-catlink="botones">Botones<b>6</b></a><a href="#cat-campos" data-catlink="campos">Campos y controles<b>6</b></a><a href="#cat-navegacion" data-catlink="navegacion">Navegación<b>7</b></a><a href="#cat-indicadores" data-catlink="indicadores">Etiquetas e indicadores<b>8</b></a><a href="#cat-tarjetas" data-catlink="tarjetas">Tarjetas y listas<b>7</b></a><a href="#cat-calendarios" data-catlink="calendarios">Calendarios y fechas<b>5</b></a><a href="#cat-precios" data-catlink="precios">Planes y precios<b>4</b></a><a href="#cat-datos" data-catlink="datos">Datos y gráficos<b>7</b></a><a href="#cat-overlays" data-catlink="overlays">Paneles y aprobación<b>6</b></a><a href="#cat-estados" data-catlink="estados">Estados y pantallas<b>6</b></a><a href="#cat-contenido" data-catlink="contenido">Contenido de la web<b>6</b></a></nav></aside>
+<main id="top"><div id="comp"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
 <p class="top__l">Cada componente, uno por uno, con su estado real, cuándo usarlo y su código listo para copiar. Salen de Pixely Partners y de pixely.pe; los marcados como “Propuesto” aún no existen y se diseñan aquí primero.</p>
 <div class="top__s"><span><b>74</b> componentes</span><span><b>54</b> existen</span><span><b>20</b> propuestos</span></div>
 <div class="filters"><input id="q" type="search" placeholder="Buscar: botón, calendario, plan…" aria-label="Buscar componente">
@@ -3032,7 +3106,78 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .w-legal a{color:inherit;text-decoration:none}.w-legal a:hover{color:#fff}</pre></div></details>
 <footer class="comp__f"><span>Origen: <code>pixely_web/src/styles/sections/footer.css (.footer__legal)</code></span></footer></article></section>
 <p class="none" id="none" hidden>Ningún componente coincide con la búsqueda.</p>
-<footer class="end">Siguientes repositorios: animaciones (por categorías) · imágenes, videos e íconos. Todo parte de los mismos tokens de marca.</footer></main></div>
+<footer class="end">Todo parte de los mismos tokens de marca. El kit de logos, fuentes, colores y QR está en <a href="#redes">Redes sociales</a>.</footer></div>
+<section id="redes" class="kit" hidden aria-labelledby="kit-t">
+<header class="kit__top">
+  <p class="top__e">Redes sociales</p>
+  <h1 id="kit-t">Kit de redes de Pixely<span>.</span></h1>
+  <p class="top__l">Todo para publicar como Pixely en Canva o en cualquier programa: logos, fuentes, colores, tamaños de letra, QR, redes y teléfonos. Descarga el paquete completo o cada archivo por separado.</p>
+  <div class="kit__cta"><button class="kb kb--big" type="button" data-zip="Pixely-kit-redes-sociales.zip">Descargar el kit completo <small>.zip · 70 archivos · 1,3 MB</small></button></div>
+  <nav class="kit__idx" aria-label="Partes del kit"><a href="#k-logos">Logos</a><a href="#k-fuentes">Fuentes</a><a href="#k-colores">Colores</a><a href="#k-canva">Tamaños para Canva</a><a href="#k-qr">QR</a><a href="#k-redes">Redes y teléfonos</a></nav>
+</header>
+
+<section class="kblk" id="k-logos">
+  <header class="kblk__h"><h2>Logos</h2><p>PNG para usar directo; SVG para agrandar sin perder calidad (Canva acepta los dos).</p></header>
+  <div class="klogos"><article class="klogo">
+    <div class="klogo__img klogo__img--oscuro"><img src="kit-redes/logos/pixely-sobre-negro.svg" alt="Logo para fondos oscuros" loading="lazy"></div>
+    <h3>Logo para fondos oscuros</h3><p>Letras blancas y punto rosa. El de siempre sobre negro o fotos oscuras.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/pixely-sobre-negro.png">PNG</button><button class="kb" type="button" data-dl="logos/pixely-sobre-negro.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--claro"><img src="kit-redes/logos/pixely-sobre-blanco.svg" alt="Logo para fondos claros" loading="lazy"></div>
+    <h3>Logo para fondos claros</h3><p>Letras negras y punto rosa. Sobre blanco o fotos claras.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/pixely-sobre-blanco.png">PNG</button><button class="kb" type="button" data-dl="logos/pixely-sobre-blanco.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--rosa"><img src="kit-redes/logos/pixely-sobre-rosa.svg" alt="Logo con fondo rosa" loading="lazy"></div>
+    <h3>Logo con fondo rosa</h3><p>Ya trae su fondo rosa: úsalo como bloque.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/pixely-sobre-rosa.png">PNG</button><button class="kb" type="button" data-dl="logos/pixely-sobre-rosa.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--oscuro"><img src="kit-redes/logos/pixely-blanco.svg" alt="Logo blanco, una tinta" loading="lazy"></div>
+    <h3>Logo blanco, una tinta</h3><p>Todo blanco, para encima de fotos con mucho color.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/pixely-blanco.png">PNG</button><button class="kb" type="button" data-dl="logos/pixely-blanco.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--claro"><img src="kit-redes/logos/pixely-negro.svg" alt="Logo negro, una tinta" loading="lazy"></div>
+    <h3>Logo negro, una tinta</h3><p>Todo negro, para impresiones a un color.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/pixely-negro.png">PNG</button><button class="kb" type="button" data-dl="logos/pixely-negro.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--oscuro"><img src="kit-redes/logos/p-sobre-negro.svg" alt="Ícono p. sobre negro" loading="lazy"></div>
+    <h3>Ícono p. sobre negro</h3><p>Foto de perfil de todas las redes. Funciona en círculo.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/p-sobre-negro.png">PNG</button><button class="kb" type="button" data-dl="logos/p-sobre-negro.svg">SVG</button></div></article><article class="klogo">
+    <div class="klogo__img klogo__img--rosa"><img src="kit-redes/logos/p-sobre-rosa.svg" alt="Ícono p. sobre rosa" loading="lazy"></div>
+    <h3>Ícono p. sobre rosa</h3><p>Variante del ícono para destacar.</p><div class="kbs"><button class="kb" type="button" data-dl="logos/p-sobre-rosa.png">PNG</button><button class="kb" type="button" data-dl="logos/p-sobre-rosa.svg">SVG</button></div></article></div>
+</section>
+
+<section class="kblk" id="k-fuentes">
+  <header class="kblk__h"><h2>Fuentes</h2><p>Gratis y de uso libre (licencia SIL Open Font License). Instálalas con doble clic. En Canva búscalas por su nombre; si no aparecen, súbelas en Marca → Fuentes.</p></header>
+  <div class="kfonts"><article class="kfont">
+    <p class="kfont__uso">Títulos, cifras y el logo</p>
+    <h3 style="font-family:Unbounded,sans-serif;font-weight:700">Unbounded</h3>
+    <p class="kfont__abc" style="font-family:Unbounded,sans-serif;font-weight:700">Aa Bb Cc Ññ Áé ¿¡ 0123456789</p>
+    <ul class="kfont__pesos"><li><span style="font-family:Unbounded,sans-serif;font-weight:400">Regular</span><button class="kb" type="button" data-dl="fuentes/Unbounded-Regular.ttf">TTF</button></li><li><span style="font-family:Unbounded,sans-serif;font-weight:700">Bold</span><button class="kb" type="button" data-dl="fuentes/Unbounded-Bold.ttf">TTF</button></li><li><span style="font-family:Unbounded,sans-serif;font-weight:800">ExtraBold</span><button class="kb" type="button" data-dl="fuentes/Unbounded-ExtraBold.ttf">TTF</button></li></ul>
+    <div class="kbs"><button class="kb" type="button" data-dl="fuentes/Unbounded-licencia-OFL.txt">Licencia</button></div></article><article class="kfont">
+    <p class="kfont__uso">Textos, etiquetas y botones</p>
+    <h3 style="font-family:Manrope,sans-serif;font-weight:500">Manrope</h3>
+    <p class="kfont__abc" style="font-family:Manrope,sans-serif;font-weight:500">Aa Bb Cc Ññ Áé ¿¡ 0123456789</p>
+    <ul class="kfont__pesos"><li><span style="font-family:Manrope,sans-serif;font-weight:400">Regular</span><button class="kb" type="button" data-dl="fuentes/Manrope-Regular.ttf">TTF</button></li><li><span style="font-family:Manrope,sans-serif;font-weight:500">Medium</span><button class="kb" type="button" data-dl="fuentes/Manrope-Medium.ttf">TTF</button></li><li><span style="font-family:Manrope,sans-serif;font-weight:600">SemiBold</span><button class="kb" type="button" data-dl="fuentes/Manrope-SemiBold.ttf">TTF</button></li><li><span style="font-family:Manrope,sans-serif;font-weight:700">Bold</span><button class="kb" type="button" data-dl="fuentes/Manrope-Bold.ttf">TTF</button></li><li><span style="font-family:Manrope,sans-serif;font-weight:800">ExtraBold</span><button class="kb" type="button" data-dl="fuentes/Manrope-ExtraBold.ttf">TTF</button></li></ul>
+    <div class="kbs"><button class="kb" type="button" data-dl="fuentes/Manrope-licencia-OFL.txt">Licencia</button></div></article></div>
+</section>
+
+<section class="kblk" id="k-colores">
+  <header class="kblk__h"><h2>Colores</h2><p>En Canva: Marca → Colores, y pega el código HEX. Rosa solo como acento: el punto, un botón o una palabra clave.</p></header>
+  <div class="kcolors"><article class="kcolor"><i style="background:#EB0C6E"></i><div><h3>Rosa Pixely</h3><p class="kcolor__v"><b>#EB0C6E</b> <button class="kc" type="button" data-copytxt="#EB0C6E">Copiar</button></p><p class="kcolor__v">RGB 235, 12, 110</p><p class="kcolor__u">El punto del logo, botones y una palabra clave por pieza. También fondos de impacto.</p></div></article><article class="kcolor"><i style="background:#0A0A0C"></i><div><h3>Tinta</h3><p class="kcolor__v"><b>#0A0A0C</b> <button class="kc" type="button" data-copytxt="#0A0A0C">Copiar</button></p><p class="kcolor__v">RGB 10, 10, 12</p><p class="kcolor__u">Fondo principal y texto sobre claro.</p></div></article><article class="kcolor"><i style="background:#16161B"></i><div><h3>Carbón</h3><p class="kcolor__v"><b>#16161B</b> <button class="kc" type="button" data-copytxt="#16161B">Copiar</button></p><p class="kcolor__v">RGB 22, 22, 27</p><p class="kcolor__u">Tarjetas sobre fondo negro.</p></div></article><article class="kcolor"><i style="background:#1F1F26"></i><div><h3>Grafito</h3><p class="kcolor__v"><b>#1F1F26</b> <button class="kc" type="button" data-copytxt="#1F1F26">Copiar</button></p><p class="kcolor__v">RGB 31, 31, 38</p><p class="kcolor__u">Tarjetas elevadas y botones secundarios.</p></div></article><article class="kcolor"><i style="background:#FFFFFF"></i><div><h3>Blanco</h3><p class="kcolor__v"><b>#FFFFFF</b> <button class="kc" type="button" data-copytxt="#FFFFFF">Copiar</button></p><p class="kcolor__v">RGB 255, 255, 255</p><p class="kcolor__u">Texto sobre negro y fondos claros.</p></div></article><article class="kcolor"><i style="background:#B4B4BE"></i><div><h3>Gris</h3><p class="kcolor__v"><b>#B4B4BE</b> <button class="kc" type="button" data-copytxt="#B4B4BE">Copiar</button></p><p class="kcolor__v">RGB 180, 180, 190</p><p class="kcolor__u">Texto secundario sobre negro.</p></div></article><article class="kcolor"><i style="background:#FFC2E1"></i><div><h3>Rosa suave</h3><p class="kcolor__v"><b>#FFC2E1</b> <button class="kc" type="button" data-copytxt="#FFC2E1">Copiar</button></p><p class="kcolor__v">RGB 255, 194, 225</p><p class="kcolor__u">Detalles sobre negro o sobre rosa.</p></div></article></div>
+  <div class="kbs kbs--end"><button class="kb" type="button" data-dl="colores/Pixely-colores.png">Tarjeta de colores · PNG</button><button class="kb" type="button" data-dl="colores/Pixely-colores.txt">Códigos · TXT</button></div>
+</section>
+
+<section class="kblk" id="k-canva">
+  <header class="kblk__h"><h2>Tamaños de letra para Canva</h2><p>En píxeles, con el diseño a tamaño real. “Espaciado” y “Altura de línea” son los controles de Canva con esos mismos nombres.</p></header>
+  <div class="ktable"><table><thead><tr><th>Uso</th><th>Fuente</th><th class="r">Post y carrusel<small>1080 × 1350</small></th><th class="r">Historia y reel<small>1080 × 1920</small></th><th class="r">Espaciado</th><th class="r">Altura de línea</th></tr></thead>
+  <tbody><tr><td><span class="ksample" style="font-family:Unbounded,sans-serif;font-weight:800;letter-spacing:-0.04em">+48%</span><small>Cifra o palabra gigante</small></td><td>Unbounded ExtraBold</td><td class="r n">180</td><td class="r n">220</td><td class="r">-40</td><td class="r">1</td></tr><tr><td><span class="ksample" style="font-family:Unbounded,sans-serif;font-weight:700;letter-spacing:-0.04em">Que se note.</span><small>Título</small></td><td>Unbounded Bold</td><td class="r n">96</td><td class="r n">112</td><td class="r">-40</td><td class="r">1,05</td></tr><tr><td><span class="ksample" style="font-family:Unbounded,sans-serif;font-weight:700;letter-spacing:-0.02em">Tu mercado, al día</span><small>Subtítulo</small></td><td>Unbounded Bold</td><td class="r n">48</td><td class="r n">56</td><td class="r">-20</td><td class="r">1,15</td></tr><tr><td><span class="ksample" style="font-family:Manrope,sans-serif;font-weight:500;letter-spacing:0em">Apruebas cada pieza desde el celular.</span><small>Texto</small></td><td>Manrope Medium</td><td class="r n">34</td><td class="r n">40</td><td class="r">0</td><td class="r">1,4</td></tr><tr><td><span class="ksample" style="font-family:Manrope,sans-serif;font-weight:800;letter-spacing:0em;color:var(--pink)">datos reales de tu mercado</span><small>Texto destacado (en rosa)</small></td><td>Manrope ExtraBold</td><td class="r n">34</td><td class="r n">40</td><td class="r">0</td><td class="r">1,4</td></tr><tr><td><span class="ksample" style="font-family:Manrope,sans-serif;font-weight:800;letter-spacing:0.18em">PIXELY PARTNERS</span><small>Etiqueta (en mayúsculas)</small></td><td>Manrope ExtraBold</td><td class="r n">24</td><td class="r n">28</td><td class="r">180</td><td class="r">1,2</td></tr><tr><td><span class="ksample" style="font-family:Manrope,sans-serif;font-weight:400;letter-spacing:0em">Fuente: estudio de mercado, oct 2026</span><small>Nota o fuente</small></td><td>Manrope Regular</td><td class="r n">22</td><td class="r n">26</td><td class="r">0</td><td class="r">1,4</td></tr></tbody></table></div>
+  <ul class="krules"><li>Márgenes: 80 px a cada lado en posts; en historias, 90 px a los lados y 250 px libres arriba y abajo (ahí van los botones de la app).</li><li>Un solo título por pieza, y su punto final en rosa.</li><li>Una sola palabra o frase en rosa por párrafo: la que más importa.</li><li>Texto de al menos 32 px en historias, para que se lea en el celular.</li></ul>
+  <div class="kbs kbs--end"><button class="kb" type="button" data-dl="canva/Pixely-tamanos-de-letra-canva.png">Guía de tamaños · PNG</button><button class="kb" type="button" data-dl="canva/Pixely-tamanos-de-letra-canva.txt">Guía · TXT</button></div>
+</section>
+
+<section class="kblk" id="k-qr">
+  <header class="kblk__h"><h2>QR</h2><p>Con el logo al centro. En el paquete completo también van con fondo transparente.</p></header>
+  <div class="kqrs"><article class="kqr"><img src="kit-redes/qr/qr-whatsapp.svg" alt="QR de WhatsApp" loading="lazy"><h3>WhatsApp</h3><p>Abre el chat con el mensaje «¡Hola Pixely! 👋 Quiero que mi negocio destaque ✨»</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-whatsapp.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-whatsapp.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-web.svg" alt="QR de pixely.pe" loading="lazy"><h3>pixely.pe</h3><p>La web, marcada como visita desde un QR</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-web.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-web.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-partners.svg" alt="QR de Pixely Partners" loading="lazy"><h3>Pixely Partners</h3><p>partners.pixely.pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-partners.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-partners.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-todas-las-redes.svg" alt="QR de Todas las redes" loading="lazy"><h3>Todas las redes</h3><p>linktr.ee/pixely_pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-todas-las-redes.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-todas-las-redes.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-instagram.svg" alt="QR de Instagram" loading="lazy"><h3>Instagram</h3><p>@pixely_pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-instagram.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-instagram.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-tiktok.svg" alt="QR de TikTok" loading="lazy"><h3>TikTok</h3><p>@pixely_pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-tiktok.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-tiktok.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-facebook.svg" alt="QR de Facebook" loading="lazy"><h3>Facebook</h3><p>Pixely</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-facebook.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-facebook.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-linkedin.svg" alt="QR de LinkedIn" loading="lazy"><h3>LinkedIn</h3><p>Pixely</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-linkedin.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-linkedin.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-x.svg" alt="QR de X" loading="lazy"><h3>X</h3><p>@pixely_pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-x.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-x.svg">SVG</button></div></article><article class="kqr"><img src="kit-redes/qr/qr-youtube.svg" alt="QR de YouTube" loading="lazy"><h3>YouTube</h3><p>@Pixely_pe</p><div class="kbs"><button class="kb" type="button" data-dl="qr/qr-youtube.png">PNG</button><button class="kb" type="button" data-dl="qr/qr-youtube.svg">SVG</button></div></article></div>
+</section>
+
+<section class="kblk" id="k-redes">
+  <header class="kblk__h"><h2>Redes y teléfonos</h2><p>Eslogan en todas: <b>Publicidad que vende.</b></p></header>
+  <ul class="kredes"><li><span class="kredes__r">WhatsApp</span><b>+51 949 268 607</b><span class="kredes__u">https://wa.me/51949268607</span><button class="kc" type="button" data-copytxt="https://wa.me/51949268607">Copiar</button></li><li><span class="kredes__r">Correo</span><b>hola@pixely.pe</b><span class="kredes__u">hola@pixely.pe</span><button class="kc" type="button" data-copytxt="hola@pixely.pe">Copiar</button></li><li><span class="kredes__r">Web</span><b>pixely.pe</b><span class="kredes__u">https://pixely.pe</span><button class="kc" type="button" data-copytxt="https://pixely.pe">Copiar</button></li><li><span class="kredes__r">Pixely Partners</span><b>partners.pixely.pe</b><span class="kredes__u">https://partners.pixely.pe</span><button class="kc" type="button" data-copytxt="https://partners.pixely.pe">Copiar</button></li><li><span class="kredes__r">Instagram</span><b>@pixely_pe</b><span class="kredes__u">https://www.instagram.com/pixely_pe/</span><button class="kc" type="button" data-copytxt="https://www.instagram.com/pixely_pe/">Copiar</button></li><li><span class="kredes__r">TikTok</span><b>@pixely_pe</b><span class="kredes__u">https://www.tiktok.com/@pixely_pe</span><button class="kc" type="button" data-copytxt="https://www.tiktok.com/@pixely_pe">Copiar</button></li><li><span class="kredes__r">YouTube</span><b>@Pixely_pe</b><span class="kredes__u">https://www.youtube.com/@Pixely_pe</span><button class="kc" type="button" data-copytxt="https://www.youtube.com/@Pixely_pe">Copiar</button></li><li><span class="kredes__r">X</span><b>@pixely_pe</b><span class="kredes__u">https://x.com/Pixely_pe</span><button class="kc" type="button" data-copytxt="https://x.com/Pixely_pe">Copiar</button></li><li><span class="kredes__r">Facebook</span><b>Pixely</b><span class="kredes__u">https://www.facebook.com/profile.php?id=61587052585063</span><button class="kc" type="button" data-copytxt="https://www.facebook.com/profile.php?id=61587052585063">Copiar</button></li><li><span class="kredes__r">LinkedIn</span><b>Pixely</b><span class="kredes__u">https://www.linkedin.com/company/pixely-pe</span><button class="kc" type="button" data-copytxt="https://www.linkedin.com/company/pixely-pe">Copiar</button></li><li><span class="kredes__r">Todas las redes</span><b>linktr.ee/pixely_pe</b><span class="kredes__u">https://linktr.ee/pixely_pe</span><button class="kc" type="button" data-copytxt="https://linktr.ee/pixely_pe">Copiar</button></li></ul>
+  <h3 class="kbios__t">Biografías listas para copiar</h3>
+  <ul class="kbios"><li><small>Instagram (máx. 150)</small><p>Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. Escríbenos por WhatsApp.</p><button class="kc" type="button" data-copytxt="Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. Escríbenos por WhatsApp.">Copiar</button></li><li><small>TikTok (máx. 80)</small><p>Publicidad que vende, con datos de tu mercado. Escríbenos por WhatsApp.</p><button class="kc" type="button" data-copytxt="Publicidad que vende, con datos de tu mercado. Escríbenos por WhatsApp.">Copiar</button></li><li><small>X (máx. 160)</small><p>Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. pixely.pe</p><button class="kc" type="button" data-copytxt="Publicidad que vende. Leemos tu mercado, armamos tu plan y tú apruebas desde el celular. pixely.pe">Copiar</button></li><li><small>Facebook, descripción breve (máx. 101)</small><p>Publicidad que vende, con datos reales de tu mercado.</p><button class="kc" type="button" data-copytxt="Publicidad que vende, con datos reales de tu mercado.">Copiar</button></li><li><small>LinkedIn, eslogan (máx. 120)</small><p>Publicidad que vende para negocios que ya venden, con datos reales de su mercado.</p><button class="kc" type="button" data-copytxt="Publicidad que vende para negocios que ya venden, con datos reales de su mercado.">Copiar</button></li></ul>
+  <div class="kbs kbs--end"><button class="kb" type="button" data-dl="redes/Pixely-redes-y-contacto.txt">Redes, contacto y biografías · TXT</button></div>
+</section>
+<p class="ktoast" id="ktoast" role="status" aria-live="polite" hidden></p>
+</section></main></div>
 <script>
 (function () {
   var $ = function (s, r) { return (r || document).querySelector(s); }, $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -3113,6 +3258,68 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     $$('.p-ov:not([hidden]),.p-menu:not([hidden])').forEach(function (x) { x.hidden = true; });
   });
   apply();
+})();
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+
+window.KIT_FILES = ["LEEME.txt","canva/Pixely-tamanos-de-letra-canva.png","canva/Pixely-tamanos-de-letra-canva.txt","colores/Pixely-colores.png","colores/Pixely-colores.txt","fuentes/Manrope-Bold.ttf","fuentes/Manrope-ExtraBold.ttf","fuentes/Manrope-Medium.ttf","fuentes/Manrope-Regular.ttf","fuentes/Manrope-SemiBold.ttf","fuentes/Manrope-licencia-OFL.txt","fuentes/Unbounded-Bold.ttf","fuentes/Unbounded-ExtraBold.ttf","fuentes/Unbounded-Regular.ttf","fuentes/Unbounded-licencia-OFL.txt","logos/p-sobre-negro.png","logos/p-sobre-negro.svg","logos/p-sobre-rosa.png","logos/p-sobre-rosa.svg","logos/pixely-blanco.png","logos/pixely-blanco.svg","logos/pixely-negro.png","logos/pixely-negro.svg","logos/pixely-sobre-blanco.png","logos/pixely-sobre-blanco.svg","logos/pixely-sobre-negro.png","logos/pixely-sobre-negro.svg","logos/pixely-sobre-rosa.png","logos/pixely-sobre-rosa.svg","qr/qr-facebook-transparente.png","qr/qr-facebook-transparente.svg","qr/qr-facebook.png","qr/qr-facebook.svg","qr/qr-instagram-transparente.png","qr/qr-instagram-transparente.svg","qr/qr-instagram.png","qr/qr-instagram.svg","qr/qr-linkedin-transparente.png","qr/qr-linkedin-transparente.svg","qr/qr-linkedin.png","qr/qr-linkedin.svg","qr/qr-partners-transparente.png","qr/qr-partners-transparente.svg","qr/qr-partners.png","qr/qr-partners.svg","qr/qr-tiktok-transparente.png","qr/qr-tiktok-transparente.svg","qr/qr-tiktok.png","qr/qr-tiktok.svg","qr/qr-todas-las-redes-transparente.png","qr/qr-todas-las-redes-transparente.svg","qr/qr-todas-las-redes.png","qr/qr-todas-las-redes.svg","qr/qr-web-transparente.png","qr/qr-web-transparente.svg","qr/qr-web.png","qr/qr-web.svg","qr/qr-whatsapp-transparente.png","qr/qr-whatsapp-transparente.svg","qr/qr-whatsapp.png","qr/qr-whatsapp.svg","qr/qr-x-transparente.png","qr/qr-x-transparente.svg","qr/qr-x.png","qr/qr-x.svg","qr/qr-youtube-transparente.png","qr/qr-youtube-transparente.svg","qr/qr-youtube.png","qr/qr-youtube.svg","redes/Pixely-redes-y-contacto.txt"];
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  // Dos páginas en una: #redes (y sus partes #k-…) muestra el kit; cualquier otro enlace, los componentes
+  function route() {
+    var h = location.hash.slice(1), enKit = h === 'redes' || h.indexOf('k-') === 0;
+    $('#redes').hidden = !enKit; $('#comp').hidden = enKit;
+    $('.side__kit').classList.toggle('on', enKit); $('.side__comp').classList.toggle('on', !enKit && (!h || h === 'top'));
+    if (enKit) { var el = h === 'redes' ? null : document.getElementById(h); if (el) el.scrollIntoView(); else window.scrollTo(0, 0); }
+  }
+  window.addEventListener('hashchange', route); route();
+  var toastT;
+  function toast(t) { var el = $('#ktoast'); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(function () { el.hidden = true; }, 2600); }
+  // Descargas: se piden a claude.ai (la página no puede bajar archivos por su cuenta)
+  var dlP = window.claude && window.claude.use ? window.claude.use('downloads') : Promise.resolve(null);
+  var avisar = function (err) {
+    var c = err && err.code;
+    if (c === 'declined') return;
+    toast(c === 'rate_limited' ? 'Hay otra descarga esperando. Prueba en un momento.' : c === 'missing' ? 'No se encontró ese archivo.' : 'Las descargas funcionan al abrir esta página en claude.ai.');
+  };
+  var traer = function (path) { return fetch('kit-redes/' + path).then(function (r) { if (!r.ok) throw { code: 'missing' }; return r.blob(); }); };
+  document.addEventListener('click', function (e) {
+    var z = e.target.closest('[data-zip]');
+    if (z) {
+      // El paquete completo se arma aquí con todos los archivos del kit (JSZip) y se entrega como un solo .zip
+      var oldZ = z.innerHTML, carpeta = z.getAttribute('data-zip').replace(/.zip$/, '');
+      z.disabled = true; z.textContent = 'Armando el paquete…';
+      dlP.then(function (dl) {
+        if (!dl) throw { code: 'unavailable' };
+        if (!window.JSZip) throw { code: 'unavailable' };
+        var zip = new window.JSZip(), files = window.KIT_FILES;
+        return Promise.all(files.map(function (f) { return traer(f).then(function (b) { zip.file(carpeta + '/' + f, b); }); }))
+          .then(function () { return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' }); })
+          .then(function (blob) { return dl.save({ filename: carpeta + '.zip', data: blob }); })
+          .then(function () { toast('Listo: ' + carpeta + '.zip'); });
+      }).catch(avisar).then(function () { z.disabled = false; z.innerHTML = oldZ; });
+      return;
+    }
+    var b = e.target.closest('[data-dl]');
+    if (b) {
+      var path = b.getAttribute('data-dl'), name = path.split('/').pop(), old = b.innerHTML;
+      b.disabled = true; b.textContent = 'Preparando…';
+      dlP.then(function (dl) {
+        if (!dl) throw { code: 'unavailable' };
+        return traer(path).then(function (blob) { return dl.save({ filename: name, data: blob }); })
+          .then(function () { toast('Listo: ' + name); });
+      }).catch(avisar).then(function () { b.disabled = false; b.innerHTML = old; });
+      return;
+    }
+    var c = e.target.closest('[data-copytxt]');
+    if (c) {
+      var txt = c.getAttribute('data-copytxt'), o = c.textContent;
+      var ok = function () { c.textContent = 'Copiado'; setTimeout(function () { c.textContent = o; }, 1100); };
+      try { navigator.clipboard.writeText(txt).then(ok, function () { toast(txt); }); } catch (x) { toast(txt); }
+    }
+  });
 })();
 
 </script>

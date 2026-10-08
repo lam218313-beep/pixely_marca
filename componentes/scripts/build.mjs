@@ -13,6 +13,7 @@ import datos from '../src/components/datos.js';
 import overlays from '../src/components/overlays.js';
 import estados from '../src/components/estados.js';
 import contenido from '../src/components/contenido.js';
+import { kitCSS, kitHTML, kitJS, kitNav } from './kit.mjs';
 
 const NOTCH = /--notch:\s*(polygon\([^;]+\));/.exec(readFileSync(new URL('../../../pixely_web/src/styles/tokens.css', import.meta.url), 'utf8'))[1];
 
@@ -64,10 +65,11 @@ const html = `<title>Componentes Pixely</title>
 ${shell}
 /* ===== Componentes ===== */
 ${css}
+${kitCSS}
 </style>
 <div class="app">
-<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Componentes de interfaz</p><nav id="nav">${nav}</nav></aside>
-<main id="top"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
+<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p>${kitNav}<nav id="nav">${nav}</nav></aside>
+<main id="top"><div id="comp"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
 <p class="top__l">Cada componente, uno por uno, con su estado real, cuándo usarlo y su código listo para copiar. Salen de Pixely Partners y de pixely.pe; los marcados como “Propuesto” aún no existen y se diseñan aquí primero.</p>
 <div class="top__s"><span><b>${all.length}</b> componentes</span><span><b>${nEx}</b> existen</span><span><b>${nPr}</b> propuestos</span></div>
 <div class="filters"><input id="q" type="search" placeholder="Buscar: botón, calendario, plan…" aria-label="Buscar componente">
@@ -75,9 +77,14 @@ ${css}
 <div class="fg" data-f="estado" role="group" aria-label="Estado"><button class="is-on" data-v="">Todos</button><button data-v="Existe">Existen</button><button data-v="Propuesto">Propuestos</button></div></div></header>
 ${sections}
 <p class="none" id="none" hidden>Ningún componente coincide con la búsqueda.</p>
-<footer class="end">Siguientes repositorios: animaciones (por categorías) · imágenes, videos e íconos. Todo parte de los mismos tokens de marca.</footer></main></div>
+<footer class="end">Todo parte de los mismos tokens de marca. El kit de logos, fuentes, colores y QR está en <a href="#redes">Redes sociales</a>.</footer></div>
+${kitHTML()}</main></div>
 <script>
 ${js}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+${kitJS()}
 </script>
 <script>
 ${orbs}

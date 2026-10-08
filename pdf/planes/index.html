@@ -5,133 +5,200 @@
 <title>Pixely - Planes</title>
 <link rel="stylesheet" href="../comun/base.css">
 <style>
+/* Una ficha por plan, mismo formato. Cada plan tiene su tono: Lite claro, Basic grafito, Pro noche.
+   Tamaños: solo la escala de comun/base.css (--fs-*). */
 .plan-pg { padding: 0; background: var(--paper); }
+.lbl { font: 800 var(--fs-label)/1.2 Manrope; letter-spacing: .14em; text-transform: uppercase; }
 
-/* ===== Cabecera negra ===== */
-.hero { flex: none; position: relative; overflow: hidden; padding: 42px 56px 34px; }
-.hero .rings { right: -330px; top: -300px; width: 760px; height: 760px; }
-.top { position: relative; display: flex; justify-content: space-between; align-items: center; }
-.tag { display: inline-flex; align-items: center; height: 28px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line); font: 800 9.5px Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--t2); }
-.hero-grid { position: relative; display: grid; grid-template-columns: 1fr 248px; gap: 30px; align-items: end; margin-top: 30px; }
-.hero h1 { font: 700 62px/1 Unbounded; letter-spacing: -.05em; }
-.hero .lead { font-size: 15.5px; max-width: 360px; margin-top: 16px; min-height: 3.1em; }
-.lineup { display: inline-flex; gap: 4px; margin-top: 26px; padding: 4px; border-radius: 99px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-.lineup span { height: 26px; padding: 0 14px; border-radius: 99px; display: inline-flex; align-items: center; font: 700 10.5px Manrope; color: var(--t3); }
-.lineup span.on { background: var(--pink); color: #fff; }
-.volume { display: flex; align-items: center; gap: 12px; margin-top: 18px; font: 600 11px Manrope; color: var(--t2); }
-.volume b { font: 800 9px Manrope; letter-spacing: .18em; color: var(--t3); }
-.volume span { display: flex; gap: 5px; }
-.volume i { width: 26px; height: 6px; border-radius: 3px; background: var(--mute); }
-.volume i.on { background: var(--pink); }
-.hero .frame { height: 254px; }
-.hero .frame .chip { left: 16px; bottom: 16px; }
+/* Tonos */
+.lite  { --h-bg: #F2F2F5; --h-t1: #0A0A0C; --h-t2: #55555F; --h-t3: #8A8A96; --h-line: rgba(10,10,12,.1); --h-chip: #fff; --tile: #0A0A0C; --tile-off: rgba(10,10,12,.08); }
+.basic { --h-bg: linear-gradient(160deg, #2C2C36 0%, #1B1B22 100%); --h-t1: #fff; --h-t2: #C4C4CC; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.12); --h-chip: rgba(255,255,255,.08); --tile: #fff; --tile-off: rgba(255,255,255,.1); }
+.pro   { --h-bg: #0A0A0C; --h-t1: #fff; --h-t2: #B4B4BE; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.1); --h-chip: rgba(255,255,255,.06); --tile: #fff; --tile-off: rgba(255,255,255,.1); }
 
-/* ===== Cuerpo blanco ===== */
-.body { flex: 1; display: flex; flex-direction: column; padding: 26px 56px 0; }
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.body .card { padding: 22px 22px 20px; }
-.body h4 { font: 700 14px Unbounded; letter-spacing: -.03em; margin-bottom: 14px; }
-.inc { list-style: none; display: grid; gap: 11px; }
-.inc li { display: flex; gap: 9px; font: 600 11.5px/1.35 Manrope; color: var(--p1); }
-.inc li::before { content: ''; flex: none; width: 15px; height: 15px; border-radius: 50%; background: var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 7.2l2 2 4-4.4' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat; }
-.inc li.no { color: var(--p3); }
-.inc li.no::before { background: none; border: 1px solid rgba(10,10,12,.18); }
-.steps { list-style: none; display: grid; gap: 11px; }
-.steps li { display: grid; grid-template-columns: 24px 1fr; }
-.steps li > span { font: 800 10px/1.6 Manrope; letter-spacing: .06em; color: var(--pink); }
-.steps b { display: block; font: 700 11.5px/1.35 Manrope; }
-.steps p { margin-top: 2px; font: 500 10.5px/1.45 Manrope; color: var(--p2); }
-.notes { margin-top: 12px; }
-.notes .card { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; }
-.ico { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(235,12,110,.1); color: var(--pink); }
-.notes b { display: block; font: 700 12px Manrope; }
-.notes p { margin-top: 3px; font: 500 10.5px/1.45 Manrope; color: var(--p2); }
-.talk { margin-top: 12px; display: grid; grid-template-columns: 1fr 128px; gap: 20px; align-items: center; padding: 20px 20px 20px 26px; border-radius: var(--r-lg); background: var(--ink); color: #fff; }
-.talk h3 { font: 700 26px/1 Unbounded; letter-spacing: -.045em; }
-.talk p { margin-top: 8px; font: 500 12px/1.5 Manrope; color: var(--t2); }
-.talk .wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; height: 38px; padding: 0 16px; border-radius: 14px; background: var(--pink); font: 800 12px Manrope; color: #fff; }
-.talk small { display: block; margin-top: 10px; font: 600 10.5px Manrope; color: var(--t3); }
-.qr { padding: 10px; border-radius: 18px; background: #fff; text-align: center; }
+/* ===== Cabecera ===== */
+.hero { flex: none; position: relative; overflow: hidden; padding: 34px 56px 26px; background: var(--h-bg); color: var(--h-t1); }
+.hero .radar { position: absolute; right: -250px; top: -240px; width: 640px; height: 640px; }
+.pro .hero::after { content: ''; position: absolute; left: -120px; bottom: -220px; width: 520px; height: 420px; background: radial-gradient(closest-side, rgba(235,12,110,.28), transparent); pointer-events: none; }
+.top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
+.tiers { display: inline-flex; gap: 3px; padding: 3px; border-radius: 99px; background: var(--h-chip); box-shadow: inset 0 0 0 1px var(--h-line); }
+.tiers span { height: 26px; padding: 0 14px; border-radius: 99px; display: inline-flex; align-items: center; font: 700 var(--fs-label) Manrope; letter-spacing: .06em; color: var(--h-t3); }
+.tiers span.on { background: var(--pink); color: #fff; }
+.grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 200px; gap: 24px; margin-top: 22px; }
+.badge { display: inline-flex; align-items: center; gap: 7px; height: 26px; padding: 0 12px; border-radius: 99px; color: var(--h-t2); box-shadow: inset 0 0 0 1px var(--h-line); }
+.pro .badge { background: var(--pink); color: #fff; box-shadow: none; }
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+.pro .badge::before { background: #fff; }
+.hero h1 { margin-top: 14px; font: 700 var(--fs-display)/1 Unbounded; letter-spacing: -.05em; white-space: nowrap; }
+.hero .lead { margin-top: 12px; max-width: 380px; font: 500 var(--fs-lead)/1.5 Manrope; color: var(--h-t2); }
+.price { display: flex; align-items: baseline; gap: 10px; margin-top: 18px; }
+.price b { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.04em; }
+.pro .price b { color: var(--pink); }
+.price span { font: 600 var(--fs-body) Manrope; color: var(--h-t3); }
+.hero .frame { height: 236px; border-radius: var(--r-lg); padding: 6px; background: var(--h-chip); box-shadow: inset 0 0 0 1px var(--h-line); }
+.pro .hero .frame { box-shadow: inset 0 0 0 1.5px var(--pink), 0 24px 60px -20px rgba(235,12,110,.55); }
+.hero .frame img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
+
+/* Volumen: un cuadro por pieza al mes (rosa = reel) */
+.vol { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--h-line); }
+.tiles { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; }
+.tiles i { aspect-ratio: 1; border-radius: 5px; background: var(--tile-off); }
+.tiles i.f { background: var(--tile); }
+.tiles i.r { background: var(--pink); }
+.pro .tiles i.r { box-shadow: 0 0 10px rgba(235,12,110,.7); }
+.vol .lbl { color: var(--h-t3); margin-bottom: 10px; display: block; }
+.nums { display: flex; gap: 22px; }
+.nums div b { display: block; font: 700 var(--fs-num)/1 Unbounded; letter-spacing: -.05em; }
+.nums div b.pk { color: var(--pink); }
+.nums div span { display: block; margin-top: 4px; font: 600 var(--fs-label)/1.3 Manrope; color: var(--h-t2); }
+
+/* ===== Cuerpo ===== */
+.body { flex: 1; display: flex; flex-direction: column; padding: 18px 56px 0; color: var(--p1); }
+.body > .lbl { color: var(--pink); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.col { display: grid; gap: 12px; align-content: start; }
+.blk { border-radius: var(--r); padding: 14px 16px 10px; background: #F5F5F7; }
+.pro .blk { background: #0A0A0C; color: #fff; }
+.basic .blk { background: #EFEFF2; }
+.blk h4 { display: flex; justify-content: space-between; align-items: baseline; font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
+.blk h4 span { font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: var(--p3); }
+.blk ul { list-style: none; margin-top: 8px; }
+.blk li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; min-height: 27px; padding: 4px 0; border-top: 1px solid var(--pline); font: 600 var(--fs-body)/1.3 Manrope; }
+.pro .blk li { border-color: rgba(255,255,255,.08); }
+.blk li em { font-style: normal; display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 99px; background: #fff; font: 800 var(--fs-label) Manrope; letter-spacing: .04em; color: var(--p1); white-space: nowrap; }
+.basic .blk li em { background: #fff; }
+.pro .blk li em { background: rgba(235,12,110,.16); color: #FF7AB0; }
+.blk li em.top { background: var(--pink); color: #fff; }
+.blk li svg { width: 20px; height: 20px; padding: 4px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.blk li.no { color: var(--p3); font-weight: 500; }
+.pro .blk li.no { color: var(--t3); }
+.blk li.no em { background: none; box-shadow: inset 0 0 0 1px rgba(10,10,12,.14); color: var(--p3); font-weight: 700; }
+
+/* Hablemos */
+.talk { margin-top: auto; display: grid; grid-template-columns: 1fr 96px; gap: 20px; align-items: center; padding: 16px 16px 16px 24px; border-radius: var(--r-lg); background: var(--ink); color: #fff; }
+.talk h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.045em; }
+.talk p { margin-top: 6px; font: 500 var(--fs-body)/1.5 Manrope; color: var(--t2); }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; margin-top: 12px; padding: 0 18px; border-radius: 14px; background: var(--pink); font: 800 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+.talk small { margin-left: 14px; font: 600 var(--fs-body) Manrope; color: var(--t3); }
+.qr { display: block; padding: 8px; border-radius: 16px; background: #fff; }
 .qr img { display: block; width: 100%; }
-.qr p { margin-top: 6px; font: 700 8.5px/1.3 Manrope; color: var(--p2); }
-.legal { margin-top: 12px; }
+.legal { margin-top: 10px; }
+.foot { margin-top: 0; font-size: var(--fs-label); }
 </style>
 </head>
 <body>
 
 <template id="hoja">
 <section class="page plan-pg">
-  <div class="hero dark">
-    <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/></svg>
-    <div class="top"><span class="wm">pixely<b>.</b></span><span class="tag" data-k="eyebrow"></span></div>
-    <div class="hero-grid">
+  <div class="hero">
+    <div class="top"><span class="wm">pixely<b>.</b></span><span class="tiers"><span>Lite</span><span>Basic</span><span>Pro</span></span></div>
+    <div class="grid">
       <div>
+        <span class="badge lbl" data-k="eyebrow"></span>
         <h1>Plan <span data-k="nombre"></span><span class="dot">.</span></h1>
         <p class="lead" data-k="lema"></p>
-        <div class="lineup"><span>Lite</span><span>Basic</span><span>Pro</span></div>
-        <div class="volume"><b>VOLUMEN</b><span><i></i><i></i><i></i></span>Lo definimos contigo, según tu negocio.</div>
+        <div class="price"><b data-k="precio"></b><span>al mes</span></div>
       </div>
-      <div class="frame"><img alt=""><span class="chip"><i></i><span data-k="chip"></span></span></div>
+      <div class="frame"><img alt=""></div>
+    </div>
+    <div class="vol">
+      <div><span class="lbl">Tu contenido al mes · un cuadro por pieza</span><div class="tiles"></div></div>
+      <div class="nums"></div>
     </div>
   </div>
-  <div class="body light">
-    <div class="two">
-      <div class="card"><h4>Qué incluye</h4><ul class="inc"></ul></div>
-      <div class="card"><h4>Cómo trabajamos</h4><ol class="steps">
-        <li><span>01</span><div><b>Entendemos tu negocio</b><p>Una conversación guiada para conocer tu negocio y tu voz de marca.</p></div></li>
-        <li><span>02</span><div><b>Leemos tu mercado</b><p>Competidores, reseñas, precios y lo que publica tu competencia.</p></div></li>
-        <li><span>03</span><div><b>Estrategia y plan del mes</b><p>Cada idea dice por qué existe y qué dato la respalda.</p></div></li>
-        <li><span>04</span><div><b>Validas, publicamos y medimos</b><p>Previsualizas cada pieza y ves cómo le fue.</p></div></li>
-      </ol></div>
-    </div>
-    <div class="two notes">
-      <div class="card"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2 7 9M14 2l-4.5 12-2.5-5-5-2.5z"/></svg></span><div><b>Quién publica</b><p data-k="publica"></p></div></div>
-      <div class="card"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1.5" width="8" height="13" rx="2"/><path d="m6.2 8 1.3 1.3 2.4-2.6"/></svg></span><div><b>Siempre contigo</b><p>Apruebas las ideas del mes antes de producirlas y cada pieza antes de publicarla, desde Pixely Partners. Todos los planes incluyen acceso.</p></div></div>
-    </div>
+  <div class="body">
+    <span class="lbl">Todo lo que incluye</span>
+    <div class="cols"></div>
     <div class="talk">
       <div>
         <h3>Hablemos<span class="dot">.</span></h3>
-        <p>Te recomendamos el plan según tu negocio.</p>
-        <span class="wa">WhatsApp +51 949 268 607 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7h9M8 3.5 11.5 7 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <small>pixely.pe · hola@pixely.pe</small>
+        <p>Te contamos cómo funciona y te recomendamos el plan según tu negocio.</p>
+        <a class="btn" data-wa>Me interesa el Plan <span data-k="nombre"></span> →</a><small><a href="https://pixely.pe">pixely.pe</a> · <a href="mailto:hola@pixely.pe">hola@pixely.pe</a></small>
       </div>
-      <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
+      <a class="qr" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><img src="../comun/qr-whatsapp.svg" alt=""></a>
     </div>
     <p class="note legal">Tu primer plan de contenido llega en máximo 7 días hábiles después de la entrevista. No hacemos sesiones fotográficas, no respondemos mensajes ni comentarios de tus redes y no diseñamos logotipos fuera de tu plan de contenido. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. No garantizamos resultados de ventas específicos: garantizamos contenido profesional y estratégico.</p>
-    <div class="foot"><span class="wm">pixely<b>.</b></span><span>pixely.pe</span><span>Syntesia Labs E.I.R.L. · RUC 20616010787</span></div>
+    <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>Syntesia Labs E.I.R.L. · RUC 20616010787</span></div>
   </div>
 </section>
 </template>
 
 <script>
-// Un plan por hoja, en este orden (el script de PDF saca la hoja 1, 2 y 3 por separado)
-const TODO = ['Lectura de tu mercado', 'Estrategia y plan del mes', 'Aprobación en Partners', 'Producción multiformato'];
+// Un plan por hoja, en este orden (el script de PDF saca la hoja 1, 2 y 3 por separado).
+// Precio: null mientras no esté definido.
 const PLANES = [
-  { nombre: 'Lite', eyebrow: 'Para empezar', lema: 'Empieza con un riesgo mínimo y conoce el proceso.', vol: 1,
-    foto: 'img/lite.jpg', pos: '42% 50%', chip: 'Apruebas desde el celular',
-    incluye: [...TODO], no: ['Calendario de publicación', 'Resultados de cada pieza'],
-    publica: 'Tus piezas aprobadas quedan listas en Partners.' },
-  { nombre: 'Basic', eyebrow: 'Presencia constante', lema: 'Constancia, con estrategia y sin repetirte.', vol: 2,
-    foto: 'img/basic.jpg', pos: '58% 50%', chip: 'Calendario de publicación',
-    incluye: [...TODO, 'Calendario de publicación'], no: ['Resultados de cada pieza'],
-    publica: 'Recibes tus piezas aprobadas y el calendario de publicación.' },
-  { nombre: 'Pro', eyebrow: 'Delegación total', lema: 'Tú apruebas desde el celular; nosotros hacemos todo lo demás.', vol: 3,
-    foto: 'img/pro.jpg', pos: '55% 50%', chip: 'Publicamos por ti',
-    incluye: [...TODO, 'Publicamos por ti', 'Resultados de cada pieza'], no: [],
-    publica: 'Nosotros programamos y publicamos por ti.' },
+  { id: 'lite', nombre: 'Lite', eyebrow: 'Para empezar', lema: 'Empieza con un riesgo mínimo y conoce el proceso.', precio: null,
+    fotos: 6, reels: 2, redes: 2, foto: 'img/lite.jpg', pos: '42% 50%' },
+  { id: 'basic', nombre: 'Basic', eyebrow: 'Presencia constante', lema: 'Constancia, con estrategia y sin repetirte.', precio: null,
+    fotos: 8, reels: 4, redes: 3, foto: 'img/basic.jpg', pos: '58% 50%' },
+  { id: 'pro', nombre: 'Pro', eyebrow: 'Delegación total', lema: 'Tú apruebas desde el celular; nosotros hacemos todo lo demás.', precio: null,
+    fotos: 12, reels: 8, redes: 5, foto: 'img/pro.jpg', pos: '55% 50%' },
 ];
+// Todo el servicio, parte por parte. Cada valor va en orden Lite, Basic, Pro:
+// true = incluido · false = no incluido · texto = cuánto
+const SI = true, NO = false;
+const SERVICIO = [
+  { col: 0, titulo: 'Arranque', nota: 'Una vez', partes: [
+    ['Entrevista guiada y ficha de tu negocio', [SI, SI, SI]],
+    ['Voz de marca: cómo hablará tu marca', [SI, SI, SI]],
+    ['Estudio de mercado de tu nicho, en PDF', [SI, SI, SI]],
+    ['Estrategia: objetivos y conceptos', [SI, SI, SI]],
+  ] },
+  { col: 0, titulo: 'Tu mercado', nota: 'Todo el año', partes: [
+    ['Vigilancia de tu competencia', ['Mensual', 'Quincenal', 'Semanal']],
+    ['Revisión de tu estrategia', ['Cada 6 meses', 'Cada 3 meses', 'Cada mes']],
+  ] },
+  { col: 0, titulo: 'Acompañamiento', nota: 'Siempre', partes: [
+    ['Pixely Partners en celular y computadora', [SI, SI, SI]],
+    ['Respuesta por WhatsApp', ['En 24 h hábiles', 'En 12 h hábiles', 'El mismo día']],
+  ] },
+  { col: 1, titulo: 'Tu contenido', nota: 'Cada mes', partes: [
+    ['Plan del mes: cada idea con su porqué', [SI, SI, SI]],
+    ['Fotos y carruseles', ['6', '8', '12']],
+    ['Reels con guion y edición', ['2', '4', '8']],
+    ['Redes, con textos para cada una', ['2', '3', '5']],
+    ['Cambios por pieza', ['1 ronda', '2 rondas', '3 rondas']],
+  ] },
+  { col: 1, titulo: 'Publicación y resultados', nota: 'Cada mes', partes: [
+    ['Piezas listas para descargar en Partners', [SI, SI, SI]],
+    ['Calendario con día y hora', [NO, SI, SI]],
+    ['Publicamos por ti', [NO, NO, SI]],
+    ['Resultados frente a tu competencia', [NO, NO, SI]],
+    ['Videollamada mensual de resultados', [NO, NO, SI]],
+  ] },
+];
+const WA = (n) => `https://wa.me/51949268607?text=${encodeURIComponent(`¡Hola Pixely! 👋 Me interesa el Plan ${n} ✨`)}`;
+const CHECK = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const desde = (vals) => (vals[1] === NO ? 'Solo Pro' : 'Desde Basic');
+
 const molde = document.getElementById('hoja');
-for (const p of PLANES) {
+PLANES.forEach((p, n) => {
   const h = molde.content.cloneNode(true);
-  h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = p[el.dataset.k]; });
+  const pg = h.querySelector('.page');
+  pg.classList.add(p.id);
+  h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = el.dataset.k === 'precio' ? (p.precio ? `S/ ${p.precio}` : 'S/ —') : p[el.dataset.k]; });
+  h.querySelector('[data-wa]').href = WA(p.nombre);
   const img = h.querySelector('.frame img'); img.src = p.foto; img.style.objectPosition = p.pos;
-  h.querySelectorAll('.lineup span').forEach((s) => s.classList.toggle('on', s.textContent === p.nombre));
-  h.querySelectorAll('.volume i').forEach((i, n) => i.classList.toggle('on', n < p.vol));
-  const ul = h.querySelector('.inc');
-  for (const t of p.incluye) ul.insertAdjacentHTML('beforeend', `<li>${t}</li>`);
-  for (const t of p.no) ul.insertAdjacentHTML('beforeend', `<li class="no">${t}</li>`);
+  h.querySelectorAll('.tiers span').forEach((s) => s.classList.toggle('on', s.textContent === p.nombre));
+  if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<svg class="radar" data-tono="oscuro" data-giro="-60" aria-hidden="true"></svg>');
+  // Cuadros: 20 lugares (lo que trae Pro); los que no entran en este plan quedan apagados
+  const tiles = h.querySelector('.tiles');
+  for (let i = 0; i < 20; i++) tiles.insertAdjacentHTML('beforeend', `<i class="${i < p.fotos ? 'f' : i < p.fotos + p.reels ? 'r' : ''}"></i>`);
+  h.querySelector('.nums').innerHTML = `<div><b>${p.fotos}</b><span>fotos y<br>carruseles</span></div><div><b class="pk">${p.reels}</b><span>reels</span></div><div><b>${p.redes}</b><span>redes</span></div>`;
+  // Servicio
+  const cols = [document.createElement('div'), document.createElement('div')];
+  cols.forEach((c) => { c.className = 'col'; h.querySelector('.cols').appendChild(c); });
+  for (const b of SERVICIO) {
+    const lis = b.partes.map(([t, vals]) => {
+      const v = vals[n];
+      if (v === NO) return `<li class="no"><span>${t}</span><em>${desde(vals)}</em></li>`;
+      if (v === SI) return `<li><span>${t}</span>${CHECK}</li>`;
+      return `<li><span>${t}</span><em class="${n === 2 ? 'top' : ''}">${v}</em></li>`;
+    }).join('');
+    cols[b.col].insertAdjacentHTML('beforeend', `<div class="blk"><h4>${b.titulo}<span>${b.nota}</span></h4><ul>${lis}</ul></div>`);
+  }
   document.body.appendChild(h);
-}
+});
 </script>
+<script src="../comun/radar.js"></script>
 </body>
 </html>

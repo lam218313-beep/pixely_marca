@@ -1,0 +1,9 @@
+KIT DE REDES SOCIALES DE PIXELY
+
+logos/    7 versiones del logo en PNG (fondo transparente o con su color) y SVG (se agranda sin perder calidad).
+fuentes/  Unbounded (títulos y cifras) y Manrope (textos), un archivo por grosor, con su licencia libre (SIL OFL).
+          Instálalas con doble clic. En Canva búscalas por su nombre; si no aparecen, súbelas en Marca → Fuentes.
+colores/  Los 7 colores de la marca con su código HEX y RGB.
+canva/    Tamaños de letra para posts e historias, en píxeles de Canva.
+qr/       QR de WhatsApp, web, Partners y cada red, en PNG y SVG, con fondo blanco o transparente.
+redes/    Usuarios, enlaces, WhatsApp, correo y biografías listas para copiar.

@@ -34,4 +34,8 @@ svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {lado} {lado}" wid
        f'<rect x="{x0:.3f}" y="{x0:.3f}" width="{t:.3f}" height="{t:.3f}" rx="{3.12 * k:.3f}" fill="#0A0A0C"/>'
        f'<g transform="translate({x0 + 1.7211238 * k:.4f} {x0 + 7.7752973 * k:.4f}) scale({0.0076412688 * k:.7f} {-0.0076412688 * k:.7f})" shape-rendering="geometricPrecision">{viejo}</g></svg>')
 open(SALIDA, 'w').write(svg)
+# El mismo QR en el paquete de QR (public/piezas/qr): con fondo blanco y transparente
+PACK = os.path.join(AQUI, '..', '..', 'public', 'piezas', 'qr')
+open(os.path.join(PACK, 'qr-whatsapp.svg'), 'w').write(svg)
+open(os.path.join(PACK, 'qr-whatsapp-transparente.svg'), 'w').write(svg.replace(f'<rect width="{lado}" height="{lado}" fill="#fff"/>', ''))
 print(f'QR versión {qr.version} ({n}×{n} módulos) · {URL}')
