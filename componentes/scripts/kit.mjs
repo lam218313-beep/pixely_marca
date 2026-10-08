@@ -170,7 +170,8 @@ window.KIT_FILES = ${JSON.stringify(kitFiles)};
     if (c === 'declined') return;
     toast(c === 'rate_limited' ? 'Hay otra descarga esperando. Prueba en un momento.' : c === 'missing' ? 'No se encontró ese archivo.' : 'Las descargas funcionan al abrir esta página en claude.ai.');
   };
-  var traer = function (path) { return fetch('kit-redes/' + path).then(function (r) { if (!r.ok) throw { code: 'missing' }; return r.blob(); }); };
+  // data-raiz: la ruta ya es completa (archivos de elementos/ o capturas/); si no, es un archivo del kit.
+  var traer = function (path, raiz) { return fetch((raiz ? '' : 'kit-redes/') + path).then(function (r) { if (!r.ok) throw { code: 'missing' }; return r.blob(); }); };
   document.addEventListener('click', function (e) {
     var z = e.target.closest('[data-zip]');
     if (z) {
@@ -194,7 +195,7 @@ window.KIT_FILES = ${JSON.stringify(kitFiles)};
       b.disabled = true; b.textContent = 'Preparando…';
       dlP.then(function (dl) {
         if (!dl) throw { code: 'unavailable' };
-        return traer(path).then(function (blob) { return dl.save({ filename: name, data: blob }); })
+        return traer(path, b.hasAttribute('data-raiz')).then(function (blob) { return dl.save({ filename: name, data: blob }); })
           .then(function () { toast('Listo: ' + name); });
       }).catch(avisar).then(function () { b.disabled = false; b.innerHTML = old; });
       return;

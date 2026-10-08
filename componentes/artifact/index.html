@@ -665,7 +665,7 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .el__p--1{background:var(--pink);color:#fff}.el__p--2{background:var(--raised);color:#fff}
 .el__hist{padding:10px 12px;border-radius:12px;background:var(--card);color:var(--text-3);font:600 12px/1.45 Manrope}
 .el__slot{display:grid;place-items:center;min-height:84px;margin-top:auto;border:1.5px dashed var(--edge);border-radius:14px;color:var(--text-3);font:600 12px Manrope;text-align:center;padding:8px}
-/* Elemento aprobado */
+/* Propuestas y elemento aprobado */
 .el--ancho{grid-column:1/-1}
 .prs{display:grid;gap:12px;margin-top:4px}
 .pr{padding:16px;border-radius:18px;background:var(--card)}
@@ -693,11 +693,28 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
 .mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
 .pr__r{display:grid;gap:4px;margin:14px 0 0;padding-left:18px;list-style:disc;color:var(--text-2);font:600 13px/1.5 Manrope}
-.pr__dl{margin-top:12px;color:var(--text-3);font:700 12px Manrope}.pr__dl a{color:var(--text-1,#fff);text-decoration:underline;text-underline-offset:3px}
+.pr__dl{margin-top:12px;color:var(--text-3);font:700 12px/1.6 Manrope}.pr__dl code{font:600 11px ui-monospace,monospace;color:var(--text-2);word-break:break-all}.pr__a{padding:0;border:0;background:none;color:var(--text-1,#fff);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.pr__a:disabled{opacity:.6}
 .fam{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.fam span{display:grid;justify-items:center;gap:4px;padding:6px;border-radius:12px;color:var(--text-3);font:700 11px Manrope}.fam .is-on{background:var(--raised);color:#fff}
-@media (max-width:1100px){.pr__g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* 02 trama */
+.pr__g--2{grid-template-columns:1fr .8fr .55fr .8fr}
+.mk--zoom{aspect-ratio:1}.mk--historia{aspect-ratio:9/16}
+.mk__h--s{font-size:9cqw}
+.mk--historia .mk__h{left:9%;top:9%;font-size:13cqw}.mk__wm--abajo{left:9%;bottom:5%;font-size:9cqw}
+.mk__f--a{left:7%;right:7%;top:52%;height:18%}.mk__f--b{left:7%;right:7%;top:73%;height:18%}
+.mk__f--c{left:9%;right:9%;top:40%;height:36%;border-radius:12px}.mk__f--d{left:7%;right:7%;top:52%;bottom:6%;background:#F2F2F5}
+.mk--portada .mk__h--s{top:18%}.mk--claro .mk__h--s{top:18%}
+/* 03 resplandor */
+.pr__g--3{grid-template-columns:1.5fr .8fr .56fr}
+.mk--vitrina{aspect-ratio:4/3}
+.mk__cel{position:absolute;left:50%;top:50%;width:30%;transform:translate(-50%,-50%);padding:1.2%;border-radius:12cqw;background:linear-gradient(160deg,#3a3a44,#121216 40%,#26262e);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 0 6cqw rgba(235,12,110,.12)}
+.mk__cel img{position:static;width:100%;border-radius:10cqw}
+.mk--historia .mk__cel{top:63%;width:58%;border-radius:20cqw}.mk--historia .mk__cel img{border-radius:17cqw}
+/* 04 muesca */
+.pr__g--4{grid-template-columns:1.5fr .8fr .56fr}
+.mk--svg{display:block;width:100%;height:auto}
+@media (max-width:1100px){.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:1fr 1fr}}
 
 </style>
 <div class="app">
@@ -3246,7 +3263,7 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <li><b>Aprobado</b><span>Recién ahí puede usarse.</span></li>
     <li><b>Página por página</b><span>Con todos los elementos listos, cada documento se arma y se aprueba página por página.</span></li>
   </ol>
-  <div class="top__s"><span><b>29</b> por diseñar</span><span><b>0</b> en diseño</span><span><b>1</b> aprobado</span><span><b>0</b> rechazado</span></div>
+  <div class="top__s"><span><b>26</b> por diseñar</span><span><b>2</b> en diseño</span><span><b>2</b> aprobado</span><span><b>0</b> rechazado</span></div>
 </header>
 <section class="kblk"><header class="kblk__h"><h2>Arte de fondo y portadas</h2><p>Lo que da identidad y llena el espacio sin texto.</p></header><div class="els"><article class="el el--ancho" id="e-1">
     <header class="el__h"><span class="el__n">01</span><h3>Arte de portada «lectura del mercado»</h3><span class="el__st el__st--ok">Aprobado</span></header>
@@ -3255,33 +3272,51 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <p class="el__hist">Rechazados: anillos concéntricos (7 oct), radar con barrido (8 oct), las esferas globo, red y trenza, y las variantes con hebra, tramo o borde rosa (8 oct). Aprobado el 8 oct: la esfera «componiendo» solo en grises.</p>
     <div class="prs"><div class="pr">
     <div class="pr__h"><span class="pr__l">✓</span><div><h4>Esfera «componiendo» en grises</h4><p>La misma esfera que el cliente ve en Partners mientras se compone su contenido: una cinta de puntos que ondula alrededor. En grises; el rosa queda para el punto del logo y los títulos.</p></div></div>
-    <div class="pr__g">
-      <figure class="pr__vivo"><canvas data-arte data-tono="oscuro" aria-label="Esfera «componiendo» en grises, animada"></canvas><figcaption>En movimiento · redes, web y reels</figcaption></figure>
-      <figure><div class="mk mk--tarjeta"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__u">PIXELY.PE</span></div><figcaption>Tarjeta · frente</figcaption></figure>
-      <figure><div class="mk mk--portada"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f"></span></div><figcaption>Brochure · portada</figcaption></figure>
-      <figure><div class="mk mk--post"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><b class="mk__h">Leemos<br>tu mercado<i>.</i></b><span class="mk__wm">pixely<b>.</b></span></div><figcaption>Post 4:5</figcaption></figure>
-      <figure><div class="mk mk--claro"><img src="elementos/01-claro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Hablemos<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Versión clara</figcaption></figure>
-    </div>
+    <div class="pr__g pr__g--1"><figure class="pr__vivo"><canvas data-arte data-tono="oscuro" aria-label="Arte de portada, animado"></canvas><figcaption>En movimiento · redes, web y reels</figcaption></figure><figure><div class="mk mk--tarjeta"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__u">PIXELY.PE</span></div><figcaption>Tarjeta · frente</figcaption></figure><figure><div class="mk mk--portada"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f"></span></div><figcaption>Brochure · portada</figcaption></figure><figure><div class="mk mk--post"><img src="elementos/01-oscuro.svg" alt="" loading="lazy"><b class="mk__h">Leemos<br>tu mercado<i>.</i></b><span class="mk__wm">pixely<b>.</b></span></div><figcaption>Post 4:5</figcaption></figure><figure><div class="mk mk--claro"><img src="elementos/01-claro.svg" alt="" loading="lazy"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Hablemos<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Versión clara</figcaption></figure></div>
     <ul class="pr__r"><li>Va siempre cortada por un borde de la hoja (derecha o abajo), nunca entera y centrada como un logo.</li><li>La cinta (la parte de arriba) siempre a la vista: no se recorta por arriba.</li><li>No pisa el título: se corre o se achica antes que tapar texto.</li><li>Fondo negro: versión oscura. Fondo blanco: versión clara. Nunca en rosa ni sobre fotos.</li></ul>
-    <p class="pr__dl">SVG para imprenta y Canva: <a href="elementos/01-oscuro.svg" download>fondo negro</a> · <a href="elementos/01-claro.svg" download>fondo blanco</a></p>
-  </div>
-    <div class="pr pr--fam"><h4>De dónde sale</h4><p>Las 9 esferas de carga de Partners. La base es «componiendo».</p>
-      <div class="fam"><span><canvas data-orb="working" data-size="64"></canvas>trabajando</span><span><canvas data-orb="searching" data-size="64"></canvas>buscando</span><span><canvas data-orb="solving" data-size="64"></canvas>resolviendo</span><span><canvas data-orb="listening" data-size="64"></canvas>escuchando</span><span><canvas data-orb="connecting" data-size="64"></canvas>conectando</span><span><canvas data-orb="weaving" data-size="64"></canvas>tejiendo</span><span class="is-on"><canvas data-orb="composing" data-size="64"></canvas>componiendo</span><span><canvas data-orb="breathing" data-size="64"></canvas>respirando</span><span><canvas data-orb="shaping" data-size="64"></canvas>dando forma</span></div></div></div></article><article class="el" id="e-2">
-    <header class="el__h"><span class="el__n">02</span><h3>Trama de marca</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="pr__dl">SVG para imprenta y Canva: <button type="button" class="pr__a" data-dl="elementos/01-oscuro.svg" data-raiz>fondo negro</button> · <button type="button" class="pr__a" data-dl="elementos/01-claro.svg" data-raiz>fondo blanco</button></p>
+  </div><div class="pr pr--fam"><h4>De dónde sale</h4><p>Las 9 esferas de carga de Partners. La base es «componiendo».</p>
+  <div class="fam"><span><canvas data-orb="working" data-size="64"></canvas>trabajando</span><span><canvas data-orb="searching" data-size="64"></canvas>buscando</span><span><canvas data-orb="solving" data-size="64"></canvas>resolviendo</span><span><canvas data-orb="listening" data-size="64"></canvas>escuchando</span><span><canvas data-orb="connecting" data-size="64"></canvas>conectando</span><span><canvas data-orb="weaving" data-size="64"></canvas>tejiendo</span><span class="is-on"><canvas data-orb="composing" data-size="64"></canvas>componiendo</span><span><canvas data-orb="breathing" data-size="64"></canvas>respirando</span><span><canvas data-orb="shaping" data-size="64"></canvas>dando forma</span></div></div></div></article><article class="el el--ancho" id="e-2">
+    <header class="el__h"><span class="el__n">02</span><h3>Trama de marca</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Un patrón sutil y repetible para fondos de páginas e historias, que se reconozca como Pixely.</p>
     <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span><span class="el__u">Reel</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-3">
-    <header class="el__h"><span class="el__n">03</span><h3>Resplandor rosa</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Puntadas</h4><p>Las columnas cortas de puntos de la esfera «componiendo», sueltas en hileras. Hermana directa del arte de portada: se reconoce como Pixely sin gritar.</p></div></div>
+    <div class="pr__g pr__g--2"><figure><div class="mk mk--zoom" style="background-image:url(elementos/02-puntadas-oscuro.svg);background-size:50cqw"></div><figcaption>De cerca</figcaption></figure><figure><div class="mk mk--portada" style="background-image:url(elementos/02-puntadas-oscuro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Validar<br>una pieza<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--a"></span><span class="mk__f mk__f--b"></span></div><figcaption>Página del manual</figcaption></figure><figure><div class="mk mk--historia" style="background-image:url(elementos/02-puntadas-oscuro.svg);background-size:20cqw"><b class="mk__h">Tú<br>apruebas<i>.</i></b><span class="mk__f mk__f--c"></span><span class="mk__wm mk__wm--abajo">pixely<b>.</b></span></div><figcaption>Historia 9:16</figcaption></figure><figure><div class="mk mk--claro" style="background-image:url(elementos/02-puntadas-claro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Planes<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--d"></span></div><figcaption>Página blanca</figcaption></figure></div>
+    
+    <p class="pr__dl">Baldosa SVG que se repite sin costuras: <button type="button" class="pr__a" data-dl="elementos/02-puntadas-oscuro.svg" data-raiz>para fondo negro</button> · <button type="button" class="pr__a" data-dl="elementos/02-puntadas-claro.svg" data-raiz>para fondo blanco</button></p>
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Ola de puntos</h4><p>La cinta de la esfera aplanada: hileras de puntos que ondulan, cada una un poco corrida de la anterior. Da movimiento sin distraer.</p></div></div>
+    <div class="pr__g pr__g--2"><figure><div class="mk mk--zoom" style="background-image:url(elementos/02-ola-oscuro.svg);background-size:50cqw"></div><figcaption>De cerca</figcaption></figure><figure><div class="mk mk--portada" style="background-image:url(elementos/02-ola-oscuro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Validar<br>una pieza<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--a"></span><span class="mk__f mk__f--b"></span></div><figcaption>Página del manual</figcaption></figure><figure><div class="mk mk--historia" style="background-image:url(elementos/02-ola-oscuro.svg);background-size:20cqw"><b class="mk__h">Tú<br>apruebas<i>.</i></b><span class="mk__f mk__f--c"></span><span class="mk__wm mk__wm--abajo">pixely<b>.</b></span></div><figcaption>Historia 9:16</figcaption></figure><figure><div class="mk mk--claro" style="background-image:url(elementos/02-ola-claro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Planes<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--d"></span></div><figcaption>Página blanca</figcaption></figure></div>
+    
+    <p class="pr__dl">Baldosa SVG que se repite sin costuras: <button type="button" class="pr__a" data-dl="elementos/02-ola-oscuro.svg" data-raiz>para fondo negro</button> · <button type="button" class="pr__a" data-dl="elementos/02-ola-claro.svg" data-raiz>para fondo blanco</button></p>
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>La p.</h4><p>El ícono de la marca repetido en hileras alternadas, en tono sobre tono. La más reconocible; también la que más se nota.</p></div></div>
+    <div class="pr__g pr__g--2"><figure><div class="mk mk--zoom" style="background-image:url(elementos/02-p-oscuro.svg);background-size:50cqw"></div><figcaption>De cerca</figcaption></figure><figure><div class="mk mk--portada" style="background-image:url(elementos/02-p-oscuro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Validar<br>una pieza<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--a"></span><span class="mk__f mk__f--b"></span></div><figcaption>Página del manual</figcaption></figure><figure><div class="mk mk--historia" style="background-image:url(elementos/02-p-oscuro.svg);background-size:20cqw"><b class="mk__h">Tú<br>apruebas<i>.</i></b><span class="mk__f mk__f--c"></span><span class="mk__wm mk__wm--abajo">pixely<b>.</b></span></div><figcaption>Historia 9:16</figcaption></figure><figure><div class="mk mk--claro" style="background-image:url(elementos/02-p-claro.svg);background-size:20cqw"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Planes<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f mk__f--d"></span></div><figcaption>Página blanca</figcaption></figure></div>
+    
+    <p class="pr__dl">Baldosa SVG que se repite sin costuras: <button type="button" class="pr__a" data-dl="elementos/02-p-oscuro.svg" data-raiz>para fondo negro</button> · <button type="button" class="pr__a" data-dl="elementos/02-p-claro.svg" data-raiz>para fondo blanco</button></p>
+  </div></div></article><article class="el el--ancho" id="e-3">
+    <header class="el__h"><span class="el__n">03</span><h3>Resplandor rosa</h3><span class="el__st el__st--ok">Aprobado</span></header>
     <p class="el__i">Un solo brillo rosa definido (tamaño, intensidad y dónde va) para dar profundidad al negro.</p>
     <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Redes</span><span class="el__u">Reel</span></div>
-    
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-4">
-    <header class="el__h"><span class="el__n">04</span><h3>Muesca de sección</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__hist">8 oct: se elige el resplandor que ya usa pixely.pe detrás de las pantallas de la app.</p>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">✓</span><div><h4>El resplandor de la vitrina de pixely.pe</h4><p>El brillo rosa que ya usamos en la web detrás de las pantallas de la app: rosa de marca al 20% en el centro que se apaga hasta desaparecer. Da profundidad al negro sin pintar de rosa la página.</p></div></div>
+    <div class="pr__g pr__g--3"><figure><div class="mk mk--vitrina" style="background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),#0A0A0C"><div class="mk__cel"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><figcaption>Detrás de una pantalla · web y brochure</figcaption></figure><figure><div class="mk mk--portada" style="background:radial-gradient(60% 55% at 0% 100%, rgba(235, 12, 110, .20), transparent 70%),#0A0A0C"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Plan<br>Pro<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Saliendo de una esquina · portada de plan</figcaption></figure><figure><div class="mk mk--historia" style="background:radial-gradient(60% 55% at 50% 56%, rgba(235, 12, 110, .20), transparent 70%),#0A0A0C"><b class="mk__h">Así se ve<br>tu app<i>.</i></b><div class="mk__cel"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><figcaption>Historia 9:16</figcaption></figure></div>
+    <ul class="pr__r"><li>Uno solo por página o pantalla.</li><li>Solo sobre negro; en páginas blancas no se usa.</li><li>Va detrás de una pantalla (centrado, un poco arriba de la mitad) o saliendo de una esquina. Nunca detrás de párrafos.</li><li>Siempre el mismo: no se sube la intensidad ni se mezcla con otros colores.</li></ul>
+    <p class="pr__dl">Fondos PNG para Canva: <button type="button" class="pr__a" data-dl="elementos/03-cuadrado.png" data-raiz>cuadrado 1080</button> · <button type="button" class="pr__a" data-dl="elementos/03-historia.png" data-raiz>historia 1080 × 1920</button> · En código: <code>radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%)</code></p>
+  </div></div></article><article class="el el--ancho" id="e-4">
+    <header class="el__h"><span class="el__n">04</span><h3>Muesca de sección</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">El corte curvo de la web llevado a documentos, para pasar de una sección a otra.</p>
     <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Web</span></div>
+    <p class="el__hist">8 oct: se muestra la muesca que ya tiene pixely.pe para decidir si pasa así a los documentos.</p>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>La de pixely.pe, tal cual</h4><p>El bloque negro termina con las esquinas redondeadas y, al centro, dos curvas con una punta que baja como la colita de un globo de diálogo. Es la firma de la web; aquí se ve a escala real en una página del brochure y en una historia.</p></div></div>
+    <div class="pr__g pr__g--4"><figure><svg class="mk mk--svg" viewBox="0 0 1000 560" style="aspect-ratio:1000/560"><rect width="1000" height="560" fill="#fff"/><rect x="60" y="400" width="420" height="18" rx="10" fill="#E4E4EA"/><rect x="60" y="436" width="300" height="18" rx="10" fill="#E4E4EA"/><rect x="560" y="390" width="380" height="120" rx="24" fill="#F2F2F5"/><path d="M0 0L1000 0L1000 306L999.2 312.2L996.8 318L993 323L988 326.8L982.2 329.2L976 330L562.4 330L555.4 329.2L548.5 327.1L542 323.8L535.8 319.4L530.2 314.2L525.3 308.4L521.3 302L518.2 295.4L516.3 288.6L515.6 281.9L477.9 330L477.9 281.9L477.2 288.6L475.3 295.4L472.2 302L468.2 308.4L463.3 314.2L457.7 319.4L451.5 323.8L445 327.1L438.1 329.2L431.1 330L24 330L17.8 329.2L12 326.8L7 323L3.2 318L0.8 312.2L0 306Z" fill="#0A0A0C"/><text x="60" y="120" font-family="Manrope" font-weight="800" font-size="16" letter-spacing="3" fill="#8A8A96">PROCESO</text><text x="60" y="200" font-family="Unbounded" font-weight="700" font-size="58" letter-spacing="-.03em" fill="#fff">Así trabajamos<tspan fill="#EB0C6E">.</tspan></text></svg><figcaption>Así está hoy en pixely.pe</figcaption></figure><figure><svg class="mk mk--svg" viewBox="0 0 794 1123" style="aspect-ratio:794/1123"><rect width="794" height="1123" fill="#fff"/><rect x="56" y="580" width="682" height="150" rx="24" fill="#F2F2F5"/><rect x="56" y="750" width="682" height="150" rx="24" fill="#F2F2F5"/><rect x="56" y="940" width="400" height="16" rx="10" fill="#E4E4EA"/><path d="M0 0L794 0L794 476L793.2 482.2L790.8 488L787 493L782 496.8L776.2 499.2L770 500L459.4 500L452.4 499.2L445.5 497.1L439 493.8L432.8 489.4L427.2 484.2L422.3 478.4L418.3 472L415.2 465.4L413.3 458.6L412.6 451.9L374.9 500L374.9 451.9L374.2 458.6L372.3 465.4L369.2 472L365.2 478.4L360.3 484.2L354.7 489.4L348.5 493.8L342 497.1L335.1 499.2L328.1 500L24 500L17.8 499.2L12 496.8L7 493L3.2 488L0.8 482.2L0 476Z" fill="#0A0A0C"/><text x="56" y="80" font-family="Unbounded" font-weight="700" font-size="26" letter-spacing="-.03em" fill="#fff">pixely<tspan fill="#EB0C6E">.</tspan></text><text x="56" y="300" font-family="Unbounded" font-weight="700" font-size="54" letter-spacing="-.03em" fill="#fff">Así trabajamos<tspan fill="#EB0C6E">.</tspan></text></svg><figcaption>Brochure · cambio de sección</figcaption></figure><figure><svg class="mk mk--svg" viewBox="0 0 1080 1920" style="aspect-ratio:1080/1920"><rect width="1080" height="1920" fill="#fff"/><rect x="90" y="1330" width="900" height="34" rx="10" fill="#E4E4EA"/><rect x="90" y="1400" width="640" height="34" rx="10" fill="#E4E4EA"/><text x="90" y="1800" font-family="Unbounded" font-weight="700" font-size="54" letter-spacing="-.03em" fill="#0A0A0C">pixely<tspan fill="#EB0C6E">.</tspan></text><path d="M0 0L1080 0L1080 1126L1079.2 1132.2L1076.8 1138L1073 1143L1068 1146.8L1062.2 1149.2L1056 1150L602.4 1150L595.4 1149.2L588.5 1147.1L582 1143.8L575.8 1139.4L570.2 1134.2L565.3 1128.4L561.3 1122L558.2 1115.4L556.3 1108.6L555.6 1101.9L517.9 1150L517.9 1101.9L517.2 1108.6L515.3 1115.4L512.2 1122L508.2 1128.4L503.3 1134.2L497.7 1139.4L491.5 1143.8L485 1147.1L478.1 1149.2L471.1 1150L24 1150L17.8 1149.2L12 1146.8L7 1143L3.2 1138L0.8 1132.2L0 1126Z" fill="#0A0A0C"/><text x="90" y="520" font-family="Unbounded" font-weight="700" font-size="110" letter-spacing="-.03em" fill="#fff">Tu marca,</text><text x="90" y="650" font-family="Unbounded" font-weight="700" font-size="110" letter-spacing="-.03em" fill="#fff">pieza por</text><text x="90" y="780" font-family="Unbounded" font-weight="700" font-size="110" letter-spacing="-.03em" fill="#fff">pieza<tspan fill="#EB0C6E">.</tspan></text></svg><figcaption>Historia 9:16</figcaption></figure></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+    
+  </div></div></article></div></section>
 <section class="kblk"><header class="kblk__h"><h2>Gráficos de datos</h2><p>Infografías pequeñas que explican con un dato.</p></header><div class="els"><article class="el" id="e-5">
     <header class="el__h"><span class="el__n">05</span><h3>Barras comparativas</h3><span class="el__st el__st--pend">Por diseñar</span></header>
     <p class="el__i">Mostrar que una publicación funciona más que el resto («este funciona»).</p>
@@ -3529,7 +3564,8 @@ window.KIT_FILES = ["LEEME.txt","canva/Pixely-tamanos-de-letra-canva.png","canva
     if (c === 'declined') return;
     toast(c === 'rate_limited' ? 'Hay otra descarga esperando. Prueba en un momento.' : c === 'missing' ? 'No se encontró ese archivo.' : 'Las descargas funcionan al abrir esta página en claude.ai.');
   };
-  var traer = function (path) { return fetch('kit-redes/' + path).then(function (r) { if (!r.ok) throw { code: 'missing' }; return r.blob(); }); };
+  // data-raiz: la ruta ya es completa (archivos de elementos/ o capturas/); si no, es un archivo del kit.
+  var traer = function (path, raiz) { return fetch((raiz ? '' : 'kit-redes/') + path).then(function (r) { if (!r.ok) throw { code: 'missing' }; return r.blob(); }); };
   document.addEventListener('click', function (e) {
     var z = e.target.closest('[data-zip]');
     if (z) {
@@ -3553,7 +3589,7 @@ window.KIT_FILES = ["LEEME.txt","canva/Pixely-tamanos-de-letra-canva.png","canva
       b.disabled = true; b.textContent = 'Preparando…';
       dlP.then(function (dl) {
         if (!dl) throw { code: 'unavailable' };
-        return traer(path).then(function (blob) { return dl.save({ filename: name, data: blob }); })
+        return traer(path, b.hasAttribute('data-raiz')).then(function (blob) { return dl.save({ filename: name, data: blob }); })
           .then(function () { toast('Listo: ' + name); });
       }).catch(avisar).then(function () { b.disabled = false; b.innerHTML = old; });
       return;
