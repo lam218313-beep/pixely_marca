@@ -14,3 +14,4 @@ Piezas gráficas de Pixely (arte de portada, gráficos de datos, marcos de panta
 - **02 Trama de marca**: puntadas (`node elementos/02/exportar.mjs` → `public/elementos/02-puntadas-<tono>.svg`, baldosa sin costuras).
 - **03 Resplandor rosa**: el de la vitrina de pixely.pe, `radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%)` (fondos PNG con `elementos/03/exportar.mjs`).
 - **04 Muesca de sección**: la de pixely.pe tal cual (`--notch` en `pixely_web/src/styles/tokens.css`).
+- **13 Celular**: marco «vitrina» de pixely.pe. **14 Laptop**: escena real (`pdf/brochure/escritorio.py`). **15 Acercamiento**: lupa. **16 Llamada**: punto, línea y etiqueta. **17 Funciones alrededor**: dos columnas. Todos con capturas reales y, detrás, solo el resplandor (sin trama). Se dibujan en `componentes/scripts/elementos-vistas.mjs`.
