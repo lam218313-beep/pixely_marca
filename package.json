@@ -7,9 +7,11 @@
     "logos": "python3 scripts/logos.py && python3 scripts/fondos.py",
     "dev": "npm run tokens && vite",
     "build": "npm run tokens && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pdf": "node pdf/build.mjs"
   },
   "devDependencies": {
+    "playwright-core": "^1.63.0",
     "vite": "^7.0.0"
   },
   "dependencies": {
