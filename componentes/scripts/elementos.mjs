@@ -21,7 +21,7 @@ const propuesta = (e, p) => `<div class="pr" id="e-${e.n}-${p.id}">
     <p class="pr__dl">SVG para imprenta: <a href="elementos/0${e.n}-${p.id}-oscuro.svg" download>fondo negro</a> · <a href="elementos/0${e.n}-${p.id}-claro.svg" download>fondo blanco</a></p>
   </div>`;
 const propuestas = (e) => `<div class="prs">${e.propuestas.map((p) => propuesta(e, p)).join('')}
-    <div class="pr pr--fam"><h4>Toda la familia de esferas</h4><p>Son las 9 esferas de carga de Partners. Si prefieres otra como base, dime cuál.</p>
+    <div class="pr pr--fam"><h4>Toda la familia de esferas</h4><p>Las 9 esferas de carga de Partners. La base elegida es «componiendo».</p>
       <div class="fam">${FAMILIA.map(([id, nom]) => `<span><canvas data-orb="${id}" data-size="64"></canvas>${nom}</span>`).join('')}</div></div></div>`;
 
 export const elemNav = `<a class="side__comp side__elem" href="#elementos">Elementos gráficos <b>${datos.elementos.length}</b></a>`;
@@ -93,14 +93,14 @@ export const elemCSS = `
 .mk__h{position:absolute;font:700 9cqw/1.05 Unbounded;letter-spacing:-.045em}
 .mk__u{position:absolute;font:800 3cqw Manrope;letter-spacing:.2em;color:#8A8A96}
 .mk__t{position:absolute;height:2.4cqw;border-radius:9px;background:#33333C}.mk__f{position:absolute;border-radius:6px;background:#1F1F26}
-.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta img{left:38%;top:-34%;width:92%}
+.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta img{left:49%;top:6%;width:80%}
 .mk--tarjeta .mk__wm{left:7%;top:10%;font-size:7cqw}.mk--tarjeta .mk__h{left:7%;bottom:21%;font-size:7cqw}.mk--tarjeta .mk__u{left:7%;bottom:10%;font-size:2.6cqw}
-.mk--portada{aspect-ratio:210/297}.mk--portada img{right:-60%;top:-9%;width:100%}
+.mk--portada{aspect-ratio:210/297}.mk--portada img{right:-66%;top:3%;width:100%}
 .mk--portada .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--portada .mk__h{left:7%;top:22%;font-size:11cqw}
 .mk--portada .mk__t{left:7%;top:47%;width:50%}.mk--portada .mk__t--c{top:52%;width:38%}.mk--portada .mk__f{left:7%;right:7%;top:60%;bottom:5%}
 .mk--post{aspect-ratio:4/5}.mk--post img{left:-6%;bottom:-34%;width:112%}
 .mk--post .mk__h{left:8%;top:8%;font-size:10cqw}.mk--post .mk__wm{right:8%;top:9%;font-size:6cqw}
-.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-38%;top:-20%;width:92%}
+.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-50%;top:2%;width:90%}
 .mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
 .mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
 .pr__dl{margin-top:12px;color:var(--text-3);font:700 12px Manrope}.pr__dl a{color:var(--text-1,#fff);text-decoration:underline;text-underline-offset:3px}
