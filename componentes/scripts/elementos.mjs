@@ -43,7 +43,8 @@ export const elemHTML = () => {
     <li><b>Intención</b><span>Qué tiene que lograr y dónde se usa.</span></li>
     <li><b>Referencias</b><span>Tú traes inspiración, o te propongo 2 o 3 direcciones con nuestro sistema.</span></li>
     <li><b>Propuestas</b><span>Se diseña aquí con variantes: claro, oscuro y tamaños.</span></li>
-    <li><b>Aprobado</b><span>Recién ahí pasa a los documentos.</span></li>
+    <li><b>Aprobado</b><span>Recién ahí puede usarse.</span></li>
+    <li><b>Página por página</b><span>Con todos los elementos listos, cada documento se arma y se aprueba página por página.</span></li>
   </ol>
   <div class="top__s">${ESTADOS.map((s) => `<span><b>${cuenta[s]}</b> ${s.toLowerCase()}</span>`).join('')}</div>
 </header>
@@ -58,7 +59,7 @@ export const elemCSS = `
 /* ===== Página Elementos gráficos ===== */
 .side__elem{display:flex;justify-content:space-between;align-items:center}.side__elem b{font:700 11px Manrope;color:var(--text-3)}
 .top__l b{color:#fff}
-.el-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px;counter-reset:paso;list-style:none;padding:0}
+.el-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:24px;counter-reset:paso;list-style:none;padding:0}
 .el-flow li{position:relative;padding:14px 14px 14px 46px;border:1px solid var(--edge);border-radius:18px;background:var(--ink);counter-increment:paso}
 .el-flow li::before{content:counter(paso);position:absolute;left:14px;top:14px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--pink);font:800 12px Manrope}
 .el-flow b{display:block;font:800 14px Manrope}.el-flow span{display:block;margin-top:3px;color:var(--text-3);font:600 13px/1.4 Manrope}
