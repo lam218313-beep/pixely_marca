@@ -58,7 +58,9 @@ const nEx = all.filter((c) => c.estado === 'Existe').length, nPr = all.length - 
 const shell = readFileSync(new URL('./shell.css', import.meta.url), 'utf8');
 const js = readFileSync(new URL('./shell.js', import.meta.url), 'utf8');
 // Motor de Thinking Orbs empaquetado en línea (el Artifact es una sola página)
-const orbs = (await build({ entryPoints: [new URL('../src/orbs.js', import.meta.url).pathname], bundle: true, format: 'iife', minify: true, write: false })).outputFiles[0].text;
+const empacar = async (f) => (await build({ entryPoints: [new URL(`../src/${f}`, import.meta.url).pathname], bundle: true, format: 'iife', minify: true, write: false })).outputFiles[0].text;
+const orbs = await empacar('orbs.js');
+const arteVivo = await empacar('arte-vivo.js'); // elemento 01 animado
 const html = `<title>Componentes Pixely</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Unbounded:wght@300..900&display=swap">
@@ -91,6 +93,9 @@ ${kitJS()}
 </script>
 <script>
 ${orbs}
+</script>
+<script>
+${arteVivo}
 </script>
 `;
 writeFileSync(new URL('../artifact/index.html', import.meta.url), html);

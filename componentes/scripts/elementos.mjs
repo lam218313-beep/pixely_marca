@@ -6,16 +6,34 @@ const datos = JSON.parse(readFileSync(new URL('../../elementos/elementos.json', 
 const ESTADOS = ['Por diseñar', 'En diseño', 'Aprobado', 'Rechazado'];
 const clase = (e) => ({ 'Por diseñar': 'pend', 'En diseño': 'prog', Aprobado: 'ok', Rechazado: 'no' })[e];
 
+// Propuestas de un elemento: cada una viva (animada) y puesta en las piezas donde se usará.
+const FAMILIA = [['working', 'trabajando'], ['searching', 'buscando'], ['solving', 'resolviendo'], ['listening', 'escuchando'], ['connecting', 'conectando'], ['weaving', 'tejiendo'], ['composing', 'componiendo'], ['breathing', 'respirando'], ['shaping', 'dando forma']];
+const img = (n, p, tono) => `<img src="elementos/0${n}-${p.id}-${tono}.svg" alt="" loading="lazy">`;
+const propuesta = (e, p) => `<div class="pr" id="e-${e.n}-${p.id}">
+    <div class="pr__h"><span class="pr__l">${p.letra}</span><div><h4>${p.nombre}</h4><p>${p.dice}</p><small>Base: ${p.base}</small></div></div>
+    <div class="pr__g">
+      <figure class="pr__vivo"><canvas data-arte="${p.id}" data-tono="oscuro" aria-label="${p.nombre}, animada"></canvas><figcaption>En movimiento · redes, web y reels</figcaption></figure>
+      <figure><div class="mk mk--tarjeta">${img(e.n, p, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__u">PIXELY.PE</span></div><figcaption>Tarjeta · frente</figcaption></figure>
+      <figure><div class="mk mk--portada">${img(e.n, p, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f"></span></div><figcaption>Brochure · portada</figcaption></figure>
+      <figure><div class="mk mk--post">${img(e.n, p, 'oscuro')}<b class="mk__h">Leemos<br>tu mercado<i>.</i></b><span class="mk__wm">pixely<b>.</b></span></div><figcaption>Post 4:5</figcaption></figure>
+      <figure><div class="mk mk--claro">${img(e.n, p, 'claro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Plan Pro<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Versión clara · ficha de plan</figcaption></figure>
+    </div>
+    <p class="pr__dl">SVG para imprenta: <a href="elementos/0${e.n}-${p.id}-oscuro.svg" download>fondo negro</a> · <a href="elementos/0${e.n}-${p.id}-claro.svg" download>fondo blanco</a></p>
+  </div>`;
+const propuestas = (e) => `<div class="prs">${e.propuestas.map((p) => propuesta(e, p)).join('')}
+    <div class="pr pr--fam"><h4>Toda la familia de esferas</h4><p>Son las 9 esferas de carga de Partners. Si prefieres otra como base, dime cuál.</p>
+      <div class="fam">${FAMILIA.map(([id, nom]) => `<span><canvas data-orb="${id}" data-size="64"></canvas>${nom}</span>`).join('')}</div></div></div>`;
+
 export const elemNav = `<a class="side__comp side__elem" href="#elementos">Elementos gráficos <b>${datos.elementos.length}</b></a>`;
 
 export const elemHTML = () => {
   const cuenta = Object.fromEntries(ESTADOS.map((s) => [s, datos.elementos.filter((e) => e.estado === s).length]));
-  const tarjeta = (e) => `<article class="el" id="e-${e.n}">
+  const tarjeta = (e) => `<article class="el${e.propuestas ? ' el--ancho' : ''}" id="e-${e.n}">
     <header class="el__h"><span class="el__n">${String(e.n).padStart(2, '0')}</span><h3>${e.nombre}</h3><span class="el__st el__st--${clase(e.estado)}">${e.estado}</span></header>
     <p class="el__i">${e.intencion}</p>
     <div class="el__m"><span class="el__p el__p--${e.prioridad}">Prioridad ${e.prioridad}</span>${e.usos.map((u) => `<span class="el__u">${u}</span>`).join('')}</div>
     ${e.historial ? `<p class="el__hist">${e.historial}</p>` : ''}
-    <div class="el__slot">${e.estado === 'Aprobado' ? '' : 'Aquí van las propuestas cuando se diseñe.'}</div></article>`;
+    ${e.propuestas ? propuestas(e) : `<div class="el__slot">${e.estado === 'Aprobado' ? '' : 'Aquí van las propuestas cuando se diseñe.'}</div>`}</article>`;
   return `<section id="elementos" class="kit elems" hidden aria-labelledby="el-t">
 <header class="kit__top">
   <p class="top__e">Elementos gráficos</p>
@@ -58,6 +76,36 @@ export const elemCSS = `
 .el__p--1{background:var(--pink);color:#fff}.el__p--2{background:var(--raised);color:#fff}
 .el__hist{padding:10px 12px;border-radius:12px;background:var(--card);color:var(--text-3);font:600 12px/1.45 Manrope}
 .el__slot{display:grid;place-items:center;min-height:84px;margin-top:auto;border:1.5px dashed var(--edge);border-radius:14px;color:var(--text-3);font:600 12px Manrope;text-align:center;padding:8px}
+/* Propuestas en diseño */
+.el--ancho{grid-column:1/-1}
+.prs{display:grid;gap:12px;margin-top:4px}
+.pr{padding:16px;border-radius:18px;background:var(--card)}
+.pr__h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start}
+.pr__l{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);font:800 15px Unbounded}
+.pr h4{font:700 15px/1.3 Unbounded;letter-spacing:-.02em}.pr__h p,.pr--fam>p{margin-top:4px;color:var(--text-2);font:600 13.5px/1.5 Manrope;max-width:760px}
+.pr__h small{display:block;margin-top:4px;color:var(--text-3);font:700 11px Manrope}
+.pr__g{display:grid;grid-template-columns:1.25fr 1.25fr .8fr .8fr .8fr;gap:12px;margin-top:14px;align-items:end}
+.pr__g figure{display:grid;gap:6px;margin:0}.pr__g figcaption{color:var(--text-3);font:700 11px Manrope;text-align:center}
+.pr__vivo canvas{display:block;width:100%;aspect-ratio:1;border-radius:14px;background:#0A0A0C}
+.mk{position:relative;overflow:hidden;border-radius:10px;background:#0A0A0C;color:#fff;box-shadow:0 0 0 1px var(--edge);container-type:inline-size}
+.mk img{position:absolute;display:block;pointer-events:none}
+.mk__wm{position:absolute;font:700 8cqw Unbounded;letter-spacing:-.04em}.mk__wm b,.mk__h i{color:var(--pink);font-style:normal}
+.mk__h{position:absolute;font:700 9cqw/1.05 Unbounded;letter-spacing:-.045em}
+.mk__u{position:absolute;font:800 3cqw Manrope;letter-spacing:.2em;color:#8A8A96}
+.mk__t{position:absolute;height:2.4cqw;border-radius:9px;background:#33333C}.mk__f{position:absolute;border-radius:6px;background:#1F1F26}
+.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta img{left:38%;top:-34%;width:92%}
+.mk--tarjeta .mk__wm{left:7%;top:10%;font-size:7cqw}.mk--tarjeta .mk__h{left:7%;bottom:21%;font-size:7cqw}.mk--tarjeta .mk__u{left:7%;bottom:10%;font-size:2.6cqw}
+.mk--portada{aspect-ratio:210/297}.mk--portada img{right:-60%;top:-9%;width:100%}
+.mk--portada .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--portada .mk__h{left:7%;top:22%;font-size:11cqw}
+.mk--portada .mk__t{left:7%;top:47%;width:50%}.mk--portada .mk__t--c{top:52%;width:38%}.mk--portada .mk__f{left:7%;right:7%;top:60%;bottom:5%}
+.mk--post{aspect-ratio:4/5}.mk--post img{left:-6%;bottom:-34%;width:112%}
+.mk--post .mk__h{left:8%;top:8%;font-size:10cqw}.mk--post .mk__wm{right:8%;top:9%;font-size:6cqw}
+.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-38%;top:-20%;width:92%}
+.mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
+.mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
+.pr__dl{margin-top:12px;color:var(--text-3);font:700 12px Manrope}.pr__dl a{color:var(--text-1,#fff);text-decoration:underline;text-underline-offset:3px}
+.fam{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.fam span{display:grid;justify-items:center;gap:4px;color:var(--text-3);font:700 11px Manrope}
+@media (max-width:1100px){.pr__g{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.el-flow{grid-template-columns:1fr}}
+@media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g{grid-template-columns:1fr 1fr}}
 `;
