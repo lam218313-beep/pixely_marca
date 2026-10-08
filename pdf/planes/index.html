@@ -17,7 +17,7 @@
 
 /* ===== Cabecera ===== */
 .hero { flex: none; position: relative; overflow: hidden; padding: 34px 56px 26px; background: var(--h-bg); color: var(--h-t1); }
-.hero .radar { position: absolute; right: -250px; top: -240px; width: 640px; height: 640px; }
+.hero .arte { position: absolute; right: -300px; top: 30px; width: 620px; } /* elemento 01 aprobado */
 .pro .hero::after { content: ''; position: absolute; left: -120px; bottom: -220px; width: 520px; height: 420px; background: radial-gradient(closest-side, rgba(235,12,110,.28), transparent); pointer-events: none; }
 .top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
 .tiers { display: inline-flex; gap: 3px; padding: 3px; border-radius: 99px; background: var(--h-chip); box-shadow: inset 0 0 0 1px var(--h-line); }
@@ -179,7 +179,7 @@ PLANES.forEach((p, n) => {
   h.querySelector('[data-wa]').href = WA(p.nombre);
   const img = h.querySelector('.frame img'); img.src = p.foto; img.style.objectPosition = p.pos;
   h.querySelectorAll('.tiers span').forEach((s) => s.classList.toggle('on', s.textContent === p.nombre));
-  if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<svg class="radar" data-tono="oscuro" data-giro="-60" aria-hidden="true"></svg>');
+  if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<img class="arte" src="../../public/elementos/01-oscuro.svg" alt="">');
   // Cuadros: 20 lugares (lo que trae Pro); los que no entran en este plan quedan apagados
   const tiles = h.querySelector('.tiles');
   for (let i = 0; i < 20; i++) tiles.insertAdjacentHTML('beforeend', `<i class="${i < p.fotos ? 'f' : i < p.fotos + p.reels ? 'r' : ''}"></i>`);
@@ -199,6 +199,5 @@ PLANES.forEach((p, n) => {
   document.body.appendChild(h);
 });
 </script>
-<script src="../comun/radar.js"></script>
 </body>
 </html>

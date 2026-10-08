@@ -1,20 +1,18 @@
-// Anima el elemento 01 en el catálogo: <canvas data-arte="grises|hebra|tramo|borde" data-tono="oscuro|claro">
+// Anima el elemento 01 en el catálogo: <canvas data-arte data-tono="oscuro|claro">
 // Misma geometría que el SVG de imprenta (arte-orbe.js), solo que en movimiento (para redes, web y reels).
 import { arte, QUIETO } from './arte-orbe.js';
 
 const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function montar(cv) {
-  const dir = cv.dataset.arte, tono = cv.dataset.tono || 'oscuro';
+  const tono = cv.dataset.tono || 'oscuro';
   const lado = cv.clientWidth || 280, dpr = Math.min(2, devicePixelRatio || 1);
   cv.width = cv.height = Math.round(lado * dpr);
   const ctx = cv.getContext('2d');
   const pintar = (t) => {
-    const { lines, dots } = arte(dir, lado, t, tono);
+    const { dots } = arte(lado, t, tono);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, lado, lado);
-    ctx.lineCap = 'round';
-    for (const l of lines) { ctx.strokeStyle = l.c; ctx.lineWidth = l.w; ctx.beginPath(); ctx.moveTo(l.x1, l.y1); ctx.lineTo(l.x2, l.y2); ctx.stroke(); }
     for (const d of dots) { ctx.fillStyle = d.c; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fill(); }
   };
   if (quieto) return pintar(QUIETO);

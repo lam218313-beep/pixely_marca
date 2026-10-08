@@ -6,34 +6,34 @@ const datos = JSON.parse(readFileSync(new URL('../../elementos/elementos.json', 
 const ESTADOS = ['Por diseñar', 'En diseño', 'Aprobado', 'Rechazado'];
 const clase = (e) => ({ 'Por diseñar': 'pend', 'En diseño': 'prog', Aprobado: 'ok', Rechazado: 'no' })[e];
 
-// Propuestas de un elemento: cada una viva (animada) y puesta en las piezas donde se usará.
+// Elemento aprobado: vivo (animado), puesto en las piezas donde se usa, sus reglas y sus archivos.
 const FAMILIA = [['working', 'trabajando'], ['searching', 'buscando'], ['solving', 'resolviendo'], ['listening', 'escuchando'], ['connecting', 'conectando'], ['weaving', 'tejiendo'], ['composing', 'componiendo'], ['breathing', 'respirando'], ['shaping', 'dando forma']];
-const img = (n, p, tono) => `<img src="elementos/0${n}-${p.id}-${tono}.svg" alt="" loading="lazy">`;
-const propuesta = (e, p) => `<div class="pr" id="e-${e.n}-${p.id}">
-    <div class="pr__h"><span class="pr__l">${p.letra}</span><div><h4>${p.nombre}</h4><p>${p.dice}</p><small>Base: ${p.base}</small></div></div>
+const img = (n, tono) => `<img src="elementos/0${n}-${tono}.svg" alt="" loading="lazy">`;
+const final = (e) => `<div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">✓</span><div><h4>${e.final.nombre}</h4><p>${e.final.dice}</p></div></div>
     <div class="pr__g">
-      <figure class="pr__vivo"><canvas data-arte="${p.id}" data-tono="oscuro" aria-label="${p.nombre}, animada"></canvas><figcaption>En movimiento · redes, web y reels</figcaption></figure>
-      <figure><div class="mk mk--tarjeta">${img(e.n, p, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__u">PIXELY.PE</span></div><figcaption>Tarjeta · frente</figcaption></figure>
-      <figure><div class="mk mk--portada">${img(e.n, p, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f"></span></div><figcaption>Brochure · portada</figcaption></figure>
-      <figure><div class="mk mk--post">${img(e.n, p, 'oscuro')}<b class="mk__h">Leemos<br>tu mercado<i>.</i></b><span class="mk__wm">pixely<b>.</b></span></div><figcaption>Post 4:5</figcaption></figure>
-      <figure><div class="mk mk--claro">${img(e.n, p, 'claro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Plan Pro<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Versión clara · ficha de plan</figcaption></figure>
+      <figure class="pr__vivo"><canvas data-arte data-tono="oscuro" aria-label="${e.final.nombre}, animada"></canvas><figcaption>En movimiento · redes, web y reels</figcaption></figure>
+      <figure><div class="mk mk--tarjeta">${img(e.n, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__u">PIXELY.PE</span></div><figcaption>Tarjeta · frente</figcaption></figure>
+      <figure><div class="mk mk--portada">${img(e.n, 'oscuro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Publicidad<br>que vende<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span><span class="mk__f"></span></div><figcaption>Brochure · portada</figcaption></figure>
+      <figure><div class="mk mk--post">${img(e.n, 'oscuro')}<b class="mk__h">Leemos<br>tu mercado<i>.</i></b><span class="mk__wm">pixely<b>.</b></span></div><figcaption>Post 4:5</figcaption></figure>
+      <figure><div class="mk mk--claro">${img(e.n, 'claro')}<span class="mk__wm">pixely<b>.</b></span><b class="mk__h">Hablemos<i>.</i></b><span class="mk__t"></span><span class="mk__t mk__t--c"></span></div><figcaption>Versión clara</figcaption></figure>
     </div>
-    <p class="pr__dl">SVG para imprenta: <a href="elementos/0${e.n}-${p.id}-oscuro.svg" download>fondo negro</a> · <a href="elementos/0${e.n}-${p.id}-claro.svg" download>fondo blanco</a></p>
-  </div>`;
-const propuestas = (e) => `<div class="prs">${e.propuestas.map((p) => propuesta(e, p)).join('')}
-    <div class="pr pr--fam"><h4>Toda la familia de esferas</h4><p>Las 9 esferas de carga de Partners. La base elegida es «componiendo».</p>
-      <div class="fam">${FAMILIA.map(([id, nom]) => `<span><canvas data-orb="${id}" data-size="64"></canvas>${nom}</span>`).join('')}</div></div></div>`;
+    <ul class="pr__r">${e.final.reglas.map((r) => `<li>${r}</li>`).join('')}</ul>
+    <p class="pr__dl">SVG para imprenta y Canva: <a href="elementos/0${e.n}-oscuro.svg" download>fondo negro</a> · <a href="elementos/0${e.n}-claro.svg" download>fondo blanco</a></p>
+  </div>
+    <div class="pr pr--fam"><h4>De dónde sale</h4><p>Las 9 esferas de carga de Partners. La base es «componiendo».</p>
+      <div class="fam">${FAMILIA.map(([id, nom]) => `<span${id === 'composing' ? ' class="is-on"' : ''}><canvas data-orb="${id}" data-size="64"></canvas>${nom}</span>`).join('')}</div></div></div>`;
 
 export const elemNav = `<a class="side__comp side__elem" href="#elementos">Elementos gráficos <b>${datos.elementos.length}</b></a>`;
 
 export const elemHTML = () => {
   const cuenta = Object.fromEntries(ESTADOS.map((s) => [s, datos.elementos.filter((e) => e.estado === s).length]));
-  const tarjeta = (e) => `<article class="el${e.propuestas ? ' el--ancho' : ''}" id="e-${e.n}">
+  const tarjeta = (e) => `<article class="el${e.final ? ' el--ancho' : ''}" id="e-${e.n}">
     <header class="el__h"><span class="el__n">${String(e.n).padStart(2, '0')}</span><h3>${e.nombre}</h3><span class="el__st el__st--${clase(e.estado)}">${e.estado}</span></header>
     <p class="el__i">${e.intencion}</p>
     <div class="el__m"><span class="el__p el__p--${e.prioridad}">Prioridad ${e.prioridad}</span>${e.usos.map((u) => `<span class="el__u">${u}</span>`).join('')}</div>
     ${e.historial ? `<p class="el__hist">${e.historial}</p>` : ''}
-    ${e.propuestas ? propuestas(e) : `<div class="el__slot">${e.estado === 'Aprobado' ? '' : 'Aquí van las propuestas cuando se diseñe.'}</div>`}</article>`;
+    ${e.final ? final(e) : '<div class="el__slot">Aquí van las propuestas cuando se diseñe.</div>'}</article>`;
   return `<section id="elementos" class="kit elems" hidden aria-labelledby="el-t">
 <header class="kit__top">
   <p class="top__e">Elementos gráficos</p>
@@ -76,7 +76,7 @@ export const elemCSS = `
 .el__p--1{background:var(--pink);color:#fff}.el__p--2{background:var(--raised);color:#fff}
 .el__hist{padding:10px 12px;border-radius:12px;background:var(--card);color:var(--text-3);font:600 12px/1.45 Manrope}
 .el__slot{display:grid;place-items:center;min-height:84px;margin-top:auto;border:1.5px dashed var(--edge);border-radius:14px;color:var(--text-3);font:600 12px Manrope;text-align:center;padding:8px}
-/* Propuestas en diseño */
+/* Elemento aprobado */
 .el--ancho{grid-column:1/-1}
 .prs{display:grid;gap:12px;margin-top:4px}
 .pr{padding:16px;border-radius:18px;background:var(--card)}
@@ -100,11 +100,12 @@ export const elemCSS = `
 .mk--portada .mk__t{left:7%;top:47%;width:50%}.mk--portada .mk__t--c{top:52%;width:38%}.mk--portada .mk__f{left:7%;right:7%;top:60%;bottom:5%}
 .mk--post{aspect-ratio:4/5}.mk--post img{left:-6%;bottom:-34%;width:112%}
 .mk--post .mk__h{left:8%;top:8%;font-size:10cqw}.mk--post .mk__wm{right:8%;top:9%;font-size:6cqw}
-.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-50%;top:2%;width:90%}
+.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-60%;top:2%;width:90%}
 .mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
 .mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
+.pr__r{display:grid;gap:4px;margin:14px 0 0;padding-left:18px;list-style:disc;color:var(--text-2);font:600 13px/1.5 Manrope}
 .pr__dl{margin-top:12px;color:var(--text-3);font:700 12px Manrope}.pr__dl a{color:var(--text-1,#fff);text-decoration:underline;text-underline-offset:3px}
-.fam{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.fam span{display:grid;justify-items:center;gap:4px;color:var(--text-3);font:700 11px Manrope}
+.fam{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.fam span{display:grid;justify-items:center;gap:4px;padding:6px;border-radius:12px;color:var(--text-3);font:700 11px Manrope}.fam .is-on{background:var(--raised);color:#fff}
 @media (max-width:1100px){.pr__g{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g{grid-template-columns:1fr 1fr}}

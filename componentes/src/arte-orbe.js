@@ -1,10 +1,9 @@
-// Elemento 01 «Arte de portada»: la esfera «componiendo» de Partners en grande.
+// Elemento 01 «Arte de portada» (aprobado el 8 oct, en grises): la esfera «componiendo» de Partners en grande.
 // Geometría pura (sin canvas): la usan el catálogo (animada) y elementos/01/exportar.mjs (SVG para imprenta).
 // Es la misma figura del orbe de carga (cinta ancha que ondula alrededor de una esfera de puntos),
-// con más puntos para que aguante tamaño de portada. arte(variante, lado, t, tono) → { lines, dots }.
+// con más puntos para que aguante tamaño de portada. arte(lado, t, tono) → { dots }.
 import { makeProj } from 'thinking-orbs/engine';
 
-const ROSA = [235, 12, 110];
 const TONOS = {
   oscuro: { fondo: [10, 10, 12], tinta: [255, 255, 255] },
   claro: { fondo: [255, 255, 255], tinta: [10, 10, 12] },
@@ -14,30 +13,16 @@ const fib = (i, n) => {
   return [r * Math.cos(a), y, r * Math.sin(a)];
 };
 const hex = (c) => '#' + c.map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
-// Color opaco ya mezclado con el fondo (sin transparencias, así la imprenta no tiene sorpresas).
-// cuanto: 0 = fondo, 1 = tinta plena. rosa: 0 = gris, 1 = rosa de marca.
-const color = (tono, cuanto, rosa = 0) => {
+// Gris opaco ya mezclado con el fondo (sin transparencias, así la imprenta no tiene sorpresas).
+// cuanto: 0 = fondo, 1 = tinta plena.
+const color = (tono, cuanto) => {
   const { fondo, tinta } = TONOS[tono];
-  const gris = tinta.map((v, i) => v + (ROSA[i] - v) * rosa);
-  return hex(fondo.map((v, i) => v + (gris[i] - v) * cuanto));
+  return hex(fondo.map((v, i) => v + (tinta[i] - v) * cuanto));
 };
 
-// Cuánto rosa lleva cada punto de la cinta según la variante.
-// carril: -1 a 1 (un borde de la cinta al otro) · ang: 0 a 2π (vuelta completa) · t: tiempo.
-const ROSAS = {
-  grises: () => 0,
-  hebra: (carril) => Math.max(0, 1 - Math.abs(carril) / 0.16),
-  tramo: (carril, ang, t) => {
-    const d = Math.atan2(Math.sin(ang - 2.25 - t * 0.35), Math.cos(ang - 2.25 - t * 0.35));
-    return Math.exp(-((d / 0.55) ** 2));
-  },
-  borde: (carril) => Math.max(0, Math.min(1, (carril - 0.15) / 0.75)),
-};
-
-function componiendo(variante, n, t, tono) {
+function componiendo(n, t, tono) {
   const s = (n / 2) * 0.86, cx = n / 2, cy = n / 2;
   const P = makeProj(0, 0.3, cx, cy, 1);
-  const rosa = ROSAS[variante];
   const dots = [];
   // Velo: la esfera de puntos finos que da volumen.
   const velo = 260;
@@ -61,15 +46,13 @@ function componiendo(variante, n, t, tono) {
       const l = Math.hypot(v[0], v[1], v[2]);
       const [x, y, z] = P((v[0] / l) * s, (v[1] / l) * s, (v[2] / l) * s), U = (z / s + 1) / 2;
       const luz = (0.46 + 0.4 * U - 0.16 * E) * (0.38 + 0.62 * U);
-      const ro = rosa(carril, N, t);
-      dots.push({ x, y, z, r: (0.3 + 0.7 * U) * (1 - 0.25 * E) * rMax * (1 + 0.15 * ro), c: color(tono, ro ? luz + (1 - luz) * ro * (0.25 + 0.6 * U) : luz, ro) });
+      dots.push({ x, y, z, r: (0.3 + 0.7 * U) * (1 - 0.25 * E) * rMax, c: color(tono, luz) });
     }
   }
   dots.sort((a, b) => a.z - b.z);
-  return { lines: [], dots };
+  return { dots };
 }
 
-export const VARIANTES = Object.keys(ROSAS);
-export const arte = (variante, n, t, tono = 'oscuro') => componiendo(variante, n, t, tono);
+export const arte = (n, t, tono = 'oscuro') => componiendo(n, t, tono);
 // Momento fijo para imprenta: la onda en su forma más clara.
 export const QUIETO = 0.9;

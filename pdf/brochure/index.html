@@ -36,8 +36,8 @@
 
 /* ===== 1. Portada ===== */
 .cover { padding-bottom: 0; }
-.radar { position: absolute; pointer-events: none; }
-.cover .radar { right: -286px; top: -70px; width: 560px; height: 560px; }
+.arte { position: absolute; pointer-events: none; } /* elemento 01 aprobado */
+.cover .arte { right: -360px; top: 46px; width: 680px; }
 .cover-top { position: relative; display: flex; justify-content: space-between; align-items: center; }
 .cover-top a { font: 800 var(--fs-label) Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--t3); }
 .cover h1 { position: relative; margin-top: 80px; }
@@ -194,7 +194,7 @@
 .gn .no li svg { background: #2A2A32; stroke: var(--t3); }
 
 /* ===== 8. Hablemos ===== */
-.end .radar { right: -230px; top: -180px; width: 540px; height: 540px; }
+.end .arte { right: -290px; top: -30px; width: 580px; }
 .end h1 { position: relative; margin-top: 64px; }
 .end .lead { position: relative; font-size: var(--fs-sub); max-width: 420px; }
 .contact { position: relative; display: grid; grid-template-columns: 1fr 200px; gap: 24px; margin-top: 30px; align-items: start; }
@@ -216,7 +216,7 @@
 
 <!-- 1. Portada -->
 <section class="page dark cover">
-  <svg class="radar" data-tono="oscuro" data-giro="-55" aria-hidden="true"></svg>
+  <img class="arte" src="../../public/elementos/01-oscuro.svg" alt="">
   <div class="cover-top"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a></div>
   <h1 class="h1">Publicidad<br>que vende<span class="dot">.</span></h1>
   <p class="lead">Tu publicidad no sale de la ocurrencia de un diseñador. Sale de <em class="k">datos reales de tu mercado</em>, y <em class="k">tú apruebas cada pieza</em> antes de que salga.</p>
@@ -407,7 +407,7 @@
 
 <!-- 8. Hablemos -->
 <section class="page light end">
-  <svg class="radar" data-tono="claro" data-giro="-120" aria-hidden="true"></svg>
+  <img class="arte" src="../../public/elementos/01-claro.svg" alt="">
   <div style="position:relative"><span class="wm">pixely<b>.</b></span></div>
   <h1 class="h1">Hablemos<span class="dot">.</span></h1>
   <p class="lead">Cuéntanos de tu negocio y <em class="k">te recomendamos el plan que te conviene</em>.</p>
@@ -425,6 +425,5 @@
 </section>
 
 <script src="../comun/orbs.js"></script>
-<script src="../comun/radar.js"></script>
 </body>
 </html>
