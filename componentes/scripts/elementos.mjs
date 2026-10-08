@@ -1,7 +1,7 @@
 // Página "Elementos gráficos" del catálogo: la lista de piezas gráficas que se diseñan una por una.
 // Los documentos solo usan lo que aquí está Aprobado. Datos en elementos/elementos.json.
 import { readFileSync } from 'node:fs';
-import { VISTAS_EXTRA, vistasCSS } from './elementos-vistas.mjs';
+import { VISTAS_EXTRA, vistasCSS, muesca } from './elementos-vistas.mjs';
 
 const datos = JSON.parse(readFileSync(new URL('../../elementos/elementos.json', import.meta.url), 'utf8'));
 const ESTADOS = ['Por diseñar', 'En diseño', 'Aprobado', 'Rechazado'];
@@ -43,14 +43,6 @@ const vista03 = () => [
 ].join('');
 
 // 04 · Muesca (la de pixely.pe: tokens.css → --notch), convertida a trazo SVG para mostrarla a escala real
-const NOTCH = /--notch:\s*polygon\(([^;]+)\);/.exec(readFileSync(new URL('../../../pixely_web/src/styles/tokens.css', import.meta.url), 'utf8'))[1];
-const medida = (t, D) => {
-  let m;
-  if ((m = /^calc\((-?[\d.]+)% ([+-]) ([\d.]+)px\)$/.exec(t))) return (D * m[1]) / 100 + (m[2] === '+' ? 1 : -1) * m[3];
-  if ((m = /^(-?[\d.]+)%$/.exec(t))) return (D * m[1]) / 100;
-  return parseFloat(t);
-};
-const muesca = (W, H) => 'M' + NOTCH.split(',').map((pt) => pt.trim().match(/calc\([^)]*\)|\S+/g)).map(([x, y]) => `${+medida(x, W).toFixed(1)} ${+medida(y, H).toFixed(1)}`).join('L') + 'Z';
 const lienzo = (W, H, alto, dentro, fuera) => `<svg class="mk mk--svg" viewBox="0 0 ${W} ${H}" style="aspect-ratio:${W}/${H}"><rect width="${W}" height="${H}" fill="#fff"/>${fuera}<path d="${muesca(W, alto)}" fill="#0A0A0C"/>${dentro}</svg>`;
 const txt = (x, y, t, tam, color = '#fff', extra = '') => `<text x="${x}" y="${y}" font-family="Unbounded" font-weight="700" font-size="${tam}" letter-spacing="-.03em" fill="${color}"${extra}>${t}</text>`;
 const barra = (x, y, w, h, c = '#E4E4EA', r = 10) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${c}"/>`;
