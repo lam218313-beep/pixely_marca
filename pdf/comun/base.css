@@ -42,7 +42,7 @@ body { font-family: Manrope, system-ui, sans-serif; -webkit-print-color-adjust: 
 .rings { position: absolute; pointer-events: none; }
 .rings circle { fill: none; stroke-width: 1.5; }
 .dark .rings circle { stroke: #2A2A32; } .light .rings circle { stroke: rgba(10,10,12,.08); }
-.rings .glow { fill: var(--pink); fill-opacity: .18; stroke: none; } .rings .core { fill: var(--pink); stroke: none; }
+.rings circle.glow { fill: var(--pink); fill-opacity: .18; stroke: none; } .rings circle.core { fill: var(--pink); stroke: none; }
 
 /* Foto enmarcada (como la pieza del mazo) */
 .frame { position: relative; overflow: hidden; border-radius: var(--r-lg); padding: 7px; }

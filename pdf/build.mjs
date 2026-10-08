@@ -12,6 +12,7 @@ const PIEZAS = {
   brochure: 'Pixely-Brochure.pdf',
   planes: { 'Pixely-Plan-Lite.pdf': '1', 'Pixely-Plan-Basic.pdf': '2', 'Pixely-Plan-Pro.pdf': '3' },
   manual: 'Pixely-Manual-de-Partners.pdf',
+  tarjeta: 'Pixely-Tarjeta-para-imprenta.pdf',
 };
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));

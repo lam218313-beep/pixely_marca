@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pixely - Tarjeta</title>
+<link rel="stylesheet" href="../comun/base.css">
+<style>
+/* Tarjeta de 90 × 50 mm con 3 mm de sangrado por lado (96 × 56 mm).
+   Todo lo importante queda a 7 mm del borde del archivo (4 mm dentro del corte). */
+@page { size: 96mm 56mm; margin: 0; }
+.page { width: 96mm; height: 56mm; padding: 7mm; }
+@media screen { .page { margin: 24px auto; } }
+
+/* ===== Frente ===== */
+.front .rings { left: 50mm; top: -27mm; width: 72mm; height: 72mm; }
+.front .rings circle:not(.glow):not(.core) { stroke-width: 1.1; stroke: #3A3A44; }
+.front .wm { position: relative; font-size: 21px; }
+.front h1 { position: relative; margin-top: auto; font: 700 18px/1.05 Unbounded; letter-spacing: -.045em; }
+.front .url { position: relative; margin-top: 2.2mm; font: 800 8px Manrope; letter-spacing: .2em; color: var(--t3); }
+
+/* ===== Dorso ===== */
+.back { flex-direction: row; gap: 5mm; }
+.back .rings { right: -30mm; bottom: -34mm; width: 72mm; height: 72mm; }
+.back .rings circle { stroke-width: 1.1; }
+.back .info { position: relative; flex: 1; display: flex; flex-direction: column; }
+.back .wm { font-size: 15px; }
+.back dl { margin-top: auto; display: grid; gap: 1.4mm; }
+.back dt { font: 800 8px Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); }
+.back dd { margin-top: .2mm; font: 700 10.5px Manrope; color: var(--p1); }
+.qr { position: relative; align-self: center; width: 27mm; padding: 2mm; border-radius: 3.2mm; background: #fff; border: 1px solid rgba(10,10,12,.12); text-align: center; }
+.qr img { display: block; width: 100%; }
+.qr p { margin-top: 1.2mm; font: 700 8px/1.25 Manrope; color: var(--p2); }
+</style>
+</head>
+<body>
+
+<!-- Frente -->
+<section class="page dark front">
+  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/><circle class="glow" cx="380" cy="380" r="40"/><circle class="core" cx="380" cy="380" r="15"/></svg>
+  <span class="wm">pixely<b>.</b></span>
+  <h1>Publicidad<br>que vende<span class="dot">.</span></h1>
+  <p class="url">PIXELY.PE</p>
+</section>
+
+<!-- Dorso -->
+<section class="page light back">
+  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/></svg>
+  <div class="info">
+    <span class="wm">pixely<b>.</b></span>
+    <dl>
+      <div><dt>WhatsApp</dt><dd>+51 949 268 607</dd></div>
+      <div><dt>Web</dt><dd>pixely.pe</dd></div>
+      <div><dt>Correo</dt><dd>hola@pixely.pe</dd></div>
+      <div><dt>Redes</dt><dd>@pixely_pe</dd></div>
+    </dl>
+  </div>
+  <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escríbenos<br>por WhatsApp</p></div>
+</section>
+
+</body>
+</html>
