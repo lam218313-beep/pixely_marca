@@ -60,7 +60,7 @@ export const Validar: React.FC<{ conFondo?: boolean }> = ({ conFondo = true }) =
             )}
           </>
         )}
-        {f >= 76 && f < 136 && <Captura src={f < 118 ? 'validar-siguiente' : 'validar-segunda'} opacidad={f < 118 ? tween(f, 76, 86, 0, 1) : 1} />}
+        {f >= 76 && f < 136 && <Captura src={f < 118 ? 'validar-siguiente' : 'validar-segunda'} opacidad={f < 118 ? tween(f, 76, 81, 0, 1) : 1} />}
         {f >= 112 && f < 124 && <Captura src="validar-segunda" opacidad={tween(f, 112, 120, 0, 1)} />}
         {/* Pedir cambios: la hoja sube sobre el fondo oscurecido */}
         {f >= 130 && (
