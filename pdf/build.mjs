@@ -6,8 +6,11 @@ import { chromium } from 'playwright-core';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
+// Cada pieza es una carpeta con su index.html. El valor es el PDF de salida, o un mapa
+// { archivo: páginas } cuando un mismo HTML da varios PDF (como los tres planes).
 const PIEZAS = {
   brochure: 'Pixely-Brochure.pdf',
+  planes: { 'Pixely-Plan-Lite.pdf': '1', 'Pixely-Plan-Basic.pdf': '2', 'Pixely-Plan-Pro.pdf': '3' },
 };
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -30,8 +33,11 @@ for (const nombre of lista) {
     return [i + 1, Math.round(Math.max(...hijos.map((h) => h.getBoundingClientRect().bottom)) - fondo)];
   }).filter(([, d]) => d > 0));
   for (const [n, d] of desbordes) console.warn(`  ⚠ ${nombre}: la página ${n} se pasa ${d}px`);
-  await page.pdf({ path: path.join(salida, PIEZAS[nombre]), preferCSSPageSize: true, printBackground: true });
-  console.log(`✓ ${PIEZAS[nombre]}`);
+  const archivos = typeof PIEZAS[nombre] === 'string' ? { [PIEZAS[nombre]]: '' } : PIEZAS[nombre];
+  for (const [archivo, pageRanges] of Object.entries(archivos)) {
+    await page.pdf({ path: path.join(salida, archivo), pageRanges, preferCSSPageSize: true, printBackground: true });
+    console.log(`✓ ${archivo}`);
+  }
   await page.close();
 }
 await browser.close();

@@ -3,71 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>Pixely - Brochure</title>
+<link rel="stylesheet" href="../comun/base.css">
 <style>
-@font-face { font-family: Unbounded; src: url(unbounded-latin-wght-normal.woff2) format('woff2'); font-weight: 200 900; }
-@font-face { font-family: Manrope; src: url(manrope-latin-wght-normal.woff2) format('woff2'); font-weight: 200 800; }
-@page { size: A4; margin: 0; }
-:root {
-  --ink: #0A0A0C; --card: #16161B; --raised: #1F1F26; --edge: #26262E; --line: #33333C; --mute: #4A4A55;
-  --t1: #FFFFFF; --t2: #B4B4BE; --t3: #8A8A96;
-  --pink: #EB0C6E; --pink-soft: #FFC2E1; --pink-light: #FF7AB0;
-  --paper: #FFFFFF; --p1: #0A0A0C; --p2: #55555F; --p3: #8A8A96; --pline: rgba(10, 10, 12, .1);
-  --r-sm: 16px; --r: 24px; --r-lg: 28px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #555; }
-body { font-family: Manrope, system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; page-break-after: always; break-after: page; padding: 52px 56px 0; display: flex; flex-direction: column; }
-.page:last-child { page-break-after: auto; break-after: auto; }
-.dark { background: var(--ink); color: var(--t1); }
-.light { background: var(--paper); color: var(--p1); }
-@media screen { .page { margin: 24px auto; box-shadow: 0 10px 40px rgba(0,0,0,.4); } }
-
-/* Tipografía */
-.eyebrow { font: 800 10.5px Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); }
-.h1 { font: 700 54px/1.02 Unbounded; letter-spacing: -.045em; }
-.h2 { font: 700 33px/1.08 Unbounded; letter-spacing: -.04em; margin-top: 12px; }
-.h3 { font: 700 17px/1.2 Unbounded; letter-spacing: -.03em; }
-.lead { font: 500 15px/1.55 Manrope; margin-top: 14px; max-width: 520px; }
-.dark .lead, .dark .muted { color: var(--t2); } .light .lead, .light .muted { color: var(--p2); }
-.small { font: 500 11.5px/1.55 Manrope; }
-.dark .small { color: var(--t2); } .light .small { color: var(--p2); }
-.dot { color: var(--pink); }
-.pink { color: var(--pink); }
-.note { font: 500 9px/1.5 Manrope; color: var(--t3); }
-.light .note { color: var(--p3); }
-.wm { font: 700 22px Unbounded; letter-spacing: -.05em; } .wm b { color: var(--pink); }
-
-/* Pie de página */
-.foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding: 22px 0 26px; font: 700 10px Manrope; letter-spacing: .04em; }
-.dark .foot { color: var(--t3); border-top: 1px solid var(--edge); } .light .foot { color: var(--p3); border-top: 1px solid var(--pline); }
-.foot .wm { font-size: 14px; } .dark .foot .wm { color: #fff; } .light .foot .wm { color: var(--p1); }
-
-/* Anillos de marca */
-.rings { position: absolute; pointer-events: none; }
-.rings circle { fill: none; stroke-width: 1.5; }
-.dark .rings circle { stroke: #2A2A32; } .light .rings circle { stroke: rgba(10,10,12,.08); }
-.rings .glow { fill: var(--pink); fill-opacity: .18; stroke: none; } .rings .core { fill: var(--pink); stroke: none; }
-
-/* Foto enmarcada (como la pieza del mazo) */
-.frame { position: relative; overflow: hidden; border-radius: var(--r-lg); padding: 7px; }
-.dark .frame { background: var(--card); border: 1px solid rgba(255,255,255,.08); }
-.light .frame { background: #F3F3F5; border: 1px solid var(--pline); }
-.frame img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 21px; }
-/* Chip de vidrio */
-.chip { position: absolute; display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 11px; border-radius: 99px; background: rgba(10,10,12,.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font: 700 10.5px Manrope; white-space: nowrap; }
-.chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
-.chip.light-chip { background: rgba(255,255,255,.78); color: var(--p1); }
-
-/* Tarjetas ligeras */
-.card { border-radius: var(--r); padding: 20px 22px; }
-.dark .card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); }
-.light .card { background: #FAFAFB; border: 1px solid var(--pline); }
-.num { font: 700 30px/1 Unbounded; letter-spacing: -.05em; }
-.pill { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 99px; font: 700 10.5px Manrope; }
-.dark .pill { border: 1px solid var(--line); color: var(--t2); } .light .pill { border: 1px solid rgba(10,10,12,.14); color: var(--p2); }
-.pill.on { background: var(--pink); border-color: var(--pink); color: #fff; }
-
 /* ===== 1. Portada ===== */
 .cover { padding-bottom: 0; }
 .cover .rings { right: -250px; top: -160px; width: 760px; height: 760px; }
@@ -373,12 +310,12 @@ body { font-family: Manrope, system-ui, sans-serif; -webkit-print-color-adjust: 
       <div><dt>Correo</dt><dd>hola@pixely.pe</dd></div>
       <div><dt>Redes</dt><dd>@pixely_pe<small>Instagram, TikTok, YouTube y X · Facebook y LinkedIn: Pixely</small></dd></div>
     </dl>
-    <div class="qr"><img src="img/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
+    <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
   </div>
   <div class="frame"><img src="img/panadero.jpg" alt=""><span class="chip" style="left:24px;bottom:24px"><i></i>Tu marca se decide aquí</span></div>
   <div class="foot"><span class="wm">pixely<b>.</b></span><span class="legal">Syntesia Labs E.I.R.L. · RUC 20616010787</span><span>08 / 08</span></div>
 </section>
 
-<script src="orbs.js"></script>
+<script src="../comun/orbs.js"></script>
 </body>
 </html>

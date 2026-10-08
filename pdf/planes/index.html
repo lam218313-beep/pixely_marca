@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pixely - Planes</title>
+<link rel="stylesheet" href="../comun/base.css">
+<style>
+.plan-pg { padding: 0; background: var(--paper); }
+
+/* ===== Cabecera negra ===== */
+.hero { flex: none; position: relative; overflow: hidden; padding: 42px 56px 34px; }
+.hero .rings { right: -330px; top: -300px; width: 760px; height: 760px; }
+.top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+.tag { display: inline-flex; align-items: center; height: 28px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line); font: 800 9.5px Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--t2); }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1fr 248px; gap: 30px; align-items: end; margin-top: 30px; }
+.hero h1 { font: 700 62px/1 Unbounded; letter-spacing: -.05em; }
+.hero .lead { font-size: 15.5px; max-width: 360px; margin-top: 16px; min-height: 3.1em; }
+.lineup { display: inline-flex; gap: 4px; margin-top: 26px; padding: 4px; border-radius: 99px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+.lineup span { height: 26px; padding: 0 14px; border-radius: 99px; display: inline-flex; align-items: center; font: 700 10.5px Manrope; color: var(--t3); }
+.lineup span.on { background: var(--pink); color: #fff; }
+.volume { display: flex; align-items: center; gap: 12px; margin-top: 18px; font: 600 11px Manrope; color: var(--t2); }
+.volume b { font: 800 9px Manrope; letter-spacing: .18em; color: var(--t3); }
+.volume span { display: flex; gap: 5px; }
+.volume i { width: 26px; height: 6px; border-radius: 3px; background: var(--mute); }
+.volume i.on { background: var(--pink); }
+.hero .frame { height: 254px; }
+.hero .frame .chip { left: 16px; bottom: 16px; }
+
+/* ===== Cuerpo blanco ===== */
+.body { flex: 1; display: flex; flex-direction: column; padding: 26px 56px 0; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.body .card { padding: 22px 22px 20px; }
+.body h4 { font: 700 14px Unbounded; letter-spacing: -.03em; margin-bottom: 14px; }
+.inc { list-style: none; display: grid; gap: 11px; }
+.inc li { display: flex; gap: 9px; font: 600 11.5px/1.35 Manrope; color: var(--p1); }
+.inc li::before { content: ''; flex: none; width: 15px; height: 15px; border-radius: 50%; background: var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 7.2l2 2 4-4.4' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat; }
+.inc li.no { color: var(--p3); }
+.inc li.no::before { background: none; border: 1px solid rgba(10,10,12,.18); }
+.steps { list-style: none; display: grid; gap: 11px; }
+.steps li { display: grid; grid-template-columns: 24px 1fr; }
+.steps li > span { font: 800 10px/1.6 Manrope; letter-spacing: .06em; color: var(--pink); }
+.steps b { display: block; font: 700 11.5px/1.35 Manrope; }
+.steps p { margin-top: 2px; font: 500 10.5px/1.45 Manrope; color: var(--p2); }
+.notes { margin-top: 12px; }
+.notes .card { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; }
+.ico { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(235,12,110,.1); color: var(--pink); }
+.notes b { display: block; font: 700 12px Manrope; }
+.notes p { margin-top: 3px; font: 500 10.5px/1.45 Manrope; color: var(--p2); }
+.talk { margin-top: 12px; display: grid; grid-template-columns: 1fr 128px; gap: 20px; align-items: center; padding: 20px 20px 20px 26px; border-radius: var(--r-lg); background: var(--ink); color: #fff; }
+.talk h3 { font: 700 26px/1 Unbounded; letter-spacing: -.045em; }
+.talk p { margin-top: 8px; font: 500 12px/1.5 Manrope; color: var(--t2); }
+.talk .wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; height: 38px; padding: 0 16px; border-radius: 14px; background: var(--pink); font: 800 12px Manrope; color: #fff; }
+.talk small { display: block; margin-top: 10px; font: 600 10.5px Manrope; color: var(--t3); }
+.qr { padding: 10px; border-radius: 18px; background: #fff; text-align: center; }
+.qr img { display: block; width: 100%; }
+.qr p { margin-top: 6px; font: 700 8.5px/1.3 Manrope; color: var(--p2); }
+.legal { margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<template id="hoja">
+<section class="page plan-pg">
+  <div class="hero dark">
+    <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/></svg>
+    <div class="top"><span class="wm">pixely<b>.</b></span><span class="tag" data-k="eyebrow"></span></div>
+    <div class="hero-grid">
+      <div>
+        <h1>Plan <span data-k="nombre"></span><span class="dot">.</span></h1>
+        <p class="lead" data-k="lema"></p>
+        <div class="lineup"><span>Lite</span><span>Basic</span><span>Pro</span></div>
+        <div class="volume"><b>VOLUMEN</b><span><i></i><i></i><i></i></span>Lo definimos contigo, según tu negocio.</div>
+      </div>
+      <div class="frame"><img alt=""><span class="chip"><i></i><span data-k="chip"></span></span></div>
+    </div>
+  </div>
+  <div class="body light">
+    <div class="two">
+      <div class="card"><h4>Qué incluye</h4><ul class="inc"></ul></div>
+      <div class="card"><h4>Cómo trabajamos</h4><ol class="steps">
+        <li><span>01</span><div><b>Entendemos tu negocio</b><p>Una conversación guiada para conocer tu negocio y tu voz de marca.</p></div></li>
+        <li><span>02</span><div><b>Leemos tu mercado</b><p>Competidores, reseñas, precios y lo que publica tu competencia.</p></div></li>
+        <li><span>03</span><div><b>Estrategia y plan del mes</b><p>Cada idea dice por qué existe y qué dato la respalda.</p></div></li>
+        <li><span>04</span><div><b>Validas, publicamos y medimos</b><p>Previsualizas cada pieza y ves cómo le fue.</p></div></li>
+      </ol></div>
+    </div>
+    <div class="two notes">
+      <div class="card"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2 7 9M14 2l-4.5 12-2.5-5-5-2.5z"/></svg></span><div><b>Quién publica</b><p data-k="publica"></p></div></div>
+      <div class="card"><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1.5" width="8" height="13" rx="2"/><path d="m6.2 8 1.3 1.3 2.4-2.6"/></svg></span><div><b>Siempre contigo</b><p>Apruebas las ideas del mes antes de producirlas y cada pieza antes de publicarla, desde Pixely Partners. Todos los planes incluyen acceso.</p></div></div>
+    </div>
+    <div class="talk">
+      <div>
+        <h3>Hablemos<span class="dot">.</span></h3>
+        <p>Te recomendamos el plan según tu negocio.</p>
+        <span class="wa">WhatsApp +51 949 268 607 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7h9M8 3.5 11.5 7 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <small>pixely.pe · hola@pixely.pe</small>
+      </div>
+      <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
+    </div>
+    <p class="note legal">Tu primer plan de contenido llega entre 7 y 14 días hábiles después de la entrevista. No hacemos sesiones fotográficas, no respondemos mensajes ni comentarios de tus redes y no diseñamos logotipos fuera de tu plan de contenido. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. No garantizamos resultados de ventas específicos: garantizamos contenido profesional y estratégico.</p>
+    <div class="foot"><span class="wm">pixely<b>.</b></span><span>pixely.pe</span><span>Syntesia Labs E.I.R.L. · RUC 20616010787</span></div>
+  </div>
+</section>
+</template>
+
+<script>
+// Un plan por hoja, en este orden (el script de PDF saca la hoja 1, 2 y 3 por separado)
+const TODO = ['Lectura de tu mercado', 'Estrategia y plan del mes', 'Aprobación en Partners', 'Producción multiformato'];
+const PLANES = [
+  { nombre: 'Lite', eyebrow: 'Para empezar', lema: 'Empieza con un riesgo mínimo y conoce el proceso.', vol: 1,
+    foto: 'img/lite.jpg', pos: '42% 50%', chip: 'Apruebas desde el celular',
+    incluye: [...TODO], no: ['Calendario de publicación', 'Resultados de cada pieza'],
+    publica: 'Tus piezas aprobadas quedan listas en Partners.' },
+  { nombre: 'Basic', eyebrow: 'Presencia constante', lema: 'Constancia, con estrategia y sin repetirte.', vol: 2,
+    foto: 'img/basic.jpg', pos: '58% 50%', chip: 'Calendario de publicación',
+    incluye: [...TODO, 'Calendario de publicación'], no: ['Resultados de cada pieza'],
+    publica: 'Recibes tus piezas aprobadas y el calendario de publicación.' },
+  { nombre: 'Pro', eyebrow: 'Delegación total', lema: 'Tú apruebas desde el celular; nosotros hacemos todo lo demás.', vol: 3,
+    foto: 'img/pro.jpg', pos: '55% 50%', chip: 'Publicamos por ti',
+    incluye: [...TODO, 'Publicamos por ti', 'Resultados de cada pieza'], no: [],
+    publica: 'Nosotros programamos y publicamos por ti.' },
+];
+const molde = document.getElementById('hoja');
+for (const p of PLANES) {
+  const h = molde.content.cloneNode(true);
+  h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = p[el.dataset.k]; });
+  const img = h.querySelector('.frame img'); img.src = p.foto; img.style.objectPosition = p.pos;
+  h.querySelectorAll('.lineup span').forEach((s) => s.classList.toggle('on', s.textContent === p.nombre));
+  h.querySelectorAll('.volume i').forEach((i, n) => i.classList.toggle('on', n < p.vol));
+  const ul = h.querySelector('.inc');
+  for (const t of p.incluye) ul.insertAdjacentHTML('beforeend', `<li>${t}</li>`);
+  for (const t of p.no) ul.insertAdjacentHTML('beforeend', `<li class="no">${t}</li>`);
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
