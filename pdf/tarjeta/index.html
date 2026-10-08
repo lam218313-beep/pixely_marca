@@ -12,8 +12,7 @@
 @media screen { .page { margin: 24px auto; } }
 
 /* ===== Frente ===== */
-.front .rings { left: 50mm; top: -27mm; width: 72mm; height: 72mm; }
-.front .rings circle:not(.glow):not(.core) { stroke-width: 1.1; stroke: #3A3A44; }
+.front .radar { position: absolute; left: 41mm; top: -21mm; width: 82mm; height: 82mm; }
 .front .wm { position: relative; font-size: 21px; }
 .front h1 { position: relative; margin-top: auto; font: 700 18px/1.05 Unbounded; letter-spacing: -.045em; }
 .front .url { position: relative; margin-top: 2.2mm; font: 800 8px Manrope; letter-spacing: .2em; color: var(--t3); }
@@ -36,7 +35,7 @@
 
 <!-- Frente -->
 <section class="page dark front">
-  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/><circle class="glow" cx="380" cy="380" r="40"/><circle class="core" cx="380" cy="380" r="15"/></svg>
+  <svg class="radar" data-tono="oscuro" data-giro="-40" aria-hidden="true"></svg>
   <span class="wm">pixely<b>.</b></span>
   <h1>Publicidad<br>que vende<span class="dot">.</span></h1>
   <p class="url">PIXELY.PE</p>
@@ -57,5 +56,6 @@
   <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escríbenos<br>por WhatsApp</p></div>
 </section>
 
+<script src="../comun/radar.js"></script>
 </body>
 </html>
