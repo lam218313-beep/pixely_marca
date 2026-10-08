@@ -643,9 +643,34 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .ktoast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;max-width:calc(100% - 32px);padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--raised);color:#fff;font:800 14px Manrope;box-shadow:0 18px 40px rgba(0,0,0,.55)}
 @media (max-width:640px){.kredes li{grid-template-columns:1fr auto}.kredes__r{grid-column:1/-1}.kredes__u{grid-column:1/-1;order:3}}
 
+
+/* ===== Página Elementos gráficos ===== */
+.side__elem{display:flex;justify-content:space-between;align-items:center}.side__elem b{font:700 11px Manrope;color:var(--text-3)}
+.top__l b{color:#fff}
+.el-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px;counter-reset:paso;list-style:none;padding:0}
+.el-flow li{position:relative;padding:14px 14px 14px 46px;border:1px solid var(--edge);border-radius:18px;background:var(--ink);counter-increment:paso}
+.el-flow li::before{content:counter(paso);position:absolute;left:14px;top:14px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--pink);font:800 12px Manrope}
+.el-flow b{display:block;font:800 14px Manrope}.el-flow span{display:block;margin-top:3px;color:var(--text-3);font:600 13px/1.4 Manrope}
+.els{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:12px}
+.el{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--edge);border-radius:22px;background:var(--ink);scroll-margin-top:16px}
+.el__h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start}
+.el__n{font:700 14px Unbounded;color:var(--pink);padding-top:2px}
+.el__h h3{font:700 15px/1.3 Unbounded;letter-spacing:-.02em}
+.el__st{height:24px;display:inline-flex;align-items:center;padding:0 10px;border-radius:99px;font:800 11px Manrope;white-space:nowrap}
+.el__st--pend{border:1px dashed var(--line);color:var(--text-2)}.el__st--prog{background:var(--raised);color:#fff}
+.el__st--ok{background:rgba(235,12,110,.16);color:var(--pink)}.el__st--no{background:var(--card);color:var(--text-3);text-decoration:line-through}
+.el__i{color:var(--text-2);font:600 14px/1.5 Manrope}
+.el__m{display:flex;flex-wrap:wrap;gap:6px}
+.el__u,.el__p{height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:99px;background:var(--card);color:var(--text-2);font:700 11px Manrope}
+.el__p--1{background:var(--pink);color:#fff}.el__p--2{background:var(--raised);color:#fff}
+.el__hist{padding:10px 12px;border-radius:12px;background:var(--card);color:var(--text-3);font:600 12px/1.45 Manrope}
+.el__slot{display:grid;place-items:center;min-height:84px;margin-top:auto;border:1.5px dashed var(--edge);border-radius:14px;color:var(--text-3);font:600 12px Manrope;text-align:center;padding:8px}
+@media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.el-flow{grid-template-columns:1fr}}
+
 </style>
 <div class="app">
-<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p><a class="side__kit" href="#redes"><b>Redes sociales</b><small>Kit descargable</small></a><a class="side__comp" href="#top">Componentes</a><nav id="nav"><a href="#cat-fundamentos" data-catlink="fundamentos">Fundamentos<b>6</b></a><a href="#cat-botones" data-catlink="botones">Botones<b>6</b></a><a href="#cat-campos" data-catlink="campos">Campos y controles<b>6</b></a><a href="#cat-navegacion" data-catlink="navegacion">Navegación<b>7</b></a><a href="#cat-indicadores" data-catlink="indicadores">Etiquetas e indicadores<b>8</b></a><a href="#cat-tarjetas" data-catlink="tarjetas">Tarjetas y listas<b>7</b></a><a href="#cat-calendarios" data-catlink="calendarios">Calendarios y fechas<b>5</b></a><a href="#cat-precios" data-catlink="precios">Planes y precios<b>4</b></a><a href="#cat-datos" data-catlink="datos">Datos y gráficos<b>7</b></a><a href="#cat-overlays" data-catlink="overlays">Paneles y aprobación<b>6</b></a><a href="#cat-estados" data-catlink="estados">Estados y pantallas<b>6</b></a><a href="#cat-contenido" data-catlink="contenido">Contenido de la web<b>6</b></a></nav></aside>
+<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p><a class="side__kit" href="#redes"><b>Redes sociales</b><small>Kit descargable</small></a><a class="side__comp" href="#top">Componentes</a><a class="side__comp side__elem" href="#elementos">Elementos gráficos <b>30</b></a><nav id="nav"><a href="#cat-fundamentos" data-catlink="fundamentos">Fundamentos<b>6</b></a><a href="#cat-botones" data-catlink="botones">Botones<b>6</b></a><a href="#cat-campos" data-catlink="campos">Campos y controles<b>6</b></a><a href="#cat-navegacion" data-catlink="navegacion">Navegación<b>7</b></a><a href="#cat-indicadores" data-catlink="indicadores">Etiquetas e indicadores<b>8</b></a><a href="#cat-tarjetas" data-catlink="tarjetas">Tarjetas y listas<b>7</b></a><a href="#cat-calendarios" data-catlink="calendarios">Calendarios y fechas<b>5</b></a><a href="#cat-precios" data-catlink="precios">Planes y precios<b>4</b></a><a href="#cat-datos" data-catlink="datos">Datos y gráficos<b>7</b></a><a href="#cat-overlays" data-catlink="overlays">Paneles y aprobación<b>6</b></a><a href="#cat-estados" data-catlink="estados">Estados y pantallas<b>6</b></a><a href="#cat-contenido" data-catlink="contenido">Contenido de la web<b>6</b></a></nav></aside>
 <main id="top"><div id="comp"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
 <p class="top__l">Cada componente, uno por uno, con su estado real, cuándo usarlo y su código listo para copiar. Salen de Pixely Partners y de pixely.pe; los marcados como “Propuesto” aún no existen y se diseñan aquí primero.</p>
 <div class="top__s"><span><b>74</b> componentes</span><span><b>54</b> existen</span><span><b>20</b> propuestos</span></div>
@@ -3177,6 +3202,178 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
   <div class="kbs kbs--end"><button class="kb" type="button" data-dl="redes/Pixely-redes-y-contacto.txt">Redes, contacto y biografías · TXT</button></div>
 </section>
 <p class="ktoast" id="ktoast" role="status" aria-live="polite" hidden></p>
+</section>
+<section id="elementos" class="kit elems" hidden aria-labelledby="el-t">
+<header class="kit__top">
+  <p class="top__e">Elementos gráficos</p>
+  <h1 id="el-t">Pieza por pieza<span>.</span></h1>
+  <p class="top__l">Cada elemento gráfico se diseña aquí, solo y con sus variantes, antes de usarse. Los PDF, la web, los videos y las redes usan únicamente lo que está <b>Aprobado</b>; nada se inventa dentro de un documento.</p>
+  <ol class="el-flow">
+    <li><b>Intención</b><span>Qué tiene que lograr y dónde se usa.</span></li>
+    <li><b>Referencias</b><span>Tú traes inspiración, o te propongo 2 o 3 direcciones con nuestro sistema.</span></li>
+    <li><b>Propuestas</b><span>Se diseña aquí con variantes: claro, oscuro y tamaños.</span></li>
+    <li><b>Aprobado</b><span>Recién ahí pasa a los documentos.</span></li>
+  </ol>
+  <div class="top__s"><span><b>30</b> por diseñar</span><span><b>0</b> en diseño</span><span><b>0</b> aprobado</span><span><b>0</b> rechazado</span></div>
+</header>
+<section class="kblk"><header class="kblk__h"><h2>Arte de fondo y portadas</h2><p>Lo que da identidad y llena el espacio sin texto.</p></header><div class="els"><article class="el" id="e-1">
+    <header class="el__h"><span class="el__n">01</span><h3>Arte de portada «lectura del mercado»</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Reemplaza al radar. Una imagen propia de Pixely que diga «leemos tu mercado» y llene el espacio de portadas con fuerza, sin competir con el título.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Tarjeta</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Redes</span></div>
+    <p class="el__hist">Rechazados: anillos concéntricos (7 oct) y radar con barrido (8 oct).</p>
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-2">
+    <header class="el__h"><span class="el__n">02</span><h3>Trama de marca</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Un patrón sutil y repetible para fondos de páginas e historias, que se reconozca como Pixely.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span><span class="el__u">Reel</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-3">
+    <header class="el__h"><span class="el__n">03</span><h3>Resplandor rosa</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Un solo brillo rosa definido (tamaño, intensidad y dónde va) para dar profundidad al negro.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Redes</span><span class="el__u">Reel</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-4">
+    <header class="el__h"><span class="el__n">04</span><h3>Muesca de sección</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">El corte curvo de la web llevado a documentos, para pasar de una sección a otra.</p>
+    <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Gráficos de datos</h2><p>Infografías pequeñas que explican con un dato.</p></header><div class="els"><article class="el" id="e-5">
+    <header class="el__h"><span class="el__n">05</span><h3>Barras comparativas</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Mostrar que una publicación funciona más que el resto («este funciona»).</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-6">
+    <header class="el__h"><span class="el__n">06</span><h3>Anillo con total</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cómo se reparten las ideas del mes entre problema, identidad y prueba.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-7">
+    <header class="el__h"><span class="el__n">07</span><h3>Medidor de calificación</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">La calificación de la zona (★ 4,4) y cuánto hay que superar.</p>
+    <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Manual</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-8">
+    <header class="el__h"><span class="el__n">08</span><h3>Línea frente al promedio</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cómo le fue a cada pieza frente al promedio de la marca.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-9">
+    <header class="el__h"><span class="el__n">09</span><h3>Cuadros de volumen</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cuántas piezas trae cada plan, de un vistazo (un cuadro por pieza, rosa los reels).</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Planes</span><span class="el__u">Brochure</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-10">
+    <header class="el__h"><span class="el__n">10</span><h3>Antes y después de tiempo</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Horas por tu cuenta frente a minutos con Pixely.</p>
+    <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-11">
+    <header class="el__h"><span class="el__n">11</span><h3>La brecha</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">La distancia entre lo bueno que es el producto y lo que comunican sus fotos.</p>
+    <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-12">
+    <header class="el__h"><span class="el__n">12</span><h3>Cadena de una pieza</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Objetivo → estrategia → dato de tu mercado → tu pieza.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Pantallas y dispositivos</h2><p>Cómo se muestra la app: marcos, acercamientos y llamadas.</p></header><div class="els"><article class="el" id="e-13">
+    <header class="el__h"><span class="el__n">13</span><h3>Celular con pantalla</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">El marco único para mostrar la app en cualquier documento o video.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span><span class="el__u">Reel</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-14">
+    <header class="el__h"><span class="el__n">14</span><h3>Laptop con pantalla</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">La versión de computadora de Partners en una escena real.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-15">
+    <header class="el__h"><span class="el__n">15</span><h3>Acercamiento de un detalle</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Ampliar una parte de la pantalla (un botón, una tarjeta) con el texto al lado.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Reel</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-16">
+    <header class="el__h"><span class="el__n">16</span><h3>Llamada sin números</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Señalar una parte de la pantalla con una línea y una etiqueta corta, sin números rosados.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-17">
+    <header class="el__h"><span class="el__n">17</span><h3>Pantalla con funciones alrededor</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">La app al centro y sus funciones ordenadas alrededor, como imagen principal.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Etiquetas y señales</h2><p>Piezas chicas que marcan estado, paso o plan.</p></header><div class="els"><article class="el" id="e-18">
+    <header class="el__h"><span class="el__n">18</span><h3>Insignia sobre foto</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Ícono y frase corta encima de una foto.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-19">
+    <header class="el__h"><span class="el__n">19</span><h3>Número de paso</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cómo se marca el paso 1, 2, 3 de un proceso.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-20">
+    <header class="el__h"><span class="el__n">20</span><h3>Sello «Aprobada»</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">La señal de que algo quedó aprobado (el momento clave de Partners).</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Manual</span><span class="el__u">Reel</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-21">
+    <header class="el__h"><span class="el__n">21</span><h3>Selector de plan</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Lite · Basic · Pro con el plan actual marcado, y su nivel.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Planes</span><span class="el__u">Brochure</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-22">
+    <header class="el__h"><span class="el__n">22</span><h3>Lista incluido / no incluido</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cómo se muestra lo que trae un plan y lo que no (con «Desde Basic», «Solo Pro»).</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Planes</span><span class="el__u">Brochure</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Íconos ilustrados</h2><p>Íconos grandes para documentos (los de interfaz ya existen).</p></header><div class="els"><article class="el" id="e-23">
+    <header class="el__h"><span class="el__n">23</span><h3>Set de 12 íconos ilustrados</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Mercado, estrategia, calendario, aprobar, publicar, resultados, competencia, reseñas, precios, tiempo, celular y garantía, en un solo estilo.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Estructura de página</h2><p>Bloques que arman cualquier página.</p></header><div class="els"><article class="el" id="e-24">
+    <header class="el__h"><span class="el__n">24</span><h3>Encabezado de página</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Etiqueta + título con punto rosa, con tamaños fijos por categoría.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Manual</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-25">
+    <header class="el__h"><span class="el__n">25</span><h3>Pie de página</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Logo, web y número de página, sin vacío debajo.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Manual</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-26">
+    <header class="el__h"><span class="el__n">26</span><h3>Tarjeta horizontal «cómo funciona»</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Un gráfico aislado a un lado y su explicación al otro, para apilar hacia abajo.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-27">
+    <header class="el__h"><span class="el__n">27</span><h3>Línea de proceso</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Los pasos conectados de principio a fin.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-28">
+    <header class="el__h"><span class="el__n">28</span><h3>Bloque «Hablemos»</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cierre con botón de WhatsApp, QR y contactos.</p>
+    <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Manual</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Fotografía</h2><p>Cómo elegir y enmarcar fotos reales.</p></header><div class="els"><article class="el" id="e-29">
+    <header class="el__h"><span class="el__n">29</span><h3>Marco y criterio de fotos</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Cómo se enmarca una foto y cómo elegirla para que no se vea hecha con IA.</p>
+    <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Brochure</span><span class="el__u">Planes</span><span class="el__u">Redes</span><span class="el__u">Web</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+<section class="kblk"><header class="kblk__h"><h2>Plantillas de redes</h2><p>Formatos listos para Canva.</p></header><div class="els"><article class="el" id="e-30">
+    <header class="el__h"><span class="el__n">30</span><h3>Plantillas de post, carrusel e historia</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <p class="el__i">Portada e interior de carrusel, post e historia, listos para Canva.</p>
+    <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Redes</span></div>
+    
+    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
 </section></main></div>
 <script>
 (function () {
@@ -3267,12 +3464,15 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 window.KIT_FILES = ["LEEME.txt","canva/Pixely-tamanos-de-letra-canva.png","canva/Pixely-tamanos-de-letra-canva.txt","colores/Pixely-colores.png","colores/Pixely-colores.txt","fuentes/Manrope-Bold.ttf","fuentes/Manrope-ExtraBold.ttf","fuentes/Manrope-Medium.ttf","fuentes/Manrope-Regular.ttf","fuentes/Manrope-SemiBold.ttf","fuentes/Manrope-licencia-OFL.txt","fuentes/Unbounded-Bold.ttf","fuentes/Unbounded-ExtraBold.ttf","fuentes/Unbounded-Regular.ttf","fuentes/Unbounded-licencia-OFL.txt","logos/p-sobre-negro.png","logos/p-sobre-negro.svg","logos/p-sobre-rosa.png","logos/p-sobre-rosa.svg","logos/pixely-blanco.png","logos/pixely-blanco.svg","logos/pixely-negro.png","logos/pixely-negro.svg","logos/pixely-sobre-blanco.png","logos/pixely-sobre-blanco.svg","logos/pixely-sobre-negro.png","logos/pixely-sobre-negro.svg","logos/pixely-sobre-rosa.png","logos/pixely-sobre-rosa.svg","qr/qr-facebook-transparente.png","qr/qr-facebook-transparente.svg","qr/qr-facebook.png","qr/qr-facebook.svg","qr/qr-instagram-transparente.png","qr/qr-instagram-transparente.svg","qr/qr-instagram.png","qr/qr-instagram.svg","qr/qr-linkedin-transparente.png","qr/qr-linkedin-transparente.svg","qr/qr-linkedin.png","qr/qr-linkedin.svg","qr/qr-partners-transparente.png","qr/qr-partners-transparente.svg","qr/qr-partners.png","qr/qr-partners.svg","qr/qr-tiktok-transparente.png","qr/qr-tiktok-transparente.svg","qr/qr-tiktok.png","qr/qr-tiktok.svg","qr/qr-todas-las-redes-transparente.png","qr/qr-todas-las-redes-transparente.svg","qr/qr-todas-las-redes.png","qr/qr-todas-las-redes.svg","qr/qr-web-transparente.png","qr/qr-web-transparente.svg","qr/qr-web.png","qr/qr-web.svg","qr/qr-whatsapp-transparente.png","qr/qr-whatsapp-transparente.svg","qr/qr-whatsapp.png","qr/qr-whatsapp.svg","qr/qr-x-transparente.png","qr/qr-x-transparente.svg","qr/qr-x.png","qr/qr-x.svg","qr/qr-youtube-transparente.png","qr/qr-youtube-transparente.svg","qr/qr-youtube.png","qr/qr-youtube.svg","redes/Pixely-redes-y-contacto.txt"];
 (function () {
   var $ = function (s) { return document.querySelector(s); };
-  // Dos páginas en una: #redes (y sus partes #k-…) muestra el kit; cualquier otro enlace, los componentes
+  // Tres páginas en una: #redes (y #k-…) el kit, #elementos (y #e-…) los elementos gráficos; lo demás, los componentes
   function route() {
-    var h = location.hash.slice(1), enKit = h === 'redes' || h.indexOf('k-') === 0;
-    $('#redes').hidden = !enKit; $('#comp').hidden = enKit;
-    $('.side__kit').classList.toggle('on', enKit); $('.side__comp').classList.toggle('on', !enKit && (!h || h === 'top'));
-    if (enKit) { var el = h === 'redes' ? null : document.getElementById(h); if (el) el.scrollIntoView(); else window.scrollTo(0, 0); }
+    var h = location.hash.slice(1);
+    var vista = h === 'redes' || h.indexOf('k-') === 0 ? 'redes' : h === 'elementos' || h.indexOf('e-') === 0 ? 'elementos' : 'comp';
+    $('#redes').hidden = vista !== 'redes'; $('#elementos').hidden = vista !== 'elementos'; $('#comp').hidden = vista !== 'comp';
+    $('.side__kit').classList.toggle('on', vista === 'redes');
+    $('.side__elem').classList.toggle('on', vista === 'elementos');
+    $('.side__comp:not(.side__elem)').classList.toggle('on', vista === 'comp' && (!h || h === 'top'));
+    if (vista !== 'comp') { var el = h === vista ? null : document.getElementById(h); if (el) el.scrollIntoView(); else window.scrollTo(0, 0); }
   }
   window.addEventListener('hashchange', route); route();
   var toastT;

@@ -14,6 +14,7 @@ import overlays from '../src/components/overlays.js';
 import estados from '../src/components/estados.js';
 import contenido from '../src/components/contenido.js';
 import { kitCSS, kitHTML, kitJS, kitNav } from './kit.mjs';
+import { elemCSS, elemHTML, elemNav } from './elementos.mjs';
 
 const NOTCH = /--notch:\s*(polygon\([^;]+\));/.exec(readFileSync(new URL('../../../pixely_web/src/styles/tokens.css', import.meta.url), 'utf8'))[1];
 
@@ -66,9 +67,10 @@ ${shell}
 /* ===== Componentes ===== */
 ${css}
 ${kitCSS}
+${elemCSS}
 </style>
 <div class="app">
-<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p>${kitNav}<nav id="nav">${nav}</nav></aside>
+<aside class="side"><a class="side__logo" href="#top"><span class="p-wordmark">pixely<b>.</b></span></a><p class="side__t">Marca y componentes de interfaz</p>${kitNav}${elemNav}<nav id="nav">${nav}</nav></aside>
 <main id="top"><div id="comp"><header class="top"><p class="top__e">Repositorio de interfaz</p><h1>Piezas de interfaz de Pixely<span>.</span></h1>
 <p class="top__l">Cada componente, uno por uno, con su estado real, cuándo usarlo y su código listo para copiar. Salen de Pixely Partners y de pixely.pe; los marcados como “Propuesto” aún no existen y se diseñan aquí primero.</p>
 <div class="top__s"><span><b>${all.length}</b> componentes</span><span><b>${nEx}</b> existen</span><span><b>${nPr}</b> propuestos</span></div>
@@ -78,7 +80,8 @@ ${kitCSS}
 ${sections}
 <p class="none" id="none" hidden>Ningún componente coincide con la búsqueda.</p>
 <footer class="end">Todo parte de los mismos tokens de marca. El kit de logos, fuentes, colores y QR está en <a href="#redes">Redes sociales</a>.</footer></div>
-${kitHTML()}</main></div>
+${kitHTML()}
+${elemHTML()}</main></div>
 <script>
 ${js}
 </script>

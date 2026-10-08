@@ -150,12 +150,15 @@ export const kitJS = () => `
 window.KIT_FILES = ${JSON.stringify(kitFiles)};
 (function () {
   var $ = function (s) { return document.querySelector(s); };
-  // Dos páginas en una: #redes (y sus partes #k-…) muestra el kit; cualquier otro enlace, los componentes
+  // Tres páginas en una: #redes (y #k-…) el kit, #elementos (y #e-…) los elementos gráficos; lo demás, los componentes
   function route() {
-    var h = location.hash.slice(1), enKit = h === 'redes' || h.indexOf('k-') === 0;
-    $('#redes').hidden = !enKit; $('#comp').hidden = enKit;
-    $('.side__kit').classList.toggle('on', enKit); $('.side__comp').classList.toggle('on', !enKit && (!h || h === 'top'));
-    if (enKit) { var el = h === 'redes' ? null : document.getElementById(h); if (el) el.scrollIntoView(); else window.scrollTo(0, 0); }
+    var h = location.hash.slice(1);
+    var vista = h === 'redes' || h.indexOf('k-') === 0 ? 'redes' : h === 'elementos' || h.indexOf('e-') === 0 ? 'elementos' : 'comp';
+    $('#redes').hidden = vista !== 'redes'; $('#elementos').hidden = vista !== 'elementos'; $('#comp').hidden = vista !== 'comp';
+    $('.side__kit').classList.toggle('on', vista === 'redes');
+    $('.side__elem').classList.toggle('on', vista === 'elementos');
+    $('.side__comp:not(.side__elem)').classList.toggle('on', vista === 'comp' && (!h || h === 'top'));
+    if (vista !== 'comp') { var el = h === vista ? null : document.getElementById(h); if (el) el.scrollIntoView(); else window.scrollTo(0, 0); }
   }
   window.addEventListener('hashchange', route); route();
   var toastT;
