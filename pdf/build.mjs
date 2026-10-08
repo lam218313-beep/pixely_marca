@@ -22,6 +22,14 @@ for (const nombre of lista) {
   await page.goto(pathToFileURL(path.join(raiz, nombre, 'index.html')).href, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(400); // deja que los orbes pinten su primer cuadro
+  // Aviso si algo se sale de su hoja (el pie de página quedaría cortado)
+  // (no cuenta los adornos con position:absolute, como los anillos, que salen del borde a propósito)
+  const desbordes = await page.$$eval('.page', (ps) => ps.map((p, i) => {
+    const fondo = p.getBoundingClientRect().bottom;
+    const hijos = [...p.children].filter((h) => getComputedStyle(h).position !== 'absolute');
+    return [i + 1, Math.round(Math.max(...hijos.map((h) => h.getBoundingClientRect().bottom)) - fondo)];
+  }).filter(([, d]) => d > 0));
+  for (const [n, d] of desbordes) console.warn(`  ⚠ ${nombre}: la página ${n} se pasa ${d}px`);
   await page.pdf({ path: path.join(salida, PIEZAS[nombre]), preferCSSPageSize: true, printBackground: true });
   console.log(`✓ ${PIEZAS[nombre]}`);
   await page.close();
