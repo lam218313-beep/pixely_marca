@@ -2,6 +2,7 @@
 import React from 'react';
 import { Series, useVideoConfig } from 'remotion';
 import { Fondo } from './base';
+import { Sonido } from './Sonido';
 import { Cierre, DURACION_CIERRE } from './Cierre';
 import { DURACION_ENTRAR, Entrar } from './Entrar';
 import { DURACION_GANCHO, Gancho } from './Gancho';
@@ -26,6 +27,7 @@ export const ManualReel: React.FC = () => {
         <Series.Sequence name="Resultados" durationInFrames={DURACION_RESULTADOS} premountFor={fps}><Resultados conFondo={false} /></Series.Sequence>
         <Series.Sequence name="Cierre" durationInFrames={DURACION_CIERRE} premountFor={fps}><Cierre conFondo={false} /></Series.Sequence>
       </Series>
+      <Sonido duracion={DURACION_REEL} />
     </div>
   );
 };
