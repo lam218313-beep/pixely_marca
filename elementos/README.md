@@ -11,3 +11,6 @@ Piezas gráficas de Pixely (arte de portada, gráficos de datos, marcos de panta
 
 ## Aprobados
 - **01 Arte de portada**: esfera «componiendo» en grises (`componentes/src/arte-orbe.js`; SVG con `node elementos/01/exportar.mjs`). Ya está en la tarjeta y en la portada y el cierre del brochure; la ficha del plan Pro la usa cuando se regenere.
+- **02 Trama de marca**: puntadas (`node elementos/02/exportar.mjs` → `public/elementos/02-puntadas-<tono>.svg`, baldosa sin costuras).
+- **03 Resplandor rosa**: el de la vitrina de pixely.pe, `radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%)` (fondos PNG con `elementos/03/exportar.mjs`).
+- **04 Muesca de sección**: la de pixely.pe tal cual (`--notch` en `pixely_web/src/styles/tokens.css`).

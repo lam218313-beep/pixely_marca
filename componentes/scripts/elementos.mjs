@@ -79,8 +79,11 @@ const bloque = (e, item, marca) => `<div class="pr">
     ${item.reglas ? `<ul class="pr__r">${item.reglas.map((r) => `<li>${r}</li>`).join('')}</ul>` : ''}
     ${DESCARGAS[e.n] ? `<p class="pr__dl">${DESCARGAS[e.n](item)}</p>` : ''}
   </div>`;
+// Inventario: lo que ya existe en Partners, el catálogo, los PDF o la web, con un código para señalarlo.
+const existentes = (e) => `<div class="pr"><div class="pr__h"><span class="pr__l">${e.existentes.length}</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo ${e.existentes[0].cod}) o mándame una captura.</p></div></div>
+    <div class="ex">${e.existentes.map((x) => `<figure class="ex__f${x.ancho ? ' ex__f--ancho' : ''}"><figcaption><span class="ex__c">${x.cod}</span><span><b>${x.nombre}</b>${x.de}</span></figcaption><img src="${x.img}" alt="${x.nombre}" loading="lazy"></figure>`).join('')}</div></div>`;
 const cuerpo = (e) => {
-  const items = e.final ? bloque(e, e.final, '✓') : e.propuestas ? e.propuestas.map((p) => bloque(e, p, p.letra)).join('') : '';
+  const items = e.final ? bloque(e, e.final, '✓') : e.propuestas ? e.propuestas.map((p) => bloque(e, p, p.letra)).join('') : e.existentes ? existentes(e) : '';
   return items ? `<div class="prs">${items}${EXTRA[e.n] ? EXTRA[e.n]() : ''}</div>` : '<div class="el__slot">Aquí van las propuestas cuando se diseñe.</div>';
 };
 
@@ -88,7 +91,7 @@ export const elemNav = `<a class="side__comp side__elem" href="#elementos">Eleme
 
 export const elemHTML = () => {
   const cuenta = Object.fromEntries(ESTADOS.map((s) => [s, datos.elementos.filter((e) => e.estado === s).length]));
-  const tarjeta = (e) => `<article class="el${e.final || e.propuestas ? ' el--ancho' : ''}" id="e-${e.n}">
+  const tarjeta = (e) => `<article class="el${e.final || e.propuestas || e.existentes ? ' el--ancho' : ''}" id="e-${e.n}">
     <header class="el__h"><span class="el__n">${String(e.n).padStart(2, '0')}</span><h3>${e.nombre}</h3><span class="el__st el__st--${clase(e.estado)}">${e.estado}</span></header>
     <p class="el__i">${e.intencion}</p>
     <div class="el__m"><span class="el__p el__p--${e.prioridad}">Prioridad ${e.prioridad}</span>${e.usos.map((u) => `<span class="el__u">${u}</span>`).join('')}</div>
@@ -167,6 +170,13 @@ export const elemCSS = `
 .pr__r{display:grid;gap:4px;margin:14px 0 0;padding-left:18px;list-style:disc;color:var(--text-2);font:600 13px/1.5 Manrope}
 .pr__dl{margin-top:12px;color:var(--text-3);font:700 12px/1.6 Manrope}.pr__dl code{font:600 11px ui-monospace,monospace;color:var(--text-2);word-break:break-all}.pr__a{padding:0;border:0;background:none;color:var(--text-1,#fff);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.pr__a:disabled{opacity:.6}
 .fam{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.fam span{display:grid;justify-items:center;gap:4px;padding:6px;border-radius:12px;color:var(--text-3);font:700 11px Manrope}.fam .is-on{background:var(--raised);color:#fff}
+/* Inventario de lo que ya existe */
+.ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));grid-auto-flow:dense;gap:12px;margin-top:14px;align-items:start}
+.ex__f{position:relative;display:grid;gap:8px;margin:0;padding:10px;border-radius:16px;background:#0A0A0C;border:1px solid var(--edge)}
+.ex__f--ancho{grid-column:span 2}@media (max-width:700px){.ex__f--ancho{grid-column:auto}}
+.ex__f img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain;object-position:top;border-radius:10px}
+.ex__c{flex:none;height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:99px;background:var(--pink);color:#fff;font:800 12px Manrope}
+.ex__f figcaption{display:flex;gap:10px;align-items:flex-start;color:var(--text-3);font:600 12px/1.4 Manrope}.ex__f figcaption b{display:block;color:var(--text-1,#fff);font:700 13px/1.35 Manrope}
 /* 02 trama */
 .pr__g--2{grid-template-columns:1fr .8fr .55fr .8fr}
 .mk--zoom{aspect-ratio:1}.mk--historia{aspect-ratio:9/16}
