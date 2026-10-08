@@ -682,14 +682,14 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 .mk__h{position:absolute;font:700 9cqw/1.05 Unbounded;letter-spacing:-.045em}
 .mk__u{position:absolute;font:800 3cqw Manrope;letter-spacing:.2em;color:#8A8A96}
 .mk__t{position:absolute;height:2.4cqw;border-radius:9px;background:#33333C}.mk__f{position:absolute;border-radius:6px;background:#1F1F26}
-.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta img{left:49%;top:6%;width:80%}
+.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta>img{left:49%;top:6%;width:80%}
 .mk--tarjeta .mk__wm{left:7%;top:10%;font-size:7cqw}.mk--tarjeta .mk__h{left:7%;bottom:21%;font-size:7cqw}.mk--tarjeta .mk__u{left:7%;bottom:10%;font-size:2.6cqw}
-.mk--portada{aspect-ratio:210/297}.mk--portada img{right:-66%;top:3%;width:100%}
+.mk--portada{aspect-ratio:210/297}.mk--portada>img{right:-66%;top:3%;width:100%}
 .mk--portada .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--portada .mk__h{left:7%;top:22%;font-size:11cqw}
 .mk--portada .mk__t{left:7%;top:47%;width:50%}.mk--portada .mk__t--c{top:52%;width:38%}.mk--portada .mk__f{left:7%;right:7%;top:60%;bottom:5%}
-.mk--post{aspect-ratio:4/5}.mk--post img{left:-6%;bottom:-34%;width:112%}
+.mk--post{aspect-ratio:4/5}.mk--post>img{left:-6%;bottom:-34%;width:112%}
 .mk--post .mk__h{left:8%;top:8%;font-size:10cqw}.mk--post .mk__wm{right:8%;top:9%;font-size:6cqw}
-.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-60%;top:2%;width:90%}
+.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro>img{right:-60%;top:2%;width:90%}
 .mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
 .mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
 .pr__r{display:grid;gap:4px;margin:14px 0 0;padding-left:18px;list-style:disc;color:var(--text-2);font:600 13px/1.5 Manrope}
@@ -698,7 +698,7 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 /* Inventario de lo que ya existe */
 .ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));grid-auto-flow:dense;gap:12px;margin-top:14px;align-items:start}
 .ex__f{position:relative;display:grid;gap:8px;margin:0;padding:10px;border-radius:16px;background:#0A0A0C;border:1px solid var(--edge)}
-.ex__f--ancho{grid-column:span 2}@media (max-width:700px){.ex__f--ancho{grid-column:auto}}
+.ex__f--ancho{grid-column:span 2}.ex__f--no img{opacity:.35;filter:grayscale(1)}.ex__f--no .ex__c{background:var(--raised);text-decoration:line-through}.ex__f figcaption em{display:block;margin-top:2px;color:#FF7AB0;font-style:normal;font-weight:700}@media (max-width:700px){.ex__f--ancho{grid-column:auto}}
 .ex__f img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain;object-position:top;border-radius:10px}
 .ex__c{flex:none;height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:99px;background:var(--pink);color:#fff;font:800 12px Manrope}
 .ex__f figcaption{display:flex;gap:10px;align-items:flex-start;color:var(--text-3);font:600 12px/1.4 Manrope}.ex__f figcaption b{display:block;color:var(--text-1,#fff);font:700 13px/1.35 Manrope}
@@ -722,6 +722,104 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
 @media (max-width:1100px){.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:1fr 1fr}}
+
+/* ===== Vistas con capturas (09, 11, 13 a 17) ===== */
+.pr__g--9,.pr__g--11,.pr__g--14,.pr__g--15,.pr__g--16{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
+.pr__g--13{grid-template-columns:.8fr .8fr 1.3fr .8fr!important}.pr__g--17{grid-template-columns:1fr!important}
+@media (max-width:760px){.pr__g--13{grid-template-columns:1fr 1fr!important}}
+.mk__ln{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.mk__full{position:static!important;width:100%;height:100%;object-fit:cover}
+.mk__foto{position:absolute;left:7%;right:7%;bottom:6%;border-radius:2.4cqw;overflow:hidden}.mk__foto img{position:static;width:100%;height:100%;object-fit:cover}
+/* celular */
+.cel{position:absolute;aspect-ratio:412/839}
+.cel__s{position:absolute;inset:0;overflow:hidden;border-radius:13.8%/6.8%;background:#0A0A0C}
+.cel__s img{position:static;display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.cel--vitrina{border-radius:15.8%/7.7%;background:linear-gradient(160deg,#3a3a44,#121216 40%,#26262e);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),0 5cqw 8cqw rgba(0,0,0,.55),0 0 5cqw rgba(235,12,110,.14)}
+.cel--vitrina .cel__s{inset:1.34% 2.7%}
+.cel--vitrina::before{content:'';position:absolute;z-index:3;top:3.1%;left:50%;width:28%;height:3.1%;transform:translateX(-50%);border-radius:99px;background:#000}
+.cel--vitrina .cel__s::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(115deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 28%,transparent 42%);pointer-events:none}
+.cel--plano{border-radius:15.8%/7.7%;background:#0A0A0C;box-shadow:inset 0 0 0 1.5px #3A3A44,0 4cqw 7cqw rgba(0,0,0,.5)}
+.cel--plano .cel__s{inset:1.6% 3.2%}
+.cel--plano::before{content:'';position:absolute;z-index:3;top:2.4%;left:50%;width:4%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:#26262E}
+.cel--flotante .cel__s{box-shadow:0 0 0 1px rgba(255,255,255,.14),0 5cqw 10cqw -1cqw rgba(0,0,0,.75)}
+.mk--claro .cel--plano{box-shadow:inset 0 0 0 1.5px #3A3A44,0 4cqw 7cqw rgba(0,0,0,.25)}.mk--claro .cel--flotante .cel__s{box-shadow:0 0 0 1px rgba(10,10,12,.12),0 4cqw 8cqw -1cqw rgba(0,0,0,.3)}
+/* laptop */
+.lap,.nav{position:absolute}
+.lap__s{aspect-ratio:16/10;border:1.2cqw solid #1b1b20;border-bottom-width:1.7cqw;border-radius:2cqw 2cqw .7cqw .7cqw;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 5cqw 7cqw rgba(0,0,0,.5),0 0 5cqw rgba(235,12,110,.12)}
+.lap__s img,.nav img{position:static;display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.lap__b{height:1.7cqw;margin:0 -7%;border-radius:0 0 2cqw 2cqw;background:linear-gradient(#2a2a32,#121216)}
+.nav{border-radius:1.6cqw;overflow:hidden;background:#16161B;box-shadow:0 0 0 1px #33333C,0 5cqw 8cqw rgba(0,0,0,.5)}
+.nav img{aspect-ratio:16/10}
+.nav__b{display:flex;align-items:center;gap:.7cqw;height:3.6cqw;padding:0 1.4cqw;background:#1F1F26}
+.nav__b i{width:.9cqw;height:.9cqw;border-radius:50%;background:#3A3A44}
+.nav__b span{margin:0 auto;padding:.3cqw 2.4cqw;border-radius:99px;background:#0A0A0C;color:#8A8A96;font:600 1.3cqw Manrope}
+.mk--claro .lap__s,.mk--claro .nav{box-shadow:0 0 0 1px rgba(10,10,12,.1),0 4cqw 7cqw rgba(0,0,0,.18)}
+/* acercamiento */
+.zm__lupa{position:absolute;aspect-ratio:1;border-radius:50%;background-color:#0A0A0C;box-shadow:0 0 0 .35cqw #fff,0 3cqw 6cqw rgba(0,0,0,.55)}
+.zm__src{position:absolute;width:5cqw;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 .25cqw #fff}
+.zm__marco{position:absolute;border-radius:1.2cqw;box-shadow:0 0 0 .25cqw #fff}
+.zm__card{position:absolute;border-radius:1.8cqw;background-color:#0A0A0C;box-shadow:0 0 0 .2cqw rgba(255,255,255,.3),0 3cqw 7cqw rgba(0,0,0,.6)}
+.zm__foco{position:absolute;z-index:3;border-radius:7%/22%;box-shadow:0 0 0 300cqw rgba(10,10,12,.72),0 0 0 .3cqw #EB0C6E}
+.zm__t{position:absolute;display:grid;gap:.8cqw;max-width:23%;color:#fff}.zm__t b{font:700 2.6cqw/1.15 Unbounded;letter-spacing:-.03em}.zm__t span{color:#B4B4BE;font:600 1.7cqw/1.4 Manrope}
+.zm__t--claro{color:#0A0A0C}.zm__t--claro span{color:#55555F}
+.mk[style*="#fff"] .zm__lupa{box-shadow:0 0 0 .35cqw #0A0A0C,0 3cqw 6cqw rgba(0,0,0,.25)}.mk[style*="#fff"] .zm__src,.mk[style*="#fff"] .zm__marco{box-shadow:0 0 0 .25cqw #0A0A0C}
+/* llamadas */
+.ll__p{position:absolute;width:1.3cqw;aspect-ratio:1;border-radius:50%;background:#EB0C6E;transform:translate(-50%,-50%);box-shadow:0 0 0 .6cqw rgba(235,12,110,.3)}
+.ll__e{position:absolute;transform:translateY(-50%);padding:.8cqw 1.4cqw;border-radius:99px;background:#16161B;box-shadow:0 0 0 1px #33333C;color:#fff;font:700 1.5cqw Manrope;white-space:nowrap}
+.ll__e--izq{transform:translate(-100%,-50%)}.ll__e--claro{background:#fff;color:#0A0A0C;box-shadow:0 0 0 1px rgba(10,10,12,.15),0 1cqw 2cqw rgba(0,0,0,.08)}
+.ll__m{position:absolute;border-radius:1.2cqw;box-shadow:0 0 0 .3cqw #EB0C6E}
+.ll__tag{position:absolute;top:-.3cqw;transform:translateY(-100%);padding:.5cqw 1.1cqw;border-radius:.9cqw .9cqw .9cqw 0;background:#EB0C6E;color:#fff;font:800 1.3cqw Manrope;white-space:nowrap}
+.ll__tag--der{left:-.3cqw}.ll__tag--abajo{top:auto;bottom:-.3cqw;transform:translateY(100%);border-radius:0 .9cqw .9cqw .9cqw}.ll__tag--izq.ll__tag--abajo{border-radius:.9cqw 0 .9cqw .9cqw}.ll__tag--izq{right:-.3cqw;border-radius:.9cqw .9cqw 0 .9cqw}
+.ll__c{position:absolute;display:flex;gap:1cqw;align-items:center;transform:translateY(-50%);max-width:26%;padding:1cqw 1.4cqw 1cqw 1cqw;border-radius:1.6cqw;background:#16161B;box-shadow:0 0 0 1px #33333C;color:#B4B4BE;font:600 1.3cqw/1.35 Manrope}
+.ll__c--izq{transform:translate(-100%,-50%)}
+.ll__c i{display:grid;place-items:center;flex:none;width:3.2cqw;height:3.2cqw;border-radius:50%;background:rgba(235,12,110,.18);color:#FF7AB0}.ll__c i svg{width:1.7cqw;height:1.7cqw}
+.ll__c b{display:block;color:#fff;font:800 1.5cqw Manrope}
+.ll__c--claro{background:#fff;color:#55555F;box-shadow:0 0 0 1px rgba(10,10,12,.12)}.ll__c--claro b{color:#0A0A0C}.ll__c--claro i{color:#EB0C6E;background:rgba(235,12,110,.1)}
+/* funciones alrededor */
+.fx__chip{position:absolute;display:flex;align-items:center;gap:.9cqw;transform:translate(-50%,-50%);padding:.8cqw 1.5cqw .8cqw .8cqw;border-radius:99px;background:#16161B;box-shadow:0 0 0 1px #33333C,0 1.5cqw 3cqw rgba(0,0,0,.4);color:#fff;font:700 1.35cqw Manrope;white-space:nowrap}
+.fx__chip i{display:grid;place-items:center;width:2.8cqw;height:2.8cqw;border-radius:50%;background:#EB0C6E}.fx__chip svg{width:1.5cqw;height:1.5cqw}
+.fx__it{position:absolute;display:flex;gap:1.2cqw;align-items:flex-start;width:28%;color:#B4B4BE;font:600 1.3cqw/1.4 Manrope}
+.fx__it--izq{right:63%;flex-direction:row-reverse;text-align:right}.fx__it--der{left:63%}
+.fx__it i{display:grid;place-items:center;flex:none;width:3.6cqw;height:3.6cqw;border-radius:1cqw;background:#1F1F26;box-shadow:0 0 0 1px #33333C;color:#FF7AB0}.fx__it svg{width:1.9cqw;height:1.9cqw}
+.fx__it b{display:block;color:#fff;font:700 1.7cqw/1.2 Unbounded;letter-spacing:-.02em;margin-bottom:.4cqw}
+.fx__pz{position:absolute;display:grid;gap:.8cqw}.fx__pz div{border-radius:1.4cqw;background-color:#0A0A0C;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 2.5cqw 5cqw rgba(0,0,0,.6)}
+.fx__pz b{color:#fff;font:700 1.3cqw Manrope}
+/* 09 volumen */
+.vol{border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);padding:16px;color:#fff;container-type:inline-size}
+.vol__plan{display:block;font:700 15px Unbounded;letter-spacing:-.02em}.vol__plan em{color:#EB0C6E;font-style:normal}.vol__plan span{color:#4A4A55}
+.vol__fila{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin-top:14px}
+.vol__n{grid-row:span 2;font:700 34px/1 Unbounded;letter-spacing:-.05em}.vol__fila--r .vol__n{color:#EB0C6E}
+.vol__l{display:flex;align-items:center;gap:6px;color:#B4B4BE;font:700 12px Manrope}.vol__l svg{width:14px;height:14px}
+.vol__q{display:flex;flex-wrap:wrap;gap:4px}.vol__q i{width:16px;height:16px;border-radius:4px;background:#fff}.vol__fila--r .vol__q i{width:12px;height:20px;background:#EB0C6E}
+.vol__pie{margin-top:12px;color:#8A8A96;font:600 12px Manrope}
+.vol--tabla{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:10px 8px;align-items:center}
+.vol__th{font:700 13px Unbounded;text-align:center}.vol__rl{display:flex;align-items:center;gap:6px;color:#B4B4BE;font:700 12px Manrope}.vol__rl svg{width:14px;height:14px;flex:none}
+.vol__c{font:700 30px/1 Unbounded;letter-spacing:-.05em;text-align:center}.vol__c--r{color:#EB0C6E}.vol__c--s{font-size:20px;color:#B4B4BE}
+.vol__grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;align-items:flex-end}
+.vol__img{width:22px;aspect-ratio:4/5;border-radius:4px;background:#26262E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B4B4BE' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='9' cy='9' r='2'/%3E%3Cpath d='m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21'/%3E%3C/svg%3E") center/12px no-repeat}
+.vol__reel{width:16px;aspect-ratio:9/16;border-radius:4px;background:#EB0C6E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/10px no-repeat}
+/* 11 brecha */
+.br{position:relative;padding:18px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);color:#fff}
+.br__k{display:block;color:#8A8A96;font:800 11px Manrope;letter-spacing:.16em;text-transform:uppercase}
+.br__nota{margin-top:12px;color:#55555F;font:600 11px Manrope}
+.br__eje{position:relative;height:150px;margin:18px 10px 34px;border-bottom:2px solid #33333C}
+.br__eje>span:not(.br__hueco):not(.br__mk){position:absolute;bottom:-22px;transform:translateX(-50%);color:#55555F;font:700 11px Manrope}
+.br__eje>span i{display:block;width:1px;height:6px;margin:0 auto 4px;background:#33333C;transform:translateY(-4px)}
+.br__hueco{position:absolute;bottom:0;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;background:rgba(235,12,110,.18);box-shadow:inset 0 0 0 1.5px #EB0C6E;color:#FF7AB0;font:800 11px Manrope;text-align:center}
+.br__mk{position:absolute;bottom:0;display:grid;justify-items:center;width:120px;transform:translateX(-50%);color:#B4B4BE;font:700 11px/1.3 Manrope;text-align:center}
+.br__mk b{display:grid;place-items:center;width:40px;height:40px;margin-bottom:4px;border-radius:50%;background:#fff;color:#0A0A0C;font:700 16px Unbounded}
+.br__mk{bottom:42px}.br__mk--gris b{background:#4A4A55;color:#fff}
+.br__cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;height:220px;margin-top:16px}
+.br__col{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+.br__col b{color:#B4B4BE;font:700 12px/1.3 Manrope}
+.br__bar{display:block;width:44%;border-radius:10px 10px 4px 4px;background:#fff}.br__bar--gris{background:#4A4A55}
+.br__llave{position:absolute;left:48%;width:14px;border:2px solid #EB0C6E;border-left:0;border-radius:0 8px 8px 0;margin-bottom:28px}
+.br__llave em{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:#FF7AB0;font:800 12px Manrope;font-style:normal;white-space:nowrap}
+.br--antes{display:grid;grid-template-columns:1fr 1fr;gap:14px}.br--antes .br__nota{grid-column:1/-1;margin-top:0}
+.br__lado{display:grid;gap:8px}.br__lado b{color:#B4B4BE;font:700 12px/1.3 Manrope}
+.br__foto{aspect-ratio:1/.9;border-radius:12px;background-color:#16161B}
+.br__et{justify-self:start;padding:3px 9px;border-radius:99px;background:#26262E;color:#B4B4BE;font:800 11px Manrope}.br__et--pk{background:#EB0C6E;color:#fff}
+.br__med{display:block;height:8px;border-radius:99px;background:#26262E}.br__med i{display:block;height:100%;border-radius:99px;background:#4A4A55}.br__med i.pk{background:#EB0C6E}
 
 </style>
 <div class="app">
@@ -3270,7 +3368,7 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <li><b>Aprobado</b><span>Recién ahí puede usarse.</span></li>
     <li><b>Página por página</b><span>Con todos los elementos listos, cada documento se arma y se aprueba página por página.</span></li>
   </ol>
-  <div class="top__s"><span><b>18</b> por diseñar</span><span><b>13</b> en diseño</span><span><b>4</b> aprobado</span><span><b>0</b> rechazado</span></div>
+  <div class="top__s"><span><b>13</b> por diseñar</span><span><b>18</b> en diseño</span><span><b>4</b> aprobado</span><span><b>0</b> rechazado</span></div>
 </header>
 <section class="kblk"><header class="kblk__h"><h2>Arte de fondo y portadas</h2><p>Lo que da identidad y llena el espacio sin texto.</p></header><div class="els"><article class="el el--ancho" id="e-1">
     <header class="el__h"><span class="el__n">01</span><h3>Arte de portada «lectura del mercado»</h3><span class="el__st el__st--ok">Aprobado</span></header>
@@ -3342,9 +3440,42 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <header class="el__h"><span class="el__n">09</span><h3>Cuadros de volumen</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Cuántas piezas trae cada plan, de un vistazo (un cuadro por pieza, rosa los reels).</p>
     <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Planes</span><span class="el__u">Brochure</span><span class="el__u">Web</span></div>
-    <p class="el__hist">8 oct: inventario de lo que ya tenemos en Partners, el catálogo, los PDF y la web.</p>
-    <div class="prs"><div class="pr"><div class="pr__h"><span class="pr__l">2</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo 09-A) o mándame una captura.</p></div></div>
-    <div class="ex"><figure class="ex__f ex__f--ancho"><figcaption><span class="ex__c">09-A</span><span><b>Tu contenido al mes · un cuadro por pieza</b>Fichas de planes (en obra) · Lite, Basic y Pro</span></figcaption><img src="elementos/existentes/09-a.webp" alt="Tu contenido al mes · un cuadro por pieza" loading="lazy"></figure><figure class="ex__f ex__f--ancho"><figcaption><span class="ex__c">09-B</span><span><b>Por formato</b>Partners escritorio · Planificación</span></figcaption><img src="elementos/existentes/09-b.webp" alt="Por formato" loading="lazy"></figure></div></div></div></article><article class="el el--ancho" id="e-10">
+    <p class="el__hist">8 oct: 09-A descartado (no se leían las cantidades de imágenes ni de reels). Nuevas propuestas.</p>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Filas con cifra grande</h4><p>Cada plan muestra su número de imágenes y de reels en grande, con un cuadro por pieza al lado (blancos las imágenes, rosas y verticales los reels).</p></div></div>
+    <div class="pr__g pr__g--9"><figure><div class="vol vol--filas">
+      <b class="vol__plan">Plan Lite</b>
+      <div class="vol__fila"><span class="vol__n">6</span><span class="vol__l"><svg data-i="image" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg> imágenes y carruseles</span><span class="vol__q"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="vol__fila vol__fila--r"><span class="vol__n">2</span><span class="vol__l"><svg data-i="play" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 14 9-14 9z"/></svg> reels</span><span class="vol__q"><i></i><i></i></span></div>
+      <p class="vol__pie">Publicado en 2 redes · 8 piezas al mes</p></div><figcaption>Plan Lite</figcaption></figure><figure><div class="vol vol--filas">
+      <b class="vol__plan">Plan Basic</b>
+      <div class="vol__fila"><span class="vol__n">8</span><span class="vol__l"><svg data-i="image" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg> imágenes y carruseles</span><span class="vol__q"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="vol__fila vol__fila--r"><span class="vol__n">4</span><span class="vol__l"><svg data-i="play" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 14 9-14 9z"/></svg> reels</span><span class="vol__q"><i></i><i></i><i></i><i></i></span></div>
+      <p class="vol__pie">Publicado en 3 redes · 12 piezas al mes</p></div><figcaption>Plan Basic</figcaption></figure><figure><div class="vol vol--filas">
+      <b class="vol__plan">Plan Pro</b>
+      <div class="vol__fila"><span class="vol__n">12</span><span class="vol__l"><svg data-i="image" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg> imágenes y carruseles</span><span class="vol__q"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="vol__fila vol__fila--r"><span class="vol__n">8</span><span class="vol__l"><svg data-i="play" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 14 9-14 9z"/></svg> reels</span><span class="vol__q"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <p class="vol__pie">Publicado en 5 redes · 20 piezas al mes</p></div><figcaption>Plan Pro</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Tabla de cifras</h4><p>Los tres planes lado a lado: cuántas imágenes, cuántos reels y en cuántas redes. Se compara de un vistazo.</p></div></div>
+    <div class="pr__g pr__g--9"><figure><div class="vol vol--tabla"><span></span><b class="vol__th">Lite</b><b class="vol__th">Basic</b><b class="vol__th">Pro</b>
+      <span class="vol__rl"><svg data-i="image" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg> Imágenes y carruseles</span><b class="vol__c">6</b><b class="vol__c">8</b><b class="vol__c">12</b>
+      <span class="vol__rl vol__rl--r"><svg data-i="play" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 14 9-14 9z"/></svg> Reels</span><b class="vol__c vol__c--r">2</b><b class="vol__c vol__c--r">4</b><b class="vol__c vol__c--r">8</b>
+      <span class="vol__rl"><svg data-i="share" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg> Redes</span><b class="vol__c vol__c--s">2</b><b class="vol__c vol__c--s">3</b><b class="vol__c vol__c--s">5</b></div><figcaption>Los tres planes</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Miniaturas de piezas</h4><p>Cada pieza es una miniatura: cuadros con ícono de imagen y reels verticales rosas con «play». Arriba, la cantidad escrita.</p></div></div>
+    <div class="pr__g pr__g--9"><figure><div class="vol vol--mini"><b class="vol__plan">6 imágenes <span>·</span> <em>2 reels</em></b>
+      <div class="vol__grid"><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__reel"></i><i class="vol__reel"></i></div><p class="vol__pie">Plan Lite · cada cuadro es una pieza del mes</p></div><figcaption>Plan Lite</figcaption></figure><figure><div class="vol vol--mini"><b class="vol__plan">8 imágenes <span>·</span> <em>4 reels</em></b>
+      <div class="vol__grid"><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i></div><p class="vol__pie">Plan Basic · cada cuadro es una pieza del mes</p></div><figcaption>Plan Basic</figcaption></figure><figure><div class="vol vol--mini"><b class="vol__plan">12 imágenes <span>·</span> <em>8 reels</em></b>
+      <div class="vol__grid"><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__img"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i><i class="vol__reel"></i></div><p class="vol__pie">Plan Pro · cada cuadro es una pieza del mes</p></div><figcaption>Plan Pro</figcaption></figure></div>
+    
+    
+  </div><div class="pr"><div class="pr__h"><span class="pr__l">2</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo 09-A) o mándame una captura.</p></div></div>
+    <div class="ex"><figure class="ex__f ex__f--ancho ex__f--no"><figcaption><span class="ex__c">09-A</span><span><b>Tu contenido al mes · un cuadro por pieza</b>Fichas de planes (en obra) · Lite, Basic y Pro<em>Descartado: no se leen las cantidades de imágenes ni de reels</em></span></figcaption><img src="elementos/existentes/09-a.webp" alt="Tu contenido al mes · un cuadro por pieza" loading="lazy"></figure><figure class="ex__f ex__f--ancho"><figcaption><span class="ex__c">09-B</span><span><b>Por formato</b>Partners escritorio · Planificación</span></figcaption><img src="elementos/existentes/09-b.webp" alt="Por formato" loading="lazy"></figure></div></div></div></article><article class="el el--ancho" id="e-10">
     <header class="el__h"><span class="el__n">10</span><h3>Antes y después de tiempo</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Horas por tu cuenta frente a minutos con Pixely.</p>
     <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
@@ -3354,9 +3485,33 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <header class="el__h"><span class="el__n">11</span><h3>La brecha</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">La distancia entre lo bueno que es el producto y lo que comunican sus fotos.</p>
     <div class="el__m"><span class="el__p el__p--3">Prioridad 3</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
-    <p class="el__hist">8 oct: inventario de lo que ya tenemos en Partners, el catálogo, los PDF y la web.</p>
-    <div class="prs"><div class="pr"><div class="pr__h"><span class="pr__l">1</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo 11-A) o mándame una captura.</p></div></div>
-    <div class="ex"><figure class="ex__f ex__f--ancho"><figcaption><span class="ex__c">11-A</span><span><b>La brecha que cerramos</b>Brochure · página 7</span></figcaption><img src="elementos/existentes/11-a.webp" alt="La brecha que cerramos" loading="lazy"></figure></div></div></div></article><article class="el el--ancho" id="e-12">
+    <p class="el__hist">8 oct: 11-A descartado. Nuevas propuestas.</p>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Escala de 0 a 10</h4><p>Tu producto en 9, tus fotos en 4, y entre ambos la brecha marcada en rosa: «aquí entra Pixely».</p></div></div>
+    <div class="pr__g pr__g--11"><figure><div class="br br--escala"><b class="br__k">La brecha que cerramos</b>
+      <div class="br__eje"><span style="left:0%"><i></i>0</span><span style="left:10%"><i></i>1</span><span style="left:20%"><i></i>2</span><span style="left:30%"><i></i>3</span><span style="left:40%"><i></i>4</span><span style="left:50%"><i></i>5</span><span style="left:60%"><i></i>6</span><span style="left:70%"><i></i>7</span><span style="left:80%"><i></i>8</span><span style="left:90%"><i></i>9</span><span style="left:100%"><i></i>10</span>
+        <span class="br__hueco" style="left:40%;width:50%">La brecha · aquí entra Pixely</span>
+        <span class="br__mk br__mk--gris" style="left:40%"><b>4</b>Lo que comunican tus fotos</span>
+        <span class="br__mk" style="left:90%"><b>9</b>Lo bueno que es tu producto</span></div>
+      <p class="br__nota">Ejemplo ilustrativo.</p></div><figcaption>Página negra</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Dos barras y una llave</h4><p>Una barra alta (tu producto) y una baja (tus fotos); una llave rosa marca la diferencia.</p></div></div>
+    <div class="pr__g pr__g--11"><figure><div class="br br--escalones"><b class="br__k">La brecha que cerramos</b>
+      <div class="br__cols"><div class="br__col"><span class="br__bar" style="height:92%"></span><b>Lo bueno que es tu producto</b></div>
+        <div class="br__col"><span class="br__bar br__bar--gris" style="height:38%"></span><span class="br__llave" style="bottom:38%;height:54%"><em>La brecha</em></span><b>Lo que comunican tus fotos</b></div></div>
+      <p class="br__nota">Pixely cierra la diferencia con piezas hechas para tu negocio. Ejemplo ilustrativo.</p></div><figcaption>Página negra</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Hoy y con Pixely</h4><p>La misma foto apagada y luego bien hecha, cada una con su medidor. Se entiende sin leer.</p></div></div>
+    <div class="pr__g pr__g--11"><figure><div class="br br--antes"><div class="br__lado"><span class="br__et">Hoy</span><div class="br__foto" style="background-image:url(capturas/m-validar.webp);background-size:116.3% auto;background-position:50.0% 27.4%;filter:grayscale(.7) brightness(.55) contrast(.8) blur(1.2px)"></div><span class="br__med"><i style="width:40%"></i></span><b>Lo que comunican tus fotos</b></div>
+      <div class="br__lado"><span class="br__et br__et--pk">Con Pixely</span><div class="br__foto" style="background-image:url(capturas/m-validar.webp);background-size:116.3% auto;background-position:50.0% 27.4%;"></div><span class="br__med"><i class="pk" style="width:90%"></i></span><b>Lo bueno que es tu producto, a la vista</b></div><p class="br__nota">Ejemplo ilustrativo.</p></div><figcaption>Página negra</figcaption></figure></div>
+    
+    
+  </div><div class="pr"><div class="pr__h"><span class="pr__l">1</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo 11-A) o mándame una captura.</p></div></div>
+    <div class="ex"><figure class="ex__f ex__f--ancho ex__f--no"><figcaption><span class="ex__c">11-A</span><span><b>La brecha que cerramos</b>Brochure · página 7<em>Descartado: rediseñar</em></span></figcaption><img src="elementos/existentes/11-a.webp" alt="La brecha que cerramos" loading="lazy"></figure></div></div></div></article><article class="el el--ancho" id="e-12">
     <header class="el__h"><span class="el__n">12</span><h3>Cadena de una pieza</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Objetivo → estrategia → dato de tu mercado → tu pieza.</p>
     <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Redes</span></div>
@@ -3393,32 +3548,123 @@ svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-l
     <p class="el__hist">8 oct: agregado al inventario porque ya existe en Partners o en el catálogo.</p>
     <div class="prs"><div class="pr"><div class="pr__h"><span class="pr__l">1</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo 35-A) o mándame una captura.</p></div></div>
     <div class="ex"><figure class="ex__f ex__f--ancho"><figcaption><span class="ex__c">35-A</span><span><b>Tabla de datos</b>Catálogo de componentes (propuesto, no está en la app)</span></figcaption><img src="elementos/existentes/35-a.webp" alt="Tabla de datos" loading="lazy"></figure></div></div></div></article></div></section>
-<section class="kblk"><header class="kblk__h"><h2>Pantallas y dispositivos</h2><p>Cómo se muestra la app: marcos, acercamientos y llamadas.</p></header><div class="els"><article class="el" id="e-13">
-    <header class="el__h"><span class="el__n">13</span><h3>Celular con pantalla</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+<section class="kblk"><header class="kblk__h"><h2>Pantallas y dispositivos</h2><p>Cómo se muestra la app: marcos, acercamientos y llamadas.</p></header><div class="els"><article class="el el--ancho" id="e-13">
+    <header class="el__h"><span class="el__n">13</span><h3>Celular con pantalla</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">El marco único para mostrar la app en cualquier documento o video.</p>
     <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span><span class="el__u">Reel</span><span class="el__u">Redes</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-14">
-    <header class="el__h"><span class="el__n">14</span><h3>Laptop con pantalla</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Vitrina (el de pixely.pe)</h4><p>El marco que ya usa la web: borde metálico oscuro, isla de cámara, un reflejo suave en el vidrio y el brillo rosa detrás. El más «producto».</p></div></div>
+    <div class="pr__g pr__g--13"><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:29%;top:12%;width:42%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div></div><figcaption>Grande, fondo negro</figcaption></figure><figure><div class="mk mk--claro"><div class="cel cel--vitrina" style="left:28%;top:16%;width:44%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div></div><figcaption>Página blanca</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:9%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><div class="cel cel--vitrina" style="left:38%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><div class="cel cel--vitrina" style="left:67%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-resultado.webp" alt="" loading="lazy"></div></div></div><figcaption>Tres en fila · manual</figcaption></figure><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:28%;top:11%;width:44%;transform:perspective(80cqw) rotateY(-24deg) rotateX(8deg) rotateZ(3deg)"><div class="cel__s"><img src="capturas/m-pieza.webp" alt="" loading="lazy"></div></div></div><figcaption>Inclinado · video y redes</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Plano negro</h4><p>Un borde negro liso con un filo gris y una cámara puntual. Sin reflejos: se imprime limpio y no compite con la pantalla.</p></div></div>
+    <div class="pr__g pr__g--13"><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--plano" style="left:29%;top:12%;width:42%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div></div><figcaption>Grande, fondo negro</figcaption></figure><figure><div class="mk mk--claro"><div class="cel cel--plano" style="left:28%;top:16%;width:44%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div></div><figcaption>Página blanca</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--plano" style="left:9%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><div class="cel cel--plano" style="left:38%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><div class="cel cel--plano" style="left:67%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-resultado.webp" alt="" loading="lazy"></div></div></div><figcaption>Tres en fila · manual</figcaption></figure><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--plano" style="left:28%;top:11%;width:44%;transform:perspective(80cqw) rotateY(-24deg) rotateX(8deg) rotateZ(3deg)"><div class="cel__s"><img src="capturas/m-pieza.webp" alt="" loading="lazy"></div></div></div><figcaption>Inclinado · video y redes</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Pantalla flotante</h4><p>Sin marco: solo la pantalla con sus esquinas y una sombra profunda. Moderno y liviano, ideal en tamaños chicos.</p></div></div>
+    <div class="pr__g pr__g--13"><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--flotante" style="left:29%;top:12%;width:42%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div></div><figcaption>Grande, fondo negro</figcaption></figure><figure><div class="mk mk--claro"><div class="cel cel--flotante" style="left:28%;top:16%;width:44%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div></div><figcaption>Página blanca</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--flotante" style="left:9%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><div class="cel cel--flotante" style="left:38%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><div class="cel cel--flotante" style="left:67%;top:9%;width:24%"><div class="cel__s"><img src="capturas/m-resultado.webp" alt="" loading="lazy"></div></div></div><figcaption>Tres en fila · manual</figcaption></figure><figure><div class="mk" style="aspect-ratio:4/5;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--flotante" style="left:28%;top:11%;width:44%;transform:perspective(80cqw) rotateY(-24deg) rotateX(8deg) rotateZ(3deg)"><div class="cel__s"><img src="capturas/m-pieza.webp" alt="" loading="lazy"></div></div></div><figcaption>Inclinado · video y redes</figcaption></figure></div>
+    
+    
+  </div></div></article><article class="el el--ancho" id="e-14">
+    <header class="el__h"><span class="el__n">14</span><h3>Laptop con pantalla</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">La versión de computadora de Partners en una escena real.</p>
     <div class="el__m"><span class="el__p el__p--2">Prioridad 2</span><span class="el__u">Brochure</span><span class="el__u">Manual</span><span class="el__u">Web</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-15">
-    <header class="el__h"><span class="el__n">15</span><h3>Acercamiento de un detalle</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Escena real</h4><p>La foto de una laptop en un escritorio con la pantalla de Partners puesta adentro (la del brochure). La más cálida y creíble.</p></div></div>
+    <div class="pr__g pr__g--14"><figure><div class="mk" style="aspect-ratio:1400/676"><img class="mk__full" src="capturas/escena-laptop.webp" alt="" loading="lazy"></div><figcaption>La escena real</figcaption></figure><figure><div class="mk mk--portada"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">También en<br>tu compu<i>.</i></b><div class="mk__foto" style="top:42%"><img src="capturas/escena-laptop.webp" alt="" loading="lazy"></div></div><figcaption>En una página</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Laptop dibujada (el de pixely.pe)</h4><p>La laptop de la web: marco oscuro, base y brillo rosa. Va sobre cualquier fondo y combina con el celular «vitrina».</p></div></div>
+    <div class="pr__g pr__g--14"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="lap" style="left:12%;top:12%;width:76%"><div class="lap__s"><img src="capturas/d-mercado.webp" alt="" loading="lazy"></div><div class="lap__b"></div></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk mk--claro"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Planificación<i>.</i></b><div class="lap" style="left:7%;top:36%;width:86%"><div class="lap__s"><img src="capturas/d-planificacion.webp" alt="" loading="lazy"></div><div class="lap__b"></div></div></div><figcaption>Página blanca</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Ventana de navegador</h4><p>Solo la ventana con la dirección partners.pixely.pe. La más plana y clara para explicar pantallas en el manual.</p></div></div>
+    <div class="pr__g pr__g--14"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="nav" style="left:12%;top:12%;width:76%"><div class="nav__b"><i></i><i></i><i></i><span>partners.pixely.pe</span></div><img src="capturas/d-mercado.webp" alt="" loading="lazy"></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk mk--claro"><span class="mk__wm">pixely<b>.</b></span><b class="mk__h mk__h--s">Planificación<i>.</i></b><div class="nav" style="left:7%;top:36%;width:86%"><div class="nav__b"><i></i><i></i><i></i><span>partners.pixely.pe</span></div><img src="capturas/d-planificacion.webp" alt="" loading="lazy"></div></div><figcaption>Página blanca</figcaption></figure></div>
+    
+    
+  </div></div></article><article class="el el--ancho" id="e-15">
+    <header class="el__h"><span class="el__n">15</span><h3>Acercamiento de un detalle</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Ampliar una parte de la pantalla (un botón, una tarjeta) con el texto al lado.</p>
     <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Reel</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-16">
-    <header class="el__h"><span class="el__n">16</span><h3>Llamada sin números</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Lupa</h4><p>Un círculo agranda el detalle y una línea fina lo une al lugar exacto del celular; el texto va al lado.</p></div></div>
+    <div class="pr__g pr__g--15"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><span class="zm__src" style="left:18.33%;top:33.62%;"></span>
+        <div class="zm__lupa" style="left:44%;top:14%;width:28%;background-image:url(capturas/m-inicio.webp);background-size:238.1% auto;background-position:15.5% 24.4%"></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="18.32676" y1="33.621537869473684" x2="44" y2="36.4" stroke="rgba(255,255,255,.55)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><div class="zm__t" style="left:75.00%;top:28.00%;"><b>Revisar ahora</b><span>Un toque y ves las piezas que esperan tu visto bueno.</span></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><span class="zm__src" style="left:18.33%;top:33.62%;"></span>
+        <div class="zm__lupa" style="left:44%;top:14%;width:28%;background-image:url(capturas/m-inicio.webp);background-size:238.1% auto;background-position:15.5% 24.4%"></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="18.32676" y1="33.621537869473684" x2="44" y2="36.4" stroke="rgba(10,10,12,.45)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><div class="zm__t zm__t--claro" style="left:75.00%;top:28.00%;"><b>Revisar ahora</b><span>Un toque y ves las piezas que esperan tu visto bueno.</span></div></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>La tarjeta sale de la pantalla</h4><p>La parte que importa se despega del celular en grande, unida por dos líneas, con el texto debajo.</p></div></div>
+    <div class="pr__g pr__g--15"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><span class="zm__marco" style="left:11.86%;top:19.36%;width:22.283975999999996%;height:18.71498106947368%"></span>
+        <svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="34.141988" y1="19.35857872842105" x2="90" y2="18" stroke="rgba(255,255,255,.55)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="34.141988" y1="38.07355979789473" x2="90" y2="53.904" stroke="rgba(255,255,255,.55)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+        <div class="zm__card" style="left:46.00%;top:18.00%;width:44%;height:35.904%;background-image:url(capturas/m-inicio.webp);background-size:110.4% auto;background-position:50.0% 16.0%"></div>
+        <div class="zm__t" style="left:46.00%;top:58.90%;width:40%"><b>Te toca a ti</b><span>Lo primero que ves al entrar: cuántas piezas esperan tu visto bueno.</span></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><span class="zm__marco" style="left:11.86%;top:19.36%;width:22.283975999999996%;height:18.71498106947368%"></span>
+        <svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="34.141988" y1="19.35857872842105" x2="90" y2="18" stroke="rgba(10,10,12,.45)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="34.141988" y1="38.07355979789473" x2="90" y2="53.904" stroke="rgba(10,10,12,.45)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+        <div class="zm__card" style="left:46.00%;top:18.00%;width:44%;height:35.904%;background-image:url(capturas/m-inicio.webp);background-size:110.4% auto;background-position:50.0% 16.0%"></div>
+        <div class="zm__t zm__t--claro" style="left:46.00%;top:58.90%;width:40%"><b>Te toca a ti</b><span>Lo primero que ves al entrar: cuántas piezas esperan tu visto bueno.</span></div></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Foco y detalle al lado</h4><p>La pantalla se oscurece menos esa parte, que se ve grande al lado con su explicación. Sin líneas.</p></div></div>
+    <div class="pr__g pr__g--15"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"><span class="zm__foco" style="left:4.7%;top:12.4%;width:90.6%;height:22.7%"></span></div></div>
+      <div class="zm__card" style="left:44.00%;top:16.00%;width:46%;height:37.536%;background-image:url(capturas/m-inicio.webp);background-size:110.4% auto;background-position:50.0% 16.0%"></div>
+      <div class="zm__t" style="left:44.00%;top:62.00%;width:44%"><b>Te toca a ti</b><span>Lo primero que ves al entrar: cuántas piezas esperan tu visto bueno.</span></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:10%;top:8%;width:26%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"><span class="zm__foco" style="left:4.7%;top:12.4%;width:90.6%;height:22.7%"></span></div></div>
+      <div class="zm__card" style="left:44.00%;top:16.00%;width:46%;height:37.536%;background-image:url(capturas/m-inicio.webp);background-size:110.4% auto;background-position:50.0% 16.0%"></div>
+      <div class="zm__t zm__t--claro" style="left:44.00%;top:62.00%;width:44%"><b>Te toca a ti</b><span>Lo primero que ves al entrar: cuántas piezas esperan tu visto bueno.</span></div></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div></div></article><article class="el el--ancho" id="e-16">
+    <header class="el__h"><span class="el__n">16</span><h3>Llamada sin números</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">Señalar una parte de la pantalla con una línea y una etiqueta corta, sin números rosados.</p>
     <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article><article class="el" id="e-17">
-    <header class="el__h"><span class="el__n">17</span><h3>Pantalla con funciones alrededor</h3><span class="el__st el__st--pend">Por diseñar</span></header>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Punto, línea y etiqueta</h4><p>Un punto rosa sobre el botón, una línea fina hacia afuera y una etiqueta corta. Lo más simple.</p></div></div>
+    <div class="pr__g pr__g--16"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="57.13284" y1="23.387714610526313" x2="70" y2="23.387714610526313" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="55.238948" y1="75.24552559157893" x2="70" y2="75.24552559157893" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="45.597316" y1="75.24552559157893" x2="30" y2="75.24552559157893" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><span class="ll__p" style="left:57.13%;top:23.39%;"></span><span class="ll__e ll__e--der" style="left:70.00%;top:23.39%;">Cuándo sale</span><span class="ll__p" style="left:55.24%;top:75.25%;"></span><span class="ll__e ll__e--der" style="left:70.00%;top:75.25%;">Aprobar</span><span class="ll__p" style="left:45.60%;top:75.25%;"></span><span class="ll__e ll__e--izq" style="left:30.00%;top:75.25%;">Pedir cambios</span></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="57.13284" y1="23.387714610526313" x2="70" y2="23.387714610526313" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="55.238948" y1="75.24552559157893" x2="70" y2="75.24552559157893" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><line x1="45.597316" y1="75.24552559157893" x2="30" y2="75.24552559157893" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><span class="ll__p" style="left:57.13%;top:23.39%;"></span><span class="ll__e ll__e--claro ll__e--der" style="left:70.00%;top:23.39%;">Cuándo sale</span><span class="ll__p" style="left:55.24%;top:75.25%;"></span><span class="ll__e ll__e--claro ll__e--der" style="left:70.00%;top:75.25%;">Aprobar</span><span class="ll__p" style="left:45.60%;top:75.25%;"></span><span class="ll__e ll__e--claro ll__e--izq" style="left:30.00%;top:75.25%;">Pedir cambios</span></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Marco y etiqueta pegada</h4><p>Un marco rosa alrededor de la parte y una etiqueta pegada a su esquina. Sin líneas.</p></div></div>
+    <div class="pr__g pr__g--16"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><span class="ll__m" style="left:53.43%;top:22.09%;width:7.4%;height:2.6%"><b class="ll__tag ll__tag--der">Cuándo sale</b></span><span class="ll__m" style="left:52.44%;top:70.75%;width:5.6%;height:9%"><b class="ll__tag ll__tag--der ll__tag--abajo">Aprobar</b></span><span class="ll__m" style="left:43.30%;top:71.55%;width:4.6%;height:7.4%"><b class="ll__tag ll__tag--izq ll__tag--abajo">Pedir cambios</b></span></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><span class="ll__m" style="left:53.43%;top:22.09%;width:7.4%;height:2.6%"><b class="ll__tag ll__tag--der">Cuándo sale</b></span><span class="ll__m" style="left:52.44%;top:70.75%;width:5.6%;height:9%"><b class="ll__tag ll__tag--der ll__tag--abajo">Aprobar</b></span><span class="ll__m" style="left:43.30%;top:71.55%;width:4.6%;height:7.4%"><b class="ll__tag ll__tag--izq ll__tag--abajo">Pedir cambios</b></span></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Línea en codo con ícono</h4><p>Línea que dobla hacia una tarjetita con ícono, título y una línea de explicación. Para el manual.</p></div></div>
+    <div class="pr__g pr__g--16"><figure><div class="mk" style="aspect-ratio:16/10;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="57.13284,23.387714610526313 61.13284,23.387714610526313 61.13284,22 70,22" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><polyline points="55.238948,75.24552559157893 59.238948,75.24552559157893 59.238948,74 70,74" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><polyline points="45.597316,75.24552559157893 41.597316,75.24552559157893 41.597316,74 30,74" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><span class="ll__p" style="left:57.13%;top:23.39%;"></span><div class="ll__c ll__c--der" style="left:70.00%;top:22.00%;"><i><svg data-i="clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></i><span><b>Cuándo sale</b>La fecha en que se publica.</span></div><span class="ll__p" style="left:55.24%;top:75.25%;"></span><div class="ll__c ll__c--der" style="left:70.00%;top:74.00%;"><i><svg data-i="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i><span><b>Aprobar</b>Un toque y la pieza queda lista.</span></div><span class="ll__p" style="left:45.60%;top:75.25%;"></span><div class="ll__c ll__c--izq" style="left:30.00%;top:74.00%;"><i><svg data-i="pen-line" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i><span><b>Pedir cambios</b>Escribes qué ajustar.</span></div></div><figcaption>Fondo negro</figcaption></figure><figure><div class="mk" style="aspect-ratio:16/10;background:#fff;color:#0A0A0C"><div class="cel cel--vitrina" style="left:37%;top:7%;width:26%"><div class="cel__s"><img src="capturas/m-validar.webp" alt="" loading="lazy"></div></div><svg class="mk__ln" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="57.13284,23.387714610526313 61.13284,23.387714610526313 61.13284,22 70,22" fill="none" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><polyline points="55.238948,75.24552559157893 59.238948,75.24552559157893 59.238948,74 70,74" fill="none" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><polyline points="45.597316,75.24552559157893 41.597316,75.24552559157893 41.597316,74 30,74" fill="none" stroke="rgba(10,10,12,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg><span class="ll__p" style="left:57.13%;top:23.39%;"></span><div class="ll__c ll__c--claro ll__c--der" style="left:70.00%;top:22.00%;"><i><svg data-i="clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></i><span><b>Cuándo sale</b>La fecha en que se publica.</span></div><span class="ll__p" style="left:55.24%;top:75.25%;"></span><div class="ll__c ll__c--claro ll__c--der" style="left:70.00%;top:74.00%;"><i><svg data-i="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i><span><b>Aprobar</b>Un toque y la pieza queda lista.</span></div><span class="ll__p" style="left:45.60%;top:75.25%;"></span><div class="ll__c ll__c--claro ll__c--izq" style="left:30.00%;top:74.00%;"><i><svg data-i="pen-line" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i><span><b>Pedir cambios</b>Escribes qué ajustar.</span></div></div><figcaption>Página blanca · manual</figcaption></figure></div>
+    
+    
+  </div></div></article><article class="el el--ancho" id="e-17">
+    <header class="el__h"><span class="el__n">17</span><h3>Pantalla con funciones alrededor</h3><span class="el__st el__st--prog">En diseño</span></header>
     <p class="el__i">La app al centro y sus funciones ordenadas alrededor, como imagen principal.</p>
     <div class="el__m"><span class="el__p el__p--1">Prioridad 1</span><span class="el__u">Manual</span><span class="el__u">Brochure</span><span class="el__u">Redes</span></div>
     
-    <div class="el__slot">Aquí van las propuestas cuando se diseñe.</div></article></div></section>
+    <div class="prs"><div class="pr">
+    <div class="pr__h"><span class="pr__l">A</span><div><h4>Funciones alrededor</h4><p>El celular al centro y seis funciones en etiquetas a su alrededor, sobre la trama y el resplandor.</p></div></div>
+    <div class="pr__g pr__g--17"><figure><div class="mk" style="aspect-ratio:16/9;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:41%;top:8%;width:18%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><span class="fx__chip" style="left:23.00%;top:20.00%;"><i><svg data-i="bell" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 21a2 2 0 0 0 3.4 0"/><path d="M3.3 15.3A1 1 0 0 0 4 17h16a1 1 0 0 0 .7-1.7C19.4 14 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.4 6-2.7 7.3"/></svg></i>Te avisa qué revisar</span><span class="fx__chip" style="left:77.00%;top:20.00%;"><i><svg data-i="calendar-days" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></i>Tu plan del mes</span><span class="fx__chip" style="left:15.00%;top:47.00%;"><i><svg data-i="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Apruebas con un toque</span><span class="fx__chip" style="left:85.00%;top:47.00%;"><i><svg data-i="chart" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></i>Ves cómo le fue</span><span class="fx__chip" style="left:23.00%;top:74.00%;"><i><svg data-i="search" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></i>Tu mercado</span><span class="fx__chip" style="left:77.00%;top:74.00%;"><i><svg data-i="message" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></i>Tu voz de marca</span></div><figcaption>Imagen principal</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">B</span><div><h4>Dos columnas</h4><p>Tres funciones a cada lado con ícono, título y una línea. Ordenado y fácil de leer.</p></div></div>
+    <div class="pr__g pr__g--17"><figure><div class="mk" style="aspect-ratio:16/9;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:41%;top:8%;width:18%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div><div class="fx__it fx__it--izq" style="top:18%"><i><svg data-i="bell" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 21a2 2 0 0 0 3.4 0"/><path d="M3.3 15.3A1 1 0 0 0 4 17h16a1 1 0 0 0 .7-1.7C19.4 14 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.4 6-2.7 7.3"/></svg></i><span><b>Te avisa qué revisar</b>Las piezas que esperan tu visto bueno.</span></div><div class="fx__it fx__it--izq" style="top:42%"><i><svg data-i="calendar-days" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></i><span><b>Tu plan del mes</b>Qué sale, cuándo y por qué.</span></div><div class="fx__it fx__it--izq" style="top:66%"><i><svg data-i="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i><span><b>Apruebas con un toque</b>O pides cambios por escrito.</span></div><div class="fx__it fx__it--der" style="top:18%"><i><svg data-i="chart" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></i><span><b>Ves cómo le fue</b>Cada pieza frente a tu promedio.</span></div><div class="fx__it fx__it--der" style="top:42%"><i><svg data-i="search" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></i><span><b>Tu mercado</b>Lo que hace tu competencia.</span></div><div class="fx__it fx__it--der" style="top:66%"><i><svg data-i="message" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></i><span><b>Tu voz de marca</b>Cómo habla tu negocio.</span></div></div><figcaption>Imagen principal</figcaption></figure></div>
+    
+    
+  </div><div class="pr">
+    <div class="pr__h"><span class="pr__l">C</span><div><h4>Piezas que salen de la app</h4><p>Partes reales de la app flotan alrededor del celular (el aviso, los botones, los resultados) con una etiqueta cada una. Lo más vivo.</p></div></div>
+    <div class="pr__g pr__g--17"><figure><div class="mk" style="aspect-ratio:16/9;background:radial-gradient(60% 55% at 50% 38%, rgba(235, 12, 110, .20), transparent 70%),url(elementos/02-puntadas-oscuro.svg) 0 0/20cqw,#0A0A0C"><div class="cel cel--vitrina" style="left:41%;top:8%;width:18%"><div class="cel__s"><img src="capturas/m-inicio.webp" alt="" loading="lazy"></div></div>
+    <div class="fx__pz" style="left:8%;top:14%;width:28%;transform:rotate(-4deg)"><div style="aspect-ratio:1.961;background-image:url(capturas/m-inicio.webp);background-size:110.4% auto;background-position:50.0% 16.0%"></div><b>Te avisa qué revisar</b></div>
+    <div class="fx__pz" style="left:64%;top:20%;width:29%;transform:rotate(3deg)"><div style="aspect-ratio:6.944;background-image:url(capturas/m-pieza.webp);background-size:110.4% auto;background-position:50.0% 97.8%"></div><b>Apruebas o pides cambios</b></div>
+    <div class="fx__pz" style="left:63%;top:56%;width:29%;transform:rotate(-2deg)"><div style="aspect-ratio:3.333;background-image:url(capturas/m-resultado.webp);background-size:110.4% auto;background-position:50.0% 90.4%"></div><b>Ves cómo le fue</b></div>
+    <div class="fx__pz" style="left:12%;top:62%;width:20%;transform:rotate(3deg)"><div style="aspect-ratio:4.000;background-image:url(capturas/m-resultado.webp);background-size:303.0% auto;background-position:6.6% 75.3%"></div><b>La mejor del mes</b></div></div><figcaption>Imagen principal</figcaption></figure></div>
+    
+    
+  </div></div></article></div></section>
 <section class="kblk"><header class="kblk__h"><h2>Etiquetas y señales</h2><p>Piezas chicas que marcan estado, paso o plan.</p></header><div class="els"><article class="el" id="e-18">
     <header class="el__h"><span class="el__n">18</span><h3>Insignia sobre foto</h3><span class="el__st el__st--pend">Por diseñar</span></header>
     <p class="el__i">Ícono y frase corta encima de una foto.</p>

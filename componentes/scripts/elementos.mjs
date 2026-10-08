@@ -1,6 +1,7 @@
 // Página "Elementos gráficos" del catálogo: la lista de piezas gráficas que se diseñan una por una.
 // Los documentos solo usan lo que aquí está Aprobado. Datos en elementos/elementos.json.
 import { readFileSync } from 'node:fs';
+import { VISTAS_EXTRA, vistasCSS } from './elementos-vistas.mjs';
 
 const datos = JSON.parse(readFileSync(new URL('../../elementos/elementos.json', import.meta.url), 'utf8'));
 const ESTADOS = ['Por diseñar', 'En diseño', 'Aprobado', 'Rechazado'];
@@ -65,7 +66,7 @@ const vista04 = () => [
     `${barra(90, 1330, 900, 34)}${barra(90, 1400, 640, 34)}${txt(90, 1800, 'pixely<tspan fill="#EB0C6E">.</tspan>', 54, '#0A0A0C')}`)),
 ].join('');
 
-const VISTAS = { 1: vista01, 2: vista02, 3: vista03, 4: vista04 };
+const VISTAS = { 1: vista01, 2: vista02, 3: vista03, 4: vista04, ...VISTAS_EXTRA };
 const dl = (ruta, txt) => `<button type="button" class="pr__a" data-dl="${ruta}" data-raiz>${txt}</button>`;
 const DESCARGAS = {
   1: () => `SVG para imprenta y Canva: ${dl('elementos/01-oscuro.svg', 'fondo negro')} · ${dl('elementos/01-claro.svg', 'fondo blanco')}`,
@@ -81,9 +82,9 @@ const bloque = (e, item, marca) => `<div class="pr">
   </div>`;
 // Inventario: lo que ya existe en Partners, el catálogo, los PDF o la web, con un código para señalarlo.
 const existentes = (e) => `<div class="pr"><div class="pr__h"><span class="pr__l">${e.existentes.length}</span><div><h4>Lo que ya tenemos</h4><p>Así se ve hoy en cada lugar donde existe. Para descartar uno, dime su código (por ejemplo ${e.existentes[0].cod}) o mándame una captura.</p></div></div>
-    <div class="ex">${e.existentes.map((x) => `<figure class="ex__f${x.ancho ? ' ex__f--ancho' : ''}"><figcaption><span class="ex__c">${x.cod}</span><span><b>${x.nombre}</b>${x.de}</span></figcaption><img src="${x.img}" alt="${x.nombre}" loading="lazy"></figure>`).join('')}</div></div>`;
+    <div class="ex">${e.existentes.map((x) => `<figure class="ex__f${x.ancho ? ' ex__f--ancho' : ''}${x.descartado ? ' ex__f--no' : ''}"><figcaption><span class="ex__c">${x.cod}</span><span><b>${x.nombre}</b>${x.de}${x.descartado ? `<em>Descartado: ${x.descartado}</em>` : ''}</span></figcaption><img src="${x.img}" alt="${x.nombre}" loading="lazy"></figure>`).join('')}</div></div>`;
 const cuerpo = (e) => {
-  const items = e.final ? bloque(e, e.final, '✓') : e.propuestas ? e.propuestas.map((p) => bloque(e, p, p.letra)).join('') : e.existentes ? existentes(e) : '';
+  const items = e.final ? bloque(e, e.final, '✓') : (e.propuestas ? e.propuestas.map((p) => bloque(e, p, p.letra)).join('') : '') + (e.existentes ? existentes(e) : '');
   return items ? `<div class="prs">${items}${EXTRA[e.n] ? EXTRA[e.n]() : ''}</div>` : '<div class="el__slot">Aquí van las propuestas cuando se diseñe.</div>';
 };
 
@@ -157,14 +158,14 @@ export const elemCSS = `
 .mk__h{position:absolute;font:700 9cqw/1.05 Unbounded;letter-spacing:-.045em}
 .mk__u{position:absolute;font:800 3cqw Manrope;letter-spacing:.2em;color:#8A8A96}
 .mk__t{position:absolute;height:2.4cqw;border-radius:9px;background:#33333C}.mk__f{position:absolute;border-radius:6px;background:#1F1F26}
-.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta img{left:49%;top:6%;width:80%}
+.mk--tarjeta{aspect-ratio:85/55}.mk--tarjeta>img{left:49%;top:6%;width:80%}
 .mk--tarjeta .mk__wm{left:7%;top:10%;font-size:7cqw}.mk--tarjeta .mk__h{left:7%;bottom:21%;font-size:7cqw}.mk--tarjeta .mk__u{left:7%;bottom:10%;font-size:2.6cqw}
-.mk--portada{aspect-ratio:210/297}.mk--portada img{right:-66%;top:3%;width:100%}
+.mk--portada{aspect-ratio:210/297}.mk--portada>img{right:-66%;top:3%;width:100%}
 .mk--portada .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--portada .mk__h{left:7%;top:22%;font-size:11cqw}
 .mk--portada .mk__t{left:7%;top:47%;width:50%}.mk--portada .mk__t--c{top:52%;width:38%}.mk--portada .mk__f{left:7%;right:7%;top:60%;bottom:5%}
-.mk--post{aspect-ratio:4/5}.mk--post img{left:-6%;bottom:-34%;width:112%}
+.mk--post{aspect-ratio:4/5}.mk--post>img{left:-6%;bottom:-34%;width:112%}
 .mk--post .mk__h{left:8%;top:8%;font-size:10cqw}.mk--post .mk__wm{right:8%;top:9%;font-size:6cqw}
-.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro img{right:-60%;top:2%;width:90%}
+.mk--claro{aspect-ratio:210/297;background:#fff;color:#0A0A0C}.mk--claro>img{right:-60%;top:2%;width:90%}
 .mk--claro .mk__wm{left:7%;top:5%;font-size:6cqw}.mk--claro .mk__h{left:7%;top:24%;font-size:11cqw}
 .mk--claro .mk__t{left:7%;top:38%;width:46%;background:#E4E4EA}.mk--claro .mk__t--c{top:43%;width:34%}
 .pr__r{display:grid;gap:4px;margin:14px 0 0;padding-left:18px;list-style:disc;color:var(--text-2);font:600 13px/1.5 Manrope}
@@ -173,7 +174,7 @@ export const elemCSS = `
 /* Inventario de lo que ya existe */
 .ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));grid-auto-flow:dense;gap:12px;margin-top:14px;align-items:start}
 .ex__f{position:relative;display:grid;gap:8px;margin:0;padding:10px;border-radius:16px;background:#0A0A0C;border:1px solid var(--edge)}
-.ex__f--ancho{grid-column:span 2}@media (max-width:700px){.ex__f--ancho{grid-column:auto}}
+.ex__f--ancho{grid-column:span 2}.ex__f--no img{opacity:.35;filter:grayscale(1)}.ex__f--no .ex__c{background:var(--raised);text-decoration:line-through}.ex__f figcaption em{display:block;margin-top:2px;color:#FF7AB0;font-style:normal;font-weight:700}@media (max-width:700px){.ex__f--ancho{grid-column:auto}}
 .ex__f img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain;object-position:top;border-radius:10px}
 .ex__c{flex:none;height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:99px;background:var(--pink);color:#fff;font:800 12px Manrope}
 .ex__f figcaption{display:flex;gap:10px;align-items:flex-start;color:var(--text-3);font:600 12px/1.4 Manrope}.ex__f figcaption b{display:block;color:var(--text-1,#fff);font:700 13px/1.35 Manrope}
@@ -197,4 +198,4 @@ export const elemCSS = `
 @media (max-width:1100px){.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.el-flow{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.el-flow{grid-template-columns:1fr}.pr__g,.pr__g--2,.pr__g--3,.pr__g--4{grid-template-columns:1fr 1fr}}
-`;
+` + vistasCSS;
