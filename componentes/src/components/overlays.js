@@ -64,21 +64,21 @@ export default [
   },
   {
     id: 'ov-mazo', cat, nombre: 'Mazo de piezas para validar', origen: 'Partners', estado: 'Existe', fuente: 'frontend/app/src/features/validar/ValidarScreen.tsx',
-    desc: 'La pieza actual encima de dos tarjetas escalonadas que asoman. Deslizar a la derecha aprueba; a la izquierda pide cambios.',
+    desc: 'La pieza actual, con la imagen enmarcada como una foto, sobre dos láminas translúcidas que apenas asoman. Deslizar a la derecha aprueba; a la izquierda pide cambios.',
     usar: ['Dos capas visibles detrás como máximo.', 'Etiquetas sobre la imagen: formato y límite de respuesta.'],
     evitar: ['Texto largo sobre la imagen.'],
     stage: 'phone-tall',
-    html: `<div class="p-deck"><i class="p-deck__b2"></i><i class="p-deck__b1"></i><article class="p-deck__top"><div class="p-deck__img"><span class="p-deck__t">Carrusel · 5</span><span class="p-deck__t p-deck__t--r">Responde en 2 días</span>${ic('image', 44, 1.4)}</div><div class="p-deck__b"><small>Educar · Instagram</small><b>Tres formas de llevar el negro</b></div></article></div>`,
-    css: `.p-deck{position:relative;height:340px;margin-top:18px}
-.p-deck i{position:absolute;border-radius:32px}
-.p-deck__b2{left:24px;right:24px;top:0;bottom:18px;background:var(--raised)}
-.p-deck__b1{left:12px;right:12px;top:8px;bottom:9px;background:var(--edge)}
-.p-deck__top{position:absolute;inset:16px 0 0;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:32px;background:var(--card);box-shadow:0 24px 48px rgba(0,0,0,.6)}
-.p-deck__img{position:relative;display:grid;place-items:center;flex:1;background:var(--raised);color:var(--mute)}
-.p-deck__t{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:99px;background:rgba(10,10,12,.75);color:#fff;font:800 12px Manrope}
-.p-deck__t--r{left:auto;right:14px;color:var(--pink)}
-.p-deck__b{display:flex;flex-direction:column;gap:4px;padding:16px 18px}
-.p-deck__b small{font:700 12px Manrope;color:var(--text-3)}.p-deck__b b{font:800 16px/1.3 Manrope}`,
+    html: `<div class="p-deck"><i class="p-deck__b2"></i><i class="p-deck__b1"></i><article class="p-deck__top"><div class="p-deck__img"><span class="p-deck__t">Carrusel · 5</span><span class="p-deck__t p-deck__t--r">Responde en 2 días</span>${ic('image', 36, 1.2)}</div><div class="p-deck__b"><small>Educar · Instagram</small><b>Tres formas de llevar el negro</b></div></article></div>`,
+    css: `.p-deck{position:relative;height:340px;margin-top:20px}
+.p-deck i{position:absolute;border:1px solid rgba(255,255,255,.06);border-radius:28px}
+.p-deck__b2{left:30px;right:30px;top:0;bottom:24px;background:rgba(255,255,255,.015)}
+.p-deck__b1{left:15px;right:15px;top:9px;bottom:12px;background:rgba(255,255,255,.03)}
+.p-deck__top{position:absolute;inset:18px 0 0;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:28px;background:var(--card);box-shadow:0 18px 40px -20px rgba(0,0,0,.55)}
+.p-deck__img{position:relative;display:grid;place-items:center;flex:1;margin:8px 8px 0;border-radius:21px;background:linear-gradient(160deg,#25252D,#1B1B21);color:#3A3A44}
+.p-deck__t{position:absolute;left:10px;top:10px;display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:99px;background:rgba(10,10,12,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font:700 11px Manrope}
+.p-deck__t--r{left:auto;right:10px;color:#FF7AB0}
+.p-deck__b{display:flex;flex-direction:column;gap:3px;padding:12px 16px 16px}
+.p-deck__b small{font:600 11px Manrope;color:var(--text-3)}.p-deck__b b{font:700 15px/1.35 Manrope}`,
     usa: ['ov-acciones-validar'],
   },
   {

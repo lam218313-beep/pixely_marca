@@ -29,8 +29,17 @@
     }, { rootMargin: '-20% 0px -70% 0px' });
     $$('.cat').forEach(function (s) { io.observe(s); });
   }
+  // Animaciones de entrada: corren al aparecer en pantalla y con “Repetir animación”
+  function play(stage) { var el = stage.querySelector('.stage__in > *'); if (!el) return; el.classList.remove('is-play'); void el.offsetWidth; el.classList.add('is-play'); }
+  var stages = $$('[data-replay]');
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { play(e.target); io2.unobserve(e.target); } }); }, { threshold: 0.35 });
+    stages.forEach(function (s) { io2.observe(s); });
+  } else stages.forEach(play);
   document.addEventListener('click', function (e) {
     var t = e.target;
+    var rp = t.closest('[data-replay-btn]');
+    if (rp) { play(rp.closest('[data-replay]')); return; }
     // Copiar código
     var cp = t.closest('[data-copy]');
     if (cp) {

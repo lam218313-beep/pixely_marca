@@ -60,13 +60,18 @@ export default [
   {
     id: 'dato-donut', cat, nombre: 'Gráfico de anillo', origen: 'Partners', estado: 'Propuesto', fuente: 'Por implementar',
     desc: 'Reparto de contenidos por pilar (educar, vender, conectar). Un solo color con tonos de pink y grises.',
-    usar: ['Máximo cuatro porciones; la mayor en rosa.', 'Leyenda con palabra y porcentaje.'],
+    usar: ['Máximo cuatro porciones; la mayor en rosa.', 'Al centro, el total con su unidad (“12 piezas”), nunca un número suelto.', 'Leyenda con palabra y porcentaje; un hilo oscuro separa cada porción.'],
     evitar: ['Más de cuatro porciones o colores fuera de la paleta.'],
     stage: 'phone',
-    html: `<div class="p-donut"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Educar 50 %, Vender 30 %, Conectar 20 %"><circle cx="60" cy="60" r="46" fill="none" stroke="var(--line)" stroke-width="16"/><circle cx="60" cy="60" r="46" fill="none" stroke="#EB0C6E" stroke-width="16" stroke-dasharray="144.5 289" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="46" fill="none" stroke="#FFC2E1" stroke-width="16" stroke-dasharray="86.7 289" stroke-dashoffset="-146.5" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="46" fill="none" stroke="#8A8A96" stroke-width="16" stroke-dasharray="55.8 289" stroke-dashoffset="-235.2" transform="rotate(-90 60 60)"/><text x="60" y="66" text-anchor="middle" fill="#fff" font-family="Unbounded" font-weight="700" font-size="20">9</text></svg><ul><li><i style="background:#EB0C6E"></i>Educar <b>50 %</b></li><li><i style="background:#FFC2E1"></i>Vender <b>30 %</b></li><li><i style="background:#8A8A96"></i>Conectar <b>20 %</b></li></ul></div>`,
-    css: `.p-donut{display:flex;align-items:center;gap:20px}
+    html: `<div class="p-donut"><div class="p-donut__ring"><svg viewBox="0 0 120 120" role="img" aria-label="12 piezas: Educar 50 %, Vender 30 %, Conectar 20 %"><g fill="none" stroke-width="12" transform="rotate(-90 60 60)"><circle cx="60" cy="60" r="46" stroke="#EB0C6E" stroke-dasharray="141.5 289"/><circle cx="60" cy="60" r="46" stroke="#FFC2E1" stroke-dasharray="83.7 289" stroke-dashoffset="-144.5"/><circle cx="60" cy="60" r="46" stroke="#8A8A96" stroke-dasharray="54.8 289" stroke-dashoffset="-231.2"/></g></svg><span class="p-donut__c" aria-hidden="true"><b>12</b><small>piezas</small></span></div><ul><li><i style="background:#EB0C6E"></i>Educar <b>50 %</b></li><li><i style="background:#FFC2E1"></i>Vender <b>30 %</b></li><li><i style="background:#8A8A96"></i>Conectar <b>20 %</b></li></ul></div>`,
+    css: `.p-donut{display:flex;align-items:center;gap:24px}
+.p-donut__ring{position:relative;flex:none;width:132px;height:132px}
+.p-donut__ring svg{display:block;width:100%;height:100%}
+.p-donut__c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.p-donut__c b{font:700 28px/1 Unbounded;letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}
+.p-donut__c small{font:700 11px Manrope;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
 .p-donut ul{display:grid;gap:10px;margin:0;padding:0;list-style:none;font:700 14px Manrope;color:var(--text-2)}
-.p-donut li{display:flex;align-items:center;gap:8px}.p-donut li b{margin-left:auto;color:#fff}
+.p-donut li{display:flex;align-items:center;gap:8px}.p-donut li b{margin-left:auto;padding-left:16px;color:#fff;font-variant-numeric:tabular-nums}
 .p-donut li i{width:10px;height:10px;border-radius:50%}`,
   },
   {

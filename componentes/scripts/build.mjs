@@ -1,5 +1,6 @@
 // Genera artifact/index.html (un solo archivo) con todos los componentes a partir de src/components/*.js
 import { readFileSync, writeFileSync } from 'node:fs';
+import { build } from 'esbuild';
 import fundamentos from '../src/components/fundamentos.js';
 import botones from '../src/components/botones.js';
 import campos from '../src/components/campos.js';
@@ -41,7 +42,7 @@ const art = (c) => {
   return `<article class="comp" id="${c.id}" data-cat="${c.cat}" data-origen="${c.origen}" data-estado="${c.estado}" data-q="${esc((c.nombre + ' ' + c.desc + ' ' + c.id).toLowerCase())}">
 <header class="comp__h"><h3>${c.nombre}</h3><div class="comp__chips"><span class="chip chip--${c.origen === 'Partners' ? 'p' : c.origen === 'Web' ? 'w' : 'a'}">${c.origen}</span><span class="chip chip--${c.estado === 'Existe' ? 'ok' : 'new'}">${c.estado}</span></div></header>
 <p class="comp__d">${c.desc}</p>
-<div class="stage stage--${c.stage}"><div class="stage__in">${c.html}</div></div>
+<div class="stage stage--${c.stage}"${c.replay ? ' data-replay' : ''}>${c.replay ? '<button class="replay" type="button" data-replay-btn>↻ Repetir animación</button>' : ''}<div class="stage__in">${c.html}</div></div>
 <div class="comp__n"><div><h4>Cuándo usarlo</h4><ul>${li(c.usar)}</ul></div><div><h4>Qué evitar</h4><ul>${li(c.evitar)}</ul></div></div>
 <details class="code"><summary>Ver código</summary><div class="code__tabs" role="tablist"><button class="is-on" data-tab="html" role="tab">HTML</button><button data-tab="css" role="tab">CSS</button></div>
 <div class="code__p" data-p="html"><button class="copy" data-copy>Copiar</button><pre>${esc(pretty(c.html))}</pre></div><div class="code__p" data-p="css" hidden><button class="copy" data-copy>Copiar</button><pre>${esc(cssShow(c))}</pre></div></details>
@@ -54,6 +55,8 @@ const nEx = all.filter((c) => c.estado === 'Existe').length, nPr = all.length - 
 
 const shell = readFileSync(new URL('./shell.css', import.meta.url), 'utf8');
 const js = readFileSync(new URL('./shell.js', import.meta.url), 'utf8');
+// Motor de Thinking Orbs empaquetado en línea (el Artifact es una sola página)
+const orbs = (await build({ entryPoints: [new URL('../src/orbs.js', import.meta.url).pathname], bundle: true, format: 'iife', minify: true, write: false })).outputFiles[0].text;
 const html = `<title>Componentes Pixely</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Unbounded:wght@300..900&display=swap">
@@ -75,6 +78,9 @@ ${sections}
 <footer class="end">Siguientes repositorios: animaciones (por categorías) · imágenes, videos e íconos. Todo parte de los mismos tokens de marca.</footer></main></div>
 <script>
 ${js}
+</script>
+<script>
+${orbs}
 </script>
 `;
 writeFileSync(new URL('../artifact/index.html', import.meta.url), html);

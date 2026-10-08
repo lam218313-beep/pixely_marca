@@ -29,12 +29,10 @@ export default [
     evitar: ['Botón deshabilitado sin motivo visible.'],
     stage: 'phone',
     html: `<div class="s-col">
-<button class="p-btn p-btn--primary p-btn--block" disabled><span class="p-spin">${ic('loader', 18, 2.6)}</span> Guardando</button>
+<button class="p-btn p-btn--primary p-btn--block" disabled><canvas class="p-orb" data-orb="working" data-size="20" data-tint="#fff" aria-hidden="true"></canvas> Guardando</button>
 <button class="p-btn p-btn--primary p-btn--block" disabled>Aprobar</button>
 </div>`,
-    css: `.p-spin{display:inline-flex;animation:p-spin 1s linear infinite}
-@keyframes p-spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.p-spin{animation:none}}`,
+    css: `.p-orb{display:block} /* orbe de 20 px de thinking-orbs: ver “Cargando” */`,
     usa: ['btn-partners'],
   },
   {

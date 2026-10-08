@@ -3,7 +3,7 @@ const cat = 'campos';
 export default [
   {
     id: 'campo-texto', cat, nombre: 'Campo de texto', origen: 'Partners', estado: 'Existe', fuente: 'frontend/app/src/ui/Field.tsx',
-    desc: 'Etiqueta arriba, campo de 56 px, ayuda o error debajo. Al enfocar, el borde se vuelve rosa.',
+    desc: 'Etiqueta arriba, campo de 56 px, ayuda o error debajo. Al enfocar, solo el borde fino se vuelve rosa: sin doble contorno.',
     usar: ['La etiqueta siempre visible (no solo placeholder).', 'Error: texto rosa que dice qué pasó y cómo arreglarlo.', 'Tamaño de letra 16 px para evitar el zoom de iOS.'],
     evitar: ['Mensajes de error genéricos (“Campo inválido”).'],
     stage: 'phone',
@@ -15,7 +15,7 @@ export default [
 .p-field label{font:700 13px Manrope;color:var(--text-2)}
 .p-input{width:100%;height:56px;padding:0 18px;border:1px solid var(--line);border-radius:16px;background:var(--ink);color:#fff;font:600 16px Manrope;outline:none;transition:border-color .15s;box-sizing:border-box}
 .p-input::placeholder{color:var(--text-3)}
-.p-input:focus{border-color:var(--pink)}
+.p-input:focus,.p-input:focus-visible{outline:none;border-color:var(--pink);background:#0E0E11}
 .p-hint{margin:0;font:600 12px Manrope;color:var(--text-3)}
 .p-err{margin:0;font:600 13px Manrope;color:var(--pink)}`,
   },
@@ -91,6 +91,7 @@ export default [
     html: `<div class="p-search">${ic('search', 18, 2.4)}<input class="p-search__in" type="search" placeholder="Buscar una idea" aria-label="Buscar una idea"></div>`,
     css: `.p-search{display:flex;align-items:center;gap:10px;height:48px;padding:0 16px;border:1px solid var(--line);border-radius:16px;background:var(--ink);color:var(--text-3)}
 .p-search:focus-within{border-color:var(--pink)}
+.p-search input:focus,.p-search input:focus-visible{outline:none}
 .p-search__in{flex:1;min-width:0;border:0;background:transparent;color:#fff;font:600 16px Manrope;outline:none}`,
   },
 ];
