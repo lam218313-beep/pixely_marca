@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pixely - Manual de Partners</title>
+<link rel="stylesheet" href="../comun/base.css">
+<style>
+/* Celular con la captura y los números que la señalan */
+.phone { position: relative; border-radius: 30px; padding: 6px; }
+.dark .phone { background: var(--card); border: 1px solid rgba(255,255,255,.09); }
+.light .phone { background: var(--ink); box-shadow: 0 24px 50px -26px rgba(10,10,12,.55); }
+.scr { position: relative; }
+.scr img { display: block; width: 100%; border-radius: 24px; }
+.pin { position: absolute; left: calc(var(--x, -2) * 1%); top: calc(var(--y) * 1%); transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--pink); color: #fff; font: 800 11px Manrope; font-style: normal; }
+.dark .pin { box-shadow: 0 0 0 3px var(--ink); } .light .pin { box-shadow: 0 0 0 3px #fff; }
+.cap { margin-top: 10px; text-align: center; font: 700 10.5px Manrope; }
+.dark .cap { color: var(--t2); } .light .cap { color: var(--p2); }
+
+/* Pasos numerados (el mismo número que el de la captura) */
+.steps { list-style: none; display: grid; gap: 16px; }
+.steps li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
+.steps li > b { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--pink); color: #fff; font: 800 11.5px Manrope; }
+.steps h4 { font: 700 13px/1.3 Manrope; padding-top: 4px; }
+.steps p { margin-top: 3px; font: 500 11px/1.5 Manrope; }
+.dark .steps p { color: var(--t2); } .light .steps p { color: var(--p2); }
+.steps.grid2 { grid-template-columns: 1fr 1fr; column-gap: 26px; row-gap: 16px; }
+.h3s { font: 700 16px Unbounded; letter-spacing: -.03em; margin-bottom: 16px; }
+
+/* Nota destacada */
+.tip { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: 18px; font: 500 11px/1.5 Manrope; }
+.tip::before { content: ''; flex: none; width: 8px; height: 8px; margin-top: 4px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px rgba(235,12,110,.18); }
+.dark .tip { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); color: var(--t2); } .dark .tip b { color: #fff; }
+.light .tip { background: #FAFAFB; border: 1px solid var(--pline); color: var(--p2); } .light .tip b { color: var(--p1); }
+
+.foot .mid { letter-spacing: .02em; }
+
+/* ===== 1. Portada ===== */
+.cover .rings { right: -250px; top: -160px; width: 760px; height: 760px; }
+.cover-top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+.cover-top .tag { font: 700 10.5px Manrope; letter-spacing: .18em; color: var(--t3); }
+.cover h1 { position: relative; margin-top: 92px; font: 700 58px/1.02 Unbounded; letter-spacing: -.05em; }
+.cover .lead { position: relative; font-size: 16px; max-width: 400px; }
+.cover-ph { position: relative; flex: 1; margin-top: 40px; }
+.cover-ph .phone { position: absolute; }
+.cover-ph .ph-a { left: -6px; width: 300px; top: 120px; transform: rotate(-5deg); filter: brightness(.62); }
+.cover-ph .ph-b { left: 262px; width: 340px; top: 34px; box-shadow: -30px 30px 60px -20px rgba(0,0,0,.7); }
+.cover-ph .chip { left: 18px; top: 18px; }
+
+/* ===== 2. Antes de empezar ===== */
+.enter { display: grid; grid-template-columns: 1fr 344px; gap: 30px; margin-top: 28px; align-items: start; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tabs { margin-top: 26px; }
+.tabbar { border-radius: 22px; background: #08080A; padding: 6px 10px; }
+.tabbar img { display: block; width: 100%; }
+.tabtxt { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; padding: 0 16px; }
+.tabtxt p { font: 500 10.5px/1.45 Manrope; color: var(--p2); text-align: center; }
+.tabtxt b { display: block; font: 700 11px Manrope; color: var(--p1); margin-bottom: 2px; }
+
+/* ===== Pantallas con pasos a un lado ===== */
+.side { display: grid; grid-template-columns: 1fr 312px; gap: 36px; margin-top: 30px; align-items: start; }
+.row-ph { display: grid; gap: 22px; margin-top: 30px; }
+.row-ph.n2 { grid-template-columns: repeat(2, 262px); justify-content: center; gap: 36px; }
+.row-ph.n3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ===== 6. Resultados y Marca ===== */
+.rm { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 26px; }
+
+/* ===== 7. Dudas ===== */
+.faq-pg .rings { right: -300px; bottom: -330px; width: 700px; height: 700px; }
+.faq { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+.faq .card { padding: 26px 24px; }
+.faq h4 { font: 700 13px/1.35 Manrope; }
+.faq p { margin-top: 6px; font: 500 11px/1.5 Manrope; color: var(--t2); }
+.help { position: relative; margin-top: 30px; display: grid; grid-template-columns: 1fr 132px; gap: 22px; align-items: center; padding: 24px 24px 24px 28px; border-radius: var(--r-lg); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+.help h3 { font: 700 24px/1.05 Unbounded; letter-spacing: -.045em; }
+.help p { margin-top: 8px; font: 500 12px/1.5 Manrope; color: var(--t2); }
+.help .wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; height: 38px; padding: 0 16px; border-radius: 14px; background: var(--pink); font: 800 12px Manrope; color: #fff; }
+.help small { display: block; margin-top: 10px; font: 600 10.5px Manrope; color: var(--t3); }
+.qr { padding: 10px; border-radius: 18px; background: #fff; text-align: center; }
+.qr img { display: block; width: 100%; }
+.qr p { margin-top: 6px; font: 700 8.5px/1.3 Manrope; color: var(--p2); }
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="page dark cover">
+  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/><circle class="glow" cx="380" cy="380" r="40"/><circle class="core" cx="380" cy="380" r="15"/></svg>
+  <div class="cover-top"><span class="wm">pixely<b>.</b></span><span class="tag">PIXELY.PE</span></div>
+  <h1>Manual de<br>Pixely Partners<span class="dot">.</span></h1>
+  <p class="lead">Cómo aprobar tu plan, revisar cada pieza y ver tus resultados, desde el celular.</p>
+  <div class="cover-ph">
+    <div class="phone ph-a"><div class="scr"><img src="img/inicio.jpg" alt=""></div></div>
+    <div class="phone ph-b"><div class="scr"><img src="img/validar.jpg" alt=""></div></div>
+  </div>
+</section>
+
+<!-- 2. Antes de empezar -->
+<section class="page light">
+  <p class="eyebrow">Antes de empezar</p>
+  <h2 class="h2">Pixely Partners es el lugar donde decides<span class="dot">.</span></h2>
+  <p class="lead">Aquí apruebas las ideas del mes, previsualizas cada pieza antes de que salga y ves cómo le fue. Todo en un solo lugar, sin correos ni archivos sueltos.</p>
+  <div class="enter">
+    <div>
+      <h3 class="h3s">Cómo entrar</h3>
+      <ol class="steps">
+        <li><b>1</b><div><h4>Abre partners.pixely.pe</h4><p>Desde el navegador de tu celular. Te lleva solo a la versión móvil. En una computadora verás la versión de pantalla grande.</p></div></li>
+        <li><b>2</b><div><h4>Escribe tu correo</h4><p>El mismo con el que te registramos.</p></div></li>
+        <li><b>3</b><div><h4>Revisa tu correo</h4><p>Te llega un código de 6 dígitos. Vence en 10 minutos.</p></div></li>
+        <li><b>4</b><div><h4>Escribe el código y listo</h4><p>Entras sin contraseñas. Si no llega, toca "Reenviar el código".</p></div></li>
+      </ol>
+    </div>
+    <div class="duo">
+      <div class="phone"><div class="scr"><img src="img/entrar.jpg" alt=""><i class="pin" style="--y:27">1</i><i class="pin" style="--y:67">2</i></div></div>
+      <div class="phone"><div class="scr"><img src="img/codigo.jpg" alt=""><i class="pin" style="--y:12">3</i><i class="pin" style="--y:36">4</i></div></div>
+    </div>
+  </div>
+  <p class="tip" style="margin-top:24px"><span><b>Truco:</b> desde el menú de tu navegador puedes agregar Pixely Partners a la pantalla de inicio de tu celular y abrirlo como una app.</span></p>
+  <div class="tabs">
+    <h3 class="h3s">Las 5 pestañas de abajo</h3>
+    <div class="tabbar"><img src="img/pestanas.png" alt=""></div>
+    <div class="tabtxt">
+      <p><b>Inicio</b>Lo que te toca hoy.</p>
+      <p><b>Plan</b>Las ideas del mes por aprobar.</p>
+      <p><b>Validar</b>Las piezas terminadas por revisar.</p>
+      <p><b>Resultados</b>Lo que viene y cómo le fue a lo publicado.</p>
+      <p><b>Marca</b>Tu voz, tu estrategia, tu mercado y tu ficha.</p>
+    </div>
+    <p class="note" style="margin-top:12px;text-align:center">Los globitos rosados sobre Plan y Validar cuentan cuántas cosas te esperan.</p>
+  </div>
+  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>02 / 07</span></div>
+</section>
+
+<!-- 3. Inicio -->
+<section class="page dark">
+  <p class="eyebrow">Inicio</p>
+  <h2 class="h2">Lo primero que verás: lo que te toca<span class="dot">.</span></h2>
+  <div class="side">
+    <div>
+      <ol class="steps" style="gap:24px">
+        <li><b>1</b><div><h4>Mira la tarjeta rosada</h4><p>Muestra lo más urgente: piezas por revisar, ideas por aprobar, tu voz de marca o tu estrategia. Toca el botón y vas directo.</p></div></li>
+        <li><b>2</b><div><h4>Revisa la lista de abajo</h4><p>Las demás cosas pendientes, ordenadas. Cada una abre su pantalla.</p></div></li>
+        <li><b>3</b><div><h4>Entérate del mercado</h4><p>Aparece "Mercado actualizado" cuando encontramos novedades de tu competencia en la última semana.</p></div></li>
+        <li><b>4</b><div><h4>Mira lo próximo en salir</h4><p>Las publicaciones que vienen, con su fecha.</p></div></li>
+      </ol>
+      <p class="tip" style="margin-top:26px"><span><b>Si no te toca nada,</b> verás "todo al día". Nosotros seguimos trabajando en lo siguiente.</span></p>
+    </div>
+    <div>
+      <div class="phone"><div class="scr"><img src="img/inicio.jpg" alt=""><i class="pin" style="--y:16">1</i><i class="pin" style="--y:40">2</i><i class="pin" style="--y:69">3</i><i class="pin" style="--y:78">4</i></div></div>
+      <p class="note" style="margin-top:10px;text-align:center">Pantalla de ejemplo, marca ficticia.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>03 / 07</span></div>
+</section>
+
+<!-- 4. Plan -->
+<section class="page light">
+  <p class="eyebrow">Plan</p>
+  <h2 class="h2">Aprueba las ideas del mes antes de producir<span class="dot">.</span></h2>
+  <ol class="steps grid2" style="margin-top:28px">
+    <li><b>1</b><div><h4>Mira cuántas llevas</h4><p>Arriba ves las ideas aprobadas, las que pediste cambiar y las pendientes. Abajo, el calendario: toca un día para ver su idea.</p></div></li>
+    <li><b>2</b><div><h4>Abre una idea</h4><p>Verás qué contaremos, las láminas o escenas, por qué la proponemos y el dato de tu mercado que la respalda.</p></div></li>
+    <li><b>3</b><div><h4>Decide con un toque</h4><p>"Aprobar idea" si te gusta. "Cambios" si quieres ajustar algo y nos cuentas qué.</p></div></li>
+    <li><b>4</b><div><h4>Aprueba varias de una vez</h4><p>"Aprobar las pendientes" aprueba todas juntas.</p></div></li>
+  </ol>
+  <div class="row-ph n2">
+    <div><div class="phone"><div class="scr"><img src="img/plan.jpg" alt=""><i class="pin" style="--y:24">1</i><i class="pin" style="--y:80">4</i></div></div><p class="cap">El plan del mes</p></div>
+    <div><div class="phone"><div class="scr"><img src="img/idea.jpg" alt=""><i class="pin" style="--y:17">2</i><i class="pin" style="--x:50;--y:91">3</i></div></div><p class="cap">Una idea</p></div>
+  </div>
+  <p class="tip" style="margin-top:22px"><span><b>Aún no ves imágenes ni textos.</b> Primero apruebas la idea. La pieza terminada la revisas después, en Validar.</span></p>
+  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>04 / 07</span></div>
+</section>
+
+<!-- 5. Validar -->
+<section class="page dark">
+  <p class="eyebrow">Validar</p>
+  <h2 class="h2">Revisa cada pieza antes de que se publique<span class="dot">.</span></h2>
+  <ol class="steps grid2" style="margin-top:28px">
+    <li><b>1</b><div><h4>Mira la pieza</h4><p>Cada una aparece como una tarjeta, tal como saldrá. Desliza hacia arriba para ver el texto de cada red y por qué la hicimos.</p></div></li>
+    <li><b>2</b><div><h4>Apruébala</h4><p>Desliza a la derecha o toca el check rosado. Tienes 4 segundos para tocar "Deshacer".</p></div></li>
+    <li><b>3</b><div><h4>Pide cambios</h4><p>Desliza a la izquierda o toca el lápiz. Elige si cambiamos la imagen, el texto o ambos, cuéntanos qué y toca "Enviar al equipo".</p></div></li>
+    <li><b>4</b><div><h4>Te avisamos</h4><p>Cuando el cambio esté listo, la pieza vuelve a Validar para que la revises otra vez.</p></div></li>
+  </ol>
+  <div class="row-ph n3">
+    <div><div class="phone"><div class="scr"><img src="img/validar.jpg" alt=""><i class="pin" style="--y:40">1</i><i class="pin" style="--x:81;--y:76">2</i><i class="pin" style="--x:19;--y:76">3</i></div></div><p class="cap">Aprueba o pide cambios</p></div>
+    <div><div class="phone"><div class="scr"><img src="img/validar-siguiente.jpg" alt=""><i class="pin" style="--y:83">2</i></div></div><p class="cap">"Deshacer" durante 4 segundos</p></div>
+    <div><div class="phone"><div class="scr"><img src="img/cambios.jpg" alt=""><i class="pin" style="--y:34">3</i><i class="pin" style="--y:96">4</i></div></div><p class="cap">Qué cambiamos</p></div>
+  </div>
+  <p class="tip" style="margin-top:22px"><span><b>Nada se publica sin tu aprobación.</b> Si no la apruebas, esa pieza se queda esperando.</span></p>
+  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>05 / 07</span></div>
+</section>
+
+<!-- 6. Resultados y Marca -->
+<section class="page light">
+  <p class="eyebrow">Resultados y Marca</p>
+  <h2 class="h2">Mira cómo te va y cómo habla tu marca<span class="dot">.</span></h2>
+  <div class="rm">
+    <div>
+      <h3 class="h3s">Resultados</h3>
+      <ol class="steps">
+        <li><b>1</b><div><h4>Próximas</h4><p>La agenda de lo que está por salir y lo que espera tu visto bueno.</p></div></li>
+        <li><b>2</b><div><h4>Publicadas</h4><p>Elige el mes: alcance, vistas e indicadores. Compara tu promedio con el de tu competencia y descubre tu mejor pieza.</p></div></li>
+        <li><b>3</b><div><h4>Detalle</h4><p>Toca una pieza para ver sus números.</p></div></li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="h3s">Marca</h3>
+      <ol class="steps">
+        <li><b>1</b><div><h4>Voz y Estrategia</h4><p>Revísalas y apruébalas, o pide cambios.</p></div></li>
+        <li><b>2</b><div><h4>Mercado</h4><p>El estudio de tu nicho. Puedes descargarlo en PDF.</p></div></li>
+        <li><b>3</b><div><h4>Ficha</h4><p>Los datos de tu negocio, solo para consulta.</p></div></li>
+      </ol>
+    </div>
+  </div>
+  <div class="row-ph n3">
+    <div><div class="phone"><div class="scr"><img src="img/proximas.jpg" alt=""><i class="pin" style="--x:8;--y:12.5">1</i><i class="pin" style="--x:54;--y:12.5">2</i></div></div><p class="cap">Resultados · Próximas</p></div>
+    <div><div class="phone"><div class="scr"><img src="img/resultado.jpg" alt=""><i class="pin" style="--y:78">3</i></div></div><p class="cap">Resultados · Detalle</p></div>
+    <div><div class="phone"><div class="scr"><img src="img/marca.jpg" alt=""><i class="pin" style="--y:57">1</i><i class="pin" style="--y:78.5">2</i><i class="pin" style="--x:52;--y:78.5">3</i></div></div><p class="cap">Marca</p></div>
+  </div>
+  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>06 / 07</span></div>
+</section>
+
+<!-- 7. Dudas frecuentes -->
+<section class="page dark faq-pg">
+  <svg class="rings" viewBox="0 0 700 700" aria-hidden="true"><circle cx="350" cy="350" r="90"/><circle cx="350" cy="350" r="170"/><circle cx="350" cy="350" r="260"/><circle cx="350" cy="350" r="345"/></svg>
+  <p class="eyebrow" style="position:relative">Dudas frecuentes</p>
+  <h2 class="h2" style="position:relative">Lo que más nos preguntan al empezar<span class="dot">.</span></h2>
+  <div class="faq">
+    <div class="card"><h4>No me llegó el código.</h4><p>Revisa la carpeta de spam y toca "Reenviar el código". Vence a los 10 minutos.</p></div>
+    <div class="card"><h4>¿Puedo cambiar algo antes de que se publique?</h4><p>Sí, siempre. Apruebas las ideas antes de producirlas y cada pieza terminada antes de publicarla.</p></div>
+    <div class="card"><h4>¿Cuánto tiempo me toma?</h4><p>Aprobar desde el celular toma minutos. Lo demás lo hacemos nosotros.</p></div>
+    <div class="card"><h4>¿Dónde veo cómo le fue a lo publicado?</h4><p>En Resultados, en la pestaña "Publicadas".</p></div>
+    <div class="card"><h4>Prefiero usarlo en la computadora.</h4><p>Entra a partners.pixely.pe desde la computadora. Desde el celular, "Tu cuenta" tiene el enlace "Versión de escritorio".</p></div>
+    <div class="card"><h4>¿Cómo cierro sesión o borro mi cuenta?</h4><p>En "Tu cuenta" (el círculo de arriba a la derecha): "Cerrar sesión", y el enlace para pedir que borremos tu cuenta y tus datos.</p></div>
+  </div>
+  <div class="help">
+    <div>
+      <h3>¿Te quedó alguna duda?</h3>
+      <p>Escríbenos y te ayudamos.</p>
+      <span class="wa">WhatsApp +51 949 268 607 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7h9M8 3.5 11.5 7 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <small>hola@pixely.pe · pixely.pe</small>
+    </div>
+    <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
+  </div>
+  <div class="foot" style="position:relative"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>07 / 07</span></div>
+</section>
+
+</body>
+</html>
