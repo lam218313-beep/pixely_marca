@@ -108,18 +108,41 @@
 .pa2 .gb { height: 82px; padding-top: 20px; }
 .pa2 .brl { gap: 7px 10px; }
 .pa2 .gr--claro { padding: 16px 18px; }
-/* ===== 3. Cómo funciona ===== */
-.steps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
-.step { border-radius: var(--r-lg); padding: 7px 7px 18px; }
-.step .ph { position: relative; height: 128px; border-radius: 21px; overflow: hidden; }
-.step .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.step .ph .chip { left: 10px; top: 10px; }
-.step h3 { margin: 14px 13px 0; }
-.step dl { margin: 10px 13px 0; display: grid; gap: 6px; }
-.step dt { color: #FF7AB0; }
-.step dd { font: 500 var(--fs-body)/1.5 Manrope; color: #C8C8D0; margin-bottom: 4px; }
-.callout { margin-top: 18px; display: flex; align-items: center; gap: 14px; font: 600 var(--fs-lead)/1.4 Manrope; color: #fff; }
-.callout i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 6px rgba(235,12,110,.2); }
+/* ===== 3. Cómo funciona (9 oct, opción A): número de paso (19), íconos (23) y tu primera semana (27) ===== */
+.p3 .lead { max-width: 560px; }
+/* Elemento 19 · número de paso: número grande rosa, título corto y una línea */
+.pasos { display: grid; gap: 12px; margin-top: 24px; }
+.pasos--grilla { flex: 1; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; }
+.pasos--grilla .paso { grid-template-rows: auto 1fr auto auto; padding: 22px 22px 24px; }
+.pasos--grilla .paso .paso__n { font-size: 44px; }
+.pasos--grilla .paso b { margin-top: 0; font-size: 20px; }
+.p3 .lt { margin-bottom: 18px; }
+.paso { position: relative; display: grid; align-content: start; gap: 6px; padding: 18px 20px 20px; border-radius: var(--r); background: #16161B; box-shadow: inset 0 0 0 1px #26262E; }
+.paso .ico { position: absolute; right: 12px; top: 12px; }
+.paso .paso__n { color: var(--pink); font: 700 var(--fs-num)/1 Unbounded; letter-spacing: -.05em; }
+.paso b { margin-top: 6px; color: #fff; font: 700 var(--fs-sub)/1.2 Unbounded; letter-spacing: -.03em; }
+.paso .paso__d { color: var(--t2); font: 500 var(--fs-body)/1.5 Manrope; }
+/* Elemento 27 · línea de proceso «Tu primera semana» */
+.lt { margin-top: 14px; padding: 20px 18px; border-radius: var(--r); background: #0A0A0C; box-shadow: 0 0 0 1px var(--edge); color: #fff; }
+.lt__t { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.lt__t b { font: 700 var(--fs-sub) Unbounded; letter-spacing: -.03em; }
+.lt__t span { color: var(--t3); font: 800 var(--fs-label) Manrope; letter-spacing: .14em; text-transform: uppercase; }
+.lt__dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.lt__d { display: grid; justify-items: center; gap: 4px; padding: 9px 0; border-radius: 10px; background: #16161B; box-shadow: inset 0 0 0 1px #26262E; }
+.lt__d em { color: #8A8A96; font: 800 10px Manrope; font-style: normal; }
+.lt__d b { display: grid; place-items: center; height: 18px; }
+.lt__d--pk { background: var(--pink); box-shadow: none; }
+.lt__d--pk em, .lt__d--pk b { color: #fff; }
+.lt__tareas { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 6px; }
+.lt__tareas span { padding: 6px 4px; border-radius: 6px; background: #26262E; color: #B4B4BE; font: 700 10px/1.2 Manrope; text-align: center; }
+.lt__tareas .lt__r { background: #33333C; color: #fff; }
+.lt__tareas .lt__pk { background: rgba(235,12,110,.2); color: #FF7AB0; }
+.lt__mes { display: flex; align-items: center; gap: 6px; margin-top: 12px; color: #B4B4BE; font: 600 var(--fs-body) Manrope; }
+.lt__mes svg { color: var(--pink); }
+.lt__mes b { color: #fff; }
+/* Elemento 25 en página negra */
+.dark .pie .wm small { color: var(--t3); }
+.dark .pie .n small { color: var(--mute); }
 
 /* ===== 4. Tu mercado ===== */
 .mk-hero { margin-top: 22px; height: 270px; }
@@ -271,18 +294,15 @@
 </section>
 
 <!-- 3. Cómo funciona -->
-<section class="page dark">
+<section class="page dark p3">
   <p class="eyebrow">Cómo funciona</p>
   <h2 class="h2">De una necesidad de tu negocio a una publicación<span class="dot">.</span></h2>
   <p class="lead">Leemos tu mercado todos los días, lo convertimos en una estrategia y en un plan de contenido que <em class="k">tú apruebas pieza por pieza</em>.</p>
-  <div class="steps">
-    <article class="step"><div class="ph"><img src="img/paso-1.jpg" alt=""><span class="chip">Paso 01</span></div><h3 class="h3">Entendemos tu negocio</h3><dl><dt class="lbl">Qué hacemos</dt><dd>Una conversación guiada sobre tu negocio, tu producto, tu cliente y lo que necesitas lograr.</dd><dt class="lbl">Qué recibes</dt><dd>La ficha de tu negocio y <em class="k">tu voz de marca</em>: cómo hablará tu marca. La revisas y la apruebas.</dd></dl></article>
-    <article class="step"><div class="ph"><img src="img/paso-2.jpg" alt=""><span class="chip">Paso 02</span></div><h3 class="h3">Leemos tu mercado</h3><dl><dt class="lbl">Qué hacemos</dt><dd>Estudiamos tu nicho: competidores, reseñas, precios, tamaño del mercado y lo que publica tu competencia. Y lo seguimos vigilando.</dd><dt class="lbl">Qué recibes</dt><dd>Tu estudio de mercado y <em class="k">hallazgos nuevos</em> a medida que tu mercado se mueve.</dd></dl></article>
-    <article class="step"><div class="ph"><img src="img/paso-3.jpg" alt=""><span class="chip">Paso 03</span></div><h3 class="h3">Estrategia y plan del mes</h3><dl><dt class="lbl">Qué hacemos</dt><dd>Convertimos esos datos en objetivos, conceptos y un calendario. <em class="k">Cada idea dice por qué existe</em> y qué dato la respalda.</dd><dt class="lbl">Qué recibes</dt><dd>Las ideas del mes, para que las apruebes o pidas cambios antes de producir nada.</dd></dl></article>
-    <article class="step"><div class="ph"><img src="img/paso-4.jpg" alt=""><span class="chip">Paso 04</span></div><h3 class="h3">Validas, publicamos y medimos</h3><dl><dt class="lbl">Qué hacemos</dt><dd>Producimos cada pieza según la idea aprobada. Antes de publicar <em class="k">la ves tal como saldrá</em>, con su texto para cada red.</dd><dt class="lbl">Qué recibes</dt><dd>Apruebas o pides cambios con un gesto. Luego ves cómo le fue frente a tu promedio y a tu competencia.</dd></dl></article>
-  </div>
-  <p class="callout"><i></i><span>Tu primer plan de contenido llega en <em class="k">máximo 7 días hábiles</em> después de la entrevista.</span></p>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>03 / 08</span></div>
+  <div class="pasos pasos--grilla"><div class="paso"><span class="ico"><svg data-i="users" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="paso__n">01</span><i></i><b>Entendemos tu negocio</b><span class="paso__d">Una conversación guiada; recibes tu ficha y tu voz de marca para aprobar.</span></div><div class="paso"><span class="ico"><svg data-i="store" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/></svg></span><span class="paso__n">02</span><i></i><b>Leemos tu mercado</b><span class="paso__d">Competidores, reseñas y precios de tu nicho, y hallazgos nuevos cuando se mueve.</span></div><div class="paso"><span class="ico"><svg data-i="calendar-days" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><span class="paso__n">03</span><i></i><b>Tu plan del mes</b><span class="paso__d">Cada idea con su porqué y un dato de tu mercado. La apruebas antes de producir.</span></div><div class="paso"><span class="ico"><svg data-i="square-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"/><path d="m9 11 3 3L22 4"/></svg></span><span class="paso__n">04</span><i></i><b>Apruebas cada pieza</b><span class="paso__d">La ves tal como saldrá, con su texto para cada red, y la apruebas con un gesto.</span></div></div>
+  <div class="lt"><div class="lt__t"><b>Tu primera semana</b><span>Máximo 7 días hábiles</span></div><div class="lt__dias"><span class="lt__d"><em>Día 1</em><b></b></span><span class="lt__d"><em>Día 2</em><b></b></span><span class="lt__d"><em>Día 3</em><b></b></span><span class="lt__d"><em>Día 4</em><b></b></span><span class="lt__d"><em>Día 5</em><b></b></span><span class="lt__d"><em>Día 6</em><b></b></span><span class="lt__d lt__d--pk"><em>Día 7</em><b><svg data-i="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b></span></div>
+  <div class="lt__tareas"><span style="grid-column:1/2">Entrevista</span><span class="lt__r" style="grid-column:2/5">Estudio de mercado</span><span style="grid-column:5/6">Estrategia</span><span style="grid-column:6/7">Plan</span><span class="lt__pk" style="grid-column:7/8">Tu plan</span></div>
+  <p class="lt__mes"><svg data-i="arrow-right" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Desde ahí, <b>cada mes</b>: un plan nuevo que tú apruebas.</span></p></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n">03<small>/08</small></span></div>
 </section>
 
 <!-- 4. Tu mercado -->
