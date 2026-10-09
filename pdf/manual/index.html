@@ -114,6 +114,21 @@
 .ini3 .nota2 { margin-top: 28px; }
 .ini3 .zona { position: relative; height: 650px; }
 
+/* ===== 4. Plan (9 oct, opción B): tarjetas alternadas (26) con el detalle real de la app, número de paso (19) y pie (25) ===== */
+.m4 .h2 { font-size: var(--fs-title); }
+.m4 .lead { font-size: var(--fs-lead); max-width: 560px; }
+/* Elemento 26: el detalle real de la app sobre el resplandor y su explicación al lado; cambia de lado en cada tarjeta */
+.ths4 { flex: none; display: grid; gap: 10px; margin-top: 18px; }
+.th4 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: center; padding: 12px 24px 12px 12px; border-radius: var(--r); background: var(--ink); }
+.th4--inv { grid-template-columns: 1fr 1.15fr; padding: 12px 12px 12px 24px; }
+.th4--inv .th4__g { order: 2; }
+.th4__g { display: grid; place-items: center; padding: 13px 18px; border-radius: 16px; background: radial-gradient(60% 60% at 50% 50%, rgba(235,12,110,.24), transparent 72%), #0A0A0C; box-shadow: inset 0 0 0 1px #1F1F26; }
+.th4__g i { display: block; width: 100%; border-radius: 12px; background-repeat: no-repeat; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 14px 28px rgba(0,0,0,.5); }
+.th4__n { color: var(--pink); font: 700 30px/1 Unbounded; letter-spacing: -.05em; }
+.th4__t b { display: block; margin-top: 8px; color: #fff; font: 700 var(--fs-sub)/1.2 Unbounded; letter-spacing: -.03em; }
+.th4__t > span:last-child { display: block; margin-top: 6px; color: var(--t2); font: 500 var(--fs-body)/1.45 Manrope; }
+.m4 .nota2 { flex: none; margin-top: 14px; }
+
 /* ===== Pantallas con pasos a un lado ===== */
 .side { display: grid; grid-template-columns: 1fr 312px; gap: 36px; margin-top: 30px; align-items: start; }
 .row-ph { display: grid; gap: 22px; margin-top: 30px; }
@@ -193,21 +208,13 @@
 </section>
 
 <!-- 4. Plan -->
-<section class="page light">
+<section class="page light m4">
   <p class="eyebrow">Plan</p>
   <h2 class="h2">Aprueba las ideas del mes antes de producir<span class="dot">.</span></h2>
-  <ol class="steps grid2" style="margin-top:28px">
-    <li><b>1</b><div><h4>Mira cuántas llevas</h4><p>Arriba ves las ideas aprobadas, las que pediste cambiar y las pendientes. Abajo, el calendario: toca un día para ver su idea.</p></div></li>
-    <li><b>2</b><div><h4>Abre una idea</h4><p>Verás qué contaremos, las láminas o escenas, por qué la proponemos y el dato de tu mercado que la respalda.</p></div></li>
-    <li><b>3</b><div><h4>Decide con un toque</h4><p>"Aprobar idea" si te gusta. "Cambios" si quieres ajustar algo y nos cuentas qué.</p></div></li>
-    <li><b>4</b><div><h4>Aprueba varias de una vez</h4><p>"Aprobar las pendientes" aprueba todas juntas.</p></div></li>
-  </ol>
-  <div class="row-ph n2">
-    <div><div class="phone"><div class="scr"><img src="img/plan.jpg" alt=""><i class="pin" style="--y:24">1</i><i class="pin" style="--y:80">4</i></div></div><p class="cap">El plan del mes</p></div>
-    <div><div class="phone"><div class="scr"><img src="img/idea.jpg" alt=""><i class="pin" style="--y:17">2</i><i class="pin" style="--x:50;--y:91">3</i></div></div><p class="cap">Una idea</p></div>
-  </div>
-  <p class="tip" style="margin-top:22px"><span><b>Aún no ves imágenes ni textos.</b> Primero apruebas la idea. La pieza terminada la revisas después, en Validar.</span></p>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>04 / 07</span></div>
+  <p class="lead">Cada mes te proponemos las ideas; tú decides cuáles se producen.</p>
+  <div class="ths4"><article class="th4"><div class="th4__g"><i style="aspect-ratio:1.649;background-image:url(img/plan.jpg);background-size:106.4% auto;background-position:50.0% 26.4%"></i></div><div class="th4__t"><span class="th4__n">01</span><b>Mira tu avance</b><span>Las ideas aprobadas, las que pediste cambiar y las pendientes. Toca un día del calendario para ver su idea.</span></div></article><article class="th4 th4--inv"><div class="th4__g"><i style="aspect-ratio:2.062;background-image:url(img/idea.jpg);background-size:106.4% auto;background-position:50.0% 33.0%"></i></div><div class="th4__t"><span class="th4__n">02</span><b>Abre una idea</b><span>Qué contaremos, por qué la proponemos y el dato de tu mercado que la respalda.</span></div></article><article class="th4"><div class="th4__g"><i style="aspect-ratio:5.433;background-image:url(img/idea.jpg);background-size:106.4% auto;background-position:50.0% 98.9%"></i></div><div class="th4__t"><span class="th4__n">03</span><b>Decide con un toque</b><span>«Aprobar idea» si te gusta; «Cambios» si quieres ajustar algo y nos cuentas qué.</span></div></article><article class="th4 th4--inv"><div class="th4__g"><i style="aspect-ratio:2.008;background-image:url(img/plan.jpg);background-size:106.4% auto;background-position:50.0% 85.1%"></i></div><div class="th4__t"><span class="th4__n">04</span><b>Aprueba varias a la vez</b><span>«Aprobar las pendientes» aprueba todas juntas.</span></div></article></div>
+  <p class="nota2"><b>Aún no ves imágenes ni textos.</b> Primero apruebas la idea; la pieza terminada la revisas después, en Validar.</p>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">04<small>/07</small></span></div>
 </section>
 
 <!-- 5. Validar -->
