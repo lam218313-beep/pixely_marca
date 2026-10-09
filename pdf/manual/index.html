@@ -96,6 +96,24 @@
 .ent2 .pasos2 { gap: 15px; }
 .ent2 .nota2 { margin-top: 22px; }
 
+/* ===== 3. Inicio (9 oct, opción A): número de paso (19), celular vitrina (13) con resplandor (03) y llamadas (16) ===== */
+.m3 .h2 { font-size: var(--fs-title); }
+.m3 .lead { font-size: var(--fs-lead); max-width: 560px; }
+/* Página negra: pasos, nota y llamadas en su versión oscura */
+.dark .pasos2 b { color: #fff; }
+.dark .pasos2 li > span:last-child { color: var(--t2); }
+.dark .nota2 { background: #16161B; box-shadow: inset 0 0 0 1px #26262E; color: var(--t2); }
+.dark .nota2 b { color: #fff; }
+.dark .ll__l { background: rgba(255,255,255,.55); }
+.dark .ll__e { background: #16161B; box-shadow: 0 0 0 1px #33333C; color: #fff; }
+.m3 .note { margin-top: 10px; }
+/* Pasos a la izquierda y el celular con tres llamadas a la derecha */
+.ini3 { flex: none; display: grid; grid-template-columns: 1fr 430px; margin: auto 0; } /* centrado entre el encabezado y el pie */
+.ini3 > div:first-child { padding-right: 40px; } /* deja libre el espacio de las etiquetas */
+.ini3 .pasos2 { align-content: start; gap: 22px; padding-top: 12px; }
+.ini3 .nota2 { margin-top: 28px; }
+.ini3 .zona { position: relative; height: 650px; }
+
 /* ===== Pantallas con pasos a un lado ===== */
 .side { display: grid; grid-template-columns: 1fr 312px; gap: 36px; margin-top: 30px; align-items: start; }
 .row-ph { display: grid; gap: 22px; margin-top: 30px; }
@@ -156,25 +174,22 @@
 </section>
 
 <!-- 3. Inicio -->
-<section class="page dark">
+<section class="page dark m3">
   <p class="eyebrow">Inicio</p>
   <h2 class="h2">Lo primero que verás: lo que te toca<span class="dot">.</span></h2>
-  <div class="side">
-    <div>
-      <ol class="steps" style="gap:24px">
-        <li><b>1</b><div><h4>Mira la tarjeta rosada</h4><p>Muestra lo más urgente: piezas por revisar, ideas por aprobar, tu voz de marca o tu estrategia. Toca el botón y vas directo.</p></div></li>
-        <li><b>2</b><div><h4>Revisa la lista de abajo</h4><p>Las demás cosas pendientes, ordenadas. Cada una abre su pantalla.</p></div></li>
-        <li><b>3</b><div><h4>Entérate del mercado</h4><p>Aparece "Mercado actualizado" cuando encontramos novedades de tu competencia en la última semana.</p></div></li>
-        <li><b>4</b><div><h4>Mira lo próximo en salir</h4><p>Las publicaciones que vienen, con su fecha.</p></div></li>
-      </ol>
-      <p class="tip" style="margin-top:26px"><span><b>Si no te toca nada,</b> verás "todo al día". Nosotros seguimos trabajando en lo siguiente.</span></p>
-    </div>
-    <div>
-      <div class="phone"><div class="scr"><img src="img/inicio.jpg" alt=""><i class="pin" style="--y:16">1</i><i class="pin" style="--y:40">2</i><i class="pin" style="--y:69">3</i><i class="pin" style="--y:78">4</i></div></div>
-      <p class="note" style="margin-top:10px;text-align:center">Pantalla de ejemplo, marca ficticia.</p>
+  <p class="lead">Cada vez que entras, Inicio te dice qué hacer primero y qué viene después.</p>
+  <div class="ini3">
+    <div><ol class="pasos2"><li><span class="n">01</span><b>Mira la tarjeta rosada</b><span>Lo más urgente: piezas por revisar, ideas por aprobar, tu voz de marca o tu estrategia. Toca el botón y vas directo.</span></li><li><span class="n">02</span><b>Revisa tus pendientes</b><span>Las demás cosas por hacer, en orden. Cuando encontramos novedades de tu competencia, aparece «Mercado actualizado».</span></li><li><span class="n">03</span><b>Mira lo próximo en salir</b><span>Las piezas que vienen, con su fecha.</span></li></ol><p class="nota2"><b>Si no te toca nada,</b> verás «Todo al día». Nosotros seguimos trabajando en lo siguiente.</p></div>
+    <div class="zona">
+      <span class="glow1" style="left:6px;width:544px;top:-34px;height:699.1px"></span>
+      <div class="cel" style="left:126px;top:6px;width:304px"><div class="cel__s"><img src="img/inicio.jpg" alt=""></div></div>
+      <span class="ll__l" style="left:100px;width:37.7px;top:164.9px"></span><span class="ll__p" style="left:137.7px;top:164.9px"></span><span class="ll__e ll__e--izq" style="left:100px;top:164.9px">Lo que te toca</span>
+      <span class="ll__l" style="left:100px;width:37.7px;top:267.3px"></span><span class="ll__p" style="left:137.7px;top:267.3px"></span><span class="ll__e ll__e--izq" style="left:100px;top:267.3px">Tus pendientes</span>
+      <span class="ll__l" style="left:100px;width:37.7px;top:505.3px"></span><span class="ll__p" style="left:137.7px;top:505.3px"></span><span class="ll__e ll__e--izq" style="left:100px;top:505.3px">Lo próximo</span>
+      <p class="note" style="position:absolute;left:126px;width:304px;top:631.1px;text-align:center">Pantalla de ejemplo, con una marca ficticia.</p>
     </div>
   </div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>03 / 07</span></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">03<small>/07</small></span></div>
 </section>
 
 <!-- 4. Plan -->
