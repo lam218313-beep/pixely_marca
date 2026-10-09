@@ -10,7 +10,7 @@ import path from 'node:path';
 // { archivo: páginas } cuando un mismo HTML da varios PDF (como los tres planes).
 const PIEZAS = {
   brochure: 'Pixely-Brochure.pdf',
-  planes: { 'Pixely-Plan-Lite.pdf': '1', 'Pixely-Plan-Basic.pdf': '2', 'Pixely-Plan-Pro.pdf': '3' },
+  planes: { 'Pixely-Plan-Lite.pdf': '1-2', 'Pixely-Plan-Basic.pdf': '3-4', 'Pixely-Plan-Pro.pdf': '5-6' },
   manual: 'Pixely-Manual-de-Partners.pdf',
   tarjeta: 'Pixely-Tarjeta-para-imprenta.pdf',
 };
