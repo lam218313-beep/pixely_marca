@@ -72,7 +72,7 @@
 .ll__e { position: absolute; z-index: 4; transform: translateY(-50%); padding: 7px 13px; border-radius: 99px; background: #fff; box-shadow: 0 0 0 1px rgba(10,10,12,.15), 0 4px 10px rgba(0,0,0,.06); color: var(--p1); font: 700 var(--fs-body) Manrope; white-space: nowrap; }
 .ll__e--izq { transform: translate(-100%, -50%); }
 /* Las 5 pestañas */
-.tabs2 { flex: none; margin-top: 22px; }
+.tabs2 { flex: none; margin-top: 18px; }
 .tabs2 h3 { margin-bottom: 12px; font: 700 var(--fs-sub) Unbounded; letter-spacing: -.03em; }
 .tabs2 .barra { max-width: 540px; margin: 0 auto; border-radius: 20px; background: #08080A; padding: 5px 9px; }
 .tabs2 .barra img { display: block; width: 100%; }
@@ -81,6 +81,7 @@
 .tabs2 .txt b { display: block; margin-bottom: 3px; color: var(--p1); font: 700 var(--fs-body) Manrope; }
 .tabs2 .note { margin-top: 10px; text-align: center; }
 .pro { display: inline-block; margin-top: 4px; padding: 2px 8px; border-radius: 99px; background: var(--ink); color: #fff; font: 800 9.5px Manrope; font-style: normal; letter-spacing: .08em; text-transform: uppercase; }
+.pro--pub { padding: 4px 10px; border-radius: 9px; line-height: 1.3; } /* «Publicadas: Plan Pro» en dos líneas para que entre en su columna */
 /* Elemento 25 · pie con número grande */
 .pie { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 22px; }
 .pie .wm { font-size: 15px; }
@@ -93,8 +94,8 @@
 .ent2 { flex: none; display: grid; grid-template-columns: 1fr 400px; gap: 0; margin-top: 24px; }
 .ent2 .pasos2 { align-content: start; padding-top: 8px; }
 .ent2 .zona { position: relative; height: 440px; }
-.ent2 .pasos2 { gap: 15px; }
-.ent2 .nota2 { margin-top: 22px; }
+.ent2 .pasos2 { gap: 12px; }
+.ent2 .nota2 { margin-top: 16px; }
 
 /* ===== 3. Inicio (9 oct, opción A): número de paso (19), celular vitrina (13) con resplandor (03) y llamadas (16) ===== */
 .m3 .h2 { font-size: var(--fs-title); }
@@ -146,8 +147,21 @@
 .row-ph.n2 { grid-template-columns: repeat(2, 262px); justify-content: center; gap: 36px; }
 .row-ph.n3 { grid-template-columns: repeat(3, 1fr); }
 
-/* ===== 6. Resultados y Marca ===== */
-.rm { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 26px; }
+/* ===== 6. Resultados y Marca (9 oct, opción A): dos columnas con su celular vitrina (13), número de paso (19), etiqueta «Plan Pro» y pie (25) ===== */
+.m6 .h2 { font-size: var(--fs-title); }
+.m6 .lead { font-size: var(--fs-lead); max-width: 560px; }
+.m6 .cel { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px -12px rgba(10,10,12,.45); }
+.m6 .pro { margin: 0 0 0 8px; vertical-align: 3px; }
+.m6 .pasos2 em.pro { color: #fff; font-weight: 800; }
+.m6 .nota2 { flex: none; margin-top: 20px; }
+.sec6 h3 { display: flex; align-items: baseline; gap: 10px; font: 700 22px/1.1 Unbounded; letter-spacing: -.04em; }
+.sec6 h3 span { color: var(--p3); font: 700 var(--fs-body) Manrope; letter-spacing: 0; }
+.m6 .pasos2 { gap: 12px; }
+.m6 .pasos2 .n { font-size: 22px; }
+.m6 .pasos2 b { font-size: 15px; }
+/* Dos columnas: cada pestaña con su celular y sus tres pasos */
+.dos6 { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 24px; }
+.dos6 .zona { position: relative; height: 392px; margin: 14px 0 16px; }
 
 /* ===== 7. Dudas ===== */
 .faq-pg .rings { right: -300px; bottom: -330px; width: 700px; height: 700px; }
@@ -194,7 +208,7 @@
     </div>
   </div>
   <div class="tabs2"><h3>Las 5 pestañas de abajo</h3><div class="barra"><img src="img/pestanas.png" alt=""></div>
-    <div class="txt"><p><b>Inicio</b>Lo que te toca hoy.</p><p><b>Plan</b>Las ideas del mes por aprobar.</p><p><b>Validar</b>Las piezas terminadas por revisar.</p><p><b>Resultados</b>Lo que viene y cómo le fue a lo publicado.<br><em class="pro">Plan Pro</em></p><p><b>Marca</b>Tu voz, tu estrategia, tu mercado y tu ficha.</p></div>
+    <div class="txt"><p><b>Inicio</b>Lo que te toca hoy.</p><p><b>Plan</b>Las ideas del mes por aprobar.</p><p><b>Validar</b>Las piezas terminadas por revisar.</p><p><b>Resultados</b>Lo que viene y cómo le fue a lo publicado.<br><em class="pro pro--pub">Publicadas:<br>Plan Pro</em></p><p><b>Marca</b>Tu voz, tu estrategia, tu mercado y tu ficha.</p></div>
     <p class="note">Los globitos rosados sobre Plan y Validar cuentan cuántas cosas te esperan.</p></div>
   <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">02<small>/07</small></span></div>
 </section>
@@ -246,33 +260,16 @@
 </section>
 
 <!-- 6. Resultados y Marca -->
-<section class="page light">
+<section class="page light m6">
   <p class="eyebrow">Resultados y Marca</p>
-  <h2 class="h2">Mira cómo te va y cómo habla tu marca<span class="dot">.</span></h2>
-  <div class="rm">
-    <div>
-      <h3 class="h3s">Resultados</h3>
-      <ol class="steps">
-        <li><b>1</b><div><h4>Próximas</h4><p>La agenda de lo que está por salir y lo que espera tu visto bueno.</p></div></li>
-        <li><b>2</b><div><h4>Publicadas</h4><p>Elige el mes: alcance, vistas e indicadores. Compara tu promedio con el de tu competencia y descubre tu mejor pieza.</p></div></li>
-        <li><b>3</b><div><h4>Detalle</h4><p>Toca una pieza para ver sus números.</p></div></li>
-      </ol>
-    </div>
-    <div>
-      <h3 class="h3s">Marca</h3>
-      <ol class="steps">
-        <li><b>1</b><div><h4>Voz y Estrategia</h4><p>Revísalas y apruébalas, o pide cambios.</p></div></li>
-        <li><b>2</b><div><h4>Mercado</h4><p>El estudio de tu nicho. Puedes descargarlo en PDF.</p></div></li>
-        <li><b>3</b><div><h4>Ficha</h4><p>Los datos de tu negocio, solo para consulta.</p></div></li>
-      </ol>
-    </div>
+  <h2 class="h2">Mira lo que viene y cómo habla tu marca<span class="dot">.</span></h2>
+  <p class="lead">En Resultados sigues tus publicaciones; en Marca, la base de todo lo que hacemos por tu negocio.</p>
+  <div class="dos6">
+    <div class="sec6"><h3>Resultados</h3><div class="zona"><div class="cel" style="left:67px;top:0px;width:192px"><div class="cel__s"><img src="img/proximas.jpg" alt=""></div></div></div><ol class="pasos2"><li><span class="n">01</span><b>Próximas</b><span>La agenda de lo que está por salir y lo que espera tu visto bueno.</span></li><li><span class="n">02</span><b>Publicadas<em class="pro">Plan Pro</em></b><span>Elige el mes: alcance, vistas y tu mejor pieza, frente al promedio de tu competencia.</span></li><li><span class="n">03</span><b>Detalle<em class="pro">Plan Pro</em></b><span>Toca una pieza para ver sus números.</span></li></ol></div>
+    <div class="sec6"><h3>Marca</h3><div class="zona"><div class="cel" style="left:67px;top:0px;width:192px"><div class="cel__s"><img src="img/marca.jpg" alt=""></div></div></div><ol class="pasos2"><li><span class="n">01</span><b>Voz y Estrategia</b><span>Cómo habla tu marca y hacia dónde va. Revísalas y apruébalas, o pide cambios.</span></li><li><span class="n">02</span><b>Mercado</b><span>El estudio de tu mercado y tu competencia. Puedes descargarlo en PDF.</span></li><li><span class="n">03</span><b>Ficha</b><span>Los datos de tu negocio, solo para consulta.</span></li></ol></div>
   </div>
-  <div class="row-ph n3">
-    <div><div class="phone"><div class="scr"><img src="img/proximas.jpg" alt=""><i class="pin" style="--x:8;--y:12.5">1</i><i class="pin" style="--x:54;--y:12.5">2</i></div></div><p class="cap">Resultados · Próximas</p></div>
-    <div><div class="phone"><div class="scr"><img src="img/resultado.jpg" alt=""><i class="pin" style="--y:78">3</i></div></div><p class="cap">Resultados · Detalle</p></div>
-    <div><div class="phone"><div class="scr"><img src="img/marca.jpg" alt=""><i class="pin" style="--y:57">1</i><i class="pin" style="--y:78.5">2</i><i class="pin" style="--x:52;--y:78.5">3</i></div></div><p class="cap">Marca</p></div>
-  </div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>06 / 07</span></div>
+  <p class="nota2"><b>Los números de cada publicación son del Plan Pro</b> y llegan unos días después de que sale. En todos los planes, «Próximas» te muestra lo que viene.</p>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">06<small>/07</small></span></div>
 </section>
 
 <!-- 7. Dudas frecuentes -->
