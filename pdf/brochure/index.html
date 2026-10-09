@@ -144,32 +144,48 @@
 .dark .pie .wm small { color: var(--t3); }
 .dark .pie .n small { color: var(--mute); }
 
-/* ===== 4. Tu mercado ===== */
-.mk-hero { margin-top: 22px; height: 270px; }
-.mk-hero img { object-position: 50% 52%; }
-.mk-hero .badge { left: 20px; bottom: 20px; }
-.pulse { width: 10px; height: 10px; margin-left: 6px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 6px rgba(235,12,110,.28); }
-.loop { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-.lp { border-radius: var(--r); background: #F5F5F7; padding: 16px 20px 18px; }
-.lp .g { height: 96px; border-radius: 16px; background: #fff; border: 1px solid var(--pline); padding: 10px 14px; display: flex; align-items: center; gap: 14px; }
-.lp h3 { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; }
-.lp h3 span { font: 800 var(--fs-label) Manrope; letter-spacing: .1em; color: var(--pink); }
-.lp .small { margin-top: 6px; }
-.g svg { display: block; flex: none; }
-.g .lbl { color: var(--p3); }
-.tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.tags span { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 9px; border-radius: 99px; background: #F1F1F4; font: 700 var(--fs-label) Manrope; color: var(--p2); }
-.tags span i { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
-.metric b { display: block; white-space: nowrap; font: 700 var(--fs-lead)/1.1 Unbounded; letter-spacing: -.04em; color: var(--p1); }
-.metric .lbl { display: block; margin-top: 4px; }
-.legend { display: grid; gap: 6px; font: 700 var(--fs-label) Manrope; color: var(--p2); }
-.legend div { display: flex; align-items: center; gap: 7px; }
-.legend i { width: 8px; height: 8px; border-radius: 50%; }
-.legend b { margin-left: auto; padding-left: 12px; color: var(--p1); }
-.kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 14px; padding: 20px 6px; border-radius: var(--r); background: var(--ink); color: #fff; }
-.kpis div { padding: 0 18px; border-left: 1px solid var(--edge); }
-.kpis div:first-child { border-left: 0; }
-.kpis p { margin-top: 8px; font: 600 var(--fs-body)/1.35 Manrope; color: var(--t2); }
+/* ===== 4. Tu mercado (9 oct, opción A): foto (29) con insignia (18), cuatro fases con gráficos aprobados (07 A, 06 B, 08 C) y cifras con íconos (31 C) ===== */
+.p4 .foto4 { position: relative; margin-top: 18px; height: 120px; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px var(--pline); } /* elemento 29 */
+.p4 .foto4 > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
+.p4 .ins { left: 18px; bottom: 16px; }
+.fases { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.fase { display: grid; align-content: start; gap: 8px; padding: 12px 12px 16px; border-radius: var(--r); background: #F5F5F7; }
+.fase > .gr { align-content: start; gap: 10px; min-height: 156px; padding: 14px 16px; }
+.fase__h { display: flex; align-items: baseline; gap: 10px; margin: 6px 6px 0; }
+.fase__h .n { color: var(--pink); font: 700 22px/1 Unbounded; letter-spacing: -.05em; }
+.fase__h b { font: 700 var(--fs-sub)/1.1 Unbounded; letter-spacing: -.03em; }
+.fase__h em { margin-left: auto; padding: 3px 9px; border-radius: 99px; background: var(--ink); color: #fff; font: 800 9.5px Manrope; font-style: normal; letter-spacing: .08em; text-transform: uppercase; }
+.fase p { margin: 0 6px; color: var(--p2); font: 500 var(--fs-body)/1.45 Manrope; }
+/* 01 · lo que recorremos (íconos del set 23) */
+.ir { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 4px; }
+.ir > div { display: grid; justify-items: center; gap: 4px; text-align: center; color: var(--p1); font: 700 11px Manrope; }
+.gr--claro .ico { color: #0A0A0C; }
+/* 07 A · medio arco */
+.gm { position: relative; width: 100%; max-width: 150px; justify-self: center; }
+.gm svg { display: block; width: 100%; }
+.gm__n { position: absolute; left: 0; right: 0; bottom: 2%; text-align: center; font: 700 22px/1 Unbounded; letter-spacing: -.04em; }
+.gm__n small { display: block; margin-top: 3px; color: #8A8A96; font: 700 9.5px Manrope; letter-spacing: 0; }
+/* 06 B · barra repartida */
+.rp { display: flex; gap: 3px; height: 20px; margin-top: 6px; }
+.rp span { border-radius: 6px; }
+.gl { display: grid; gap: 4px; margin: 4px 0 0; padding: 0; list-style: none; }
+.gl li { display: grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; color: #55555F; font: 700 12px Manrope; }
+.gl i { width: 12px; height: 12px; border-radius: 3px; }
+.gl b { color: #0A0A0C; font: 700 12.5px Unbounded; }
+/* 08 C · lista con flechas */
+.gx { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
+.gx li { display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; border-radius: 12px; background: #F4F4F7; color: #55555F; font: 700 12px Manrope; }
+.gx b { padding: 3px 9px; border-radius: 99px; font: 800 11px Manrope; }
+.gx .on { background: var(--pink); color: #fff; }
+.gx .sobre { color: var(--pink); background: rgba(235,12,110,.08); }
+.gx .bajo { background: #E4E4EA; color: #8A8A96; }
+/* 31 C · cifras con íconos */
+.cifras4 { margin-top: 10px; padding: 14px 18px; }
+.gi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; }
+.gi > div { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: center; }
+.gi .ico { grid-row: span 2; }
+.gi b { font: 700 24px/1 Unbounded; letter-spacing: -.05em; color: #fff; }
+.gi span:last-child { color: var(--t3); font: 600 var(--fs-body)/1.35 Manrope; }
 
 /* ===== 5. Pixely Partners ===== */
 .pt .rings { right: -280px; bottom: -260px; width: 700px; height: 700px; }
@@ -306,47 +322,13 @@
 </section>
 
 <!-- 4. Tu mercado -->
-<section class="page light">
+<section class="page light p4">
   <p class="eyebrow">Tu mercado</p>
   <h2 class="h2">Un equipo de sistemas que lee tu mercado mientras tú vendes<span class="dot">.</span></h2>
-  <div class="frame mk-hero"><img src="img/celular-mercado.jpg" alt=""><span class="badge"><i class="pulse"></i>Lectura continua de tu mercado</span></div>
-  <div class="loop">
-    <article class="lp">
-      <div class="g">
-        <svg width="78" height="78" viewBox="0 0 78 78" aria-hidden="true"><defs><linearGradient id="barrido" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EB0C6E" stop-opacity=".45"/><stop offset="1" stop-color="#EB0C6E" stop-opacity="0"/></linearGradient></defs><g fill="none" stroke="#E4E4EA" stroke-width="1.2"><circle cx="39" cy="39" r="36"/><circle cx="39" cy="39" r="24"/><circle cx="39" cy="39" r="12"/></g><path d="M39 39 L39 3 A36 36 0 0 1 72 26 Z" fill="url(#barrido)"/><line x1="39" y1="39" x2="39" y2="3" stroke="#EB0C6E" stroke-width="1.6"/><circle cx="56" cy="20" r="3.2" fill="#EB0C6E"/><circle cx="22" cy="52" r="2.6" fill="#0A0A0C"/><circle cx="54" cy="56" r="2.6" fill="#0A0A0C"/><circle cx="18" cy="28" r="2.6" fill="#0A0A0C"/><circle cx="39" cy="39" r="3" fill="#0A0A0C"/></svg>
-        <div><span class="lbl">Lo que recorremos</span><div class="tags" style="margin-top:8px"><span><i></i>Competidores</span><span><i></i>Reseñas</span><span><i></i>Precios</span><span><i></i>Publicaciones</span></div></div>
-      </div>
-      <h3 class="h3"><span>01</span>Leer</h3><p class="small">Recorremos tu nicho: <em class="k">competidores, reseñas, precios y lo que publican</em>. De forma continua, no una sola vez al empezar.</p>
-    </article>
-    <article class="lp">
-      <div class="g">
-        <svg width="88" height="55" viewBox="0 0 96 60" aria-hidden="true"><path d="M8 54 A40 40 0 0 1 88 54" fill="none" stroke="#EDEDF1" stroke-width="9" stroke-linecap="round"/><path d="M8 54 A40 40 0 0 1 80.6 31" fill="none" stroke="#EB0C6E" stroke-width="9" stroke-linecap="round"/><text x="48" y="52" text-anchor="middle" font-family="Unbounded" font-weight="700" font-size="18" letter-spacing="-.7" fill="#0A0A0C">4.4★</text></svg>
-        <div class="metric"><b>S/ 380–620 mil</b><span class="lbl">Tamaño del mercado</span><b style="margin-top:10px">18 de 64</b><span class="lbl">Competidores que importan</span></div>
-      </div>
-      <h3 class="h3"><span>02</span>Medir</h3><p class="small">Convertimos cada hallazgo en métricas: <em class="k">la calificación de tu zona, el tamaño del mercado</em> y los temas que mueven a tu audiencia.</p>
-    </article>
-    <article class="lp">
-      <div class="g">
-        <svg width="76" height="76" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke-width="16" transform="rotate(-90 60 60)"><circle cx="60" cy="60" r="46" stroke="#EB0C6E" stroke-dasharray="141.5 289"/><circle cx="60" cy="60" r="46" stroke="#FFC2E1" stroke-dasharray="83.7 289" stroke-dashoffset="-144.5"/><circle cx="60" cy="60" r="46" stroke="#B4B4BE" stroke-dasharray="54.8 289" stroke-dashoffset="-231.2"/></g><text x="60" y="62" text-anchor="middle" font-family="Unbounded" font-weight="700" font-size="28" fill="#0A0A0C">12</text><text x="60" y="80" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="11" letter-spacing="1.2" fill="#8A8A96">IDEAS</text></svg>
-        <div class="legend" style="flex:1"><div><i style="background:#EB0C6E"></i>Problema <b>50 %</b></div><div><i style="background:#FFC2E1"></i>Identidad <b>30 %</b></div><div><i style="background:#B4B4BE"></i>Prueba <b>20 %</b></div></div>
-      </div>
-      <h3 class="h3"><span>03</span>Decidir</h3><p class="small"><em class="k">Cada idea del plan se apoya en un dato de tu mercado</em> y se reparte con intención entre lo que tu marca necesita decir.</p>
-    </article>
-    <article class="lp">
-      <div class="g">
-        <svg width="118" height="64" viewBox="0 0 132 72" aria-hidden="true"><line x1="4" y1="44" x2="128" y2="44" stroke="#B4B4BE" stroke-width="1.4" stroke-dasharray="4 4"/><polyline points="6,52 26,40 46,48 66,30 86,36 106,16 124,10" fill="none" stroke="#EB0C6E" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><g fill="#EB0C6E"><circle cx="26" cy="40" r="2.6"/><circle cx="46" cy="48" r="2.6"/><circle cx="66" cy="30" r="2.6"/><circle cx="86" cy="36" r="2.6"/><circle cx="106" cy="16" r="2.6"/></g><circle cx="124" cy="10" r="5" fill="#EB0C6E" stroke="#fff" stroke-width="2"/><text x="4" y="62" font-family="Manrope" font-weight="800" font-size="9" letter-spacing=".8" fill="#8A8A96">TU PROMEDIO</text></svg>
-        <div><span class="lbl" style="color:var(--pink)">Mejor pieza</span><div class="tags" style="margin-top:8px"><span>→ Plan siguiente</span></div></div>
-      </div>
-      <h3 class="h3"><span>04</span>Aprender</h3><p class="small">Medimos cada publicación frente a tu promedio y a tu competencia. <em class="k">Lo que funcionó entra al plan del mes siguiente.</em></p>
-    </article>
-  </div>
-  <div class="kpis">
-    <div><span class="num pink">7</span><p>días hábiles como máximo para tu primer plan</p></div>
-    <div><span class="num">7</span><p>redes en las que publicamos</p></div>
-    <div><span class="num">1</span><p>solo lugar para aprobar todo</p></div>
-    <div><span class="num">100 %</span><p>digital, en toda Latinoamérica</p></div>
-  </div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>04 / 08</span></div>
+  <div class="foto4"><img src="img/celular-mercado.jpg" alt=""><span class="ins"><i><svg data-i="store" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/></svg></i>Lectura continua de tu mercado</span></div>
+  <div class="fases"><article class="fase"><div class="gr gr--claro"><span class="gr__t">Lo que recorremos</span><div class="ir"><div><span class="ico"><svg data-i="users" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Competidores</div><div><span class="ico"><svg data-i="star" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z"/></svg></span>Reseñas</div><div><span class="ico"><svg data-i="tag" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/></svg></span>Precios</div><div><span class="ico"><svg data-i="send" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>Publicaciones</div></div></div><div class="fase__h"><span class="n">01</span><b>Leer</b></div><p>Competidores, reseñas, precios y lo que publican, de forma continua.</p></article><article class="fase"><div class="gr gr--claro"><span class="gr__t">Qué tan exigente es tu zona</span><div class="gm"><svg viewBox="0 0 100 62"><path d="M10.0 55.0 A40 40 0 0 1 90.0 55.0" fill="none" stroke="#EEEEF2" stroke-width="8" stroke-linecap="round"/><path d="M10.0 55.0 A40 40 0 0 1 73.5 22.6" fill="none" stroke="#EB0C6E" stroke-width="8" stroke-linecap="round"/><circle cx="65.5" cy="7.4" r="1.5" fill="#8A8A96"/><circle cx="72.7" cy="10.4" r="1.5" fill="#8A8A96"/><circle cx="79.4" cy="14.5" r="1.5" fill="#8A8A96"/><circle cx="85.4" cy="19.6" r="1.5" fill="#8A8A96"/><circle cx="90.5" cy="25.6" r="1.5" fill="#8A8A96"/><circle cx="94.6" cy="32.3" r="1.5" fill="#8A8A96"/></svg><span class="gm__n">★ 4,4<small>promedio de la zona</small></span></div></div><div class="fase__h"><span class="n">02</span><b>Medir</b></div><p>La calificación de tu zona, el tamaño del mercado y lo que mueve a tu audiencia.</p></article><article class="fase"><div class="gr gr--claro"><span class="gr__t">Tus ideas del mes · 12</span><div class="rp"><span style="flex:6;background:#EB0C6E"></span><span style="flex:4;background:#0A0A0C"></span><span style="flex:2;background:#4A4A55"></span></div><ul class="gl"><li><i style="background:#EB0C6E"></i>Problema<b>6</b></li><li><i style="background:#0A0A0C"></i>Identidad<b>4</b></li><li><i style="background:#4A4A55"></i>Prueba<b>2</b></li></ul></div><div class="fase__h"><span class="n">03</span><b>Decidir</b></div><p>Cada idea del plan se apoya en un dato de tu mercado y se reparte con intención.</p></article><article class="fase"><div class="gr gr--claro"><span class="gr__t">Frente a tu promedio</span><ul class="gx"><li><span>Detrás del mostrador</span><b class="on">▲ +60%</b></li><li><span>Guía de tallas</span><b class="sobre">▲ +40%</b></li><li><span>Cueros que duran</span><b class="bajo">▼ -10%</b></li></ul></div><div class="fase__h"><span class="n">04</span><b>Aprender</b><em>Plan Pro</em></div><p>Medimos cada publicación frente a tu promedio: lo que funciona entra al plan siguiente.</p></article></div>
+  <div class="gr cifras4"><span class="gr__t">Pixely en números</span><div class="gi"><div><span class="ico"><svg data-i="calendar-days" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><b>7</b><span>días hábiles como máximo para tu primer plan</span></div><div><span class="ico"><svg data-i="send" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span><b>7</b><span>redes en las que publicamos</span></div><div><span class="ico"><svg data-i="smartphone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span><b>1</b><span>solo lugar para aprobar todo</span></div><div><span class="ico"><svg data-i="shield-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><b>100 %</b><span>digital, en toda Latinoamérica</span></div></div></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n">04<small>/08</small></span></div>
 </section>
 
 <!-- 5. Pixely Partners -->
