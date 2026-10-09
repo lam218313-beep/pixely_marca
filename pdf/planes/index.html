@@ -5,84 +5,111 @@
 <title>Pixely - Planes</title>
 <link rel="stylesheet" href="../comun/base.css">
 <style>
-/* Una ficha por plan, mismo formato. Cada plan tiene su tono: Lite claro, Basic grafito, Pro noche.
-   Tamaños: solo la escala de comun/base.css (--fs-*). */
+/* Una ficha por plan, mismo formato, armada solo con elementos aprobados (pixely_marca/elementos).
+   Cada plan tiene su tono de cabecera: Lite claro, Basic grafito, Pro noche. Tamaños: la escala de comun/base.css. */
 .plan-pg { padding: 0; background: var(--paper); }
 .lbl { font: 800 var(--fs-label)/1.2 Manrope; letter-spacing: .14em; text-transform: uppercase; }
 
 /* Tonos */
-.lite  { --h-bg: #F2F2F5; --h-t1: #0A0A0C; --h-t2: #55555F; --h-t3: #8A8A96; --h-line: rgba(10,10,12,.1); --h-chip: #fff; --tile: #0A0A0C; --tile-off: rgba(10,10,12,.08); }
-.basic { --h-bg: linear-gradient(160deg, #2C2C36 0%, #1B1B22 100%); --h-t1: #fff; --h-t2: #C4C4CC; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.12); --h-chip: rgba(255,255,255,.08); --tile: #fff; --tile-off: rgba(255,255,255,.1); }
-.pro   { --h-bg: #0A0A0C; --h-t1: #fff; --h-t2: #B4B4BE; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.1); --h-chip: rgba(255,255,255,.06); --tile: #fff; --tile-off: rgba(255,255,255,.1); }
+.lite  { --h-bg: #F2F2F5; --h-t1: #0A0A0C; --h-t2: #55555F; --h-t3: #8A8A96; --h-line: rgba(10,10,12,.1); --img: #0A0A0C; --esc-off: #E4E4EA; --esc-on: #8A8A96; }
+.basic { --h-bg: linear-gradient(160deg, #2C2C36 0%, #1B1B22 100%); --h-t1: #fff; --h-t2: #C4C4CC; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.12); --img: #B4B4BE; --esc-off: #33333C; --esc-on: #6A6A75; }
+.pro   { --h-bg: #0A0A0C; --h-t1: #fff; --h-t2: #B4B4BE; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.1); --img: #B4B4BE; --esc-off: #26262E; --esc-on: #4A4A55; }
 
 /* ===== Cabecera ===== */
-.hero { flex: none; position: relative; overflow: hidden; padding: 34px 56px 26px; background: var(--h-bg); color: var(--h-t1); }
-.hero .arte { position: absolute; right: -300px; top: 30px; width: 620px; } /* elemento 01 aprobado */
-.pro .hero::after { content: ''; position: absolute; left: -120px; bottom: -220px; width: 520px; height: 420px; background: radial-gradient(closest-side, rgba(235,12,110,.28), transparent); pointer-events: none; }
-.top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
-.tiers { display: inline-flex; gap: 3px; padding: 3px; border-radius: 99px; background: var(--h-chip); box-shadow: inset 0 0 0 1px var(--h-line); }
-.tiers span { height: 26px; padding: 0 14px; border-radius: 99px; display: inline-flex; align-items: center; font: 700 var(--fs-label) Manrope; letter-spacing: .06em; color: var(--h-t3); }
-.tiers span.on { background: var(--pink); color: #fff; }
-.grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 200px; gap: 24px; margin-top: 22px; }
-.badge { display: inline-flex; align-items: center; gap: 7px; height: 26px; padding: 0 12px; border-radius: 99px; color: var(--h-t2); box-shadow: inset 0 0 0 1px var(--h-line); }
-.pro .badge { background: var(--pink); color: #fff; box-shadow: none; }
-.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
-.pro .badge::before { background: #fff; }
-.hero h1 { margin-top: 14px; font: 700 var(--fs-display)/1 Unbounded; letter-spacing: -.05em; white-space: nowrap; }
-.hero .lead { margin-top: 12px; max-width: 380px; font: 500 var(--fs-lead)/1.5 Manrope; color: var(--h-t2); }
-.price { display: flex; align-items: baseline; gap: 10px; margin-top: 18px; }
+.hero { flex: none; position: relative; overflow: hidden; padding: 26px 56px 22px; background: var(--h-bg); color: var(--h-t1); }
+.top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; height: 28px; }
+/* Elemento 21 · escalera de nivel: cada escalón más alto; el plan actual en rosa */
+.esc { display: inline-flex; align-items: flex-end; gap: 3px; }
+.esc span { display: grid; grid-template-rows: 36px auto; gap: 4px; width: 40px; color: var(--h-t3); font: 800 var(--fs-label) Manrope; text-align: center; }
+.esc i { align-self: end; display: block; border-radius: 5px 5px 2px 2px; background: var(--esc-off); }
+.esc .on i { background: var(--esc-on); }
+.esc .yo i { background: var(--pink); }
+.esc .yo b { color: var(--h-t1); }
+.grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 200px; gap: 24px; margin-top: 4px; }
+/* Elemento 24 · etiqueta rosa y título con punto rosa (en la ficha, el nombre del plan va en tamaño de portada) */
+.grid .lbl { color: var(--pink); }
+.hero h1 { margin-top: 10px; font: 700 var(--fs-display)/1 Unbounded; letter-spacing: -.05em; white-space: nowrap; }
+.hero .lead { margin-top: 10px; max-width: 400px; font: 500 var(--fs-lead)/1.45 Manrope; color: var(--h-t2); }
+.price { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; }
 .price b { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.04em; }
 .pro .price b { color: var(--pink); }
 .price span { font: 600 var(--fs-body) Manrope; color: var(--h-t3); }
-.hero .frame { height: 236px; border-radius: var(--r-lg); padding: 6px; background: var(--h-chip); box-shadow: inset 0 0 0 1px var(--h-line); }
-.pro .hero .frame { box-shadow: inset 0 0 0 1.5px var(--pink), 0 24px 60px -20px rgba(235,12,110,.55); }
-.hero .frame img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
-
-/* Volumen: un cuadro por pieza al mes (rosa = reel) */
-.vol { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--h-line); }
-.tiles { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; }
-.tiles i { aspect-ratio: 1; border-radius: 5px; background: var(--tile-off); }
-.tiles i.f { background: var(--tile); }
-.tiles i.r { background: var(--pink); }
-.pro .tiles i.r { box-shadow: 0 0 10px rgba(235,12,110,.7); }
-.vol .lbl { color: var(--h-t3); margin-bottom: 10px; display: block; }
-.nums { display: flex; gap: 22px; }
-.nums div b { display: block; font: 700 var(--fs-num)/1 Unbounded; letter-spacing: -.05em; }
-.nums div b.pk { color: var(--pink); }
-.nums div span { display: block; margin-top: 4px; font: 600 var(--fs-label)/1.3 Manrope; color: var(--h-t2); }
+/* Elemento 09 · piezas por plan: barras que crecen (el plan actual encendido) */
+.vol { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--h-line); }
+.vol .lbl { display: block; margin-bottom: 8px; color: var(--h-t3); }
+.bars { display: grid; gap: 5px; }
+.bar { display: grid; grid-template-columns: 46px 1fr; align-items: center; opacity: .32; }
+.bar.yo { opacity: 1; }
+.bar > b { font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
+.bar .t { display: flex; align-items: center; gap: 8px; }
+.bar .b { display: flex; gap: 2px; height: 18px; }
+.bar .b i { display: grid; place-items: center; border-radius: 5px; background: var(--img); color: var(--h-bg-t, #fff); font: 700 var(--fs-label) Unbounded; font-style: normal; }
+.basic .bar .b i, .pro .bar .b i { color: #0A0A0C; }
+.bar .b i.r { background: var(--pink); color: #fff; }
+.bar em { white-space: nowrap; font: 700 var(--fs-body) Unbounded; font-style: normal; letter-spacing: -.02em; }
+.bar em small { margin-left: 3px; color: var(--h-t3); font: 700 var(--fs-label) Manrope; letter-spacing: 0; }
+.ley { display: flex; gap: 14px; margin-top: 8px; color: var(--h-t3); font: 700 var(--fs-label) Manrope; }
+.ley span { display: inline-flex; align-items: center; gap: 5px; }
+.ley i { width: 8px; height: 8px; border-radius: 2px; background: var(--img); }
+.ley i.r { background: var(--pink); }
+/* Columna derecha: la imagen del plan */
+.vis { position: relative; }
+/* Elemento 13 · celular «vitrina» con captura real */
+.cel { position: absolute; left: 50%; top: 44px; width: 138px; aspect-ratio: 412 / 839; transform: translateX(-50%); border-radius: 15.8% / 7.7%; background: linear-gradient(160deg, #3a3a44, #121216 40%, #26262e); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px -12px rgba(0,0,0,.45); }
+.basic .cel, .pro .cel { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px rgba(0,0,0,.55), 0 0 40px rgba(235,12,110,.14); }
+.cel::before { content: ''; position: absolute; z-index: 3; top: 3.1%; left: 50%; width: 28%; height: 3.1%; transform: translateX(-50%); border-radius: 99px; background: #000; }
+.cel .s { position: absolute; inset: 1.34% 2.7%; overflow: hidden; border-radius: 13.8% / 6.8%; background: #0A0A0C; }
+.cel .s img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.cel .s::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 28%, transparent 42%); }
+/* Elemento 01 · esfera «componiendo», cortada por el borde derecho */
+.hero .arte { position: absolute; right: -230px; top: 70px; width: 520px; }
+/* Elemento 29 · foto real con esquinas redondeadas y filo fino */
+.foto { position: absolute; inset: 44px 0 0; border-radius: var(--r); overflow: hidden; box-shadow: 0 0 0 1px var(--h-line); }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Elemento 03 · resplandor rosa saliendo de una esquina (solo sobre negro) */
+.glow { position: absolute; right: -260px; top: -240px; width: 640px; height: 560px; background: radial-gradient(60% 55% at 50% 50%, rgba(235, 12, 110, .20), transparent 70%); pointer-events: none; }
 
 /* ===== Cuerpo ===== */
-.body { flex: 1; display: flex; flex-direction: column; padding: 18px 56px 0; color: var(--p1); }
+.body { flex: 1; display: flex; flex-direction: column; padding: 20px 56px 0; color: var(--p1); }
 .body > .lbl { color: var(--pink); }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.col { display: grid; gap: 12px; align-content: start; }
-.blk { border-radius: var(--r); padding: 14px 16px 10px; background: #F5F5F7; }
-.pro .blk { background: #0A0A0C; color: #fff; }
-.basic .blk { background: #EFEFF2; }
-.blk h4 { display: flex; justify-content: space-between; align-items: baseline; font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
-.blk h4 span { font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: var(--p3); }
-.blk ul { list-style: none; margin-top: 8px; }
-.blk li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; min-height: 27px; padding: 4px 0; border-top: 1px solid var(--pline); font: 600 var(--fs-body)/1.3 Manrope; }
-.pro .blk li { border-color: rgba(255,255,255,.08); }
-.blk li em { font-style: normal; display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 99px; background: #fff; font: 800 var(--fs-label) Manrope; letter-spacing: .04em; color: var(--p1); white-space: nowrap; }
-.basic .blk li em { background: #fff; }
-.pro .blk li em { background: rgba(235,12,110,.16); color: #FF7AB0; }
-.blk li em.top { background: var(--pink); color: #fff; }
-.blk li svg { width: 20px; height: 20px; padding: 4px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-.blk li.no { color: var(--p3); font-weight: 500; }
-.pro .blk li.no { color: var(--t3); }
-.blk li.no em { background: none; box-shadow: inset 0 0 0 1px rgba(10,10,12,.14); color: var(--p3); font-weight: 700; }
+/* Elemento 22 · tabla de los tres planes, partida en dos columnas */
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; align-items: start; }
+.tb { position: relative; display: grid; grid-template-columns: 1fr repeat(3, 46px); align-items: center; column-gap: 2px; }
+.tb > * { position: relative; z-index: 1; }
+.tb .hd { padding: 5px 0; text-align: center; font: 700 var(--fs-label) Unbounded; letter-spacing: -.01em; color: var(--p2); }
+.tb .hd.pro { color: var(--pink); }
+.tb .hd.yo { color: var(--p1); }
+.tb .g { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; padding: 5px 0 3px; font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
+.tb .g:first-of-type { margin-top: 0; }
+.tb .g span { font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: var(--p3); }
+.tb .t, .tb .c { min-height: 22px; display: flex; align-items: center; border-top: 1px solid var(--pline); }
+.tb .t { padding: 3px 6px 3px 0; font: 600 var(--fs-label)/1.3 Manrope; font-size: 11px; color: var(--p2); }
+.tb .c { justify-content: center; text-align: center; font: 800 var(--fs-label)/1.15 Manrope; color: var(--pink); }
+.tb .c svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tb .c.no { color: #C8C8D0; font-size: 13px; }
+/* La columna del plan de esta ficha va resaltada */
+.tb .band { position: absolute; z-index: 0; top: 0; bottom: 0; width: 48px; border-radius: 10px; background: #F4F4F7; }
 
-/* Hablemos */
-.talk { margin-top: auto; display: grid; grid-template-columns: 1fr 96px; gap: 20px; align-items: center; padding: 16px 16px 16px 24px; border-radius: var(--r-lg); background: var(--ink); color: #fff; }
-.talk h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.045em; }
-.talk p { margin-top: 6px; font: 500 var(--fs-body)/1.5 Manrope; color: var(--t2); }
-.btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; margin-top: 12px; padding: 0 18px; border-radius: 14px; background: var(--pink); font: 800 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
-.talk small { margin-left: 14px; font: 600 var(--fs-body) Manrope; color: var(--t3); }
-.qr { display: block; padding: 8px; border-radius: 16px; background: #fff; }
+/* Elemento 28 · Hablemos: tarjeta rosa con botón y QR; debajo, los contactos en una fila */
+.talk { margin-top: auto; }
+.rosa { position: relative; display: grid; grid-template-columns: 1fr 92px; gap: 20px; align-items: center; padding: 16px 16px 16px 24px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
+.rosa h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.045em; }
+.rosa h3 i { color: #0A0A0C; font-style: normal; }
+.rosa p { margin-top: 6px; font: 500 var(--fs-body)/1.45 Manrope; color: rgba(255,255,255,.88); }
+.btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 9px 16px; border-radius: 99px; background: #0A0A0C; font: 800 var(--fs-body) Manrope; color: #fff; }
+.btn svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.qr { display: block; padding: 7px; border-radius: 14px; background: #fff; }
 .qr img { display: block; width: 100%; }
+.contactos { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; margin-top: 12px; padding: 0 4px; }
+.contactos dt { color: var(--pink); font: 800 9px Manrope; letter-spacing: .16em; text-transform: uppercase; }
+.contactos dd { margin-top: 2px; font: 700 var(--fs-body) Manrope; color: var(--p1); }
 .legal { margin-top: 10px; }
-.foot { margin-top: 0; font-size: var(--fs-label); }
+/* Elemento 25 · pie con número grande: logo y web a la izquierda, número rosa a la derecha, pegado abajo */
+.pie { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; padding-bottom: 14px; }
+.pie .wm { font-size: 15px; color: var(--p1); }
+.pie .wm small { display: block; margin-top: 3px; color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: .04em; }
+.pie .n { color: var(--pink); font: 700 40px/1 Unbounded; letter-spacing: -.05em; }
+.pie .n small { color: var(--p3); font-size: 14px; letter-spacing: 0; }
 </style>
 </head>
 <body>
@@ -90,34 +117,43 @@
 <template id="hoja">
 <section class="page plan-pg">
   <div class="hero">
-    <div class="top"><span class="wm">pixely<b>.</b></span><span class="tiers"><span>Lite</span><span>Basic</span><span>Pro</span></span></div>
+    <div class="top"><span class="wm">pixely<b>.</b></span><span class="esc"></span></div>
     <div class="grid">
       <div>
-        <span class="badge lbl" data-k="eyebrow"></span>
+        <span class="lbl" data-k="eyebrow"></span>
         <h1>Plan <span data-k="nombre"></span><span class="dot">.</span></h1>
         <p class="lead" data-k="lema"></p>
         <div class="price"><b data-k="precio"></b><span>al mes</span></div>
+        <div class="vol">
+          <span class="lbl">Piezas al mes</span>
+          <div class="bars"></div>
+          <div class="ley"><span><i></i>Imagen o carrusel</span><span><i class="r"></i>Reel</span></div>
+        </div>
       </div>
-      <div class="frame"><img alt=""></div>
-    </div>
-    <div class="vol">
-      <div><span class="lbl">Tu contenido al mes · un cuadro por pieza</span><div class="tiles"></div></div>
-      <div class="nums"></div>
+      <div class="vis"></div>
     </div>
   </div>
   <div class="body">
     <span class="lbl">Todo lo que incluye</span>
-    <div class="cols"></div>
+    <div class="tabs"></div>
     <div class="talk">
-      <div>
-        <h3>Hablemos<span class="dot">.</span></h3>
-        <p>Te contamos cómo funciona y te recomendamos el plan según tu negocio.</p>
-        <a class="btn" data-wa>Me interesa el Plan <span data-k="nombre"></span> →</a><small><a href="https://pixely.pe">pixely.pe</a> · <a href="mailto:hola@pixely.pe">hola@pixely.pe</a></small>
+      <div class="rosa">
+        <div>
+          <h3>Hablemos<i>.</i></h3>
+          <p>Cuéntanos de tu negocio y te recomendamos el plan que te conviene.</p>
+          <a class="btn" data-wa><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a>
+        </div>
+        <a class="qr" data-wa><img src="../comun/qr-whatsapp.svg" alt=""></a>
       </div>
-      <a class="qr" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><img src="../comun/qr-whatsapp.svg" alt=""></a>
+      <dl class="contactos">
+        <div><dt>WhatsApp</dt><dd>+51 949 268 607</dd></div>
+        <div><dt>Web</dt><dd><a href="https://pixely.pe">pixely.pe</a></dd></div>
+        <div><dt>Correo</dt><dd><a href="mailto:hola@pixely.pe">hola@pixely.pe</a></dd></div>
+        <div><dt>Redes</dt><dd><a href="https://www.instagram.com/pixely_pe">@pixely_pe</a></dd></div>
+      </dl>
     </div>
-    <p class="note legal">Tu primer plan de contenido llega en máximo 7 días hábiles después de la entrevista. No hacemos sesiones fotográficas, no respondemos mensajes ni comentarios de tus redes y no diseñamos logotipos fuera de tu plan de contenido. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. No garantizamos resultados de ventas específicos: garantizamos contenido profesional y estratégico.</p>
-    <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>Syntesia Labs E.I.R.L. · RUC 20616010787</span></div>
+    <p class="note legal">Tu primer plan de contenido llega en máximo 7 días hábiles después de la entrevista. No hacemos sesiones fotográficas, no respondemos mensajes ni comentarios de tus redes y no diseñamos logotipos fuera de tu plan de contenido. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. No garantizamos resultados de ventas específicos: garantizamos contenido profesional y estratégico. Syntesia Labs E.I.R.L. · RUC 20616010787.</p>
+    <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n"></span></div>
   </div>
 </section>
 </template>
@@ -127,14 +163,17 @@
 // Precio: null mientras no esté definido.
 const PLANES = [
   { id: 'lite', nombre: 'Lite', eyebrow: 'Para empezar', lema: 'Empieza con un riesgo mínimo y conoce el proceso.', precio: null,
-    fotos: 6, reels: 2, redes: 2, foto: 'img/lite.jpg', pos: '42% 50%' },
+    fotos: 6, reels: 2, redes: 2, captura: 'm-plan' },
   { id: 'basic', nombre: 'Basic', eyebrow: 'Presencia constante', lema: 'Constancia, con estrategia y sin repetirte.', precio: null,
-    fotos: 8, reels: 4, redes: 3, foto: 'img/basic.jpg', pos: '58% 50%' },
+    fotos: 8, reels: 4, redes: 3, captura: 'm-pieza' },
   { id: 'pro', nombre: 'Pro', eyebrow: 'Delegación total', lema: 'Tú apruebas desde el celular; nosotros hacemos todo lo demás.', precio: null,
-    fotos: 12, reels: 8, redes: 5, foto: 'img/pro.jpg', pos: '55% 50%' },
+    fotos: 12, reels: 8, redes: 5, captura: 'm-resultado' },
 ];
+// Imagen de la cabecera. Propuestas (9 oct): ?v=celular | esfera | foto muestra solo la ficha Lite con esa imagen.
+const PROPUESTA = new URLSearchParams(location.search).get('v');
+const VISUAL = PROPUESTA || 'celular';
 // Todo el servicio, parte por parte. Cada valor va en orden Lite, Basic, Pro:
-// true = incluido · false = no incluido · texto = cuánto
+// true = incluido · false = no incluido · texto = cuánto. Filas provisionales hasta definir los planes.
 const SI = true, NO = false;
 const SERVICIO = [
   { col: 0, titulo: 'Arranque', nota: 'Una vez', partes: [
@@ -149,7 +188,7 @@ const SERVICIO = [
   ] },
   { col: 0, titulo: 'Acompañamiento', nota: 'Siempre', partes: [
     ['Pixely Partners en celular y computadora', [SI, SI, SI]],
-    ['Respuesta por WhatsApp', ['En 24 h hábiles', 'En 12 h hábiles', 'El mismo día']],
+    ['Respuesta por WhatsApp', ['24 h hábiles', '12 h hábiles', 'El mismo día']],
   ] },
   { col: 1, titulo: 'Tu contenido', nota: 'Cada mes', partes: [
     ['Plan del mes: cada idea con su porqué', [SI, SI, SI]],
@@ -168,34 +207,41 @@ const SERVICIO = [
 ];
 const WA = (n) => `https://wa.me/51949268607?text=${encodeURIComponent(`¡Hola Pixely! 👋 Me interesa el Plan ${n} ✨`)}`;
 const CHECK = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-const desde = (vals) => (vals[1] === NO ? 'Solo Pro' : 'Desde Basic');
+const MAX = Math.max(...PLANES.map((p) => p.fotos + p.reels));
 
 const molde = document.getElementById('hoja');
-PLANES.forEach((p, n) => {
+(PROPUESTA ? PLANES.slice(0, 1) : PLANES).forEach((p, n) => {
   const h = molde.content.cloneNode(true);
   const pg = h.querySelector('.page');
   pg.classList.add(p.id);
   h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = el.dataset.k === 'precio' ? (p.precio ? `S/ ${p.precio}` : 'S/ —') : p[el.dataset.k]; });
-  h.querySelector('[data-wa]').href = WA(p.nombre);
-  const img = h.querySelector('.frame img'); img.src = p.foto; img.style.objectPosition = p.pos;
-  h.querySelectorAll('.tiers span').forEach((s) => s.classList.toggle('on', s.textContent === p.nombre));
-  if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<img class="arte" src="../../public/elementos/01-oscuro.svg" alt="">');
-  // Cuadros: 20 lugares (lo que trae Pro); los que no entran en este plan quedan apagados
-  const tiles = h.querySelector('.tiles');
-  for (let i = 0; i < 20; i++) tiles.insertAdjacentHTML('beforeend', `<i class="${i < p.fotos ? 'f' : i < p.fotos + p.reels ? 'r' : ''}"></i>`);
-  h.querySelector('.nums').innerHTML = `<div><b>${p.fotos}</b><span>fotos y<br>carruseles</span></div><div><b class="pk">${p.reels}</b><span>reels</span></div><div><b>${p.redes}</b><span>redes</span></div>`;
-  // Servicio
-  const cols = [document.createElement('div'), document.createElement('div')];
-  cols.forEach((c) => { c.className = 'col'; h.querySelector('.cols').appendChild(c); });
-  for (const b of SERVICIO) {
-    const lis = b.partes.map(([t, vals]) => {
-      const v = vals[n];
-      if (v === NO) return `<li class="no"><span>${t}</span><em>${desde(vals)}</em></li>`;
-      if (v === SI) return `<li><span>${t}</span>${CHECK}</li>`;
-      return `<li><span>${t}</span><em class="${n === 2 ? 'top' : ''}">${v}</em></li>`;
-    }).join('');
-    cols[b.col].insertAdjacentHTML('beforeend', `<div class="blk"><h4>${b.titulo}<span>${b.nota}</span></h4><ul>${lis}</ul></div>`);
-  }
+  h.querySelectorAll('[data-wa]').forEach((a) => { a.href = WA(p.nombre); });
+  // 21 · escalera: Lite un tercio, Basic dos tercios, Pro completo
+  h.querySelector('.esc').innerHTML = PLANES.map((q, i) => `<span class="${i < n ? 'on' : i === n ? 'yo' : ''}"><i style="height:${((i + 1) / 3) * 100}%"></i><b>${q.nombre}</b></span>`).join('');
+  // 09 · barras que crecen
+  h.querySelector('.bars').innerHTML = PLANES.map((q, i) => `<div class="bar${i === n ? ' yo' : ''}"><b>${q.nombre}</b><div class="t"><span class="b" style="width:calc((100% - 70px) * ${(q.fotos + q.reels) / MAX})"><i style="flex:${q.fotos}">${q.fotos}</i><i class="r" style="flex:${q.reels}">${q.reels}</i></span><em>${q.fotos + q.reels}<small>al mes</small></em></div></div>`).join('');
+  // Imagen de la cabecera
+  const claro = p.id === 'lite';
+  const vis = {
+    celular: `<div class="cel"><div class="s"><img src="../../public/capturas/${p.captura}.webp" alt=""></div></div>`,
+    esfera: '',
+    foto: '<div class="foto"><img src="../../public/elementos/fotos/panadero.webp" alt="" style="object-position:center 30%"></div>',
+  }[VISUAL];
+  h.querySelector('.vis').innerHTML = vis;
+  if (VISUAL === 'esfera') h.querySelector('.hero').insertAdjacentHTML('afterbegin', `<img class="arte" src="../../public/elementos/01-${claro ? 'claro' : 'oscuro'}.svg" alt="">`);
+  if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<i class="glow"></i>');
+  // 22 · tabla de los tres planes, en dos columnas; la columna de este plan resaltada
+  const tabs = h.querySelector('.tabs');
+  [0, 1].forEach((col) => {
+    let html = `<span class="band" style="right:${(2 - n) * 48 - 1}px"></span><span></span>${PLANES.map((q, i) => `<b class="hd${q.id === 'pro' ? ' pro' : ''}${i === n ? ' yo' : ''}">${q.nombre}</b>`).join('')}`;
+    for (const b of SERVICIO.filter((x) => x.col === col)) {
+      html += `<div class="g">${b.titulo}<span>${b.nota}</span></div>`;
+      html += b.partes.map(([t, vals]) => `<span class="t">${t}</span>${vals.map((v) => (v === SI ? `<span class="c">${CHECK}</span>` : v === NO ? '<span class="c no">—</span>' : `<span class="c">${v}</span>`)).join('')}`).join('');
+    }
+    tabs.insertAdjacentHTML('beforeend', `<div class="tb">${html}</div>`);
+  });
+  // 25 · pie con número grande
+  h.querySelector('.pie .n').innerHTML = `${String(n + 1).padStart(2, '0')}<small>/${String(PLANES.length).padStart(2, '0')}</small>`;
   document.body.appendChild(h);
 });
 </script>
