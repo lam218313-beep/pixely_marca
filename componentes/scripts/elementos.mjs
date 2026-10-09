@@ -1,7 +1,7 @@
 // Página "Elementos gráficos" del catálogo: la lista de piezas gráficas que se diseñan una por una.
 // Los documentos solo usan lo que aquí está Aprobado. Datos en elementos/elementos.json.
 import { readFileSync } from 'node:fs';
-import { VISTAS_EXTRA, vistasCSS, muesca } from './elementos-vistas.mjs';
+import { VISTAS_EXTRA, BLOQUES_EXTRA, vistasCSS, muesca } from './elementos-vistas.mjs';
 
 const datos = JSON.parse(readFileSync(new URL('../../elementos/elementos.json', import.meta.url), 'utf8'));
 const ESTADOS = ['Por diseñar', 'En diseño', 'Aprobado', 'Rechazado'];
@@ -65,7 +65,7 @@ const DESCARGAS = {
   2: (p) => `Baldosa SVG que se repite sin costuras: ${dl(`elementos/02-${p.id}-oscuro.svg`, 'para fondo negro')} · ${dl(`elementos/02-${p.id}-claro.svg`, 'para fondo blanco')}`,
   3: () => `Fondos PNG para Canva: ${dl('elementos/03-cuadrado.png', 'cuadrado 1080')} · ${dl('elementos/03-historia.png', 'historia 1080 × 1920')} · En código: <code>${RESPLANDOR}</code>`,
 };
-const EXTRA = { 1: familia };
+const EXTRA = { 1: familia, ...BLOQUES_EXTRA };
 const bloque = (e, item, marca) => `<div class="pr">
     <div class="pr__h"><span class="pr__l">${marca}</span><div><h4>${item.nombre}</h4><p>${item.dice}</p></div></div>
     <div class="pr__g pr__g--${e.n}">${VISTAS[e.n](item)}</div>

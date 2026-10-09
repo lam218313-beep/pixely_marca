@@ -301,13 +301,6 @@ const vista26 = (p) => {
   return [fig('Apiladas en una página del manual', `<div class="ths">${COMO.map(card).join('')}</div>`)].join('');
 };
 
-// ---------- 27 · Línea de proceso ----------
-const ETAPAS = [['Día 1', 'Entrevista y ficha'], ['Días 2 a 5', 'Estudio de mercado y estrategia'], ['Día 7', 'Tu primer plan del mes'], ['Cada mes', 'Apruebas, publicamos y medimos']];
-const vista27 = (p) => {
-  const caja = (claro) => `<div class="lp lp--${p.id}${claro ? ' lp--claro' : ''}">${ETAPAS.map(([c, t], i) => `<div class="lp__i${i === ETAPAS.length - 1 ? ' lp__i--fin' : ''}"><span class="lp__c">${c}</span><i class="lp__n"></i><b>${t}</b></div>`).join('')}</div>`;
-  return [fig('Fondo negro', caja(false)), fig('Página blanca', caja(true))].join('');
-};
-
 // ---------- 28 · Bloque «Hablemos» ----------
 const CONTACTOS = [['WhatsApp', '+51 949 268 607'], ['Web', 'pixely.pe'], ['Correo', 'hola@pixely.pe'], ['Redes', '@pixely_pe']];
 const QR = '<img class="hb__qr" src="kit-redes/qr/qr-whatsapp.svg" alt="">';
@@ -318,7 +311,76 @@ const vista28 = (p) => {
   return fig('Página con muesca', `<div class="mk hb hb--muesca" style="aspect-ratio:210/150;background:#fff"><svg class="hb__fondo" viewBox="0 0 794 567" preserveAspectRatio="none" aria-hidden="true"><path d="${muesca(794, 300)}" fill="#0A0A0C"/></svg><div class="hb__in"><b class="hb__h">Hablemos<i>.</i></b><p class="hb__l">Cuéntanos de tu negocio y te recomendamos el plan que te conviene.</p><span class="hb__btn hb__btn--rosa">${ic('message', 14, 2.4)} Escríbenos por WhatsApp</span></div><div class="hb__qrc">${QR}<span>Escanea y escríbenos</span></div>${contactos}</div>`);
 };
 
-export const VISTAS_EXTRA = { 9: vista09, 11: vista11, 13: vista13, 14: vista14, 15: vista15, 16: vista16, 17: vista17, 18: vista18, 19: vista19, 20: vista20, 21: vista21, 22: vista22, 23: vista23, 24: vista24, 25: vista25, 26: vista26, 27: vista27, 28: vista28 };
+// ---------- 27 · Línea de proceso (rediseño 9 oct) ----------
+const vista27 = (p) => {
+  const caja = (claro) => {
+    if (p.id === 'tramos') {
+      const T = [['Día 1', 'Entrevista', 1.3, ''], ['Días 2 a 5', 'Estudio de mercado y estrategia', 4, 'b'], ['Días 6 y 7', 'Tu primer plan del mes', 2, 'pk']];
+      return `<div class="lt lt--tramos${claro ? ' lt--claro' : ''}"><div class="lt__barra">${T.map(([c, , w, k]) => `<span class="lt__s lt__s--${k || 'a'}" style="flex:${w}"><em>${c}</em></span>`).join('')}<span class="lt__s lt__s--mes"><em>Cada mes ${ic('arrow-right', 11, 2.6)}</em></span></div>
+        <div class="lt__leyenda">${T.map(([, t, w]) => `<b style="flex:${w}">${t}</b>`).join('')}<b class="lt__lmes">Apruebas, publicamos y medimos</b></div><p class="lt__nota">Tu primer plan, en 7 días como máximo.</p></div>`;
+    }
+    if (p.id === 'camino') {
+      const C = [['message', 'Día 1', 'Entrevista'], ['store', 'Días 2 a 4', 'Estudio de mercado'], ['flag', 'Día 5', 'Estrategia'], ['calendar-days', 'Día 7', 'Tu primer plan'], ['send', 'Cada mes', 'Publicamos y medimos']];
+      return `<div class="lt lt--camino${claro ? ' lt--claro' : ''}">${C.map(([i, c, t], n) => `<div class="lt__p${n === 3 ? ' lt__p--on' : ''}"><span class="ico ico--duotono"><span>${ic(i, 24, 1.7)}</span></span><em>${c}</em><b>${t}</b></div>`).join('')}</div>`;
+    }
+    const D = ['Entrevista', 'Estudio', 'Estudio', 'Estudio', 'Estrategia', 'Plan', '¡Listo!'];
+    return `<div class="lt lt--semana${claro ? ' lt--claro' : ''}"><div class="lt__dias">${D.map((x, i) => `<span class="lt__d${i === 6 ? ' lt__d--pk' : ''}"><em>Día ${i + 1}</em><b>${i === 6 ? ic('check', 16, 3) : ''}</b></span>`).join('')}</div>
+      <div class="lt__tareas"><span style="grid-column:1/2">Entrevista</span><span class="lt__r" style="grid-column:2/5">Estudio de mercado</span><span style="grid-column:5/6">Estrategia</span><span style="grid-column:6/7">Plan</span><span class="lt__pk" style="grid-column:7/8">Tu plan</span></div>
+      <p class="lt__mes">${ic('arrow-right', 12, 2.6)}<span>Desde ahí, <b>cada mes</b>: apruebas, publicamos y medimos.</span></p></div>`;
+  };
+  return [fig('Fondo negro', caja(false)), fig('Página blanca', caja(true))].join('');
+};
+
+// ---------- 29 · Marco y criterio de fotos ----------
+let nClip = 0;
+const vista29 = (p) => {
+  const foto = (f, ar, pos, extra = '') => {
+    if (p.id === 'muesca') {
+      const W = 794, H = Math.round(794 / ar), id = `fm${nClip++}`;
+      return `<svg class="ph ph--svg" viewBox="0 0 ${W} ${H}" style="aspect-ratio:${W}/${H}"><defs><clipPath id="${id}"><path d="${muesca(W, H)}"/></clipPath></defs><image href="elementos/fotos/${f}.webp" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/></svg>`;
+    }
+    return `<div class="ph ph--${p.id}" style="aspect-ratio:${ar}"><img src="elementos/fotos/${f}.webp" alt="" loading="lazy" style="object-position:${pos}">${p.id === 'degradado' ? `<div class="ph__t"><b>${extra}</b><span class="ins ins--oscura"><i>${ic('check', 16, 2.6)}</i>Hecho para tu negocio</span></div>` : ''}</div>`;
+  };
+  return [
+    fig('Foto vertical', `<div class="phc">${foto('panadero', 4 / 5, 'center 30%', 'Tu marca se decide aquí.')}</div>`),
+    fig('Foto horizontal', `<div class="phc">${foto('paso-2', 3 / 2, 'center', 'Apruebas desde tu celular.')}</div>`),
+    fig('En una página blanca', `<div class="phc phc--claro"><b class="phc__h">Nacimos de una frustración<i>.</i></b>${foto('historia', 4 / 3, 'center 25%', 'Vende lo que vales.')}</div>`),
+  ].join('');
+};
+// Criterio para elegir fotos (va debajo de las propuestas del 29).
+const criterio = () => `<div class="pr pr--fam"><h4>Cómo elegir la foto: que no parezca hecha con IA</h4><p>Vale para fotos propias, de stock o generadas. Si una foto falla en dos o más puntos de la columna derecha, no va.</p>
+  <div class="cr"><div class="cr__c"><b class="cr__h cr__h--si">${ic('check', 14, 3)} Se ve real</b><ul>${['Luz que existe en el lugar: ventana, focos del local; sombras normales.', 'Gente como es: piel con textura, pelo suelto, ropa usada.', 'El negocio de verdad: sus productos, su desorden, sus letreros.', 'Manos y celular en posiciones naturales, de lado.', 'Encuadre de foto de celular o cámara, no de set.'].map((x) => `<li>${x}</li>`).join('')}</ul></div>
+  <div class="cr__c"><b class="cr__h cr__h--no">${ic('x', 14, 3)} Se nota IA</b><ul>${['Piel lisa como plástico y dientes perfectos.', 'El celular mostrando la pantalla de frente a la cámara.', 'Neón rosa puesto en la escena: el rosa va en el diseño, no en la foto.', 'Todo ordenado y simétrico, como un set.', 'Letreros con letras raras o manos con dedos de más.'].map((x) => `<li>${x}</li>`).join('')}</ul></div></div>
+  <div class="cr__ej">${[['evitar-1', 'Portada del brochure', [[0.47, 0.33, 'Piel y sonrisa de plástico'], [0.66, 0.38, 'Pantalla de frente a cámara'], [0.54, 0.08, 'Neón puesto']]], ['evitar-2', 'Página 2 del brochure', [[0.55, 0.06, 'Luz de estudio a la vista'], [0.92, 0.38, 'Neón puesto'], [0.72, 0.36, 'Pose de set']]]].map(([f, t, marcas]) => `<figure class="cr__f"><div class="cr__img"><img src="elementos/fotos/${f}.webp" alt="" loading="lazy">${marcas.map(([x, y, e]) => `<span class="ll__p" style="left:${x * 100}%;top:${y * 100}%"></span><span class="cr__e${x > 0.7 ? ' cr__e--izq' : ''}" style="left:${x * 100}%;top:${y * 100}%">${e}</span>`).join('')}</div><figcaption>${t} · señalada el 8 oct: se cambia</figcaption></figure>`).join('')}</div></div>`;
+
+// ---------- 30 · Plantillas de redes ----------
+const vista30 = (p) => {
+  const wm = '<span class="rd__wm">pixely<b>.</b></span>';
+  const post = (x) => `<div class="mk rd" style="aspect-ratio:4/5">${x}</div>`, hist = (x) => `<div class="mk rd" style="aspect-ratio:9/16">${x}</div>`;
+  if (p.id === 'esfera') return [
+    fig('Post', post(`<img class="rd__arte" src="elementos/01-oscuro.svg" alt="" style="left:30%;top:42%;width:100%">${wm}<b class="rd__h" style="top:16%">Tu producto<br>ya es bueno.<br>Que se note<i>.</i></b>`)),
+    fig('Carrusel · portada', post(`<img class="rd__arte" src="elementos/01-oscuro.svg" alt="" style="left:-30%;top:46%;width:100%">${wm}<b class="rd__h" style="top:16%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des">Desliza ${ic('arrow-right', 12, 2.6)}</span>`)),
+    fig('Carrusel · interior', post(`${wm}<span class="rd__n">01</span><b class="rd__h rd__h--s" style="top:36%">Fotos sin luz<i>.</i></b><p class="rd__p" style="top:56%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__pag">2 / 5</span>`)),
+    fig('Historia', hist(`<div class="rd__glow"></div>${cel('m-validar', 'vitrina', 'left:22%;top:20%;width:56%')}<b class="rd__h rd__h--s" style="top:5%">Tú apruebas<br>desde el celular<i>.</i></b><span class="rd__cta">Escríbenos</span>`)),
+  ].join('');
+  if (p.id === 'foto') return [
+    fig('Post', post(`<img class="mk__full" src="elementos/fotos/panadero.webp" alt="" style="object-position:center 30%"><div class="rd__deg"></div><b class="rd__h rd__h--s" style="bottom:16%">Tu marca se<br>decide aquí<i>.</i></b><span class="ins ins--oscura rd__ins"><i>${ic('check', 16, 2.6)}</i>Pixely Partners</span>`)),
+    fig('Carrusel · portada', post(`<img class="mk__full" src="elementos/fotos/historia.webp" alt="" style="object-position:center 20%"><div class="rd__deg"></div><b class="rd__h" style="bottom:14%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des rd__des--abajo">Desliza ${ic('arrow-right', 12, 2.6)}</span>`)),
+    fig('Carrusel · interior', post(`<div class="rd__blanco"><span class="rd__et">Error 1</span><b class="rd__h rd__h--s rd__h--n">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--n">Una foto oscura hace ver tu producto más barato de lo que es.</p><img class="rd__mini" src="elementos/fotos/paso-2.webp" alt=""><span class="rd__pag rd__pag--n">2 / 5</span></div>`)),
+    fig('Historia', hist(`<img class="mk__full" src="elementos/fotos/paso-2.webp" alt="" style="object-position:40% center"><div class="rd__deg"></div><b class="rd__h rd__h--s" style="bottom:22%">Apruebas desde<br>tu celular<i>.</i></b><span class="rd__cta rd__cta--abajo">Escríbenos</span>`)),
+  ].join('');
+  const bloque = (W, H, alto, dentro) => `<svg class="rd__fondo" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><rect width="${W}" height="${H}" fill="#fff"/><path d="${muesca(W, alto)}" fill="#0A0A0C"/></svg>${dentro}`;
+  return [
+    fig('Post', post(bloque(1080, 1350, 820, `${wm}<b class="rd__h" style="top:18%">Tu producto<br>ya es bueno<i>.</i></b><b class="rd__h rd__h--neg" style="top:70%">Que se note<i>.</i></b>`))),
+    fig('Carrusel · portada', post(bloque(1080, 1350, 980, `${wm}<b class="rd__h" style="top:20%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des rd__des--neg">Desliza ${ic('arrow-right', 12, 2.6)}</span>`))),
+    fig('Carrusel · interior', post(`<div class="rd__blanco"><span class="rd__n rd__n--g">01</span><b class="rd__h rd__h--s rd__h--n" style="top:40%">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--n" style="top:58%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__pag rd__pag--n">2 / 5</span></div>`)),
+    fig('Historia', hist(bloque(1080, 1920, 1100, `${cel('m-inicio', 'vitrina', 'left:26%;top:9%;width:48%')}<b class="rd__h rd__h--neg rd__h--s" style="top:66%">Todo tu<br>marketing en<br>una app<i>.</i></b><span class="rd__cta rd__cta--neg">Escríbenos</span>`))),
+  ].join('');
+};
+
+export const VISTAS_EXTRA = { 9: vista09, 11: vista11, 13: vista13, 14: vista14, 15: vista15, 16: vista16, 17: vista17, 18: vista18, 19: vista19, 20: vista20, 21: vista21, 22: vista22, 23: vista23, 24: vista24, 25: vista25, 26: vista26, 27: vista27, 28: vista28, 29: vista29, 30: vista30 };
+// Bloques que van debajo de las propuestas de un elemento.
+export const BLOQUES_EXTRA = { 29: criterio };
 
 export const vistasCSS = `
 /* ===== Vistas con capturas (09, 11, 13 a 17) ===== */
@@ -513,16 +575,6 @@ export const vistasCSS = `
 .th--inv .th__g{order:2}
 .th--lista{grid-template-columns:1fr 1.1fr;padding:6px 0 18px;border-radius:0;background:none;box-shadow:none;border-bottom:1px solid #26262E}.th--lista .th__g{order:2;background:none;padding:0}.th--lista:last-child{border-bottom:0;padding-bottom:6px}
 .th--lista .th__n{font-size:34px}
-/* 27 línea de proceso */
-.lp{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:22px 18px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);color:#fff}.lp--claro{background:#fff;color:#0A0A0C}
-.lp__i{position:relative;display:grid;gap:8px;align-content:start}.lp__c{color:#EB0C6E;font:800 10.5px Manrope;letter-spacing:.14em;text-transform:uppercase}.lp__i b{font:700 12.5px/1.3 Unbounded;letter-spacing:-.02em}
-.lp__n{position:relative;z-index:1;display:block;width:12px;height:12px;border-radius:50%;background:#EB0C6E}.lp__i--fin .lp__n{box-shadow:0 0 0 5px rgba(235,12,110,.25)}
-.lp--nodos .lp__i:not(:last-child)::after{content:'';position:absolute;left:12px;right:-10px;top:29px;height:2px;background:linear-gradient(90deg,#EB0C6E,rgba(235,12,110,.35))}
-.lp--flechas{gap:4px;grid-template-columns:repeat(4,minmax(0,1fr))}.lp--flechas .lp__i b{font-size:11px}.lp--flechas .lp__n{display:none}
-.lp--flechas .lp__i{min-width:0;padding:10px 14px 10px 20px;min-height:84px;background:#1F1F26;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%,12px 50%)}.lp--flechas .lp__i:first-child{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%);padding-left:14px}
-.lp--flechas .lp__i--fin{background:#EB0C6E}.lp--flechas .lp__i--fin .lp__c{color:#fff}.lp--flechas.lp--claro .lp__i{background:#F2F2F5}.lp--flechas.lp--claro .lp__i--fin{background:#EB0C6E;color:#fff}
-.lp--vertical{grid-template-columns:1fr;gap:16px}.lp--vertical .lp__i{grid-template-columns:96px 12px 1fr;gap:14px;align-items:center}.lp--vertical .lp__c{text-align:right}
-.lp--vertical .lp__i:not(:last-child)::after{content:'';position:absolute;left:115px;top:18px;bottom:-22px;width:2px;background:rgba(235,12,110,.4)}
 /* 28 Hablemos (en cqw de una A4) */
 .hb{color:#fff}.hb__in{position:relative;padding:6cqw 7cqw}.mk--claro.hb{color:#0A0A0C}
 .hb__h{display:block;font:700 7.4cqw/1 Unbounded;letter-spacing:-.05em}.hb__h i{color:#EB0C6E;font-style:normal}
@@ -538,4 +590,58 @@ export const vistasCSS = `
 .hb--muesca .hb__in{position:relative}.hb--muesca .hb__l{color:#B4B4BE}.hb__btn--rosa{background:#EB0C6E}
 .hb--muesca .hb__qrc{position:absolute;left:7cqw;top:43cqw}.hb--muesca .hb__qr{width:15cqw}
 .hb--muesca .hb__dl{position:absolute;left:34cqw;right:7cqw;top:46cqw;grid-template-columns:1fr 1fr;color:#0A0A0C;margin:0}
+/* 27 línea de proceso (rediseño) */
+.lt{padding:20px 18px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);color:#fff}.lt--claro{background:#fff;color:#0A0A0C}
+.lt__barra{display:flex;gap:3px;height:44px}.lt__s{display:flex;align-items:center;padding:0 10px;border-radius:8px;background:#26262E;min-width:0}
+.lt__s em{color:#B4B4BE;font:800 10.5px Manrope;font-style:normal;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}.lt__s--b{background:#33333C}.lt__s--pk{background:#EB0C6E}.lt__s--pk em{color:#fff}
+.lt__s--mes{flex:2.2;margin-left:8px;background:none;box-shadow:inset 0 0 0 1.5px #EB0C6E}.lt__s--mes em{color:#FF7AB0}
+.lt--claro .lt__s{background:#EEEEF2}.lt--claro .lt__s--b{background:#E2E2E8}.lt--claro .lt__s em{color:#55555F}.lt--claro .lt__s--pk{background:#EB0C6E}.lt--claro .lt__s--pk em{color:#fff}.lt--claro .lt__s--mes{background:none}.lt--claro .lt__s--mes em{color:#EB0C6E}
+.lt__leyenda{display:flex;gap:3px;margin-top:8px}.lt__leyenda b{min-width:0;padding:0 2px;font:800 11px/1.3 Manrope}.lt__lmes{flex:2.2;margin-left:8px}
+.lt__nota{margin-top:12px;color:#8A8A96;font:700 11.5px Manrope}
+.lt--camino{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;position:relative}
+.lt__p{position:relative;display:grid;justify-items:center;gap:5px;text-align:center}.lt__p em{color:#EB0C6E;font:800 10px Manrope;font-style:normal;letter-spacing:.08em;text-transform:uppercase}.lt__p b{font:700 11px/1.25 Unbounded;letter-spacing:-.02em}
+.lt__p:not(:last-child)::after{content:'';position:absolute;left:calc(50% + 30px);right:calc(-50% + 26px);top:23px;border-top:2px dotted #4A4A55}.lt--claro .lt__p:not(:last-child)::after{border-top-color:#C8C8D0}
+.lt--claro .ico--duotono{color:#0A0A0C}.lt__p--on .ico--duotono::before{width:26px;height:26px;right:4px;bottom:4px}
+.lt__dias{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.lt__d{display:grid;justify-items:center;gap:4px;padding:8px 0;border-radius:10px;background:#16161B;box-shadow:inset 0 0 0 1px #26262E}
+.lt__d em{color:#8A8A96;font:800 10px Manrope;font-style:normal}.lt__d b{display:grid;place-items:center;height:18px}.lt__d--pk{background:#EB0C6E;box-shadow:none}.lt__d--pk em{color:#fff}.lt__d--pk b{color:#fff}
+.lt--claro .lt__d{background:#F4F4F7;box-shadow:none}.lt--claro .lt__d--pk{background:#EB0C6E}
+.lt__tareas{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:6px}.lt__tareas span{padding:5px 4px;border-radius:6px;background:#26262E;color:#B4B4BE;font:700 9.5px/1.2 Manrope;text-align:center}
+.lt__tareas .lt__r{background:#33333C;color:#fff}.lt__tareas .lt__pk{background:rgba(235,12,110,.2);color:#FF7AB0}
+.lt--claro .lt__tareas span{background:#EEEEF2;color:#55555F}.lt--claro .lt__tareas .lt__r{background:#E2E2E8;color:#0A0A0C}.lt--claro .lt__tareas .lt__pk{background:rgba(235,12,110,.12);color:#EB0C6E}
+.lt__mes{display:flex;align-items:center;gap:6px;margin-top:12px;color:#B4B4BE;font:600 12px Manrope}.lt__mes svg{color:#EB0C6E}.lt__mes b{color:#fff}.lt--claro .lt__mes{color:#55555F}.lt--claro .lt__mes b{color:#0A0A0C}
+/* 29 fotos */
+.pr__g--29{grid-template-columns:.8fr 1.2fr 1fr!important}.pr__g--30{grid-template-columns:repeat(3,1fr) .75fr!important}
+.phc{padding:14px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge)}.phc--claro{background:#fff}
+.phc__h{display:block;margin:4px 2px 12px;color:#0A0A0C;font:700 16px/1.15 Unbounded;letter-spacing:-.03em}.phc__h i{color:#EB0C6E;font-style:normal}
+.ph{position:relative;overflow:hidden;container-type:inline-size}.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph--redondeado{border-radius:18px;box-shadow:0 0 0 1px rgba(255,255,255,.14)}.phc--claro .ph--redondeado{box-shadow:0 0 0 1px rgba(10,10,12,.1)}
+.ph--svg{display:block;width:100%;height:auto}
+.ph--degradado{border-radius:4px}.ph--degradado::after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(10,10,12,.88))}
+.ph__t{position:absolute;z-index:1;left:6cqw;right:6cqw;bottom:6cqw;display:grid;gap:3cqw;justify-items:start}.ph__t b{color:#fff;font:700 7cqw/1.1 Unbounded;letter-spacing:-.03em}
+.ph__t .ins{position:static}
+.cr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.cr__c{padding:14px 16px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge)}
+.cr__h{display:inline-flex;align-items:center;gap:7px;font:800 13px Manrope}.cr__h svg{padding:3px;border-radius:50%}.cr__h--si svg{background:#EB0C6E;color:#fff}.cr__h--no svg{background:#33333C;color:#B4B4BE}
+.cr ul{display:grid;gap:6px;margin:10px 0 0;padding-left:18px;color:#B4B4BE;font:600 12.5px/1.45 Manrope}
+.cr__ej{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.cr__f{display:grid;gap:6px;margin:0}.cr__f figcaption{color:#8A8A96;font:700 11.5px Manrope}
+.cr__img{position:relative;border-radius:14px;overflow:hidden}.cr__img img{display:block;width:100%;height:auto;filter:saturate(.85)}
+.cr__e{position:absolute;transform:translate(10px,-50%);padding:4px 9px;border-radius:99px;background:rgba(10,10,12,.85);box-shadow:0 0 0 1px #33333C;color:#fff;font:700 11px Manrope;white-space:nowrap}
+.cr__img .ll__p{width:10px}.cr__e--izq{transform:translate(calc(-100% - 10px),-50%)}.cr ul{list-style:disc}
+/* 30 plantillas de redes (en cqw de cada pieza) */
+.rd{background:#0A0A0C;color:#fff}
+.rd__arte{position:absolute!important;display:block}
+.rd__wm{position:absolute;left:8cqw;top:7cqw;z-index:2;font:700 6cqw Unbounded;letter-spacing:-.04em}.rd__wm b{color:#EB0C6E}
+.rd__h{position:absolute;left:8cqw;right:8cqw;z-index:2;font:700 10cqw/1.04 Unbounded;letter-spacing:-.045em}.rd__h i{color:#EB0C6E;font-style:normal}.rd__h--s{font-size:8cqw}
+.rd__h--neg{color:#0A0A0C}.rd__h--n{position:static;margin-top:3cqw;color:#0A0A0C}
+.rd__des{position:absolute;right:8cqw;bottom:7cqw;z-index:2;display:inline-flex;align-items:center;gap:1.4cqw;color:#B4B4BE;font:800 3.6cqw Manrope}.rd__des svg{width:3.6cqw;height:3.6cqw}.rd__des--neg{color:#55555F}.rd__des--abajo{bottom:6cqw}
+.rd__n{position:absolute;left:8cqw;top:20cqw;color:#EB0C6E;font:700 16cqw/1 Unbounded;letter-spacing:-.06em}.rd__n--g{position:static;display:block}
+.rd__p{position:absolute;left:8cqw;right:10cqw;color:#B4B4BE;font:600 4.6cqw/1.4 Manrope}.rd__p--n{position:static;margin-top:3cqw;color:#55555F}
+.rd__pag{position:absolute;right:8cqw;bottom:7cqw;color:#55555F;font:800 3.4cqw Manrope}.rd__pag--n{color:#8A8A96}
+.rd__glow{position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 50%,rgba(235,12,110,.22),transparent 70%)}
+.rd__cta{position:absolute;left:50%;bottom:6cqw;z-index:3;transform:translateX(-50%);padding:3cqw 7cqw;border-radius:99px;background:#EB0C6E;color:#fff;font:800 4.6cqw Manrope;white-space:nowrap}.rd__cta--abajo{bottom:8cqw}.rd__cta--neg{background:#0A0A0C}
+.rd__deg{position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(10,10,12,.9))}
+.rd__ins{left:8cqw!important;bottom:6cqw!important;font-size:3.6cqw!important}
+.rd__blanco{position:absolute;inset:0;display:flex;flex-direction:column;padding:12cqw 8cqw;background:#fff;color:#0A0A0C}
+.rd__et{color:#EB0C6E;font:800 3.4cqw Manrope;letter-spacing:.16em;text-transform:uppercase}
+.rd__mini{position:static!important;display:block;width:100%;height:34cqw;margin-top:auto;border-radius:3cqw;object-fit:cover}
+.rd__fondo{position:absolute;inset:0;width:100%;height:100%}
 `;
