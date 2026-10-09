@@ -5,35 +5,6 @@
 <title>Pixely - Manual de Partners</title>
 <link rel="stylesheet" href="../comun/base.css">
 <style>
-/* Celular con la captura y los números que la señalan */
-.phone { position: relative; border-radius: 30px; padding: 6px; }
-.dark .phone { background: var(--card); border: 1px solid rgba(255,255,255,.09); }
-.light .phone { background: var(--ink); box-shadow: 0 24px 50px -26px rgba(10,10,12,.55); }
-.scr { position: relative; }
-.scr img { display: block; width: 100%; border-radius: 24px; }
-.pin { position: absolute; left: calc(var(--x, -2) * 1%); top: calc(var(--y) * 1%); transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--pink); color: #fff; font: 800 11px Manrope; font-style: normal; }
-.dark .pin { box-shadow: 0 0 0 3px var(--ink); } .light .pin { box-shadow: 0 0 0 3px #fff; }
-.cap { margin-top: 10px; text-align: center; font: 700 10.5px Manrope; }
-.dark .cap { color: var(--t2); } .light .cap { color: var(--p2); }
-
-/* Pasos numerados (el mismo número que el de la captura) */
-.steps { list-style: none; display: grid; gap: 16px; }
-.steps li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
-.steps li > b { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--pink); color: #fff; font: 800 11.5px Manrope; }
-.steps h4 { font: 700 13px/1.3 Manrope; padding-top: 4px; }
-.steps p { margin-top: 3px; font: 500 11px/1.5 Manrope; }
-.dark .steps p { color: var(--t2); } .light .steps p { color: var(--p2); }
-.steps.grid2 { grid-template-columns: 1fr 1fr; column-gap: 26px; row-gap: 16px; }
-.h3s { font: 700 16px Unbounded; letter-spacing: -.03em; margin-bottom: 16px; }
-
-/* Nota destacada */
-.tip { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: 18px; font: 500 11px/1.5 Manrope; }
-.tip::before { content: ''; flex: none; width: 8px; height: 8px; margin-top: 4px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px rgba(235,12,110,.18); }
-.dark .tip { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); color: var(--t2); } .dark .tip b { color: #fff; }
-.light .tip { background: #FAFAFB; border: 1px solid var(--pline); color: var(--p2); } .light .tip b { color: var(--p1); }
-
-.foot .mid { letter-spacing: .02em; }
-
 /* ===== 1. Portada (9 oct, opción B): dos celulares vitrina (13) con resplandor (03), cortados por el borde de abajo ===== */
 .mc { padding-bottom: 0; }
 .mc__top { position: relative; display: flex; justify-content: space-between; align-items: center; }
@@ -141,12 +112,6 @@
 .fila5 li { align-content: start; }
 .fila5 b { font-size: 16px; }
 
-/* ===== Pantallas con pasos a un lado ===== */
-.side { display: grid; grid-template-columns: 1fr 312px; gap: 36px; margin-top: 30px; align-items: start; }
-.row-ph { display: grid; gap: 22px; margin-top: 30px; }
-.row-ph.n2 { grid-template-columns: repeat(2, 262px); justify-content: center; gap: 36px; }
-.row-ph.n3 { grid-template-columns: repeat(3, 1fr); }
-
 /* ===== 6. Resultados y Marca (9 oct, opción A): dos columnas con su celular vitrina (13), número de paso (19), etiqueta «Plan Pro» y pie (25) ===== */
 .m6 .h2 { font-size: var(--fs-title); }
 .m6 .lead { font-size: var(--fs-lead); max-width: 560px; }
@@ -163,20 +128,37 @@
 .dos6 { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 24px; }
 .dos6 .zona { position: relative; height: 392px; margin: 14px 0 16px; }
 
-/* ===== 7. Dudas ===== */
-.faq-pg .rings { right: -300px; bottom: -330px; width: 700px; height: 700px; }
-.faq { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
-.faq .card { padding: 26px 24px; }
-.faq h4 { font: 700 13px/1.35 Manrope; }
-.faq p { margin-top: 6px; font: 500 11px/1.5 Manrope; color: var(--t2); }
-.help { position: relative; margin-top: 30px; display: grid; grid-template-columns: 1fr 132px; gap: 22px; align-items: center; padding: 24px 24px 24px 28px; border-radius: var(--r-lg); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-.help h3 { font: 700 24px/1.05 Unbounded; letter-spacing: -.045em; }
-.help p { margin-top: 8px; font: 500 12px/1.5 Manrope; color: var(--t2); }
-.help .wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; height: 38px; padding: 0 16px; border-radius: 14px; background: var(--pink); font: 800 12px Manrope; color: #fff; }
-.help small { display: block; margin-top: 10px; font: 600 10.5px Manrope; color: var(--t3); }
-.qr { padding: 10px; border-radius: 18px; background: #fff; text-align: center; }
-.qr img { display: block; width: 100%; }
-.qr p { margin-top: 6px; font: 700 8.5px/1.3 Manrope; color: var(--p2); }
+/* ===== 7. Dudas frecuentes (9 oct, opción B): lista con íconos (23), bloque «Hablemos» (28) con Trujillo y pie (25) ===== */
+.m7 .h2 { font-size: var(--fs-title); }
+.m7 .lead { font-size: var(--fs-lead); max-width: 560px; }
+/* Lista con los íconos del set (23) */
+.lst7 { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin-top: 18px; }
+.lst7 > div { display: grid; grid-template-columns: 48px 1fr; gap: 0 12px; align-items: start; padding: 20px 0; border-bottom: 1px solid #26262E; }
+.lst7 .ico { grid-row: span 2; }
+.lst7 b { padding-top: 4px; color: #fff; font: 700 14px/1.3 Unbounded; letter-spacing: -.02em; }
+.lst7 p { margin-top: 5px; color: var(--t2); font: 500 var(--fs-body)/1.5 Manrope; }
+.lst7 p em { color: #fff; font-style: normal; font-weight: 700; }
+/* Elemento 23 · ícono con el punto rosa abajo a la derecha */
+.ico { position: relative; display: grid; place-items: center; width: 48px; height: 48px; color: #fff; }
+.ico::before { content: ''; position: absolute; right: 7px; bottom: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--pink); }
+.ico svg { position: relative; width: 30px; height: 30px; }
+/* Elemento 28 · todo en una tarjeta rosa: «Hablemos.», una línea, el botón negro y el QR; debajo, los contactos en una fila */
+.hb { flex: none; margin-top: auto; padding-top: 24px; }
+.hb + .pie { margin-top: 18px; }
+.hb__rosa { display: grid; grid-template-columns: 1fr 156px; gap: 24px; align-items: center; padding: 34px 30px 34px 34px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
+.hb__h { display: block; font: 700 56px/1 Unbounded; letter-spacing: -.05em; }
+.hb__h i { color: #0A0A0C; font-style: normal; }
+.hb__l { margin-top: 10px; max-width: 360px; color: rgba(255,255,255,.9); font: 500 var(--fs-lead)/1.5 Manrope; }
+.hb__btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding: 11px 20px 11px 16px; border-radius: 99px; background: #0A0A0C; color: #fff; font: 800 var(--fs-body) Manrope; }
+.hb__btn svg { width: 18px; height: 18px; }
+.hb__qr { display: block; padding: 9px; border-radius: 16px; background: #fff; }
+.hb__qr img { display: block; width: 100%; }
+.hb__dl { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; margin: 14px 0 0; padding: 0 6px; }
+.hb__dl dt { color: var(--pink); font: 800 var(--fs-label) Manrope; letter-spacing: .16em; text-transform: uppercase; }
+.hb__dl dd { margin: 4px 0 0; color: #fff; font: 700 var(--fs-lead) Manrope; }
+.hb__lugar { display: flex; align-items: center; gap: 8px; margin: 12px 6px 0; color: var(--t2); font: 600 var(--fs-body) Manrope; }
+.hb__lugar svg { color: var(--pink); }
+.hb__lugar b { color: #fff; }
 </style>
 </head>
 <body>
@@ -273,28 +255,25 @@
 </section>
 
 <!-- 7. Dudas frecuentes -->
-<section class="page dark faq-pg">
-  <svg class="rings" viewBox="0 0 700 700" aria-hidden="true"><circle cx="350" cy="350" r="90"/><circle cx="350" cy="350" r="170"/><circle cx="350" cy="350" r="260"/><circle cx="350" cy="350" r="345"/></svg>
-  <p class="eyebrow" style="position:relative">Dudas frecuentes</p>
-  <h2 class="h2" style="position:relative">Lo que más nos preguntan al empezar<span class="dot">.</span></h2>
-  <div class="faq">
-    <div class="card"><h4>No me llegó el código.</h4><p>Revisa la carpeta de spam y toca "Reenviar el código". Vence a los 10 minutos.</p></div>
-    <div class="card"><h4>¿Puedo cambiar algo antes de que se publique?</h4><p>Sí, siempre. Apruebas las ideas antes de producirlas y cada pieza terminada antes de publicarla.</p></div>
-    <div class="card"><h4>¿Cuánto tiempo me toma?</h4><p>Aprobar desde el celular toma minutos. Lo demás lo hacemos nosotros.</p></div>
-    <div class="card"><h4>¿Dónde veo cómo le fue a lo publicado?</h4><p>En Resultados, en la pestaña "Publicadas".</p></div>
-    <div class="card"><h4>Prefiero usarlo en la computadora.</h4><p>Entra a partners.pixely.pe desde la computadora. Desde el celular, "Tu cuenta" tiene el enlace "Versión de escritorio".</p></div>
-    <div class="card"><h4>¿Cómo cierro sesión o borro mi cuenta?</h4><p>En "Tu cuenta" (el círculo de arriba a la derecha): "Cerrar sesión", y el enlace para pedir que borremos tu cuenta y tus datos.</p></div>
-  </div>
-  <div class="help">
-    <div>
-      <h3>¿Te quedó alguna duda?</h3>
-      <p>Escríbenos y te ayudamos.</p>
-      <span class="wa">WhatsApp +51 949 268 607 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7h9M8 3.5 11.5 7 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <small>hola@pixely.pe · pixely.pe</small>
+<section class="page dark m7">
+  <p class="eyebrow">Dudas frecuentes</p>
+  <h2 class="h2">Lo que más nos preguntan al empezar<span class="dot">.</span></h2>
+  <p class="lead">Las respuestas cortas a las dudas de las primeras semanas.</p>
+  <div class="lst7"><div><span class="ico"><svg data-i="shield-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Olvidé mi contraseña.</b><p>Toca «¿Olvidaste tu contraseña? Escríbenos» y te ayudamos por WhatsApp. Tu correo de Partners termina en <em>@pixely.pe</em>.</p></div><div><span class="ico"><svg data-i="square-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"/><path d="m9 11 3 3L22 4"/></svg></span><b>¿Puedo cambiar algo antes de que se publique?</b><p>Sí, siempre. Apruebas las ideas antes de producirlas y cada pieza antes de publicarla.</p></div><div><span class="ico"><svg data-i="clock" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><b>¿Cuánto tiempo me toma?</b><p>Aprobar desde el celular toma minutos. Lo demás lo hacemos nosotros.</p></div><div><span class="ico"><svg data-i="trending-up" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><b>¿Dónde veo cómo le fue a lo publicado?</b><p>En Resultados, en «Publicadas». Es parte del <em>Plan Pro</em>.</p></div><div><span class="ico"><svg data-i="smartphone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span><b>Prefiero usarlo en la computadora.</b><p>Entra a partners.pixely.pe con el mismo correo y contraseña. En el celular, «Tu cuenta» tiene el enlace «Versión de escritorio».</p></div><div><span class="ico"><svg data-i="users" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>¿Cómo cierro sesión o borro mi cuenta?</b><p>En «Tu cuenta» (el círculo de arriba a la derecha): «Cerrar sesión» y «Eliminar mi cuenta».</p></div></div>
+  <div class="hb">
+    <div class="hb__rosa">
+      <div><b class="hb__h">Hablemos<i>.</i></b><p class="hb__l">¿Te quedó alguna duda? Escríbenos y te ayudamos.</p><a class="hb__btn" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><svg data-i="message" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a></div>
+      <a class="hb__qr" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><img src="../comun/qr-whatsapp.svg" alt="QR de WhatsApp"></a>
     </div>
-    <div class="qr"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></div>
+    <dl class="hb__dl">
+      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8">+51 949 268 607</a></dd></div>
+      <div><dt>Web</dt><dd><a href="https://pixely.pe">pixely.pe</a></dd></div>
+      <div><dt>Correo</dt><dd><a href="mailto:hola@pixely.pe">hola@pixely.pe</a></dd></div>
+      <div><dt>Redes</dt><dd><a href="https://www.instagram.com/pixely_pe">@pixely_pe</a></dd></div>
+    </dl>
+    <p class="hb__lugar"><svg data-i="store" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/></svg><span><b>Atención presencial en Trujillo.</b> Escríbenos y coordinamos una visita.</span></p>
   </div>
-  <div class="foot" style="position:relative"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>07 / 07</span></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">07<small>/07</small></span></div>
 </section>
 
 </body>
