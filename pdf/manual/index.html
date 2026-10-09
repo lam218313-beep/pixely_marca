@@ -129,6 +129,17 @@
 .th4__t > span:last-child { display: block; margin-top: 6px; color: var(--t2); font: 500 var(--fs-body)/1.45 Manrope; }
 .m4 .nota2 { flex: none; margin-top: 14px; }
 
+/* ===== 5. Validar (9 oct, opción A): celular vitrina (13) con resplandor (03) y llamadas (16), y número de paso (19) en fila ===== */
+.m5 .h2 { font-size: var(--fs-title); }
+.m5 .lead { font-size: var(--fs-lead); max-width: 560px; }
+.m5 .nota2 { flex: none; }
+.ll__e--der { transform: translateY(-50%); }
+/* Un celular al centro con llamadas a los dos lados y los cuatro pasos en fila */
+.val5 { flex: none; position: relative; height: 548px; margin-top: 22px; }
+.fila5 { flex: none; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 4px 0 18px; }
+.fila5 li { align-content: start; }
+.fila5 b { font-size: 16px; }
+
 /* ===== Pantallas con pasos a un lado ===== */
 .side { display: grid; grid-template-columns: 1fr 312px; gap: 36px; margin-top: 30px; align-items: start; }
 .row-ph { display: grid; gap: 22px; margin-top: 30px; }
@@ -218,22 +229,20 @@
 </section>
 
 <!-- 5. Validar -->
-<section class="page dark">
+<section class="page dark m5">
   <p class="eyebrow">Validar</p>
   <h2 class="h2">Revisa cada pieza antes de que se publique<span class="dot">.</span></h2>
-  <ol class="steps grid2" style="margin-top:28px">
-    <li><b>1</b><div><h4>Mira la pieza</h4><p>Cada una aparece como una tarjeta, tal como saldrá. Desliza hacia arriba para ver el texto de cada red y por qué la hicimos.</p></div></li>
-    <li><b>2</b><div><h4>Apruébala</h4><p>Desliza a la derecha o toca el check rosado. Tienes 4 segundos para tocar "Deshacer".</p></div></li>
-    <li><b>3</b><div><h4>Pide cambios</h4><p>Desliza a la izquierda o toca el lápiz. Elige si cambiamos la imagen, el texto o ambos, cuéntanos qué y toca "Enviar al equipo".</p></div></li>
-    <li><b>4</b><div><h4>Te avisamos</h4><p>Cuando el cambio esté listo, la pieza vuelve a Validar para que la revises otra vez.</p></div></li>
-  </ol>
-  <div class="row-ph n3">
-    <div><div class="phone"><div class="scr"><img src="img/validar.jpg" alt=""><i class="pin" style="--y:40">1</i><i class="pin" style="--x:81;--y:76">2</i><i class="pin" style="--x:19;--y:76">3</i></div></div><p class="cap">Aprueba o pide cambios</p></div>
-    <div><div class="phone"><div class="scr"><img src="img/validar-siguiente.jpg" alt=""><i class="pin" style="--y:83">2</i></div></div><p class="cap">"Deshacer" durante 4 segundos</p></div>
-    <div><div class="phone"><div class="scr"><img src="img/cambios.jpg" alt=""><i class="pin" style="--y:34">3</i><i class="pin" style="--y:96">4</i></div></div><p class="cap">Qué cambiamos</p></div>
+  <p class="lead">Las piezas terminadas llegan aquí. Las revisas una por una, como un mazo de cartas.</p>
+  <div class="val5">
+    <span class="glow1" style="left:70px;width:542px;top:-30px;height:593.5px"></span>
+    <div class="cel" style="left:210px;top:0px;width:262px"><div class="cel__s"><img src="img/validar.jpg" alt=""></div></div>
+    <span class="ll__l" style="left:180px;width:42px;top:214.8px"></span><span class="ll__p" style="left:222px;top:214.8px"></span><span class="ll__e ll__e--izq" style="left:180px;top:214.8px">La pieza</span>
+    <span class="ll__l" style="left:180px;width:87.9px;top:427.7px"></span><span class="ll__p" style="left:267.9px;top:427.7px"></span><span class="ll__e ll__e--izq" style="left:180px;top:427.7px">Pedir cambios</span>
+    <span class="ll__l" style="left:415.4px;width:86.6px;top:427.7px"></span><span class="ll__p" style="left:415.4px;top:427.7px"></span><span class="ll__e ll__e--der" style="left:502px;top:427.7px">Aprobar</span>
   </div>
-  <p class="tip" style="margin-top:22px"><span><b>Nada se publica sin tu aprobación.</b> Si no la apruebas, esa pieza se queda esperando.</span></p>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><span class="mid">Manual de Pixely Partners</span><span>05 / 07</span></div>
+  <ol class="pasos2 fila5"><li><span class="n">01</span><b>Mira la pieza</b><span>Aparece tal como saldrá. Desliza hacia arriba para ver el texto de cada red y por qué la hicimos.</span></li><li><span class="n">02</span><b>Apruébala</b><span>Desliza a la derecha o toca el check rosado. Tienes 4 segundos para tocar «Deshacer».</span></li><li><span class="n">03</span><b>Pide cambios</b><span>Desliza a la izquierda o toca el lápiz. Elige qué cambiamos, cuéntanos qué y toca «Enviar al equipo».</span></li><li><span class="n">04</span><b>Te avisamos</b><span>Cuando el cambio esté listo, la pieza vuelve a Validar para que la revises otra vez.</span></li></ol>
+  <p class="nota2"><b>Nada se publica sin tu aprobación.</b> Si no la apruebas, esa pieza se queda esperando.</p>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>Manual de Pixely Partners</small></span><span class="n">05<small>/07</small></span></div>
 </section>
 
 <!-- 6. Resultados y Marca -->
