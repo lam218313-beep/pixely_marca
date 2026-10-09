@@ -16,7 +16,7 @@
 .pro   { --h-bg: #0A0A0C; --h-t1: #fff; --h-t2: #B4B4BE; --h-t3: #8A8A96; --h-line: rgba(255,255,255,.1); --img: #B4B4BE; --esc-off: #26262E; --esc-on: #4A4A55; }
 
 /* ===== Cabecera ===== */
-.hero { flex: none; position: relative; overflow: hidden; padding: 26px 56px 22px; background: var(--h-bg); color: var(--h-t1); }
+.hero { flex: none; position: relative; overflow: hidden; padding: 22px 56px 20px; background: var(--h-bg); color: var(--h-t1); }
 .top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; height: 28px; }
 /* Elemento 21 · escalera de nivel: cada escalón más alto; el plan actual en rosa */
 .esc { display: inline-flex; align-items: flex-end; gap: 3px; }
@@ -29,33 +29,34 @@
 /* Elemento 24 · etiqueta rosa y título con punto rosa (en la ficha, el nombre del plan va en tamaño de portada) */
 .grid .lbl { color: var(--pink); }
 .hero h1 { margin-top: 10px; font: 700 var(--fs-display)/1 Unbounded; letter-spacing: -.05em; white-space: nowrap; }
-.hero .lead { margin-top: 10px; max-width: 400px; font: 500 var(--fs-lead)/1.45 Manrope; color: var(--h-t2); }
+.hero .lead { margin-top: 10px; max-width: 440px; font: 500 var(--fs-lead)/1.45 Manrope; color: var(--h-t2); }
 .price { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; }
 .price b { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.04em; }
 .pro .price b { color: var(--pink); }
 .price span { font: 600 var(--fs-body) Manrope; color: var(--h-t3); }
 /* Elemento 09 · piezas por plan: barras que crecen (el plan actual encendido) */
-.vol { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--h-line); }
-.vol .lbl { display: block; margin-bottom: 8px; color: var(--h-t3); }
-.bars { display: grid; gap: 5px; }
+.vol { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--h-line); }
+.vol .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.vol .lbl { color: var(--h-t3); }
+.bars { display: grid; gap: 4px; }
 .bar { display: grid; grid-template-columns: 46px 1fr; align-items: center; opacity: .32; }
 .bar.yo { opacity: 1; }
 .bar > b { font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
 .bar .t { display: flex; align-items: center; gap: 8px; }
-.bar .b { display: flex; gap: 2px; height: 18px; }
+.bar .b { display: flex; gap: 2px; height: 16px; }
 .bar .b i { display: grid; place-items: center; border-radius: 5px; background: var(--img); color: var(--h-bg-t, #fff); font: 700 var(--fs-label) Unbounded; font-style: normal; }
 .basic .bar .b i, .pro .bar .b i { color: #0A0A0C; }
 .bar .b i.r { background: var(--pink); color: #fff; }
 .bar em { white-space: nowrap; font: 700 var(--fs-body) Unbounded; font-style: normal; letter-spacing: -.02em; }
 .bar em small { margin-left: 3px; color: var(--h-t3); font: 700 var(--fs-label) Manrope; letter-spacing: 0; }
-.ley { display: flex; gap: 14px; margin-top: 8px; color: var(--h-t3); font: 700 var(--fs-label) Manrope; }
+.ley { display: flex; gap: 14px; color: var(--h-t3); font: 700 var(--fs-label) Manrope; }
 .ley span { display: inline-flex; align-items: center; gap: 5px; }
 .ley i { width: 8px; height: 8px; border-radius: 2px; background: var(--img); }
 .ley i.r { background: var(--pink); }
 /* Columna derecha: la imagen del plan */
 .vis { position: relative; }
 /* Elemento 13 · celular «vitrina» con captura real */
-.cel { position: absolute; left: 50%; top: 44px; width: 138px; aspect-ratio: 412 / 839; transform: translateX(-50%); border-radius: 15.8% / 7.7%; background: linear-gradient(160deg, #3a3a44, #121216 40%, #26262e); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px -12px rgba(0,0,0,.45); }
+.cel { position: absolute; left: 50%; top: 30px; width: 138px; aspect-ratio: 412 / 839; transform: translateX(-50%); border-radius: 15.8% / 7.7%; background: linear-gradient(160deg, #3a3a44, #121216 40%, #26262e); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px -12px rgba(0,0,0,.45); }
 .basic .cel, .pro .cel { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px rgba(0,0,0,.55), 0 0 40px rgba(235,12,110,.14); }
 .cel::before { content: ''; position: absolute; z-index: 3; top: 3.1%; left: 50%; width: 28%; height: 3.1%; transform: translateX(-50%); border-radius: 99px; background: #000; }
 .cel .s { position: absolute; inset: 1.34% 2.7%; overflow: hidden; border-radius: 13.8% / 6.8%; background: #0A0A0C; }
@@ -70,33 +71,58 @@
 .glow { position: absolute; right: -260px; top: -240px; width: 640px; height: 560px; background: radial-gradient(60% 55% at 50% 50%, rgba(235, 12, 110, .20), transparent 70%); pointer-events: none; }
 
 /* ===== Cuerpo ===== */
-.body { flex: 1; display: flex; flex-direction: column; padding: 16px 56px 0; color: var(--p1); }
-.body > .lbl { color: var(--pink); }
-/* Lo que incluye ESTE plan (sin comparar con los otros): «Cada mes» a todo el ancho y debajo «Al empezar» y «Todo el año»,
-   con íconos del set 23 */
-.inc { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-.inc .card:first-child { grid-column: 1 / -1; }
-.inc .card:first-child ul { grid-auto-flow: column; grid-template-columns: 1fr 1fr; column-gap: 24px; }
-.card { display: flex; flex-direction: column; padding: 10px 16px 12px; border-radius: var(--r); background: #F5F5F7; }
-.card .hd { display: flex; align-items: center; gap: 12px; }
-.card h4 { font: 700 15px/1.1 Unbounded; letter-spacing: -.03em; }
-.card h4 small { display: block; margin-top: 4px; color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; }
+.body { flex: 1; display: flex; flex-direction: column; padding: 14px 56px 0; color: var(--p1); }
+.cuerpo { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fila--b { grid-template-columns: 1.15fr 1fr; }
+/* Tarjeta: ícono del set 23 a la izquierda; título, nota y lista a la derecha */
+.card { display: grid; grid-template-columns: 48px 1fr; grid-template-rows: auto 1fr; gap: 0 10px; padding: 10px 16px 12px 10px; border-radius: var(--r); background: #F5F5F7; }
+.card .ico { grid-row: span 2; }
+.card h4 { display: flex; align-items: baseline; gap: 10px; padding-top: 14px; font: 700 15px/1.1 Unbounded; letter-spacing: -.03em; }
+.card h4 small { color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; }
+.card ul { list-style: none; display: grid; gap: 4px; margin-top: 8px; align-content: start; }
+.card ul.dos { grid-auto-flow: column; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+.card li, .cifras li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; font: 600 var(--fs-body)/1.35 Manrope; color: var(--p1); }
+.card li svg, .cifras li svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.card li b { color: var(--pink); font-weight: 800; }
+/* Tarjeta angosta: ícono y título arriba; la lista usa todo el ancho */
+.card--l { grid-template-rows: 48px 1fr; }
+.card--l .ico { grid-row: auto; }
+.card--l h4 { align-self: center; padding-top: 0; }
+.card--l > div { grid-column: 1 / -1; padding-left: 6px; }
+.card--l ul { margin-top: 4px; }
+.card .da { margin-top: 10px; padding-top: 8px; border-top: 1px solid #E4E4EA; color: var(--p2); font: 600 var(--fs-body)/1.4 Manrope; }
+.card .da b { color: var(--p1); font-weight: 800; }
 /* Elemento 23 · ícono en trazo con punto rosa abajo a la derecha (48 px en A4) */
 .ico { position: relative; flex: none; display: grid; place-items: center; width: 48px; height: 48px; }
 .ico::before { content: ''; position: absolute; right: 7px; bottom: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--pink); }
 .ico svg { position: relative; width: 30px; height: 30px; fill: none; stroke: #0A0A0C; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.card ul { flex: 1; list-style: none; display: grid; gap: 5px; margin-top: 6px; align-content: space-evenly; }
-.card li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; font: 600 var(--fs-body)/1.35 Manrope; color: var(--p1); }
-.card li svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.card li b { color: var(--pink); font-weight: 800; }
+/* Lo que no incluye: raya gris, en una franja de cuatro columnas */
+.no { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding: 11px 18px 12px; border-radius: var(--r); box-shadow: inset 0 0 0 1px var(--pline); }
+.no h4 { padding-top: 1px; font: 700 13px/1.1 Unbounded; letter-spacing: -.02em; white-space: nowrap; }
+.no ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.no li { display: grid; grid-template-columns: 16px 1fr; gap: 7px; align-items: start; color: var(--p2); font: 600 11px/1.35 Manrope; }
+.no li svg { width: 16px; height: 16px; padding: 3px; border-radius: 50%; background: #E4E4EA; fill: none; stroke: #8A8A96; stroke-width: 3; stroke-linecap: round; }
+/* B · elemento 31: cifras con íconos sobre negro (cada campaña) */
+.cifras { display: flex; flex-direction: column; padding: 12px 16px; border-radius: var(--r); background: var(--ink); color: #fff; }
+.cifras .t { color: var(--t3); font: 800 var(--fs-label) Manrope; letter-spacing: .14em; text-transform: uppercase; }
+.cifras .gi { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; align-content: center; margin: 4px 0; }
+.cifras .gi > div { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-items: center; }
+.cifras .ico { grid-row: span 2; }
+.cifras .ico svg { stroke: #fff; }
+.cifras .gi b { align-self: end; font: 700 24px/1 Unbounded; letter-spacing: -.05em; }
+.cifras .gi span:last-child { align-self: start; color: var(--t2); font: 600 11px/1.3 Manrope; }
+.cifras ul { list-style: none; display: grid; gap: 4px; padding-top: 10px; border-top: 1px solid #26262E; }
+.cifras li { color: var(--t2); }
+.cifras li b { color: #fff; font-weight: 800; }
 
 /* Elemento 28 · Hablemos: tarjeta rosa con botón y QR; debajo, los contactos en una fila */
-.talk { margin-top: 14px; }
-.rosa { position: relative; display: grid; grid-template-columns: 1fr 92px; gap: 20px; align-items: center; padding: 14px 14px 14px 24px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
+.talk { margin-top: 12px; }
+.rosa { position: relative; display: grid; grid-template-columns: 1fr auto 76px; gap: 18px; align-items: center; padding: 12px 12px 12px 24px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
 .rosa h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.045em; }
 .rosa h3 i { color: #0A0A0C; font-style: normal; }
-.rosa p { margin-top: 6px; font: 500 var(--fs-body)/1.45 Manrope; color: rgba(255,255,255,.88); }
-.btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 9px 16px; border-radius: 99px; background: #0A0A0C; font: 800 var(--fs-body) Manrope; color: #fff; }
+.rosa p { margin-top: 4px; font: 500 var(--fs-body)/1.45 Manrope; color: rgba(255,255,255,.88); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 99px; background: #0A0A0C; font: 800 var(--fs-body) Manrope; color: #fff; }
 .btn svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .qr { display: block; padding: 7px; border-radius: 14px; background: #fff; }
 .qr img { display: block; width: 100%; }
@@ -123,26 +149,24 @@
         <span class="lbl" data-k="eyebrow"></span>
         <h1>Plan <span data-k="nombre"></span><span class="dot">.</span></h1>
         <p class="lead" data-k="lema"></p>
-        <div class="price"><b data-k="precio"></b><span>al mes</span></div>
+        <div class="price"><b data-k="precio"></b><span>al mes, más IGV</span></div>
         <div class="vol">
-          <span class="lbl">Piezas al mes</span>
+          <div class="hd"><span class="lbl">Piezas al mes, como máximo</span><div class="ley"><span><i></i>Imagen o historia</span><span><i class="r"></i>Reel</span></div></div>
           <div class="bars"></div>
-          <div class="ley"><span><i></i>Imagen o carrusel</span><span><i class="r"></i>Reel</span></div>
         </div>
       </div>
       <div class="vis"></div>
     </div>
   </div>
   <div class="body">
-    <span class="lbl">Todo lo que incluye</span>
-    <div class="inc"></div>
+    <div class="cuerpo"></div>
     <div class="talk">
       <div class="rosa">
         <div>
           <h3>Hablemos<i>.</i></h3>
-          <p>Cuéntanos de tu negocio y te recomendamos el plan que te conviene.</p>
-          <a class="btn" data-wa><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a>
+          <p>¿Dudas? Te ayudamos a elegir tu plan.</p>
         </div>
+        <a class="btn" data-wa><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a>
         <a class="qr" data-wa><img src="../comun/qr-whatsapp.svg" alt=""></a>
       </div>
       <dl class="contactos">
@@ -152,7 +176,7 @@
         <div><dt>Redes</dt><dd><a href="https://www.instagram.com/pixely_pe">@pixely_pe</a></dd></div>
       </dl>
     </div>
-    <p class="note legal">Tu primer plan de contenido llega en máximo 7 días hábiles después de la entrevista. No hacemos sesiones fotográficas, no respondemos mensajes ni comentarios de tus redes y no diseñamos logotipos fuera de tu plan de contenido. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. No garantizamos resultados de ventas específicos: garantizamos contenido profesional y estratégico. Syntesia Labs E.I.R.L. · RUC 20616010787.</p>
+    <p class="note legal"></p>
     <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n"></span></div>
   </div>
 </section>
@@ -160,85 +184,78 @@
 
 <script>
 // Un plan por hoja, en este orden (el script de PDF saca la hoja 1, 2 y 3 por separado).
-// Precio: null mientras no esté definido.
+// Planes aprobados el 9 oct (5.-Pixely_vendedores): campañas de 12 piezas; precio de cierre en soles, sin IGV.
 const PLANES = [
-  { id: 'lite', nombre: 'Lite', eyebrow: 'Para empezar', lema: 'Empieza con un riesgo mínimo y conoce el proceso.', precio: null,
-    fotos: 6, reels: 2, redes: 2, captura: 'm-plan' },
-  { id: 'basic', nombre: 'Basic', eyebrow: 'Presencia constante', lema: 'Constancia, con estrategia y sin repetirte.', precio: null,
-    fotos: 8, reels: 4, redes: 3, captura: 'm-pieza' },
-  { id: 'pro', nombre: 'Pro', eyebrow: 'Delegación total', lema: 'Tú apruebas desde el celular; nosotros hacemos todo lo demás.', precio: null,
-    fotos: 12, reels: 8, redes: 5, captura: 'm-resultado' },
+  { id: 'lite', nombre: 'Lite', eyebrow: 'Tú publicas', lema: 'Una campaña al mes, lista para que la publiques en tus redes.', precio: '350',
+    imagenes: 11, reels: 1, captura: 'm-validar-siguiente' },
+  { id: 'basic', nombre: 'Basic', eyebrow: 'Tú publicas, con calendario', lema: 'Dos campañas al mes y un calendario con qué publicar cada día.', precio: '600',
+    imagenes: 22, reels: 2, captura: 'm-plan' },
+  { id: 'pro', nombre: 'Pro', eyebrow: 'Nosotros publicamos', lema: 'Cuatro campañas al mes. Las publicamos por ti y te mostramos cómo le fue a cada pieza.', precio: '1,000',
+    imagenes: 44, reels: 4, captura: 'm-resultado' },
 ];
-// Imagen de la cabecera. Propuestas (9 oct): ?v=celular | esfera | foto muestra solo la ficha Lite con esa imagen.
-const PROPUESTA = new URLSearchParams(location.search).get('v');
-const VISUAL = PROPUESTA || 'celular';
-// Todo el servicio, agrupado por frecuencia. Cada parte: [texto, valores Lite/Basic/Pro].
-// true = incluido · false = no va en la ficha de ese plan · texto = cuánto (el texto puede ser una función del valor).
-// Filas provisionales hasta definir los planes.
-const SI = true, NO = false;
+// Cuerpo: a = tarjetas · b = cifras con íconos (propuestas del 9 oct)
+const CUERPO = new URLSearchParams(location.search).get('cuerpo') || 'a';
 const ICONOS = {
   'calendar-days': '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>',
   flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/>',
-  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z"/>',
+  tag: '<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/>',
+  smartphone: '<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+  'square-check': '<path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"/><path d="m9 11 3 3L22 4"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  store: '<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/>',
 };
-const SERVICIO = [
-  { titulo: 'Cada mes', nota: 'Tu contenido y su entrega', icono: 'calendar-days', partes: [
-    ['Plan del mes: cada idea con su porqué', [SI, SI, SI]],
-    [(v) => `<b>${v}</b> fotos y carruseles`, ['6', '8', '12']],
-    [(v) => `<b>${v}</b> reels con guion y edición`, ['2', '4', '8']],
-    [(v) => `<b>${v}</b> redes, con textos para cada una`, ['2', '3', '5']],
-    [(v) => `<b>${v}</b> de cambios por pieza`, ['1 ronda', '2 rondas', '3 rondas']],
-    ['Piezas listas para descargar en Partners', [SI, SI, SI]],
-    ['Calendario con día y hora para publicar', [NO, SI, SI]],
-    ['Publicamos por ti', [NO, NO, SI]],
-    ['Resultados frente a tu competencia', [NO, NO, SI]],
-    ['Videollamada mensual de resultados', [NO, NO, SI]],
-  ] },
-  { titulo: 'Al empezar', nota: 'Una sola vez', icono: 'flag', partes: [
-    ['Entrevista guiada y ficha de tu negocio', [SI, SI, SI]],
-    ['Voz de marca: cómo hablará tu marca', [SI, SI, SI]],
-    ['Estudio de mercado de tu nicho, en PDF', [SI, SI, SI]],
-    ['Estrategia: objetivos y conceptos', [SI, SI, SI]],
-  ] },
-  { titulo: 'Todo el año', nota: 'Mientras dure tu plan', icono: 'clock', partes: [
-    [(v) => `Vigilancia <b>${v}</b> de tu competencia`, ['mensual', 'quincenal', 'semanal']],
-    [(v) => `Revisión de tu estrategia <b>${v}</b>`, ['cada 6 meses', 'cada 3 meses', 'cada mes']],
-    ['Pixely Partners en celular y computadora', [SI, SI, SI]],
-    [(v) => `Respuesta por WhatsApp <b>${v}</b>`, ['en 24 h hábiles', 'en 12 h hábiles', 'el mismo día']],
-  ] },
-];
+// Lo que trae cada plan cada mes
+const CADA_MES = {
+  lite: ['<b>1 campaña</b> de hasta 12 piezas', 'Hasta <b>1 reel</b>, si nos mandas los clips', 'Textos para <b>Instagram y Facebook</b>', '<b>1 ronda</b> de cambios por pieza', 'Una <b>fecha sugerida</b> para cada pieza'],
+  basic: ['<b>2 campañas</b> de hasta 12 piezas', 'Hasta <b>2 reels</b>, si nos mandas los clips', 'Textos para <b>Instagram, Facebook y&nbsp;1&nbsp;más</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b>'],
+  pro: ['<b>4 campañas</b> de hasta 12 piezas', 'Hasta <b>4 reels</b>, si nos mandas los clips', 'Textos para <b>hasta 5 redes</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b>', '<b>Publicamos</b> en Instagram y Facebook', '<b>Alcance e interacción</b> en Instagram', 'Tu <b>estudio de mercado</b>, cada mes'],
+};
+// Igual en los tres planes
+const CAMPANA = ['<b>1</b> publicación principal (4:5)', '<b>1</b> anuncio (1:1): tú lo subes y lo pagas', '<b>4</b> historias (9:16)', '<b>5</b> variaciones del producto', '<b>1</b> reel, si nos mandas los clips'];
+const CIFRAS = [['star', '1', 'publicación principal (4:5)'], ['tag', '1', 'anuncio (1:1) que tú subes y pagas'], ['smartphone', '4', 'historias (9:16)'], ['square-check', '5', 'variaciones del producto']];
+const TU_DAS = 'Tú nos das <b>5 fotos</b> por campaña y <b>5 clips</b> por reel.';
+const AL_EMPEZAR = {
+  comun: ['Entrevista y estudio de tu mercado', 'Tu voz de marca y tu estrategia', '<b>Pixely Partners</b>: apruebas cada pieza', 'Tu primer plan en máximo <b>7 días hábiles</b>'],
+  pro: ['Autorizas por escrito conectar tus redes'],
+};
+const NO_COMUN = ['Sesiones de fotos ni logos', 'Carruseles', 'Responder mensajes', 'Administrar tus redes', 'Pagar la promoción'];
+const NO_PLAN = { lite: ['Calendario con día y orden', 'Publicar por ti', 'Resultados por pieza'], basic: ['Publicar por ti', 'Resultados por pieza'], pro: ['Publicar fuera de Instagram y Facebook', 'Subir el anuncio', 'Resultados de las historias'] };
+const LEGAL = {
+  lite: '', basic: '',
+  pro: '',
+};
 const WA = (n) => `https://wa.me/51949268607?text=${encodeURIComponent(`¡Hola Pixely! 👋 Me interesa el Plan ${n} ✨`)}`;
 const CHECK = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-const MAX = Math.max(...PLANES.map((p) => p.fotos + p.reels));
+const RAYA = '<svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg>';
+const MAX = Math.max(...PLANES.map((p) => p.imagenes + p.reels));
+const ico = (i, extra = '') => `<span class="ico"${extra}><svg viewBox="0 0 24 24">${ICONOS[i]}</svg></span>`;
+const li = (t) => `<li>${CHECK}<span>${t}</span></li>`;
+const card = (icono, titulo, nota, items, extra = '', cols = 1, clase = '') => `<div class="card${clase}">${ico(icono)}<h4>${titulo}<small>${nota}</small></h4><div><ul${cols > 1 ? ` class="dos" style="grid-template-rows:repeat(${Math.ceil(items.length / cols)}, auto)"` : ''}>${items.map(li).join('')}</ul>${extra}</div></div>`;
+const noIncluye = (id) => `<div class="no"><h4>No incluye</h4><ul>${[...NO_COMUN, ...NO_PLAN[id]].map((t) => `<li>${RAYA}<span>${t}</span></li>`).join('')}</ul></div>`;
 
 const molde = document.getElementById('hoja');
-(PROPUESTA ? PLANES.slice(0, 1) : PLANES).forEach((p, n) => {
+PLANES.forEach((p, n) => {
   const h = molde.content.cloneNode(true);
   const pg = h.querySelector('.page');
   pg.classList.add(p.id);
-  h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = el.dataset.k === 'precio' ? (p.precio ? `S/ ${p.precio}` : 'S/ —') : p[el.dataset.k]; });
+  h.querySelectorAll('[data-k]').forEach((el) => { el.textContent = el.dataset.k === 'precio' ? `S/ ${p.precio}` : p[el.dataset.k]; });
   h.querySelectorAll('[data-wa]').forEach((a) => { a.href = WA(p.nombre); });
   // 21 · escalera: Lite un tercio, Basic dos tercios, Pro completo
   h.querySelector('.esc').innerHTML = PLANES.map((q, i) => `<span class="${i < n ? 'on' : i === n ? 'yo' : ''}"><i style="height:${((i + 1) / 3) * 100}%"></i><b>${q.nombre}</b></span>`).join('');
-  // 09 · barras que crecen
-  h.querySelector('.bars').innerHTML = PLANES.map((q, i) => `<div class="bar${i === n ? ' yo' : ''}"><b>${q.nombre}</b><div class="t"><span class="b" style="width:calc((100% - 70px) * ${(q.fotos + q.reels) / MAX})"><i style="flex:${q.fotos}">${q.fotos}</i><i class="r" style="flex:${q.reels}">${q.reels}</i></span><em>${q.fotos + q.reels}<small>al mes</small></em></div></div>`).join('');
-  // Imagen de la cabecera
-  const claro = p.id === 'lite';
-  const vis = {
-    celular: `<div class="cel"><div class="s"><img src="../../public/capturas/${p.captura}.webp" alt=""></div></div>`,
-    esfera: '',
-    foto: '<div class="foto"><img src="../../public/elementos/fotos/panadero.webp" alt="" style="object-position:center 30%"></div>',
-  }[VISUAL];
-  h.querySelector('.vis').innerHTML = vis;
-  if (VISUAL === 'esfera') h.querySelector('.hero').insertAdjacentHTML('afterbegin', `<img class="arte" src="../../public/elementos/01-${claro ? 'claro' : 'oscuro'}.svg" alt="">`);
+  // 09 · barras que crecen: imágenes e historias, y reels en rosa
+  h.querySelector('.bars').innerHTML = PLANES.map((q, i) => `<div class="bar${i === n ? ' yo' : ''}"><b>${q.nombre}</b><div class="t"><span class="b" style="width:calc((100% - 70px) * ${(q.imagenes + q.reels) / MAX})"><i style="flex:${q.imagenes}">${q.imagenes}</i><i class="r" style="flex:${q.reels};min-width:16px">${q.reels}</i></span><em>${q.imagenes + q.reels}<small>al mes</small></em></div></div>`).join('');
+  // 13 · celular con una captura real
+  h.querySelector('.vis').innerHTML = `<div class="cel"><div class="s"><img src="../../public/capturas/${p.captura}.webp" alt=""></div></div>`;
   if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<i class="glow"></i>');
-  // Lo que incluye este plan: «Cada mes» a la izquierda; «Al empezar» y «Todo el año» a la derecha
-  const tarjeta = (g) => {
-    const partes = g.partes.filter(([, vals]) => vals[n] !== NO);
-    const lis = partes.map(([t, vals]) => `<li>${CHECK}<span>${typeof t === 'function' ? t(vals[n]) : t}</span></li>`).join('');
-    return `<div class="card"><div class="hd"><span class="ico"><svg viewBox="0 0 24 24">${ICONOS[g.icono]}</svg></span><h4>${g.titulo}<small>${g.nota}</small></h4></div><ul style="grid-template-rows:repeat(${Math.ceil(partes.length / 2)}, auto)">${lis}</ul></div>`;
-  };
-  h.querySelector('.inc').innerHTML = SERVICIO.map(tarjeta).join('');
+  // Lo que incluye este plan
+  const empezar = [...AL_EMPEZAR.comun, ...(AL_EMPEZAR[p.id] || [])];
+  h.querySelector('.cuerpo').innerHTML = CUERPO === 'b'
+    ? `<div class="fila fila--b">${card('calendar-days', 'Cada mes', 'Tu plan', CADA_MES[p.id])}<div class="cifras"><span class="t">Cada campaña · hasta 12 piezas</span><div class="gi">${CIFRAS.map(([i, k, t]) => `<div>${ico(i)}<b>${k}</b><span>${t}</span></div>`).join('')}</div><ul>${li('<b>+ 1 reel</b>, si nos mandas los clips')}${li(TU_DAS)}</ul></div></div>`
+      + card('flag', 'Al empezar', 'Una sola vez', empezar, '', 2) + noIncluye(p.id)
+    : card('calendar-days', 'Cada mes', 'Tu plan', CADA_MES[p.id], '', 2)
+      + `<div class="fila">${card('star', 'Cada campaña', 'Hasta 12 piezas', CAMPANA, `<p class="da">${TU_DAS}</p>`, 1, ' card--l')}${card('flag', 'Al empezar', 'Una sola vez', empezar, '', 1, ' card--l')}</div>` + noIncluye(p.id);
+  h.querySelector('.legal').innerHTML = `${LEGAL[p.id]}El primer plan sale en máximo 7 días hábiles desde el pago y tus fotos. Si los clips no llegan en 5 días hábiles, ese mes no hay reel. Lo que no se usa en el mes no se acumula. La red puede rechazar un anuncio. WhatsApp de lunes a viernes, de 9:00 a 18:00; atención presencial en Trujillo. Precios en soles, sin IGV. Los resultados pueden variar según el negocio, el sector y la constancia en la publicación. Syntesia Labs E.I.R.L. · RUC 20616010787.`;
   // 25 · pie con número grande
   h.querySelector('.pie .n').innerHTML = `${String(n + 1).padStart(2, '0')}<small>/${String(PLANES.length).padStart(2, '0')}</small>`;
   document.body.appendChild(h);
