@@ -178,7 +178,7 @@ const vista11 = (p) => {
       <div class="br__cols"><div class="br__col"><span class="br__bar" style="height:92%"></span><b>Lo bueno que es tu producto</b></div>
         <div class="br__col"><span class="br__bar br__bar--gris" style="height:38%"></span><span class="br__llave" style="bottom:38%;height:54%"><em>La brecha</em></span><b>Lo que comunican tus fotos</b></div></div>
       <p class="br__nota">Pixely cierra la diferencia con piezas hechas para tu negocio. Ejemplo ilustrativo.</p></div>`);
-  const foto = (f) => `<div class="br__foto" style="${zoom('m-validar', 0.5, 0.36, 0.86, 0.9)};${f}"></div>`;
+  const foto = (f) => `<div class="br__foto" style="background:url(elementos/fotos/panadero.webp) center 30%/cover;${f}"></div>`;
   return fig('Página negra', `<div class="br br--antes"><div class="br__lado"><span class="br__et">Hoy</span>${foto('filter:grayscale(.7) brightness(.55) contrast(.8) blur(1.2px)')}<span class="br__med"><i style="width:40%"></i></span><b>Lo que comunican tus fotos</b></div>
       <div class="br__lado"><span class="br__et br__et--pk">Con Pixely</span>${foto('')}<span class="br__med"><i class="pk" style="width:90%"></i></span><b>Lo bueno que es tu producto, a la vista</b></div><p class="br__nota">Ejemplo ilustrativo.</p></div>`);
 };
@@ -354,11 +354,12 @@ const criterio = () => `<div class="pr pr--fam"><h4>Cómo elegir la foto: que no
   <div class="cr__ej">${[['evitar-1', 'Portada del brochure', [[0.47, 0.33, 'Piel y sonrisa de plástico'], [0.66, 0.38, 'Pantalla de frente a cámara'], [0.54, 0.08, 'Neón puesto']]], ['evitar-2', 'Página 2 del brochure', [[0.55, 0.06, 'Luz de estudio a la vista'], [0.92, 0.38, 'Neón puesto'], [0.72, 0.36, 'Pose de set']]]].map(([f, t, marcas]) => `<figure class="cr__f"><div class="cr__img"><img src="elementos/fotos/${f}.webp" alt="" loading="lazy">${marcas.map(([x, y, e]) => `<span class="ll__p" style="left:${x * 100}%;top:${y * 100}%"></span><span class="cr__e${x > 0.7 ? ' cr__e--izq' : ''}" style="left:${x * 100}%;top:${y * 100}%">${e}</span>`).join('')}</div><figcaption>${t} · señalada el 8 oct: se cambia</figcaption></figure>`).join('')}</div></div>`;
 
 // ---------- 30 · Plantillas de redes (mezcla de «negro con esfera» y «muesca», 9 oct) ----------
-// Fondo SVG a escala real (px de la pieza): blanco, bloque negro con muesca (abajo, o arriba si va invertido)
+// Fondo SVG a escala real (px de la pieza): blanco, bloque negro recto (arriba, o abajo si va invertido)
 // y la esfera: la oscura recortada dentro del negro, la clara sobre el blanco.
+// Sin muesca (9 oct): el bloque negro termina en una línea recta.
 const fondo30 = (W, H, alto, invertida, esfera) => {
   const id = `rd${nClip++}`;
-  const forma = invertida ? `<g transform="translate(0 ${H}) scale(1 -1)"><path d="${muesca(W, alto)}"/></g>` : `<path d="${muesca(W, alto)}"/>`;
+  const forma = `<rect x="0" y="${invertida ? H - alto : 0}" width="${W}" height="${alto}"/>`;
   const img = esfera ? `<image href="elementos/01-${invertida ? 'claro' : 'oscuro'}.svg" x="${esfera[0]}" y="${esfera[1]}" width="${esfera[2]}" height="${esfera[2]}"${invertida ? '' : ` clip-path="url(#${id})"`}/>` : '';
   return `<svg class="rd__fondo" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="${id}">${forma}</clipPath></defs><rect width="${W}" height="${H}" fill="#fff"/><g fill="#0A0A0C">${forma}</g>${img}</svg>`;
 };
@@ -380,7 +381,84 @@ const vista30 = (p) => {
   ].join('');
 };
 
-export const VISTAS_EXTRA = { 9: vista09, 11: vista11, 13: vista13, 14: vista14, 15: vista15, 16: vista16, 17: vista17, 18: vista18, 19: vista19, 20: vista20, 21: vista21, 22: vista22, 23: vista23, 24: vista24, 25: vista25, 26: vista26, 27: vista27, 28: vista28, 29: vista29, 30: vista30 };
+// ---------- Gráficos de datos para los PDF (05, 06, 07, 08, 10, 12, 31) ----------
+// Cada gráfico se dibuja igual en página negra y blanca: «g» es la caja, «g--claro» la versión blanca.
+const caja = (claro, t, html, extra = '') => `<div class="g${claro ? ' g--claro' : ''}${extra}"><span class="g__t">${t}</span>${html}</div>`;
+const dosVersiones = (f) => [fig('Página negra', f(false)), fig('Página blanca', f(true))].join('');
+
+// 05 · Barras comparativas («este funciona»)
+const BARRAS = [['Promo de temporada', 38], ['Foto de vitrina', 55], ['Frase del día', 30], ['Guía de tallas', 88], ['Detrás del mostrador', 46], ['Sorteo', 25]];
+const vista05 = (p) => dosVersiones((claro) => {
+  const max = 88, hi = 3;
+  if (p.id === 'columnas') return caja(claro, 'Publicaciones de tu rubro', `<div class="gb">${BARRAS.map(([, v], i) => `<span class="gb__c${i === hi ? ' on' : ''}" style="height:${(v / max) * 100}%">${i === hi ? '<em>Este funciona</em>' : ''}</span>`).join('')}</div>`);
+  if (p.id === 'filas') return caja(claro, 'Lo que más responde la gente en tu rubro', `<div class="gf">${[...BARRAS].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([n, v], i) => `<div class="gf__f${i === 0 ? ' on' : ''}"><span>${n}</span><i><b style="width:${(v / max) * 100}%"></b></i><em>${v}</em></div>`).join('')}</div>`);
+  return caja(claro, 'Publicaciones de tu rubro', `<div class="gp">${BARRAS.map(([, v], i) => `<span class="gp__c${i === hi ? ' on' : ''}">${'<i></i>'.repeat(Math.round(v / 11))}${i === hi ? '<em>Este funciona</em>' : ''}</span>`).join('')}</div>`);
+});
+
+// 06 · Anillo con total (cómo se reparten las ideas del mes)
+const PILARES = [['Problema', 6, '#EB0C6E'], ['Identidad', 4, '#B4B4BE'], ['Prueba', 2, '#4A4A55']];
+const vista06 = (p) => dosVersiones((claro) => {
+  const tot = 12, ley = `<ul class="gl">${PILARES.map(([n, v, c]) => `<li><i style="background:${c}"></i>${n}<b>${v}</b></li>`).join('')}</ul>`;
+  if (p.id === 'anillo') {
+    let a = 0; const r = 40, C = 2 * Math.PI * r;
+    const arcos = PILARES.map(([, v, c0]) => { const c = claro && c0 === '#B4B4BE' ? '#0A0A0C' : c0, l = (v / tot) * C - 3, s = `<circle cx="50" cy="50" r="${r}" fill="none" stroke="${c}" stroke-width="12" stroke-dasharray="${l.toFixed(1)} ${C.toFixed(1)}" stroke-dashoffset="${(-a).toFixed(1)}" transform="rotate(-90 50 50)"/>`; a += (v / tot) * C; return s; }).join('');
+    return caja(claro, 'Tus ideas del mes', `<div class="ga"><svg viewBox="0 0 100 100">${arcos}</svg><span class="ga__n">${tot}<small>ideas</small></span></div>${ley}`, ' g--fila');
+  }
+  if (p.id === 'repartida') return caja(claro, 'Tus ideas del mes · 12', `<div class="gr">${PILARES.map(([n, v, c]) => `<span style="flex:${v};background:${c}"></span>`).join('')}</div>${ley}`);
+  return caja(claro, 'Tus ideas del mes · 12', `<div class="gw">${PILARES.flatMap(([, v, c]) => Array(v).fill(`<i style="background:${c}"></i>`)).join('')}</div>${ley}`);
+});
+
+// 07 · Medidor de calificación
+const RIVALES = [4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
+const vista07 = (p) => dosVersiones((claro) => {
+  if (p.id === 'arco') {
+    const ang = (v) => Math.PI * (1 - (v - 3) / 2), pt = (v, r) => [50 + r * Math.cos(ang(v)), 55 - r * Math.sin(ang(v))];
+    const arco = (a, b, c, w) => { const [x1, y1] = pt(a, 40), [x2, y2] = pt(b, 40); return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)} A40 40 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`; };
+    return caja(claro, 'Qué tan exigente es tu zona', `<div class="gm"><svg viewBox="0 0 100 62">${arco(3, 5, claro ? '#EEEEF2' : '#26262E', 8)}${arco(3, 4.4, '#EB0C6E', 8)}${RIVALES.map((v) => { const [x, y] = pt(v, 50); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5" fill="#8A8A96" stroke="none"/>`; }).join('')}</svg><span class="gm__n">★ 4,4<small>promedio de la zona</small></span></div><p class="g__p">Para destacar, tu negocio necesita superar <b>★ 4,4</b>. Cada punto es un competidor.</p>`);
+  }
+  if (p.id === 'escala') return caja(claro, 'Qué tan exigente es tu zona', `<div class="ge"><div class="ge__eje">${RIVALES.map((v) => `<i style="left:${(v - 4) * 100}%"></i>`).join('')}<span class="ge__meta" style="left:40%"></span><span class="ge__zona" style="left:40%;right:0">Aquí destacas</span></div><div class="ge__n"><span>★ 4,0</span><span style="left:40%">★ 4,4 promedio</span><span style="left:100%">★ 5,0</span></div></div><p class="g__p">Cada punto gris es un competidor de tu zona.</p>`);
+  return caja(claro, 'Qué tan exigente es tu zona', `<div class="gs">${[1, 2, 3, 4, 5].map((k) => `<span class="gs__e"><i style="width:${Math.max(0, Math.min(1, 4.4 - (k - 1))) * 100}%"></i></span>`).join('')}</div><p class="gs__n"><b>4,4</b> de 5 es el promedio de tu zona</p><p class="g__p">Para destacar: más de <b>★ 4,4</b> en Google Maps.</p>`);
+});
+
+// 08 · Línea frente al promedio (cómo le fue a cada pieza)
+const PIEZAS = [80, 120, 95, 160, 70, 110, 140, 90];
+const vista08 = (p) => dosVersiones((claro) => {
+  const max = 180, prom = 100, best = 3;
+  if (p.id === 'linea') {
+    const X = (i) => 8 + i * (184 / 7), Y = (v) => 74 - (v / max) * 62;
+    const d = PIEZAS.map((v, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+    return caja(claro, 'Cómo le fue a cada pieza', `<svg class="gn" viewBox="0 0 200 80"><line x1="2" x2="198" y1="${Y(prom)}" y2="${Y(prom)}" stroke="${claro ? '#C8C8D0' : '#4A4A55'}" stroke-dasharray="2 2" vector-effect="non-scaling-stroke"/><path d="${d}" fill="none" stroke="${claro ? '#0A0A0C' : '#fff'}" stroke-width="2" vector-effect="non-scaling-stroke"/>${PIEZAS.map((v, i) => `<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="${i === best ? 5 : 3}" fill="${i === best ? '#EB0C6E' : claro ? '#0A0A0C' : '#fff'}"/>`).join('')}</svg><div class="gn__ley"><span><i class="gn__prom"></i>Tu promedio</span><span><i class="gn__mejor"></i>La mejor del mes: +60%</span></div>`);
+  }
+  if (p.id === 'columnas') return caja(claro, 'Cómo le fue a cada pieza', `<div class="gc">${PIEZAS.map((v, i) => `<span class="gc__c${v >= prom ? ' sobre' : ''}${i === best ? ' on' : ''}" style="height:${(v / max) * 100}%"></span>`).join('')}<span class="gc__prom" style="bottom:${(prom / max) * 100}%"><em>Tu promedio</em></span></div>`);
+  const filas = [['Detrás del mostrador', 60], ['Guía de tallas', 40], ['Nueva colección', 20], ['Cueros que duran', -10]];
+  return caja(claro, 'Frente a tu promedio', `<ul class="gx">${filas.map(([n, v], i) => `<li><span>${n}</span><b class="${v >= 0 ? (i === 0 ? 'on' : 'sobre') : 'bajo'}">${v >= 0 ? '▲ +' : '▼ '}${v}%</b></li>`).join('')}</ul>`);
+});
+
+// 10 · Antes y después de tiempo
+const vista10 = (p) => dosVersiones((claro) => {
+  if (p.id === 'barras') return caja(claro, 'Tu tiempo cada semana', `<div class="gt"><div class="gt__f"><span>Por tu cuenta</span><b>6–10 h</b></div><i class="gt__b"></i><div class="gt__f"><span>Con Pixely</span><b class="pk">minutos</b></div><i class="gt__b gt__b--pk"></i></div>`);
+  if (p.id === 'cifras') return caja(claro, 'Tu tiempo cada semana', `<div class="gq"><div><span class="ico ico--duotono"><span>${ic('clock', 24, 1.7)}</span></span><b>6–10 h</b><em>creando contenido por tu cuenta</em></div><div class="gq__vs">vs</div><div class="on"><span class="ico ico--duotono"><span>${ic('square-check', 24, 1.7)}</span></span><b>minutos</b><em>aprobando desde el celular</em></div></div>`);
+  const dias = ['L', 'M', 'M', 'J', 'V', 'S', 'D'], horas = [2, 1, 2, 1, 2, 1, 0];
+  return caja(claro, 'Tu semana', `<div class="gk"><span class="gk__r">Por tu cuenta</span>${dias.map((d, i) => `<span class="gk__d"><i style="height:${horas[i] * 40}%"></i><em>${d}</em></span>`).join('')}<span class="gk__r">Con Pixely</span>${dias.map((d, i) => `<span class="gk__d gk__d--pk"><i style="height:${i === 2 ? 8 : 0}%"></i><em>${d}</em></span>`).join('')}</div><p class="g__p">Unas 9 horas a la semana, frente a unos minutos para aprobar.</p>`);
+});
+
+// 12 · Cadena de una pieza
+const CADENA = [['flag', 'Objetivo'], ['chart', 'Estrategia'], ['store', 'Dato de tu mercado'], ['image', 'Tu pieza']];
+const vista12 = (p) => dosVersiones((claro) => {
+  if (p.id === 'escalera') return caja(claro, 'Detrás de cada pieza', `<div class="gz">${CADENA.map(([, t], i) => `<span class="${i === 3 ? 'on' : ''}" style="margin-left:${i * 12}%">${t}</span>`).join('')}</div>`);
+  if (p.id === 'cadena') return caja(claro, 'Detrás de cada pieza', `<div class="gy">${CADENA.map(([i, t], k) => `<div class="gy__p${k === 3 ? ' on' : ''}"><span class="ico ico--duotono"><span>${ic(i, 24, 1.7)}</span></span><b>${t}</b></div>`).join(`<i class="gy__f">${ic('arrow-right', 14, 2.4)}</i>`)}</div>`);
+  return caja(claro, 'Detrás de cada pieza', `<div class="gv">${CADENA.map(([, t], i) => `<span class="${i === 3 ? 'on' : ''}" style="width:${100 - i * 16}%">${t}</span>`).join('')}</div>`);
+});
+
+// 31 · Cifra grande con contexto
+const CIFRAS = [['7', 'días hábiles como máximo para tu primer plan', 'calendar-days'], ['7', 'redes en las que publicamos', 'send'], ['1', 'solo lugar para aprobar todo', 'smartphone'], ['100 %', 'digital, en toda Latinoamérica', 'shield-check']];
+const vista31 = (p) => dosVersiones((claro) => {
+  if (p.id === 'banda') return caja(claro, 'Pixely en números', `<div class="gu">${CIFRAS.map(([n, t], i) => `<div><b class="${i === 0 ? 'pk' : ''}">${n}</b><span>${t}</span></div>`).join('')}</div>`);
+  if (p.id === 'una') return caja(claro, 'Tu primer plan', `<div class="gg"><b>7<small> días</small></b><span>hábiles como máximo, desde la entrevista hasta tu primer plan del mes.</span></div>`);
+  return caja(claro, 'Pixely en números', `<div class="gi">${CIFRAS.map(([n, t, i]) => `<div><span class="ico ico--duotono"><span>${ic(i, 24, 1.7)}</span></span><b>${n}</b><span>${t}</span></div>`).join('')}</div>`);
+});
+
+export const VISTAS_EXTRA = { 5: vista05, 6: vista06, 7: vista07, 8: vista08, 10: vista10, 12: vista12, 31: vista31, 9: vista09, 11: vista11, 13: vista13, 14: vista14, 15: vista15, 16: vista16, 17: vista17, 18: vista18, 19: vista19, 20: vista20, 21: vista21, 22: vista22, 23: vista23, 24: vista24, 25: vista25, 26: vista26, 27: vista27, 28: vista28, 29: vista29, 30: vista30 };
 // Bloques que van debajo de las propuestas de un elemento.
 export const BLOQUES_EXTRA = { 29: criterio };
 
@@ -471,11 +549,11 @@ export const vistasCSS = `
 .br__mk{position:absolute;bottom:0;display:grid;justify-items:center;width:120px;transform:translateX(-50%);color:#B4B4BE;font:700 11px/1.3 Manrope;text-align:center}
 .br__mk b{display:grid;place-items:center;width:40px;height:40px;margin-bottom:4px;border-radius:50%;background:#fff;color:#0A0A0C;font:700 16px Unbounded}
 .br__mk{bottom:42px}.br__mk--gris b{background:#4A4A55;color:#fff}
-.br__cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;height:220px;margin-top:16px}
+.br__cols{display:grid;grid-template-columns:repeat(2,minmax(0,190px));justify-content:center;gap:48px;height:220px;margin-top:16px}
 .br__col{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
 .br__col b{color:#B4B4BE;font:700 12px/1.3 Manrope}
-.br__bar{display:block;width:44%;border-radius:10px 10px 4px 4px;background:#fff}.br__bar--gris{background:#4A4A55}
-.br__llave{position:absolute;left:48%;width:14px;border:2px solid #EB0C6E;border-left:0;border-radius:0 8px 8px 0;margin-bottom:28px}
+.br__bar{display:block;width:100%;border-radius:10px 10px 4px 4px;background:#fff}.br__bar--gris{background:#4A4A55}
+.br__llave{position:absolute;left:calc(100% + 10px);width:14px;border:2px solid #EB0C6E;border-left:0;border-radius:0 8px 8px 0;margin-bottom:28px}
 .br__llave em{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:#FF7AB0;font:800 12px Manrope;font-style:normal;white-space:nowrap}
 .br--antes{display:grid;grid-template-columns:1fr 1fr;gap:14px}.br--antes .br__nota{grid-column:1/-1;margin-top:0}
 .br__lado{display:grid;gap:8px}.br__lado b{color:#B4B4BE;font:700 12px/1.3 Manrope}
@@ -647,4 +725,60 @@ export const vistasCSS = `
 .rd__mini{position:static!important;display:block;width:100%;height:34cqw;margin-top:auto;border-radius:3cqw;object-fit:cover}
 .rd__fondo{position:absolute;inset:0;width:100%;height:100%}
 .rd__wm--neg{color:#0A0A0C}.rd__wm--pie{top:auto;bottom:7cqw;color:#fff}.rd__p--neg{color:#55555F}
+/* Gráficos de datos para PDF */
+.pr__g--5,.pr__g--6,.pr__g--7,.pr__g--8,.pr__g--10,.pr__g--12,.pr__g--31{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
+.g{display:grid;gap:12px;padding:18px;border-radius:14px;background:#16161B;box-shadow:inset 0 0 0 1px #26262E;color:#fff}.g--claro{background:#fff;box-shadow:0 0 0 1px rgba(10,10,12,.08);color:#0A0A0C}
+.g__t{color:#8A8A96;font:800 10.5px Manrope;letter-spacing:.16em;text-transform:uppercase}.g__p{color:#8A8A96;font:600 12px/1.45 Manrope}.g__p b{color:#fff}.g--claro .g__p b{color:#0A0A0C}
+.g--fila{grid-template-columns:auto 1fr;align-items:center}.g--fila .g__t{grid-column:1/-1}
+/* 05 */
+.gb{display:flex;align-items:flex-end;gap:6px;height:120px;padding-top:22px}.gb__c{position:relative;flex:1;border-radius:6px 6px 2px 2px;background:#33333C}.g--claro .gb__c{background:#E4E4EA}
+.gb__c.on{background:#EB0C6E}.gb__c em,.gp__c em{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);color:#FF7AB0;font:800 11px Manrope;font-style:normal;white-space:nowrap}.g--claro .gb__c em,.g--claro .gp__c em{color:#EB0C6E}
+.gf{display:grid;gap:9px}.gf__f{display:grid;grid-template-columns:120px 1fr 30px;gap:10px;align-items:center;color:#B4B4BE;font:600 12px Manrope}.g--claro .gf__f{color:#55555F}
+.gf__f i{height:10px;border-radius:99px;background:#26262E}.g--claro .gf__f i{background:#EEEEF2}.gf__f i b{display:block;height:100%;border-radius:99px;background:#4A4A55}.g--claro .gf__f i b{background:#B4B4BE}
+.gf__f.on{color:#fff;font-weight:800}.g--claro .gf__f.on{color:#0A0A0C}.gf__f.on i b{background:#EB0C6E}.gf__f em{font:800 12px Manrope;font-style:normal;text-align:right}
+.gp{display:flex;align-items:flex-end;gap:8px;height:120px;padding-top:22px}.gp__c{position:relative;flex:1;display:flex;flex-direction:column-reverse;align-items:center;gap:4px}
+.gp__c i{width:10px;height:10px;border-radius:50%;background:#4A4A55}.g--claro .gp__c i{background:#C8C8D0}.gp__c.on i{background:#EB0C6E}
+/* 06 */
+.ga{position:relative;width:120px}.ga svg{display:block;width:100%}.ga__n{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font:700 26px/1 Unbounded;letter-spacing:-.04em}.ga__n small{display:block;margin-top:3px;color:#8A8A96;font:700 10px Manrope;letter-spacing:0}
+.gl{display:grid;gap:7px;margin:0;padding:0;list-style:none}.gl li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center;color:#B4B4BE;font:700 12.5px Manrope}.g--claro .gl li{color:#55555F}
+.gl i{width:12px;height:12px;border-radius:3px}.gl b{color:#fff;font:700 13px Unbounded}.g--claro .gl b{color:#0A0A0C}
+.gr{display:flex;gap:3px;height:22px}.gr span{border-radius:6px}
+.gw{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.gw i{aspect-ratio:1;border-radius:6px}
+.g--claro .gl li:nth-child(2) i,.g--claro .gr span:nth-child(2),.g--claro .gw i[style*="B4B4BE"]{background:#0A0A0C!important}
+/* 07 */
+.gm{position:relative;width:100%;max-width:260px;justify-self:center}.gm svg{display:block;width:100%}.gm__n{position:absolute;left:0;right:0;bottom:4%;text-align:center;font:700 26px/1 Unbounded;letter-spacing:-.04em}.gm__n small{display:block;margin-top:4px;color:#8A8A96;font:700 10px Manrope;letter-spacing:0}
+.ge{padding:26px 6px 0}.ge__eje{position:relative;height:28px;border-bottom:2px solid #33333C}.g--claro .ge__eje{border-bottom-color:#E4E4EA}
+.ge__eje i{position:absolute;bottom:6px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#8A8A96}
+.ge__meta{position:absolute;bottom:-8px;width:2px;height:44px;background:#EB0C6E}
+.ge__zona{position:absolute;bottom:-2px;top:-22px;display:flex;align-items:flex-start;justify-content:center;padding-top:2px;border-radius:8px 8px 0 0;background:rgba(235,12,110,.14);color:#FF7AB0;font:800 10.5px Manrope}.g--claro .ge__zona{color:#EB0C6E;background:rgba(235,12,110,.08)}
+.ge__n{position:relative;height:20px;margin-top:8px;color:#8A8A96;font:700 11px Manrope}.ge__n span{position:absolute;transform:translateX(-50%);white-space:nowrap}.ge__n span:first-child{transform:none}.ge__n span:last-child{transform:translateX(-100%)}.ge__n span:nth-child(2){color:#EB0C6E}
+.gs{display:flex;gap:6px}.gs__e{position:relative;width:34px;height:34px;background:#33333C;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}.g--claro .gs__e{background:#E4E4EA}
+.gs__e i{position:absolute;inset:0 auto 0 0;background:#EB0C6E}.gs__n{color:#B4B4BE;font:600 12.5px Manrope}.gs__n b{color:#fff;font:700 22px Unbounded;letter-spacing:-.04em}.g--claro .gs__n{color:#55555F}.g--claro .gs__n b{color:#0A0A0C}
+/* 08 */
+.gn{display:block;width:100%;height:auto}.gn__ley{display:flex;gap:16px;color:#8A8A96;font:700 11.5px Manrope}.gn__ley span{display:inline-flex;align-items:center;gap:6px}
+.gn__prom{width:16px;border-top:1.5px dashed #8A8A96}.gn__mejor{width:9px;height:9px;border-radius:50%;background:#EB0C6E}
+.gc{position:relative;display:flex;align-items:flex-end;gap:6px;height:130px;padding-right:78px}.gc__c{flex:1;border-radius:6px 6px 2px 2px;background:#33333C}.gc__c.sobre{background:#8A8A96}.gc__c.on{background:#EB0C6E}
+.g--claro .gc__c{background:#E4E4EA}.g--claro .gc__c.sobre{background:#8A8A96}.g--claro .gc__c.on{background:#EB0C6E}
+.gc__prom{position:absolute;left:-4px;right:-4px;border-top:1.5px dashed #B4B4BE}.gc__prom em{position:absolute;right:0;top:-8px;padding-left:6px;background:#16161B;color:#B4B4BE;font:800 10.5px Manrope;font-style:normal}.g--claro .gc__prom{border-top-color:#55555F}.g--claro .gc__prom em{color:#55555F;background:#fff}
+.gx{display:grid;gap:8px;margin:0;padding:0;list-style:none}.gx li{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:12px;background:#0A0A0C;color:#B4B4BE;font:700 12.5px Manrope}.g--claro .gx li{background:#F4F4F7;color:#55555F}
+.gx b{padding:3px 9px;border-radius:99px;font:800 11.5px Manrope}.gx .on{background:#EB0C6E;color:#fff}.gx .sobre{background:rgba(235,12,110,.16);color:#FF7AB0}.g--claro .gx .sobre{color:#EB0C6E;background:rgba(235,12,110,.08)}.gx .bajo{background:#26262E;color:#8A8A96}.g--claro .gx .bajo{background:#E4E4EA}
+/* 10 */
+.gt{display:grid;gap:8px}.gt__f{display:flex;justify-content:space-between;align-items:baseline;color:#B4B4BE;font:700 12.5px Manrope}.gt__f b{color:#fff;font:700 18px Unbounded;letter-spacing:-.03em}.gt__f b.pk{color:#EB0C6E}.g--claro .gt__f{color:#55555F}.g--claro .gt__f b{color:#0A0A0C}.g--claro .gt__f b.pk{color:#EB0C6E}
+.gt__b{display:block;height:12px;border-radius:99px;background:#4A4A55}.gt__b--pk{width:9%;background:#EB0C6E}.g--claro .gt__b{background:#B4B4BE}.g--claro .gt__b--pk{background:#EB0C6E}
+.gq{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.gq>div{display:grid;justify-items:center;gap:6px;text-align:center}.gq b{font:700 20px Unbounded;letter-spacing:-.03em}.gq .on b{color:#EB0C6E}.gq em{color:#8A8A96;font:600 11.5px/1.35 Manrope;font-style:normal}
+.gq__vs{color:#4A4A55;font:800 12px Manrope}.g--claro .ico--duotono{color:#0A0A0C}
+.gk{display:grid;grid-template-columns:86px repeat(7,1fr);gap:4px 5px;align-items:end}.gk__r{align-self:center;color:#B4B4BE;font:700 11.5px Manrope}.g--claro .gk__r{color:#55555F}
+.gk__d{display:grid;gap:3px;justify-items:center}.gk__d i{display:block;width:100%;min-height:3px;height:0;border-radius:4px 4px 1px 1px;background:#4A4A55;align-self:end}.gk__d{height:58px;grid-template-rows:1fr auto}.gk__d em{color:#55555F;font:800 9.5px Manrope;font-style:normal}
+.gk__d--pk i{background:#EB0C6E}.g--claro .gk__d i{background:#B4B4BE}.g--claro .gk__d--pk i{background:#EB0C6E}
+.gk__d i[style*="height:0%"]{background:#26262E!important;min-height:2px}.g--claro .gk__d i[style*="height:0%"]{background:#E4E4EA!important}
+/* 12 */
+.gz{display:grid;gap:7px}.gz span{justify-self:start;padding:6px 12px;border-radius:99px;box-shadow:inset 0 0 0 1px #33333C;color:#B4B4BE;font:700 12px Manrope}.g--claro .gz span{box-shadow:inset 0 0 0 1px #D8D8DE;color:#55555F}.gz span.on{background:#EB0C6E;box-shadow:none;color:#fff}
+.gy{display:flex;align-items:center;gap:4px}.gy__p{flex:1;display:grid;justify-items:center;gap:6px;text-align:center}.gy__p b{font:700 11px/1.25 Unbounded;letter-spacing:-.02em}.gy__p.on b{color:#EB0C6E}
+.gy__f{color:#4A4A55}.gy__p.on .ico--duotono::before{width:26px;height:26px;right:4px;bottom:4px}
+.gv{display:grid;gap:5px;justify-items:center}.gv span{display:block;padding:8px 0;border-radius:10px;background:#26262E;color:#B4B4BE;font:700 12px Manrope;text-align:center}.g--claro .gv span{background:#EEEEF2;color:#55555F}.gv span.on{background:#EB0C6E;color:#fff}
+/* 31 */
+.gu{display:grid;grid-template-columns:repeat(4,1fr)}.gu>div{display:grid;gap:6px;padding:0 10px;border-left:1px solid #33333C}.gu>div:first-child{padding-left:0;border-left:0}.g--claro .gu>div{border-left-color:#E4E4EA}
+.gu b{font:700 24px/1 Unbounded;letter-spacing:-.05em;white-space:nowrap}.gu b.pk{color:#EB0C6E}.gu span{color:#8A8A96;font:600 11px/1.35 Manrope}
+.gg{display:grid;gap:8px}.gg b{color:#EB0C6E;font:700 64px/.9 Unbounded;letter-spacing:-.06em}.gg b small{color:inherit;font-size:22px;letter-spacing:-.03em}.gg span{max-width:85%;color:#B4B4BE;font:600 13px/1.45 Manrope}.g--claro .gg span{color:#55555F}
+.gi{display:grid;grid-template-columns:1fr 1fr;gap:14px}.gi>div{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center}.gi .ico{grid-row:span 2}.gi b{font:700 24px/1 Unbounded;letter-spacing:-.05em}.gi span:last-child{color:#8A8A96;font:600 11px/1.35 Manrope}
 `;
