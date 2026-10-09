@@ -353,28 +353,30 @@ const criterio = () => `<div class="pr pr--fam"><h4>Cómo elegir la foto: que no
   <div class="cr__c"><b class="cr__h cr__h--no">${ic('x', 14, 3)} Se nota IA</b><ul>${['Piel lisa como plástico y dientes perfectos.', 'El celular mostrando la pantalla de frente a la cámara.', 'Neón rosa puesto en la escena: el rosa va en el diseño, no en la foto.', 'Todo ordenado y simétrico, como un set.', 'Letreros con letras raras o manos con dedos de más.'].map((x) => `<li>${x}</li>`).join('')}</ul></div></div>
   <div class="cr__ej">${[['evitar-1', 'Portada del brochure', [[0.47, 0.33, 'Piel y sonrisa de plástico'], [0.66, 0.38, 'Pantalla de frente a cámara'], [0.54, 0.08, 'Neón puesto']]], ['evitar-2', 'Página 2 del brochure', [[0.55, 0.06, 'Luz de estudio a la vista'], [0.92, 0.38, 'Neón puesto'], [0.72, 0.36, 'Pose de set']]]].map(([f, t, marcas]) => `<figure class="cr__f"><div class="cr__img"><img src="elementos/fotos/${f}.webp" alt="" loading="lazy">${marcas.map(([x, y, e]) => `<span class="ll__p" style="left:${x * 100}%;top:${y * 100}%"></span><span class="cr__e${x > 0.7 ? ' cr__e--izq' : ''}" style="left:${x * 100}%;top:${y * 100}%">${e}</span>`).join('')}</div><figcaption>${t} · señalada el 8 oct: se cambia</figcaption></figure>`).join('')}</div></div>`;
 
-// ---------- 30 · Plantillas de redes ----------
+// ---------- 30 · Plantillas de redes (mezcla de «negro con esfera» y «muesca», 9 oct) ----------
+// Fondo SVG a escala real (px de la pieza): blanco, bloque negro con muesca (abajo, o arriba si va invertido)
+// y la esfera: la oscura recortada dentro del negro, la clara sobre el blanco.
+const fondo30 = (W, H, alto, invertida, esfera) => {
+  const id = `rd${nClip++}`;
+  const forma = invertida ? `<g transform="translate(0 ${H}) scale(1 -1)"><path d="${muesca(W, alto)}"/></g>` : `<path d="${muesca(W, alto)}"/>`;
+  const img = esfera ? `<image href="elementos/01-${invertida ? 'claro' : 'oscuro'}.svg" x="${esfera[0]}" y="${esfera[1]}" width="${esfera[2]}" height="${esfera[2]}"${invertida ? '' : ` clip-path="url(#${id})"`}/>` : '';
+  return `<svg class="rd__fondo" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="${id}">${forma}</clipPath></defs><rect width="${W}" height="${H}" fill="#fff"/><g fill="#0A0A0C">${forma}</g>${img}</svg>`;
+};
 const vista30 = (p) => {
-  const wm = '<span class="rd__wm">pixely<b>.</b></span>';
   const post = (x) => `<div class="mk rd" style="aspect-ratio:4/5">${x}</div>`, hist = (x) => `<div class="mk rd" style="aspect-ratio:9/16">${x}</div>`;
-  if (p.id === 'esfera') return [
-    fig('Post', post(`<img class="rd__arte" src="elementos/01-oscuro.svg" alt="" style="left:30%;top:42%;width:100%">${wm}<b class="rd__h" style="top:16%">Tu producto<br>ya es bueno.<br>Que se note<i>.</i></b>`)),
-    fig('Carrusel · portada', post(`<img class="rd__arte" src="elementos/01-oscuro.svg" alt="" style="left:-30%;top:46%;width:100%">${wm}<b class="rd__h" style="top:16%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des">Desliza ${ic('arrow-right', 12, 2.6)}</span>`)),
-    fig('Carrusel · interior', post(`${wm}<span class="rd__n">01</span><b class="rd__h rd__h--s" style="top:36%">Fotos sin luz<i>.</i></b><p class="rd__p" style="top:56%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__pag">2 / 5</span>`)),
-    fig('Historia', hist(`<div class="rd__glow"></div>${cel('m-validar', 'vitrina', 'left:22%;top:20%;width:56%')}<b class="rd__h rd__h--s" style="top:5%">Tú apruebas<br>desde el celular<i>.</i></b><span class="rd__cta">Escríbenos</span>`)),
+  const wm = (neg) => `<span class="rd__wm${neg ? ' rd__wm--neg' : ''}">pixely<b>.</b></span>`;
+  const des = (neg) => `<span class="rd__des${neg ? ' rd__des--neg' : ''}">Desliza ${ic('arrow-right', 12, 2.6)}</span>`;
+  if (p.id === 'mezcla') return [
+    fig('Post', post(`${fondo30(1080, 1350, 860, false, [430, 300, 1000])}${wm()}<b class="rd__h" style="top:16%">Tu producto<br>ya es bueno<i>.</i></b><b class="rd__h rd__h--neg" style="top:74%">Que se note<i>.</i></b>`)),
+    fig('Carrusel · portada', post(`${fondo30(1080, 1350, 1000, false, [-380, 430, 1000])}${wm()}<b class="rd__h" style="top:16%">3 errores al<br>mostrar tu<br>producto<i>.</i></b>${des(true)}`)),
+    fig('Carrusel · interior', post(`${fondo30(1080, 1350, 560, false, null)}${wm()}<span class="rd__n" style="top:17cqw">01</span><b class="rd__h rd__h--s rd__h--neg" style="top:50%">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--neg" style="top:63%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__pag rd__pag--n">2 / 5</span>`)),
+    fig('Historia', hist(`${fondo30(1080, 1920, 1240, false, null)}<div class="rd__glow" style="inset:0 0 35% 0"></div>${cel('m-validar', 'vitrina', 'left:25%;top:7%;width:50%')}<b class="rd__h rd__h--s rd__h--neg" style="top:72%">Tú apruebas<br>desde el celular<i>.</i></b><span class="rd__cta rd__cta--neg">Escríbenos</span>`)),
   ].join('');
-  if (p.id === 'foto') return [
-    fig('Post', post(`<img class="mk__full" src="elementos/fotos/panadero.webp" alt="" style="object-position:center 30%"><div class="rd__deg"></div><b class="rd__h rd__h--s" style="bottom:16%">Tu marca se<br>decide aquí<i>.</i></b><span class="ins ins--oscura rd__ins"><i>${ic('check', 16, 2.6)}</i>Pixely Partners</span>`)),
-    fig('Carrusel · portada', post(`<img class="mk__full" src="elementos/fotos/historia.webp" alt="" style="object-position:center 20%"><div class="rd__deg"></div><b class="rd__h" style="bottom:14%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des rd__des--abajo">Desliza ${ic('arrow-right', 12, 2.6)}</span>`)),
-    fig('Carrusel · interior', post(`<div class="rd__blanco"><span class="rd__et">Error 1</span><b class="rd__h rd__h--s rd__h--n">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--n">Una foto oscura hace ver tu producto más barato de lo que es.</p><img class="rd__mini" src="elementos/fotos/paso-2.webp" alt=""><span class="rd__pag rd__pag--n">2 / 5</span></div>`)),
-    fig('Historia', hist(`<img class="mk__full" src="elementos/fotos/paso-2.webp" alt="" style="object-position:40% center"><div class="rd__deg"></div><b class="rd__h rd__h--s" style="bottom:22%">Apruebas desde<br>tu celular<i>.</i></b><span class="rd__cta rd__cta--abajo">Escríbenos</span>`)),
-  ].join('');
-  const bloque = (W, H, alto, dentro) => `<svg class="rd__fondo" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><rect width="${W}" height="${H}" fill="#fff"/><path d="${muesca(W, alto)}" fill="#0A0A0C"/></svg>${dentro}`;
   return [
-    fig('Post', post(bloque(1080, 1350, 820, `${wm}<b class="rd__h" style="top:18%">Tu producto<br>ya es bueno<i>.</i></b><b class="rd__h rd__h--neg" style="top:70%">Que se note<i>.</i></b>`))),
-    fig('Carrusel · portada', post(bloque(1080, 1350, 980, `${wm}<b class="rd__h" style="top:20%">3 errores al<br>mostrar tu<br>producto<i>.</i></b><span class="rd__des rd__des--neg">Desliza ${ic('arrow-right', 12, 2.6)}</span>`))),
-    fig('Carrusel · interior', post(`<div class="rd__blanco"><span class="rd__n rd__n--g">01</span><b class="rd__h rd__h--s rd__h--n" style="top:40%">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--n" style="top:58%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__pag rd__pag--n">2 / 5</span></div>`)),
-    fig('Historia', hist(bloque(1080, 1920, 1100, `${cel('m-inicio', 'vitrina', 'left:26%;top:9%;width:48%')}<b class="rd__h rd__h--neg rd__h--s" style="top:66%">Todo tu<br>marketing en<br>una app<i>.</i></b><span class="rd__cta rd__cta--neg">Escríbenos</span>`))),
+    fig('Post', post(`${fondo30(1080, 1350, 620, true, [380, -330, 1000])}${wm(true)}<b class="rd__h" style="top:62%">Tu producto ya es<br>bueno. Que se note<i>.</i></b>`)),
+    fig('Carrusel · portada', post(`${fondo30(1080, 1350, 700, true, [-420, -330, 1000])}${wm(true)}<b class="rd__h" style="top:56%">3 errores al<br>mostrar tu<br>producto<i>.</i></b>${des(false)}`)),
+    fig('Carrusel · interior', post(`${fondo30(1080, 1350, 250, true, null)}<span class="rd__n" style="top:12cqw">01</span><b class="rd__h rd__h--s rd__h--neg" style="top:36%">Fotos sin luz<i>.</i></b><p class="rd__p rd__p--neg" style="top:52%">Una foto oscura hace ver tu producto más barato de lo que es.</p><span class="rd__wm rd__wm--pie">pixely<b>.</b></span><span class="rd__pag">2 / 5</span>`)),
+    fig('Historia', hist(`${fondo30(1080, 1920, 760, true, null)}${cel('m-inicio', 'vitrina', 'left:25%;top:6%;width:50%')}<b class="rd__h rd__h--s" style="top:73%">Todo tu marketing<br>en una app<i>.</i></b><span class="rd__cta">Escríbenos</span>`)),
   ].join('');
 };
 
@@ -644,4 +646,5 @@ export const vistasCSS = `
 .rd__et{color:#EB0C6E;font:800 3.4cqw Manrope;letter-spacing:.16em;text-transform:uppercase}
 .rd__mini{position:static!important;display:block;width:100%;height:34cqw;margin-top:auto;border-radius:3cqw;object-fit:cover}
 .rd__fondo{position:absolute;inset:0;width:100%;height:100%}
+.rd__wm--neg{color:#0A0A0C}.rd__wm--pie{top:auto;bottom:7cqw;color:#fff}.rd__p--neg{color:#55555F}
 `;
