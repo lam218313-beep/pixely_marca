@@ -34,17 +34,23 @@
 
 .foot .mid { letter-spacing: .02em; }
 
-/* ===== 1. Portada ===== */
-.cover .rings { right: -250px; top: -160px; width: 760px; height: 760px; }
-.cover-top { position: relative; display: flex; justify-content: space-between; align-items: center; }
-.cover-top .tag { font: 700 10.5px Manrope; letter-spacing: .18em; color: var(--t3); }
-.cover h1 { position: relative; margin-top: 92px; font: 700 58px/1.02 Unbounded; letter-spacing: -.05em; }
-.cover .lead { position: relative; font-size: 16px; max-width: 400px; }
-.cover-ph { position: relative; flex: 1; margin-top: 40px; }
-.cover-ph .phone { position: absolute; }
-.cover-ph .ph-a { left: -6px; width: 300px; top: 120px; transform: rotate(-5deg); filter: brightness(.62); }
-.cover-ph .ph-b { left: 262px; width: 340px; top: 34px; box-shadow: -30px 30px 60px -20px rgba(0,0,0,.7); }
-.cover-ph .chip { left: 18px; top: 18px; }
+/* ===== 1. Portada (9 oct, opción B): dos celulares vitrina (13) con resplandor (03), cortados por el borde de abajo ===== */
+.mc { padding-bottom: 0; }
+.mc__top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+.mc__top a { color: var(--t3); font: 800 var(--fs-label) Manrope; letter-spacing: .18em; text-transform: uppercase; }
+.mc h1 { position: relative; margin-top: 70px; font: 700 var(--fs-display)/1.02 Unbounded; letter-spacing: -.045em; }
+.mc .lead { position: relative; max-width: 430px; margin-top: 18px; font-size: var(--fs-sub); line-height: 1.5; }
+/* El contenedor ocupa todo el ancho y recorta los celulares en el borde de la hoja (si se salen de la hoja, Chrome no pinta la captura) */
+.mc__hero { position: relative; flex: 1; margin: 0 -56px; overflow: hidden; }
+.mc__in { position: absolute; top: 0; bottom: 0; left: 56px; right: 56px; }
+/* Elemento 13 · celular «vitrina»: derecho, con capturas reales y solo el resplandor detrás */
+.cel { position: absolute; aspect-ratio: 412 / 839; border-radius: 15.8% / 7.7%; background: linear-gradient(160deg, #3a3a44, #121216 40%, #26262e); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 22px 40px rgba(0,0,0,.55), 0 0 40px rgba(235,12,110,.14); }
+.cel::before { content: ''; position: absolute; z-index: 3; top: 3.1%; left: 50%; width: 28%; height: 3.1%; transform: translateX(-50%); border-radius: 99px; background: #000; }
+.cel__s { position: absolute; inset: 1.34% 2.7%; overflow: hidden; border-radius: 13.8% / 6.8%; background: #0A0A0C; }
+.cel__s img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.cel__s::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 28%, transparent 42%); }
+/* Elemento 03 · resplandor rosa (uno por página) */
+.glow1 { position: absolute; pointer-events: none; background: radial-gradient(50% 50% at 50% 50%, rgba(235,12,110,.26), transparent 72%); }
 
 /* ===== 2. Antes de empezar ===== */
 .enter { display: grid; grid-template-columns: 1fr 344px; gap: 30px; margin-top: 28px; align-items: start; }
@@ -84,15 +90,15 @@
 <body>
 
 <!-- 1. Portada -->
-<section class="page dark cover">
-  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="100"/><circle cx="380" cy="380" r="190"/><circle cx="380" cy="380" r="290"/><circle cx="380" cy="380" r="375"/><circle class="glow" cx="380" cy="380" r="40"/><circle class="core" cx="380" cy="380" r="15"/></svg>
-  <div class="cover-top"><span class="wm">pixely<b>.</b></span><span class="tag">PIXELY.PE</span></div>
-  <h1>Manual de<br>Pixely Partners<span class="dot">.</span></h1>
-  <p class="lead">Cómo aprobar tu plan, revisar cada pieza y ver tus resultados, desde el celular.</p>
-  <div class="cover-ph">
-    <div class="phone ph-a"><div class="scr"><img src="img/inicio.jpg" alt=""></div></div>
-    <div class="phone ph-b"><div class="scr"><img src="img/validar.jpg" alt=""></div></div>
-  </div>
+<section class="page dark mc">
+  <div class="mc__top"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a></div>
+  <h1>Manual de<br>Pixely<br>Partners<span class="dot">.</span></h1>
+  <p class="lead">Todo lo que necesitas para <em class="k">aprobar tu plan y revisar cada pieza</em> desde el celular.</p>
+  <div class="mc__hero"><div class="mc__in">
+    <span class="glow1" style="left:-60px;right:-60px;bottom:-40px;height:534px"></span>
+    <div class="cel" style="left:62px;width:262px;bottom:-110px"><div class="cel__s"><img src="img/inicio.jpg" alt=""></div></div>
+    <div class="cel" style="left:358px;width:262px;bottom:-110px"><div class="cel__s"><img src="img/plan.jpg" alt=""></div></div>
+  </div></div>
 </section>
 
 <!-- 2. Antes de empezar -->
