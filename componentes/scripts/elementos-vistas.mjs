@@ -149,39 +149,46 @@ const vista17 = (p) => {
     ${pieza('m-resultado', 0.209, 0.743, 0.33, 0.25, 'left:12%;top:62%;width:20%', 3, 'La mejor del mes')}</div>`);
 };
 
-// ---------- 09 · Cuadros de volumen (rediseño: que se lean las cantidades) ----------
+// ---------- 09 · Piezas por plan (rediseño 9 oct) ----------
 const PLANES = [['Lite', 6, 2, 2], ['Basic', 8, 4, 3], ['Pro', 12, 8, 5]];
-const vista09 = (p) => {
-  const ICI = ic('image', 13, 2.2), ICR = ic('play', 13, 2.4);
-  if (p.id === 'filas') return PLANES.map(([n, f, r, s]) => fig(`Plan ${n}`, `<div class="vol vol--filas">
-      <b class="vol__plan">Plan ${n}</b>
-      <div class="vol__fila"><span class="vol__n">${f}</span><span class="vol__l">${ICI} imágenes y carruseles</span><span class="vol__q">${'<i></i>'.repeat(f)}</span></div>
-      <div class="vol__fila vol__fila--r"><span class="vol__n">${r}</span><span class="vol__l">${ICR} reels</span><span class="vol__q">${'<i></i>'.repeat(r)}</span></div>
-      <p class="vol__pie">Publicado en ${s} redes · ${f + r} piezas al mes</p></div>`)).join('');
-  if (p.id === 'cifras') return fig('Los tres planes', `<div class="vol vol--tabla"><span></span>${PLANES.map(([n]) => `<b class="vol__th">${n}</b>`).join('')}
-      <span class="vol__rl">${ICI} Imágenes y carruseles</span>${PLANES.map(([, f]) => `<b class="vol__c">${f}</b>`).join('')}
-      <span class="vol__rl vol__rl--r">${ICR} Reels</span>${PLANES.map(([, , r]) => `<b class="vol__c vol__c--r">${r}</b>`).join('')}
-      <span class="vol__rl">${ic('share', 13, 2.2)} Redes</span>${PLANES.map(([, , , s]) => `<b class="vol__c vol__c--s">${s}</b>`).join('')}</div>`);
-  return PLANES.map(([n, f, r]) => fig(`Plan ${n}`, `<div class="vol vol--mini"><b class="vol__plan">${f} imágenes <span>·</span> <em>${r} reels</em></b>
-      <div class="vol__grid">${'<i class="vol__img"></i>'.repeat(f)}${'<i class="vol__reel"></i>'.repeat(r)}</div><p class="vol__pie">Plan ${n} · cada cuadro es una pieza del mes</p></div>`)).join('');
+// Qué días del mes (28) llevan pieza y cuáles de esas son reels, repartidos parejo.
+const mes = (f, r) => {
+  const n = f + r, dias = new Set(Array.from({ length: n }, (_, i) => Math.floor((i * 28) / n)));
+  const reels = new Set(Array.from({ length: r }, (_, j) => Math.round(((j + 0.5) * n) / r - 0.5)));
+  let k = 0;
+  return Array.from({ length: 28 }, (_, d) => (dias.has(d) ? (reels.has(k++) ? 'r' : 'f') : ''));
 };
+const ley09 = '<p class="gp9"><span><i></i>Imagen o carrusel</span><span><i class="r"></i>Reel</span></p>';
+const vista09 = (p) => dosVersiones((claro) => {
+  if (p.id === 'calendario') return caja(claro, 'Así se ve tu mes', `<div class="gcal">${PLANES.map(([n, f, r]) => `<div><b class="gcal__n">${n}<span>${f + r} piezas</span></b><div class="gcal__m">${[...'LMMJVSD'].map((d) => `<em>${d}</em>`).join('')}${mes(f, r).map((c) => `<i class="${c}"></i>`).join('')}</div><span class="gcal__d">${f} imágenes · ${r} reels</span></div>`).join('')}</div>${ley09}`);
+  if (p.id === 'barras') return caja(claro, 'Piezas al mes', `<div class="gb9">${PLANES.map(([n, f, r]) => `<div class="gb9__f"><b>${n}</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 74px) * ${(f + r) / 20})"><i style="flex:${f}">${f}</i><i class="r" style="flex:${r}">${r}</i></span><em>${f + r}<small> al mes</small></em></div></div>`).join('')}</div>${ley09}`);
+  return caja(claro, 'Piezas al mes', `<div class="gn9">${PLANES.map(([n, f, r, s]) => `<div><span class="gn9__p">${n}</span><b>${f + r}</b><span class="gn9__u">piezas al mes</span><span class="gn9__b"><i style="flex:${f}"></i><i class="r" style="flex:${r}"></i></span><span class="gn9__l">${ic('image', 13, 2.2)}${f} imágenes</span><span class="gn9__l r">${ic('play', 13, 2.4)}${r} reels</span><span class="gn9__l">${ic('share', 13, 2.2)}En ${s} redes</span></div>`).join('')}</div>`);
+});
 
-// ---------- 11 · La brecha (rediseño) ----------
-const vista11 = (p) => {
-  if (p.id === 'escala') return fig('Página negra', `<div class="br br--escala"><b class="br__k">La brecha que cerramos</b>
-      <div class="br__eje">${Array.from({ length: 11 }, (_, i) => `<span style="left:${i * 10}%"><i></i>${i}</span>`).join('')}
-        <span class="br__hueco" style="left:40%;width:50%">La brecha · aquí entra Pixely</span>
-        <span class="br__mk br__mk--gris" style="left:40%"><b>4</b>Lo que comunican tus fotos</span>
-        <span class="br__mk" style="left:90%"><b>9</b>Lo bueno que es tu producto</span></div>
-      <p class="br__nota">Ejemplo ilustrativo.</p></div>`);
-  if (p.id === 'escalones') return fig('Página negra', `<div class="br br--escalones"><b class="br__k">La brecha que cerramos</b>
-      <div class="br__cols"><div class="br__col"><span class="br__bar" style="height:92%"></span><b>Lo bueno que es tu producto</b></div>
-        <div class="br__col"><span class="br__bar br__bar--gris" style="height:38%"></span><span class="br__llave" style="bottom:38%;height:54%"><em>La brecha</em></span><b>Lo que comunican tus fotos</b></div></div>
-      <p class="br__nota">Pixely cierra la diferencia con piezas hechas para tu negocio. Ejemplo ilustrativo.</p></div>`);
-  const foto = (f) => `<div class="br__foto" style="background:url(elementos/fotos/panadero.webp) center 30%/cover;${f}"></div>`;
-  return fig('Página negra', `<div class="br br--antes"><div class="br__lado"><span class="br__et">Hoy</span>${foto('filter:grayscale(.7) brightness(.55) contrast(.8) blur(1.2px)')}<span class="br__med"><i style="width:40%"></i></span><b>Lo que comunican tus fotos</b></div>
-      <div class="br__lado"><span class="br__et br__et--pk">Con Pixely</span>${foto('')}<span class="br__med"><i class="pk" style="width:90%"></i></span><b>Lo bueno que es tu producto, a la vista</b></div><p class="br__nota">Ejemplo ilustrativo.</p></div>`);
+// ---------- 11 · La brecha (rediseño 9 oct): lo bueno del negocio que no se ve en sus redes ----------
+// [ícono, texto largo, texto corto, ¿ya se ve?]
+const BUENO = [['star', 'Calidad de tu producto', 'Calidad', 0], ['heart', 'Cómo atiendes', 'Atención', 0], ['shield-check', 'Años de experiencia', 'Experiencia', 0], ['tag', 'Precio justo', 'Precio', 1], ['store', 'Tu local', 'Tu local', 1]];
+let nIce = 0;
+const iceberg = (claro) => {
+  const id = `ice${nIce++}`, tinta = claro ? '#0A0A0C' : '#fff', gris = claro ? '#55555F' : '#B4B4BE';
+  const t = (x, y, txt, extra = '') => `<text x="${x}" y="${y}" ${extra}>${txt}</text>`;
+  return `<svg class="gice" viewBox="0 0 320 210"><defs><pattern id="${id}" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.5" fill="${claro ? '#BDBDC7' : '#4A4A55'}"/></pattern></defs>
+    <rect x="0" y="62" width="320" height="148" fill="${claro ? 'rgba(10,10,12,.03)' : 'rgba(255,255,255,.025)'}"/>
+    <path d="M128 62 L196 62 L246 98 L262 142 L224 186 L150 200 L84 176 L60 128 L92 86 Z" fill="url(#${id})" stroke="${claro ? '#BDBDC7' : '#4A4A55'}" stroke-width="1"/>
+    <path d="M138 62 L156 26 L170 40 L184 62 Z" fill="${tinta}"/>
+    <line x1="0" x2="320" y1="62" y2="62" stroke="${claro ? '#C8C8D0' : '#4A4A55'}" stroke-dasharray="3 3"/>
+    <path d="M30 172 V36 M23 44 L30 34 L37 44" fill="none" stroke="#EB0C6E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <g font-family="Manrope" font-weight="700" font-size="9" fill="${gris}">${t(198, 38, 'Lo que se ve')}${t(198, 50, 'en tus redes')}</g>
+    <g font-family="Manrope" font-weight="800" font-size="7" letter-spacing=".9" fill="${gris}" text-anchor="middle">${t(162, 100, 'TODO LO BUENO DE TU NEGOCIO')}</g>
+    <g font-family="Unbounded" font-weight="700" font-size="11.5" fill="${tinta}" text-anchor="middle">${BUENO.slice(0, 3).map(([, , c], i) => t(162, 124 + i * 20, c)).join('')}</g>
+  </svg><p class="gice__pie">Pixely lo saca a la luz.</p>`;
 };
+const fila11 = (titulo, todo) => `<div class="gw11__r${todo ? ' on' : ''}"><span class="gw11__t">${titulo}</span><div>${BUENO.map(([i, , c, v]) => `<span class="gw11__i${todo || v ? '' : ' off'}"><span class="ico ico--duotono"><span>${ic(i, 24, 1.7)}</span></span><em>${c}</em></span>`).join('')}</div></div>`;
+const vista11 = (p) => dosVersiones((claro) => {
+  if (p.id === 'lista') return caja(claro, 'Lo bueno de tu negocio, ¿se ve?', `<div class="gh"><span></span><em>Lo tienes</em><em>Se ve en tus redes</em>${BUENO.map(([i, t, , v]) => `<span class="gh__t">${ic(i, 16, 2)}${t}</span><b class="si">${ic('check', 12, 3)}</b><b class="${v ? 'si' : 'no'}">${v ? ic('check', 12, 3) : ''}</b>`).join('')}</div><p class="gh__pie"><b>La brecha:</b> lo bueno que tienes y no se ve. Pixely lo pone a la vista.</p>`);
+  if (p.id === 'iceberg') return caja(claro, 'Lo que se ve y lo que no', iceberg(claro));
+  return caja(claro, 'Lo bueno de tu negocio', `<div class="gw11">${fila11('Hoy, en tus redes', false)}<i class="gw11__f">${ic('chevron-down', 16, 2.4)}</i>${fila11('Con Pixely', true)}</div>`);
+});
 
 
 // ---------- 18 · Insignia sobre foto ----------
@@ -464,7 +471,7 @@ export const BLOQUES_EXTRA = { 29: criterio };
 
 export const vistasCSS = `
 /* ===== Vistas con capturas (09, 11, 13 a 17) ===== */
-.pr__g--9,.pr__g--11,.pr__g--14,.pr__g--15,.pr__g--16{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
+.pr__g--14,.pr__g--15,.pr__g--16{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
 .pr__g--13{grid-template-columns:.8fr .8fr 1.3fr .8fr!important}.pr__g--17{grid-template-columns:1fr!important}
 @media (max-width:760px){.pr__g--13{grid-template-columns:1fr 1fr!important}}
 .mk__ln{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
@@ -524,42 +531,39 @@ export const vistasCSS = `
 .fx__it b{display:block;color:#fff;font:700 1.7cqw/1.2 Unbounded;letter-spacing:-.02em;margin-bottom:.4cqw}
 .fx__pz{position:absolute;display:grid;gap:.8cqw}.fx__pz div{border-radius:1.4cqw;background-color:#0A0A0C;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 2.5cqw 5cqw rgba(0,0,0,.6)}
 .fx__pz b{color:#fff;font:700 1.3cqw Manrope}
-/* 09 volumen */
-.vol{border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);padding:16px;color:#fff;container-type:inline-size}
-.vol__plan{display:block;font:700 15px Unbounded;letter-spacing:-.02em}.vol__plan em{color:#EB0C6E;font-style:normal}.vol__plan span{color:#4A4A55}
-.vol__fila{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin-top:14px}
-.vol__n{grid-row:span 2;font:700 34px/1 Unbounded;letter-spacing:-.05em}.vol__fila--r .vol__n{color:#EB0C6E}
-.vol__l{display:flex;align-items:center;gap:6px;color:#B4B4BE;font:700 12px Manrope}.vol__l svg{width:14px;height:14px}
-.vol__q{display:flex;flex-wrap:wrap;gap:4px}.vol__q i{width:16px;height:16px;border-radius:4px;background:#fff}.vol__fila--r .vol__q i{width:12px;height:20px;background:#EB0C6E}
-.vol__pie{margin-top:12px;color:#8A8A96;font:600 12px Manrope}
-.vol--tabla{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:10px 8px;align-items:center}
-.vol__th{font:700 13px Unbounded;text-align:center}.vol__rl{display:flex;align-items:center;gap:6px;color:#B4B4BE;font:700 12px Manrope}.vol__rl svg{width:14px;height:14px;flex:none}
-.vol__c{font:700 30px/1 Unbounded;letter-spacing:-.05em;text-align:center}.vol__c--r{color:#EB0C6E}.vol__c--s{font-size:20px;color:#B4B4BE}
-.vol__grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;align-items:flex-end}
-.vol__img{width:22px;aspect-ratio:4/5;border-radius:4px;background:#26262E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B4B4BE' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='9' cy='9' r='2'/%3E%3Cpath d='m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21'/%3E%3C/svg%3E") center/12px no-repeat}
-.vol__reel{width:16px;aspect-ratio:9/16;border-radius:4px;background:#EB0C6E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/10px no-repeat}
-/* 11 brecha */
-.br{position:relative;padding:18px;border-radius:14px;background:#0A0A0C;box-shadow:0 0 0 1px var(--edge);color:#fff}
-.br__k{display:block;color:#8A8A96;font:800 11px Manrope;letter-spacing:.16em;text-transform:uppercase}
-.br__nota{margin-top:12px;color:#55555F;font:600 11px Manrope}
-.br__eje{position:relative;height:150px;margin:18px 10px 34px;border-bottom:2px solid #33333C}
-.br__eje>span:not(.br__hueco):not(.br__mk){position:absolute;bottom:-22px;transform:translateX(-50%);color:#55555F;font:700 11px Manrope}
-.br__eje>span i{display:block;width:1px;height:6px;margin:0 auto 4px;background:#33333C;transform:translateY(-4px)}
-.br__hueco{position:absolute;bottom:0;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;background:rgba(235,12,110,.18);box-shadow:inset 0 0 0 1.5px #EB0C6E;color:#FF7AB0;font:800 11px Manrope;text-align:center}
-.br__mk{position:absolute;bottom:0;display:grid;justify-items:center;width:120px;transform:translateX(-50%);color:#B4B4BE;font:700 11px/1.3 Manrope;text-align:center}
-.br__mk b{display:grid;place-items:center;width:40px;height:40px;margin-bottom:4px;border-radius:50%;background:#fff;color:#0A0A0C;font:700 16px Unbounded}
-.br__mk{bottom:42px}.br__mk--gris b{background:#4A4A55;color:#fff}
-.br__cols{display:grid;grid-template-columns:repeat(2,minmax(0,190px));justify-content:center;gap:48px;height:220px;margin-top:16px}
-.br__col{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
-.br__col b{color:#B4B4BE;font:700 12px/1.3 Manrope}
-.br__bar{display:block;width:100%;border-radius:10px 10px 4px 4px;background:#fff}.br__bar--gris{background:#4A4A55}
-.br__llave{position:absolute;left:calc(100% + 10px);width:14px;border:2px solid #EB0C6E;border-left:0;border-radius:0 8px 8px 0;margin-bottom:28px}
-.br__llave em{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:#FF7AB0;font:800 12px Manrope;font-style:normal;white-space:nowrap}
-.br--antes{display:grid;grid-template-columns:1fr 1fr;gap:14px}.br--antes .br__nota{grid-column:1/-1;margin-top:0}
-.br__lado{display:grid;gap:8px}.br__lado b{color:#B4B4BE;font:700 12px/1.3 Manrope}
-.br__foto{aspect-ratio:1/.9;border-radius:12px;background-color:#16161B}
-.br__et{justify-self:start;padding:3px 9px;border-radius:99px;background:#26262E;color:#B4B4BE;font:800 11px Manrope}.br__et--pk{background:#EB0C6E;color:#fff}
-.br__med{display:block;height:8px;border-radius:99px;background:#26262E}.br__med i{display:block;height:100%;border-radius:99px;background:#4A4A55}.br__med i.pk{background:#EB0C6E}
+/* 09 piezas por plan */
+.gcal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gcal>div{display:grid;gap:8px;align-content:start}
+.gcal__n{display:flex;justify-content:space-between;align-items:baseline;font:700 13px Unbounded;letter-spacing:-.02em}.gcal__n span{color:#8A8A96;font:700 10.5px Manrope;letter-spacing:0}
+.gcal__m{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.gcal__m em{color:#55555F;font:800 8px Manrope;font-style:normal;text-align:center}
+.gcal__m i{aspect-ratio:1;border-radius:3px;box-shadow:inset 0 0 0 1px #26262E}.gcal__m i.f{background:#B4B4BE;box-shadow:none}.gcal__m i.r{background:#EB0C6E;box-shadow:none}
+.g--claro .gcal__m i{box-shadow:inset 0 0 0 1px #E4E4EA}.g--claro .gcal__m i.f{background:#0A0A0C;box-shadow:none}.g--claro .gcal__m i.r{box-shadow:none}
+.gcal__d{color:#8A8A96;font:700 10.5px Manrope}
+.gp9{display:flex;gap:16px;margin:0;color:#8A8A96;font:700 11px Manrope}.gp9 span{display:inline-flex;align-items:center;gap:6px}.gp9 i{width:10px;height:10px;border-radius:3px;background:#B4B4BE}.g--claro .gp9 i{background:#0A0A0C}.gp9 i.r{background:#EB0C6E}
+.gb9{display:grid;gap:12px}.gb9__f{display:grid;grid-template-columns:50px 1fr;align-items:center}.gb9__f>b{font:700 13px Unbounded;letter-spacing:-.02em}
+.gb9__t{display:flex;align-items:center;gap:10px}.gb9__b{display:flex;gap:2px;height:30px}
+.gb9__b i{display:grid;place-items:center;border-radius:6px;background:#B4B4BE;color:#0A0A0C;font:700 12px Unbounded;font-style:normal}.gb9__b i.r{background:#EB0C6E;color:#fff}
+.g--claro .gb9__b i{background:#0A0A0C;color:#fff}.g--claro .gb9__b i.r{background:#EB0C6E}
+.gb9__t em{white-space:nowrap;font:700 16px Unbounded;font-style:normal;letter-spacing:-.03em}.gb9__t em small{margin-left:3px;color:#8A8A96;font:700 10.5px Manrope;letter-spacing:0}
+.gn9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gn9>div{display:grid;gap:6px;align-content:start;padding:12px;border-radius:10px;box-shadow:inset 0 0 0 1px #26262E}.g--claro .gn9>div{box-shadow:inset 0 0 0 1px #E4E4EA}
+.gn9__p{color:#8A8A96;font:800 10px Manrope;letter-spacing:.14em;text-transform:uppercase}
+.gn9 b{font:700 34px/1 Unbounded;letter-spacing:-.05em}.gn9__u{margin-top:-2px;color:#8A8A96;font:700 10.5px Manrope}
+.gn9__b{display:flex;gap:2px;height:6px;margin:4px 0}.gn9__b i{border-radius:99px;background:#B4B4BE}.g--claro .gn9__b i{background:#0A0A0C}.gn9__b i.r{background:#EB0C6E}
+.gn9__l{display:flex;align-items:center;gap:6px;color:#B4B4BE;font:700 11px Manrope}.g--claro .gn9__l{color:#55555F}.gn9__l svg{flex:none;width:13px;height:13px}.gn9__l.r{color:#FF7AB0}.g--claro .gn9__l.r{color:#EB0C6E}
+/* 11 la brecha */
+.gh{display:grid;grid-template-columns:1fr auto auto;gap:9px 10px;align-items:center}
+.gh>em{width:76px;color:#8A8A96;font:800 9px/1.25 Manrope;font-style:normal;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.gh__t{display:flex;align-items:center;gap:9px;color:#fff;font:700 12.5px Manrope}.g--claro .gh__t{color:#0A0A0C}.gh__t svg{flex:none;color:#8A8A96}
+.gh b{justify-self:center;display:grid;place-items:center;width:22px;height:22px;border-radius:50%}.gh b svg{width:12px;height:12px}
+.gh b.si{background:#fff;color:#0A0A0C}.g--claro .gh b.si{background:#0A0A0C;color:#fff}
+.gh b.no{border:1.5px dashed #4A4A55}.g--claro .gh b.no{border-color:#C8C8D0}
+.gh__pie,.gice__pie{margin:0;padding:10px 12px;border-radius:10px;background:rgba(235,12,110,.16);color:#FFB3D1;font:600 12px/1.45 Manrope}.gh__pie b{color:#fff}
+.g--claro .gh__pie,.g--claro .gice__pie{background:#FDE7F0;color:#0A0A0C}.g--claro .gh__pie b{color:#EB0C6E}
+.gice{display:block;width:100%;stroke:none}.gice__pie{justify-self:start;padding:6px 12px;border-radius:99px;background:#EB0C6E!important;color:#fff!important;font:800 12px Manrope}
+.gw11{display:grid;gap:8px}.gw11__r{display:grid;gap:6px}.gw11__t{color:#8A8A96;font:800 9.5px Manrope;letter-spacing:.12em;text-transform:uppercase}.gw11__r.on .gw11__t{color:#EB0C6E}
+.gw11__r>div{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.gw11__i{display:grid;justify-items:center;gap:2px;text-align:center}.gw11__i em{color:#B4B4BE;font:700 10.5px/1.2 Manrope;font-style:normal}.g--claro .gw11__i em{color:#55555F}
+.gw11__r:not(.on) .ico--duotono::before{display:none}.gw11__i.off{opacity:.22}
+.gw11__f{justify-self:center;display:grid;color:#4A4A55}
 /* 18 insignia sobre foto */
 .pr__g--18,.pr__g--19,.pr__g--20,.pr__g--21,.pr__g--22{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important}
 .ins{position:absolute;left:5%;bottom:5%;display:inline-flex;align-items:center;gap:2cqw;padding:1.8cqw 3.4cqw 1.8cqw 1.8cqw;border-radius:99px;color:#fff;font:700 4.4cqw Manrope;white-space:nowrap}
@@ -726,7 +730,7 @@ export const vistasCSS = `
 .rd__fondo{position:absolute;inset:0;width:100%;height:100%}
 .rd__wm--neg{color:#0A0A0C}.rd__wm--pie{top:auto;bottom:7cqw;color:#fff}.rd__p--neg{color:#55555F}
 /* Gráficos de datos para PDF */
-.pr__g--5,.pr__g--6,.pr__g--7,.pr__g--8,.pr__g--10,.pr__g--12,.pr__g--31{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
+.pr__g--5,.pr__g--6,.pr__g--7,.pr__g--8,.pr__g--9,.pr__g--10,.pr__g--11,.pr__g--12,.pr__g--31{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
 .g{display:grid;gap:12px;padding:18px;border-radius:14px;background:#16161B;box-shadow:inset 0 0 0 1px #26262E;color:#fff}.g--claro{background:#fff;box-shadow:0 0 0 1px rgba(10,10,12,.08);color:#0A0A0C}
 .g__t{color:#8A8A96;font:800 10.5px Manrope;letter-spacing:.16em;text-transform:uppercase}.g__p{color:#8A8A96;font:600 12px/1.45 Manrope}.g__p b{color:#fff}.g--claro .g__p b{color:#0A0A0C}
 .g--fila{grid-template-columns:auto 1fr;align-items:center}.g--fila .g__t{grid-column:1/-1}
