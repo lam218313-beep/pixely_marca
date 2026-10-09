@@ -70,29 +70,29 @@
 .glow { position: absolute; right: -260px; top: -240px; width: 640px; height: 560px; background: radial-gradient(60% 55% at 50% 50%, rgba(235, 12, 110, .20), transparent 70%); pointer-events: none; }
 
 /* ===== Cuerpo ===== */
-.body { flex: 1; display: flex; flex-direction: column; padding: 20px 56px 0; color: var(--p1); }
+.body { flex: 1; display: flex; flex-direction: column; padding: 16px 56px 0; color: var(--p1); }
 .body > .lbl { color: var(--pink); }
-/* Elemento 22 · tabla de los tres planes, partida en dos columnas */
-.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; align-items: start; }
-.tb { position: relative; display: grid; grid-template-columns: 1fr repeat(3, 46px); align-items: center; column-gap: 2px; }
-.tb > * { position: relative; z-index: 1; }
-.tb .hd { padding: 5px 0; text-align: center; font: 700 var(--fs-label) Unbounded; letter-spacing: -.01em; color: var(--p2); }
-.tb .hd.pro { color: var(--pink); }
-.tb .hd.yo { color: var(--p1); }
-.tb .g { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; padding: 5px 0 3px; font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
-.tb .g:first-of-type { margin-top: 0; }
-.tb .g span { font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; color: var(--p3); }
-.tb .t, .tb .c { min-height: 22px; display: flex; align-items: center; border-top: 1px solid var(--pline); }
-.tb .t { padding: 3px 6px 3px 0; font: 600 var(--fs-label)/1.3 Manrope; font-size: 11px; color: var(--p2); }
-.tb .c { justify-content: center; text-align: center; font: 800 var(--fs-label)/1.15 Manrope; color: var(--pink); }
-.tb .c svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.tb .c.no { color: #C8C8D0; font-size: 13px; }
-/* La columna del plan de esta ficha va resaltada */
-.tb .band { position: absolute; z-index: 0; top: 0; bottom: 0; width: 48px; border-radius: 10px; background: #F4F4F7; }
+/* Lo que incluye ESTE plan (sin comparar con los otros): «Cada mes» a todo el ancho y debajo «Al empezar» y «Todo el año»,
+   con íconos del set 23 */
+.inc { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.inc .card:first-child { grid-column: 1 / -1; }
+.inc .card:first-child ul { grid-auto-flow: column; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+.card { display: flex; flex-direction: column; padding: 10px 16px 12px; border-radius: var(--r); background: #F5F5F7; }
+.card .hd { display: flex; align-items: center; gap: 12px; }
+.card h4 { font: 700 15px/1.1 Unbounded; letter-spacing: -.03em; }
+.card h4 small { display: block; margin-top: 4px; color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: .1em; text-transform: uppercase; }
+/* Elemento 23 · ícono en trazo con punto rosa abajo a la derecha (48 px en A4) */
+.ico { position: relative; flex: none; display: grid; place-items: center; width: 48px; height: 48px; }
+.ico::before { content: ''; position: absolute; right: 7px; bottom: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--pink); }
+.ico svg { position: relative; width: 30px; height: 30px; fill: none; stroke: #0A0A0C; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.card ul { flex: 1; list-style: none; display: grid; gap: 5px; margin-top: 6px; align-content: space-evenly; }
+.card li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; font: 600 var(--fs-body)/1.35 Manrope; color: var(--p1); }
+.card li svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.card li b { color: var(--pink); font-weight: 800; }
 
 /* Elemento 28 · Hablemos: tarjeta rosa con botón y QR; debajo, los contactos en una fila */
-.talk { margin-top: auto; }
-.rosa { position: relative; display: grid; grid-template-columns: 1fr 92px; gap: 20px; align-items: center; padding: 16px 16px 16px 24px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
+.talk { margin-top: 14px; }
+.rosa { position: relative; display: grid; grid-template-columns: 1fr 92px; gap: 20px; align-items: center; padding: 14px 14px 14px 24px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
 .rosa h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.045em; }
 .rosa h3 i { color: #0A0A0C; font-style: normal; }
 .rosa p { margin-top: 6px; font: 500 var(--fs-body)/1.45 Manrope; color: rgba(255,255,255,.88); }
@@ -100,10 +100,10 @@
 .btn svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .qr { display: block; padding: 7px; border-radius: 14px; background: #fff; }
 .qr img { display: block; width: 100%; }
-.contactos { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; margin-top: 12px; padding: 0 4px; }
+.contactos { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; margin-top: 10px; padding: 0 4px; }
 .contactos dt { color: var(--pink); font: 800 9px Manrope; letter-spacing: .16em; text-transform: uppercase; }
 .contactos dd { margin-top: 2px; font: 700 var(--fs-body) Manrope; color: var(--p1); }
-.legal { margin-top: 10px; }
+.legal { margin-top: 8px; }
 /* Elemento 25 · pie con número grande: logo y web a la izquierda, número rosa a la derecha, pegado abajo */
 .pie { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; padding-bottom: 14px; }
 .pie .wm { font-size: 15px; color: var(--p1); }
@@ -135,7 +135,7 @@
   </div>
   <div class="body">
     <span class="lbl">Todo lo que incluye</span>
-    <div class="tabs"></div>
+    <div class="inc"></div>
     <div class="talk">
       <div class="rosa">
         <div>
@@ -172,37 +172,39 @@ const PLANES = [
 // Imagen de la cabecera. Propuestas (9 oct): ?v=celular | esfera | foto muestra solo la ficha Lite con esa imagen.
 const PROPUESTA = new URLSearchParams(location.search).get('v');
 const VISUAL = PROPUESTA || 'celular';
-// Todo el servicio, parte por parte. Cada valor va en orden Lite, Basic, Pro:
-// true = incluido · false = no incluido · texto = cuánto. Filas provisionales hasta definir los planes.
+// Todo el servicio, agrupado por frecuencia. Cada parte: [texto, valores Lite/Basic/Pro].
+// true = incluido · false = no va en la ficha de ese plan · texto = cuánto (el texto puede ser una función del valor).
+// Filas provisionales hasta definir los planes.
 const SI = true, NO = false;
+const ICONOS = {
+  'calendar-days': '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>',
+  flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+};
 const SERVICIO = [
-  { col: 0, titulo: 'Arranque', nota: 'Una vez', partes: [
+  { titulo: 'Cada mes', nota: 'Tu contenido y su entrega', icono: 'calendar-days', partes: [
+    ['Plan del mes: cada idea con su porqué', [SI, SI, SI]],
+    [(v) => `<b>${v}</b> fotos y carruseles`, ['6', '8', '12']],
+    [(v) => `<b>${v}</b> reels con guion y edición`, ['2', '4', '8']],
+    [(v) => `<b>${v}</b> redes, con textos para cada una`, ['2', '3', '5']],
+    [(v) => `<b>${v}</b> de cambios por pieza`, ['1 ronda', '2 rondas', '3 rondas']],
+    ['Piezas listas para descargar en Partners', [SI, SI, SI]],
+    ['Calendario con día y hora para publicar', [NO, SI, SI]],
+    ['Publicamos por ti', [NO, NO, SI]],
+    ['Resultados frente a tu competencia', [NO, NO, SI]],
+    ['Videollamada mensual de resultados', [NO, NO, SI]],
+  ] },
+  { titulo: 'Al empezar', nota: 'Una sola vez', icono: 'flag', partes: [
     ['Entrevista guiada y ficha de tu negocio', [SI, SI, SI]],
     ['Voz de marca: cómo hablará tu marca', [SI, SI, SI]],
     ['Estudio de mercado de tu nicho, en PDF', [SI, SI, SI]],
     ['Estrategia: objetivos y conceptos', [SI, SI, SI]],
   ] },
-  { col: 0, titulo: 'Tu mercado', nota: 'Todo el año', partes: [
-    ['Vigilancia de tu competencia', ['Mensual', 'Quincenal', 'Semanal']],
-    ['Revisión de tu estrategia', ['Cada 6 meses', 'Cada 3 meses', 'Cada mes']],
-  ] },
-  { col: 0, titulo: 'Acompañamiento', nota: 'Siempre', partes: [
+  { titulo: 'Todo el año', nota: 'Mientras dure tu plan', icono: 'clock', partes: [
+    [(v) => `Vigilancia <b>${v}</b> de tu competencia`, ['mensual', 'quincenal', 'semanal']],
+    [(v) => `Revisión de tu estrategia <b>${v}</b>`, ['cada 6 meses', 'cada 3 meses', 'cada mes']],
     ['Pixely Partners en celular y computadora', [SI, SI, SI]],
-    ['Respuesta por WhatsApp', ['24 h hábiles', '12 h hábiles', 'El mismo día']],
-  ] },
-  { col: 1, titulo: 'Tu contenido', nota: 'Cada mes', partes: [
-    ['Plan del mes: cada idea con su porqué', [SI, SI, SI]],
-    ['Fotos y carruseles', ['6', '8', '12']],
-    ['Reels con guion y edición', ['2', '4', '8']],
-    ['Redes, con textos para cada una', ['2', '3', '5']],
-    ['Cambios por pieza', ['1 ronda', '2 rondas', '3 rondas']],
-  ] },
-  { col: 1, titulo: 'Publicación y resultados', nota: 'Cada mes', partes: [
-    ['Piezas listas para descargar en Partners', [SI, SI, SI]],
-    ['Calendario con día y hora', [NO, SI, SI]],
-    ['Publicamos por ti', [NO, NO, SI]],
-    ['Resultados frente a tu competencia', [NO, NO, SI]],
-    ['Videollamada mensual de resultados', [NO, NO, SI]],
+    [(v) => `Respuesta por WhatsApp <b>${v}</b>`, ['en 24 h hábiles', 'en 12 h hábiles', 'el mismo día']],
   ] },
 ];
 const WA = (n) => `https://wa.me/51949268607?text=${encodeURIComponent(`¡Hola Pixely! 👋 Me interesa el Plan ${n} ✨`)}`;
@@ -230,16 +232,13 @@ const molde = document.getElementById('hoja');
   h.querySelector('.vis').innerHTML = vis;
   if (VISUAL === 'esfera') h.querySelector('.hero').insertAdjacentHTML('afterbegin', `<img class="arte" src="../../public/elementos/01-${claro ? 'claro' : 'oscuro'}.svg" alt="">`);
   if (p.id === 'pro') h.querySelector('.hero').insertAdjacentHTML('afterbegin', '<i class="glow"></i>');
-  // 22 · tabla de los tres planes, en dos columnas; la columna de este plan resaltada
-  const tabs = h.querySelector('.tabs');
-  [0, 1].forEach((col) => {
-    let html = `<span class="band" style="right:${(2 - n) * 48 - 1}px"></span><span></span>${PLANES.map((q, i) => `<b class="hd${q.id === 'pro' ? ' pro' : ''}${i === n ? ' yo' : ''}">${q.nombre}</b>`).join('')}`;
-    for (const b of SERVICIO.filter((x) => x.col === col)) {
-      html += `<div class="g">${b.titulo}<span>${b.nota}</span></div>`;
-      html += b.partes.map(([t, vals]) => `<span class="t">${t}</span>${vals.map((v) => (v === SI ? `<span class="c">${CHECK}</span>` : v === NO ? '<span class="c no">—</span>' : `<span class="c">${v}</span>`)).join('')}`).join('');
-    }
-    tabs.insertAdjacentHTML('beforeend', `<div class="tb">${html}</div>`);
-  });
+  // Lo que incluye este plan: «Cada mes» a la izquierda; «Al empezar» y «Todo el año» a la derecha
+  const tarjeta = (g) => {
+    const partes = g.partes.filter(([, vals]) => vals[n] !== NO);
+    const lis = partes.map(([t, vals]) => `<li>${CHECK}<span>${typeof t === 'function' ? t(vals[n]) : t}</span></li>`).join('');
+    return `<div class="card"><div class="hd"><span class="ico"><svg viewBox="0 0 24 24">${ICONOS[g.icono]}</svg></span><h4>${g.titulo}<small>${g.nota}</small></h4></div><ul style="grid-template-rows:repeat(${Math.ceil(partes.length / 2)}, auto)">${lis}</ul></div>`;
+  };
+  h.querySelector('.inc').innerHTML = SERVICIO.map(tarjeta).join('');
   // 25 · pie con número grande
   h.querySelector('.pie .n').innerHTML = `${String(n + 1).padStart(2, '0')}<small>/${String(PLANES.length).padStart(2, '0')}</small>`;
   document.body.appendChild(h);
