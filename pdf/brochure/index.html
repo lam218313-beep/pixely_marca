@@ -49,31 +49,65 @@
 .ins i { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--pink); }
 .ins svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ===== 2. El problema ===== */
-.prob-ph { margin-top: 24px; height: 280px; }
-.prob-ph img { object-position: center 40%; }
-.prob-ph .badge { left: 20px; bottom: 20px; }
-.prob { display: grid; gap: 12px; margin-top: 16px; }
-.prob .ink { display: grid; grid-template-columns: 228px 1fr; gap: 26px; align-items: center; padding: 18px 26px 18px 18px; }
-.prob .small { margin-top: 8px; }
-.viz { height: 164px; border-radius: 18px; background: #16161B; border: 1px solid rgba(255,255,255,.08); padding: 14px 16px; display: flex; flex-direction: column; }
-.viz .lbl { color: #FF7AB0; }
-.bars { flex: 1; display: flex; align-items: flex-end; gap: 9px; margin-top: 22px; }
-.bars i { flex: 1; border-radius: 5px 5px 2px 2px; background: #33333C; }
-.bars i.hi { background: var(--pink); position: relative; }
-.bars i.hi::after { content: 'Este funciona'; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font: 800 var(--fs-label) Manrope; color: #FF7AB0; white-space: nowrap; }
-.chain { flex: 1; position: relative; display: flex; flex-direction: column; justify-content: center; gap: 6px; margin-top: 10px; }
-.chain span { position: relative; display: flex; align-items: center; height: 24px; padding: 0 11px; border-radius: 99px; border: 1px solid rgba(255,255,255,.18); font: 700 var(--fs-label) Manrope; color: var(--t2); width: max-content; }
-.chain span:nth-child(2) { margin-left: 14px; } .chain span:nth-child(3) { margin-left: 28px; }
-.chain span.on { margin-left: 42px; background: var(--pink); border-color: var(--pink); color: #fff; }
-.time { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 7px; }
-.time div { display: flex; align-items: baseline; justify-content: space-between; font: 700 var(--fs-label) Manrope; color: var(--t2); }
-.time b { font: 700 var(--fs-sub)/1 Unbounded; letter-spacing: -.04em; color: #fff; }
-.time b.pk { color: var(--pink); }
-.time i { display: block; height: 8px; border-radius: 4px; background: #33333C; margin-bottom: 6px; }
-.time i.on { background: var(--pink); width: 14%; }
-.src { margin-top: 8px; font: 500 var(--fs-note)/1.4 Manrope; color: var(--t3); }
-
+/* ===== 2. El problema (9 oct, opción A): brecha (11 A) y tres tarjetas alternadas (26) ===== */
+/* Gráficos aprobados (catálogo, elementos 05, 10, 11 y 12) */
+.gr { display: grid; gap: 12px; padding: 18px; border-radius: 14px; background: #16161B; box-shadow: inset 0 0 0 1px #26262E; color: #fff; }
+.gr--claro { background: #fff; box-shadow: 0 0 0 1px rgba(10,10,12,.1); color: #0A0A0C; }
+.gr__t { color: #8A8A96; font: 800 10.5px Manrope; letter-spacing: .16em; text-transform: uppercase; }
+.gb { display: flex; align-items: flex-end; gap: 6px; height: 104px; padding-top: 22px; }
+.gb__c { position: relative; flex: 1; border-radius: 6px 6px 2px 2px; background: #33333C; }
+.gb__c.on { background: var(--pink); }
+.gb__c em { position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); color: #FF7AB0; font: 800 11px Manrope; font-style: normal; white-space: nowrap; }
+.ico { position: relative; display: grid; place-items: center; width: 48px; height: 48px; color: #fff; }
+.ico::before { content: ''; position: absolute; right: 7px; bottom: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--pink); }
+.ico svg { position: relative; width: 30px; height: 30px; }
+.gr--claro .ico { color: #0A0A0C; }
+.gy { display: flex; align-items: center; justify-content: space-between; gap: 2px; }
+.gy__p { flex: 0 0 auto; display: grid; justify-items: center; gap: 6px; text-align: center; }
+.gy__p b { font: 700 11px/1.25 Unbounded; letter-spacing: -.02em; white-space: nowrap; }
+.gy__p.on b { color: var(--pink); }
+.gy__p.on .ico::before { width: 26px; height: 26px; right: 4px; bottom: 4px; }
+.gy__f { color: #4A4A55; display: grid; }
+.gq { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; }
+.gq > div { display: grid; justify-items: center; gap: 6px; text-align: center; }
+.gq b { font: 700 20px Unbounded; letter-spacing: -.03em; }
+.gq .on b { color: var(--pink); }
+.gq em { color: #8A8A96; font: 600 11.5px/1.35 Manrope; font-style: normal; }
+.gq__vs { color: #4A4A55; font: 800 12px Manrope; }
+.brl { display: grid; grid-template-columns: 1fr auto auto; gap: 9px 10px; align-items: center; }
+.brl > em { width: 84px; color: #8A8A96; font: 800 9px/1.25 Manrope; font-style: normal; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+.brl__t { display: flex; align-items: center; gap: 10px; font: 700 var(--fs-body) Manrope; }
+.brl__t svg { flex: none; color: #8A8A96; }
+.brl b { justify-self: center; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; }
+.brl b.si { background: #0A0A0C; color: #fff; }
+.brl b.no { border: 1.5px dashed #C8C8D0; }
+.brl__pie { margin: 2px 0 0; padding: 11px 14px; border-radius: 10px; background: #FDE7F0; color: #0A0A0C; font: 600 var(--fs-body)/1.45 Manrope; }
+.brl__pie b { color: var(--pink); }
+/* Elemento 26 · tarjeta horizontal alternada: gráfico sobre el resplandor y su explicación al lado */
+.ths { display: grid; gap: 12px; }
+.th { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; padding: 14px 24px 14px 14px; border-radius: var(--r); background: var(--ink); }
+.th--inv { grid-template-columns: 1fr 1.2fr; padding: 14px 14px 14px 24px; }
+.th--inv .th__g { order: 2; }
+.th__g { padding: 14px; border-radius: 16px; background: radial-gradient(60% 55% at 50% 45%, rgba(235,12,110,.2), transparent 70%), #0A0A0C; box-shadow: inset 0 0 0 1px #1F1F26; }
+.th__n { color: var(--pink); font: 700 22px/1 Unbounded; letter-spacing: -.05em; }
+.th__t b { display: block; margin-top: 8px; color: #fff; font: 700 var(--fs-sub)/1.2 Unbounded; letter-spacing: -.03em; }
+.th__t > span { display: block; margin-top: 6px; color: var(--t2); font: 600 var(--fs-body)/1.45 Manrope; }
+.th__t .src { margin-top: 8px; color: var(--t3); font: 500 9px/1.4 Manrope; }
+.th__g .gr { padding: 4px 6px; background: transparent; box-shadow: none; }
+/* Elemento 25 · pie con número grande: logo y web a la izquierda, número rosa a la derecha, sin línea */
+.pie { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 22px; }
+.pie .wm { font-size: 15px; }
+.pie .wm small { display: block; margin-top: 3px; color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: .04em; }
+.pie .n { color: var(--pink); font: 700 40px/1 Unbounded; letter-spacing: -.05em; }
+.pie .n small { color: var(--p3); font-size: 14px; letter-spacing: 0; }
+/* A: más compacta para que entren la brecha y las tres tarjetas */
+.pa2 .ths { gap: 10px; }
+.pa2 .th { padding: 10px 22px 10px 10px; }
+.pa2 .th--inv { padding: 10px 10px 10px 22px; }
+.pa2 .th__g { padding: 8px; }
+.pa2 .gb { height: 82px; padding-top: 20px; }
+.pa2 .brl { gap: 7px 10px; }
+.pa2 .gr--claro { padding: 16px 18px; }
 /* ===== 3. Cómo funciona ===== */
 .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
 .step { border-radius: var(--r-lg); padding: 7px 7px 18px; }
@@ -228,25 +262,12 @@
 </section>
 
 <!-- 2. El problema -->
-<section class="page light">
+<section class="page light p2 pa2">
   <p class="eyebrow">El problema</p>
   <h2 class="h2">El problema de tu negocio no es tu producto. Es cómo lo muestras<span class="dot">.</span></h2>
-  <div class="frame prob-ph"><img src="img/problema.jpg" alt=""><span class="badge"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span>Tu producto ya es bueno. Que se note</span></div>
-  <div class="prob">
-    <article class="ink">
-      <div class="viz"><span class="lbl">Publicaciones de tu rubro</span><div class="bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:30%"></i><i class="hi" style="height:88%"></i><i style="height:46%"></i><i style="height:26%"></i></div></div>
-      <div><h3 class="h3">¿Publicas sin saber qué funciona en tu rubro?</h3><p class="small">Pixely lee tu nicho y a tu competencia de forma continua: qué publican, qué les responde la gente, qué precios manejan y cómo los califican. <em class="k">Cada pieza nace de esos datos</em>, no de una corazonada.</p></div>
-    </article>
-    <article class="ink">
-      <div class="viz"><span class="lbl">Detrás de cada pieza</span><div class="chain"><span>Objetivo</span><span>Estrategia</span><span>Dato de tu mercado</span><span class="on">Tu pieza</span></div></div>
-      <div><h3 class="h3">¿Te hace los diseños un familiar?</h3><p class="small">Diseñar no es lo mismo que hacer publicidad. <em class="k">Cada pieza tiene un objetivo, una estrategia y un dato de tu mercado</em> que la respalda. Y tú la ves antes de que salga.</p></div>
-    </article>
-    <article class="ink">
-      <div class="viz"><span class="lbl">Tu tiempo cada semana</span><div class="time"><div>Por tu cuenta <b>6–10 h</b></div><i></i><div>Con Pixely <b class="pk">minutos</b></div><i class="on"></i></div></div>
-      <div><h3 class="h3">¿No tienes tiempo para publicar?</h3><p class="small"><em class="k">Los dueños de pequeños negocios dedican entre 6 y 10 horas a la semana a crear contenido.</em> Con Pixely, nosotros investigamos, planificamos y producimos; tú solo apruebas desde el celular. Con el Plan Pro, además, publicamos por ti.</p><p class="src">Fuente: encuestas internacionales 2025-26 (Picmim).</p></div>
-    </article>
-  </div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>02 / 08</span></div>
+  <div style="margin-top:18px"><div class="gr gr--claro"><span class="gr__t">Lo bueno de tu negocio, ¿se ve?</span><div class="brl"><span></span><em>Lo tienes</em><em>Se ve en tus redes</em><span class="brl__t"><svg data-i="star" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z"/></svg>Calidad de tu producto</span><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><b class="no"></b><span class="brl__t"><svg data-i="heart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>Cómo atiendes</span><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><b class="no"></b><span class="brl__t"><svg data-i="shield-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Años de experiencia</span><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><b class="no"></b><span class="brl__t"><svg data-i="tag" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/></svg>Precio justo</span><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><span class="brl__t"><svg data-i="store" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/></svg>Tu local</span><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b><b class="si"><svg data-i="check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></b></div><p class="brl__pie"><b>La brecha:</b> lo bueno que tienes y no se ve. Pixely lo pone a la vista.</p></div></div>
+  <div class="ths" style="margin-top:12px"><div class="th"><div class="th__g"><div class="gr"><span class="gr__t">Publicaciones de tu rubro</span><div class="gb"><span class="gb__c" style="height:43.18181818181818%"></span><span class="gb__c" style="height:62.5%"></span><span class="gb__c" style="height:34.090909090909086%"></span><span class="gb__c on" style="height:100%"><em>Este funciona</em></span><span class="gb__c" style="height:52.27272727272727%"></span><span class="gb__c" style="height:28.40909090909091%"></span></div></div></div><div class="th__t"><span class="th__n">01</span><b>¿Publicas a ciegas?</b><span>Leemos tu nicho y a tu competencia: cada pieza nace de esos datos.</span></div></div><div class="th th--inv"><div class="th__g"><div class="gr"><span class="gr__t">Detrás de cada pieza</span><div class="gy"><div class="gy__p"><span class="ico"><svg data-i="flag" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg></span><b>Objetivo</b></div><i class="gy__f"><svg data-i="arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></i><div class="gy__p"><span class="ico"><svg data-i="chart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></span><b>Estrategia</b></div><i class="gy__f"><svg data-i="arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></i><div class="gy__p"><span class="ico"><svg data-i="store" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13.5V21h14v-7.5M10 21v-5h4v5"/></svg></span><b>Dato de tu<br>mercado</b></div><i class="gy__f"><svg data-i="arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></i><div class="gy__p on"><span class="ico"><svg data-i="image" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span><b>Tu pieza</b></div></div></div></div><div class="th__t"><span class="th__n">02</span><b>¿Te diseña un familiar?</b><span>Cada pieza tiene un objetivo, una estrategia y un dato de tu mercado.</span></div></div><div class="th"><div class="th__g"><div class="gr"><span class="gr__t">Tu tiempo cada semana</span><div class="gq"><div><span class="ico"><svg data-i="clock" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><b>6–10 h</b><em>creando contenido por tu cuenta</em></div><div class="gq__vs">vs</div><div class="on"><span class="ico"><svg data-i="square-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"/><path d="m9 11 3 3L22 4"/></svg></span><b>minutos</b><em>aprobando desde el celular</em></div></div></div></div><div class="th__t"><span class="th__n">03</span><b>¿No tienes tiempo?</b><span>Investigamos, planificamos y producimos; tú solo apruebas desde el celular.</span><span class="src">Fuente: encuestas internacionales 2025-26 (Picmim).</span></div></div></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n">02<small>/08</small></span></div>
 </section>
 
 <!-- 3. Cómo funciona -->
