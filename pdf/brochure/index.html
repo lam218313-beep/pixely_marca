@@ -215,41 +215,50 @@
 .compu2 .ins { left: 18px; bottom: 16px; }
 .compu2 .ins small { color: #FF7AB0; font: inherit; }
 
-/* ===== 6. Planes (mismas tarjetas que pixely.pe) ===== */
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; align-items: stretch; }
-.plan { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 14px; padding: 22px 16px 16px; border-radius: var(--r-lg); background: #16161B; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
-.plan.top { background: linear-gradient(180deg, #2A0B1B 0%, #16161B 48%); box-shadow: inset 0 0 0 1.5px var(--pink), 0 24px 50px -24px rgba(235,12,110,.6); }
-.plan .head { display: grid; gap: 8px; }
-.plan .tagx { justify-self: start; display: inline-flex; align-items: center; gap: 7px; height: 24px; padding: 0 11px; border-radius: 99px; background: var(--pink); font: 800 var(--fs-label) Manrope; letter-spacing: .08em; text-transform: uppercase; }
-.plan .tagx::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
-.plan .pre { color: var(--t3); }
-.plan.top .pre { color: var(--pink); }
-.plan h3 { font: 700 var(--fs-title)/1 Unbounded; letter-spacing: -.03em; margin-top: -2px; }
-.plan .desc { font: 500 var(--fs-body)/1.5 Manrope; color: var(--t2); min-height: 3em; }
-.vol { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; color: var(--t3); }
-.vol .segs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-.vol .segs i { height: 6px; border-radius: 99px; background: #2A2A32; }
-.vol .segs i.on { background: var(--pink); }
-.vol b { font: 700 var(--fs-label) Unbounded; color: #fff; }
-.plan ul { list-style: none; display: grid; gap: 9px; flex: 1; align-content: start; }
-.plan li { display: grid; grid-template-columns: 20px 1fr; align-items: center; gap: 9px; font: 600 var(--fs-body)/1.3 Manrope; }
-.plan li svg { width: 20px; height: 20px; padding: 4px; border-radius: 50%; background: var(--pink); fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-.plan li.no { color: var(--t3); font-weight: 500; }
-.plan li.no span { text-decoration: line-through; text-decoration-color: rgba(255,255,255,.25); }
-.plan li.no svg { background: #2A2A32; stroke: var(--t3); }
-.plan .btn { width: 100%; }
-.which-t { margin-top: 24px; }
-.which { display: grid; gap: 8px; margin-top: 12px; }
-.which > div { display: grid; grid-template-columns: 118px 1fr; gap: 16px; align-items: center; padding: 12px 20px; border-radius: var(--r-sm); background: #F5F5F7; }
-.which b { font: 700 var(--fs-lead) Unbounded; letter-spacing: -.03em; }
-.which p { font: 600 var(--fs-body)/1.4 Manrope; color: var(--p1); }
-.which ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; }
-.which li { display: flex; align-items: center; gap: 6px; font: 600 var(--fs-body) Manrope; color: var(--p2); }
-.which li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
-.cta { margin: auto 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; border-radius: var(--r); background: var(--ink); color: #fff; }
-.cta p { font: 600 var(--fs-body)/1.5 Manrope; color: var(--t2); }
-.cta p b { display: block; margin-top: 2px; font: 700 var(--fs-lead)/1.35 Unbounded; letter-spacing: -.02em; color: #fff; }
-.p6 .foot { margin-top: 0; }
+/* ===== 6. Planes (9 oct): encabezado (24), piezas por plan (09), cifras con íconos (31 C), tabla de los tres planes (22) y pie (25). Sin precios: es pieza de captación ===== */
+.p6 .lead { max-width: 600px; }
+.g6 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 12px; margin-top: 24px; }
+.g6 .gr { display: flex; flex-direction: column; gap: 14px; padding: 18px 20px 20px; border-radius: var(--r); }
+.g6 .ley9 { margin-top: auto; }
+.g6 .gr--claro .gi b { color: #0A0A0C; }
+.g6 .gr--claro .gi span:last-child, .g6 .gr--claro .gr__pie { color: var(--p2); }
+.g6 .gr--claro .gr__pie { border-top-color: var(--pline); }
+.g6 .gr--claro .gr__pie b { color: #0A0A0C; }
+/* 09 · barras que crecen: imágenes en negro, reels en rosa, número adentro y total al final */
+.gb9 { display: grid; gap: 10px; }
+.gb9__f { display: grid; grid-template-columns: 54px 1fr; align-items: center; }
+.gb9__f > b { font: 700 var(--fs-body) Unbounded; letter-spacing: -.02em; }
+.gb9__t { display: flex; align-items: center; gap: 8px; }
+.gb9__b { display: flex; gap: 2px; height: 22px; }
+.gb9__b i { display: grid; place-items: center; border-radius: 6px; background: #0A0A0C; color: #fff; font: 700 var(--fs-label) Unbounded; font-style: normal; }
+.gb9__b i.r { min-width: 20px; background: var(--pink); }
+.gb9 em { white-space: nowrap; font: 700 var(--fs-body) Unbounded; font-style: normal; letter-spacing: -.02em; }
+.gb9 em small { margin-left: 3px; color: var(--p3); font: 700 var(--fs-label) Manrope; letter-spacing: 0; }
+.ley9 { display: flex; gap: 14px; color: var(--p3); font: 700 var(--fs-label) Manrope; }
+.ley9 span { display: inline-flex; align-items: center; gap: 5px; }
+.ley9 i { width: 8px; height: 8px; border-radius: 2px; background: #0A0A0C; }
+.ley9 i.r { background: var(--pink); }
+.g6 .gi { gap: 14px 14px; }
+.g6 .gi span:last-child { color: var(--t2); }
+.g6 .gr__pie { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--edge); color: var(--t2); font: 600 var(--fs-body)/1.4 Manrope; }
+.g6 .gr__pie b { color: #fff; }
+/* 22 · tabla de los tres planes: check rosa si lo trae, raya gris si no, o el valor; Pro en rosa */
+.tb6 { margin-top: 14px; padding: 6px 0; border-radius: var(--r); background: #fff; box-shadow: 0 0 0 1px var(--pline); }
+.tb6 .f { display: grid; grid-template-columns: 2.1fr repeat(3, 1fr); align-items: center; gap: 0 8px; padding: 8px 22px; border-top: 1px solid var(--pline); }
+.tb6 .f--h { padding: 12px 22px 12px; border-top: 0; }
+.tb6 .f--h b { justify-self: center; text-align: center; font: 700 var(--fs-sub)/1 Unbounded; letter-spacing: -.03em; }
+.tb6 .f--h b small { display: block; margin-top: 6px; color: var(--p3); font: 800 9.5px Manrope; letter-spacing: .1em; text-transform: uppercase; }
+.tb6 .f--h b.tbp, .tb6 .f--h b.tbp small { color: var(--pink); }
+.tb6 .t { color: var(--p2); font: 600 var(--fs-body)/1.35 Manrope; }
+.tb6 .c { justify-self: center; text-align: center; }
+.tb6 .ok { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--pink); color: #fff; }
+.tb6 .no { color: #C8C8D0; font: 700 15px Manrope; }
+.tb6 .v { color: var(--pink); font: 800 var(--fs-body) Manrope; }
+/* Cierre: a quién escribir si no sabe cuál elegir */
+.ci6 { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 14px; padding: 16px 16px 16px 22px; border-radius: var(--r); background: #F5F5F7; }
+.ci6 p { font: 600 var(--fs-body)/1.45 Manrope; color: var(--p2); }
+.ci6 p b { display: block; color: var(--p1); font: 700 var(--fs-lead)/1.3 Unbounded; letter-spacing: -.02em; }
+.ci6 a { display: inline-flex; align-items: center; gap: 8px; flex: none; padding: 11px 18px; border-radius: 99px; background: #0A0A0C; color: #fff; font: 800 var(--fs-body) Manrope; }
 
 /* ===== 7. Por qué Pixely (9 oct, opción B): foto ancha (29) con insignia (18), misión, garantías con íconos (23) y lo que no hacemos ===== */
 .hist2 { position: relative; margin-top: 22px; height: 236px; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.12); } /* elementos 29 y 18 */
@@ -351,35 +360,11 @@
 <section class="page light p6">
   <p class="eyebrow">Planes</p>
   <h2 class="h2">Tres planes. El mismo proceso<span class="dot">.</span></h2>
-  <p class="lead" style="max-width:none">En todos leemos tu mercado, armamos tu estrategia y <em class="k">apruebas cada pieza en Pixely Partners</em>. Cambia cuánto producimos y quién publica.</p>
-  <div class="plans">
-    <article class="plan top">
-      <div class="head"><span class="tagx">Delegación total</span><span class="lbl pre">Plan</span><h3>Pro</h3><p class="desc">Tú apruebas desde el celular; nosotros hacemos todo lo demás.</p></div>
-      <div class="vol"><span class="lbl">Volumen</span><span class="segs"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>Mayor</b></div>
-      <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estudio de tu mercado</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estrategia y plan del mes</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aprobación en Partners</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Producción multiformato</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Publicamos por ti</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Resultados por pieza</span></li></ul>
-      <a class="btn pk" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Me%20interesa%20el%20Plan%20Pro%20%E2%9C%A8">Me interesa el Plan Pro →</a>
-    </article>
-    <article class="plan">
-      <div class="head"><span class="lbl pre">Plan</span><h3>Basic</h3><p class="desc">Presencia constante, con estrategia y sin repetirte.</p></div>
-      <div class="vol"><span class="lbl">Volumen</span><span class="segs"><i class="on"></i><i class="on"></i><i></i></span><b>Medio</b></div>
-      <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estudio de tu mercado</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estrategia y plan del mes</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aprobación en Partners</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Producción multiformato</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Calendario de publicación</span></li><li class="no"><svg viewBox="0 0 24 24"><path d="M7 12h10"/></svg><span>Resultados por pieza</span></li></ul>
-      <a class="btn gh" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Me%20interesa%20el%20Plan%20Basic%20%E2%9C%A8">Me interesa el Plan Basic →</a>
-    </article>
-    <article class="plan">
-      <div class="head"><span class="lbl pre">Plan</span><h3>Lite</h3><p class="desc">Empieza con un riesgo mínimo y conoce el proceso.</p></div>
-      <div class="vol"><span class="lbl">Volumen</span><span class="segs"><i class="on"></i><i></i><i></i></span><b>Inicial</b></div>
-      <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estudio de tu mercado</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estrategia y plan del mes</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aprobación en Partners</span></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Producción multiformato</span></li><li class="no"><svg viewBox="0 0 24 24"><path d="M7 12h10"/></svg><span>Calendario de publicación</span></li><li class="no"><svg viewBox="0 0 24 24"><path d="M7 12h10"/></svg><span>Resultados por pieza</span></li></ul>
-      <a class="btn gh" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Me%20interesa%20el%20Plan%20Lite%20%E2%9C%A8">Me interesa el Plan Lite →</a>
-    </article>
-  </div>
-  <h3 class="h3 which-t">¿Cuál es para ti?</h3>
-  <div class="which">
-    <div><b>Plan Pro</b><div><p>Prefieres delegar todo y solo aprobar desde el celular.</p><ul><li>Nosotros publicamos</li><li>Ves los resultados de cada pieza</li><li>El mayor volumen</li></ul></div></div>
-    <div><b>Plan Basic</b><div><p>Quieres presencia constante, con estrategia y sin repetirte.</p><ul><li>Recibes el calendario de publicación</li><li>Tú publicas cuando te toca</li><li>Volumen medio</li></ul></div></div>
-    <div><b>Plan Lite</b><div><p>Quieres empezar con un riesgo mínimo y conocer el proceso.</p><ul><li>El mismo proceso de aprobación</li><li>Ideal para empezar</li><li>Volumen inicial</li></ul></div></div>
-  </div>
-  <div class="cta"><p>Todos los planes incluyen acceso a Pixely Partners.<b>¿No sabes cuál elegir? Te recomendamos el plan según tu negocio.</b></p><a class="btn pk" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20%C2%BFQu%C3%A9%20plan%20me%20recomiendan%20para%20mi%20negocio%3F%20%E2%9C%A8">Pregúntanos →</a></div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a><span>06 / 08</span></div>
+  <p class="lead">En todos estudiamos tu mercado, armamos tu estrategia y <em class="k">apruebas cada pieza en Pixely Partners</em>. Cambia cuántas campañas hacemos y quién publica.</p>
+  <div class="g6"><div class="gr gr--claro"><span class="gr__t">Piezas al mes, como máximo</span><div class="gb9"><div class="gb9__f"><b>Lite</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 70px) * 0.25)"><i style="flex:11">11</i><i class="r" style="flex:1">1</i></span><em>12<small>al mes</small></em></div></div><div class="gb9__f"><b>Basic</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 70px) * 0.5)"><i style="flex:22">22</i><i class="r" style="flex:2">2</i></span><em>24<small>al mes</small></em></div></div><div class="gb9__f"><b>Pro</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 70px) * 1)"><i style="flex:44">44</i><i class="r" style="flex:4">4</i></span><em>48<small>al mes</small></em></div></div></div><div class="ley9"><span><i></i>Imagen o historia</span><span><i class="r"></i>Reel</span></div></div><div class="gr"><span class="gr__t">Cada campaña · hasta 12 piezas</span><div class="gi"><div><span class="ico"><svg data-i="star" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z"/></svg></span><b>1</b><span>publicación principal</span></div><div><span class="ico"><svg data-i="tag" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/></svg></span><b>1</b><span>anuncio para promocionar</span></div><div><span class="ico"><svg data-i="smartphone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span><b>4</b><span>historias</span></div><div><span class="ico"><svg data-i="square-check" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"/><path d="m9 11 3 3L22 4"/></svg></span><b>5</b><span>variaciones del producto</span></div></div><p class="gr__pie"><b>+ 1 reel</b>, si nos mandas los clips.</p></div></div>
+  <div class="tb6"><div class="f f--h"><span></span><b>Lite<small>Tú publicas</small></b><b>Basic<small>Con calendario</small></b><b class="tbp">Pro<small>Publicamos por ti</small></b></div><div class="f"><span class="t">Campañas al mes</span><span class="c"><span class="v">1</span></span><span class="c"><span class="v">2</span></span><span class="c"><span class="v">4</span></span></div><div class="f"><span class="t">Reels al mes, si nos mandas los clips</span><span class="c"><span class="v">1</span></span><span class="c"><span class="v">2</span></span><span class="c"><span class="v">4</span></span></div><div class="f"><span class="t">Textos listos para tus redes</span><span class="c"><span class="v">2 redes</span></span><span class="c"><span class="v">3 redes</span></span><span class="c"><span class="v">Hasta 5</span></span></div><div class="f"><span class="t">Rondas de cambios por pieza</span><span class="c"><span class="v">1</span></span><span class="c"><span class="v">2</span></span><span class="c"><span class="v">2</span></span></div><div class="f"><span class="t">Calendario de publicación</span><span class="c"><span class="v">Fecha sugerida</span></span><span class="c"><span class="v">Día y orden</span></span><span class="c"><span class="v">Día y orden</span></span></div><div class="f"><span class="t">Estudio de mercado</span><span class="c"><span class="v">Al empezar</span></span><span class="c"><span class="v">Al empezar</span></span><span class="c"><span class="v">Cada mes</span></span></div><div class="f"><span class="t">Apruebas cada pieza en Pixely Partners</span><span class="c"><span class="ok"><svg data-i="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></span><span class="c"><span class="ok"><svg data-i="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></span><span class="c"><span class="ok"><svg data-i="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></span></div><div class="f"><span class="t">Publicamos en Instagram y Facebook</span><span class="c"><span class="no">—</span></span><span class="c"><span class="no">—</span></span><span class="c"><span class="ok"><svg data-i="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></span></div><div class="f"><span class="t">Resultados de cada pieza en Instagram</span><span class="c"><span class="no">—</span></span><span class="c"><span class="no">—</span></span><span class="c"><span class="ok"><svg data-i="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></span></div></div>
+  <div class="ci6"><p><b>¿No sabes cuál elegir?</b>Cuéntanos de tu negocio y te recomendamos el plan que te conviene.</p><a href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20%C2%BFQu%C3%A9%20plan%20me%20recomiendan%20para%20mi%20negocio%3F%20%E2%9C%A8"><svg data-i="message" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n">06<small>/08</small></span></div>
 </section>
 
 <!-- 7. Por qué Pixely -->
