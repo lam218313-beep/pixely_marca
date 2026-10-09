@@ -42,11 +42,12 @@
 .cover-top a { font: 800 var(--fs-label) Manrope; letter-spacing: .18em; text-transform: uppercase; color: var(--t3); }
 .cover h1 { position: relative; margin-top: 80px; }
 .cover .lead { position: relative; font-size: var(--fs-sub); line-height: 1.5; max-width: 430px; margin-top: 18px; }
-.cover .frame { position: relative; margin: 34px 0 52px; flex: 1; min-height: 0; }
-.cover .badge { left: 26px; bottom: 26px; }
-.cover .chip { right: 26px; top: 26px; }
-.cover-phone { position: absolute; right: 30px; bottom: 30px; width: 178px; padding: 6px; border-radius: 30px; background: #0A0A0C; box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 30px 60px -10px rgba(0,0,0,.7); }
-.cover-phone img { display: block; width: 100%; border-radius: 24px; }
+.cover .foto { position: relative; margin: 34px 0 52px; flex: 1; min-height: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.12); } /* elemento 29 */
+.cover .foto > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 12%; }
+/* Elemento 18 · insignia sobre foto: píldora oscura con círculo rosa, una por foto, en una esquina de abajo */
+.ins { position: absolute; left: 22px; bottom: 22px; display: inline-flex; align-items: center; gap: 12px; padding: 9px 20px 9px 9px; border-radius: 99px; background: rgba(10,10,12,.8); box-shadow: 0 0 0 1px rgba(255,255,255,.12); color: #fff; font: 700 var(--fs-lead) Manrope; white-space: nowrap; }
+.ins i { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--pink); }
+.ins svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ===== 2. El problema ===== */
 .prob-ph { margin-top: 24px; height: 280px; }
@@ -220,11 +221,9 @@
   <div class="cover-top"><span class="wm">pixely<b>.</b></span><a href="https://pixely.pe">pixely.pe</a></div>
   <h1 class="h1">Publicidad<br>que vende<span class="dot">.</span></h1>
   <p class="lead">Tu publicidad no sale de la ocurrencia de un diseñador. Sale de <em class="k">datos reales de tu mercado</em>, y <em class="k">tú apruebas cada pieza</em> antes de que salga.</p>
-  <div class="frame">
+  <div class="foto">
     <img src="img/portada.jpg" alt="">
-    <span class="chip"><i></i>Pixely Partners</span>
-    <div class="cover-phone"><img src="img/m-inicio.jpg" alt=""></div>
-    <span class="badge"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>Apruebas desde tu celular</span>
+    <span class="ins"><i><svg viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></i>Apruebas desde tu celular</span>
   </div>
 </section>
 
