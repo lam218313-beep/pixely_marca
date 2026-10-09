@@ -104,7 +104,6 @@
 .das b { align-self: end; font: 700 15px/1.2 Unbounded; letter-spacing: -.03em; }
 .das span:last-child { align-self: start; color: var(--p2); font: 500 var(--fs-body)/1.4 Manrope; }
 .card .nota { margin-top: auto; padding-top: 14px; color: var(--p3); font: 600 11.5px/1.4 Manrope; }
-.no.no--col ul { grid-template-columns: 1fr; }
 .das--fila { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
 /* Elemento 22 · lo que no incluye: raya gris; si otro plan lo trae, su etiqueta */
 .no { padding: 18px 22px 22px; border-radius: var(--r); box-shadow: inset 0 0 0 1px var(--pline); }
@@ -145,10 +144,27 @@
 .lt__mes svg { width: 12px; height: 12px; fill: none; stroke: var(--pink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .lt__mes b { color: #fff; }
 
-/* B · hoja 1: la campaña a todo el ancho; hoja 2 negra */
-.cifras--ancha { display: grid; grid-template-columns: 220px 1fr; gap: 0 26px; }
-.cifras--ancha .gi { margin: 0; grid-row: span 2; }
-.cifras--ancha .ok { align-self: end; }
+/* Hoja 1 negra (Pro) */
+.plan-pg.oscura { background: var(--ink); }
+.oscura .body { color: #fff; }
+.oscura .card { background: var(--card); box-shadow: inset 0 0 0 1px var(--edge); }
+.oscura .hd h4 small, .oscura .card .nota { color: var(--t3); }
+.oscura .no { box-shadow: inset 0 0 0 1px var(--edge); }
+.oscura .no li { color: var(--t2); }
+.oscura .no li svg { background: #26262E; }
+.oscura .pie .wm { color: #fff; }
+.oscura .pie .wm small { color: var(--t3); }
+.oscura .pie .n small { color: var(--mute); }
+/* Pro · acentos rosas: resplandor (elemento 03) desde una esquina, filo rosa y cifras en rosa */
+.plan-pg.pro .cifras { background: radial-gradient(90% 80% at 100% 0%, rgba(235,12,110,.26), transparent 70%), #0A0A0C; box-shadow: inset 0 0 0 1px rgba(235,12,110,.55); }
+.plan-pg.pro .cifras .gi b { color: var(--pink); }
+.h2p > *:not(.glow) { position: relative; }
+.h2p.pro .lt, .h2p.pro .das-card { box-shadow: inset 0 0 0 1px rgba(235,12,110,.45); }
+/* Pro: nueve entregas al mes y cuatro cosas que nos das; la lista va más junta y «Tú nos das» en 2 × 2 al lado del título */
+.plan-pg.pro .card .ok { gap: 8px; }
+.h2p.pro .das-card { display: grid; grid-template-columns: 190px 1fr; gap: 0 16px; align-items: center; }
+.h2p.pro .das--fila { grid-auto-flow: row; grid-template-columns: 1fr 1fr; margin-top: 0; gap: 14px 16px; }
+/* Hoja 2 negra (Basic y Pro) */
 .h2p.dark .paso { background: var(--card); box-shadow: inset 0 0 0 1px var(--edge); }
 .h2p.dark .paso b { color: #fff; }
 .h2p.dark .paso span:last-child, .h2p.dark .das span:last-child, .h2p.dark .lugar { color: var(--t2); }
@@ -246,18 +262,17 @@
 </template>
 
 <script>
-// Dos hojas por plan, en este orden (el script de PDF saca las hojas 1-2, 3-4 y 5-6 por separado).
+// Dos hojas por plan (aprobado el 9 oct: Lite las dos blancas, Basic blanca y negra, Pro las dos negras con acentos rosas), en este orden (el script de PDF saca las hojas 1-2, 3-4 y 5-6 por separado).
 // Planes aprobados el 9 oct (5.-Pixely_vendedores): campañas de 12 piezas; precio en soles, sin IGV.
 const PLANES = [
   { id: 'lite', nombre: 'Lite', eyebrow: 'Tú publicas', lema: 'Una campaña al mes, lista para que la publiques en tus redes.', precio: '350',
-    imagenes: 11, reels: 1, captura: 'm-validar-siguiente', campanas: 'una campaña nueva' },
+    imagenes: 11, reels: 1, captura: 'm-validar-siguiente', campanas: 'una campaña nueva', tonos: ['clara', 'clara'] },
   { id: 'basic', nombre: 'Basic', eyebrow: 'Tú publicas, con calendario', lema: 'Dos campañas al mes y un calendario con qué publicar cada día.', precio: '600',
-    imagenes: 22, reels: 2, captura: 'm-plan', campanas: 'dos campañas nuevas' },
+    imagenes: 22, reels: 2, captura: 'm-plan', campanas: 'dos campañas nuevas', tonos: ['clara', 'oscura'] },
   { id: 'pro', nombre: 'Pro', eyebrow: 'Nosotros publicamos', lema: 'Cuatro campañas al mes. Las publicamos por ti y te mostramos cómo le fue a cada pieza.', precio: '1,000',
-    imagenes: 44, reels: 4, captura: 'm-resultado', campanas: 'cuatro campañas nuevas' },
+    imagenes: 44, reels: 4, captura: 'm-resultado', campanas: 'cuatro campañas nuevas', tonos: ['oscura', 'oscura'] },
 ];
 const Q = new URLSearchParams(location.search);
-const VARIANTE = Q.get('v') || 'a'; // a: hoja 2 blanca · b: campaña a todo el ancho y hoja 2 negra (propuestas del 9 oct)
 const SOLO = Q.get('plan'); // ?plan=lite muestra solo esa ficha
 const ICONOS = {
   'calendar-days': '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>',
@@ -276,16 +291,16 @@ const ICONOS = {
 // Hoja 1 · lo que trae cada plan cada mes
 const CADA_MES = {
   lite: ['<b>1 campaña</b> de hasta 12 piezas sobre un producto, servicio o promoción', 'Hasta <b>1 reel</b>, si nos mandas los clips', 'Textos listos para <b>Instagram y Facebook</b>', '<b>1 ronda</b> de cambios por pieza', 'Una <b>fecha sugerida</b> para publicar cada pieza', 'Revisas y apruebas cada pieza en <b>Pixely Partners</b>'],
-  basic: ['<b>2 campañas</b> de hasta 12 piezas cada una', 'Hasta <b>2 reels</b>, si nos mandas los clips', 'Textos para <b>Instagram, Facebook y 1 red más</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b> de cada pieza', 'Revisas y apruebas cada pieza en <b>Pixely Partners</b>'],
-  pro: ['<b>4 campañas</b> de hasta 12 piezas cada una', 'Hasta <b>4 reels</b>, si nos mandas los clips', 'Textos para <b>hasta 5 redes</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b> de cada pieza', '<b>Publicamos</b> tus piezas en Instagram y Facebook', '<b>Alcance e interacción</b> de cada pieza en Instagram', 'Tu <b>estudio de mercado</b>, actualizado cada mes', 'Revisas y apruebas cada pieza en <b>Pixely Partners</b>'],
+  basic: ['<b>2 campañas</b> de hasta 12 piezas cada una', 'Hasta <b>2 reels</b>, si nos mandas los clips', 'Textos para <b>Instagram, Facebook y&nbsp;1&nbsp;red&nbsp;más</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b> de cada pieza', 'Revisas y apruebas cada pieza en <b>Pixely Partners</b>'],
+  pro: ['<b>4 campañas</b> de hasta 12 piezas', 'Hasta <b>4 reels</b>, si nos mandas los clips', 'Textos para <b>hasta 5 redes</b>', '<b>2 rondas</b> de cambios por pieza', 'Calendario con el <b>día y el orden</b>', '<b>Publicamos</b> en Instagram y Facebook', '<b>Alcance e interacción</b> de cada pieza en Instagram', 'Tu <b>estudio de mercado</b>, cada mes', 'Apruebas cada pieza en <b>Pixely Partners</b>'],
 };
 // Igual en los tres planes
 const CIFRAS = [['star', '1', 'publicación principal (4:5)'], ['tag', '1', 'anuncio para promocionar (1:1)'], ['smartphone', '4', 'historias (9:16)'], ['square-check', '5', 'variaciones del producto']];
 const CAMPANA_PIE = ['<b>+ 1 reel</b>, si nos mandas los clips', 'El anuncio lo <b>subes y pagas tú</b>; la red social puede rechazarlo'];
 const NOS_DAS = [
-  ['send', '5 fotos', 'de tu producto en cada campaña'],
-  ['smartphone', '5 clips', 'grabados con tu celular, por cada reel'],
-  ['clock', '5 días hábiles', 'para mandar los clips; si no llegan, ese mes no hay reel'],
+  ['send', '5 fotos', 'de tu producto, por campaña'],
+  ['smartphone', '5 clips', 'grabados con tu celular, por reel'],
+  ['clock', '5 días hábiles', 'para los clips; si no llegan, ese mes no hay reel'],
 ];
 const NOS_DAS_PRO = ['shield-check', 'Tu autorización', 'por escrito, para conectar tus redes'];
 const NO_COMUN = ['Sesiones de fotos ni logotipos', 'Carruseles', 'Responder mensajes o comentarios', 'Administrar tus redes', 'Crear, pagar o administrar la promoción del anuncio'];
@@ -316,7 +331,7 @@ PLANES.forEach((p, n) => {
   if (SOLO && p.id !== SOLO) return;
   // ---- Hoja 1 ----
   const a = h1.content.cloneNode(true);
-  a.querySelector('.page').classList.add(p.id);
+  a.querySelector('.page').classList.add(p.id, p.tonos[0]);
   a.querySelectorAll('[data-k]').forEach((el) => { el.textContent = el.dataset.k === 'precio' ? `S/ ${p.precio}` : p[el.dataset.k]; });
   // 21 · escalera: Lite un tercio, Basic dos tercios, Pro completo
   a.querySelector('.esc').innerHTML = PLANES.map((q, i) => `<span class="${i < n ? 'on' : i === n ? 'yo' : ''}"><i style="height:${((i + 1) / 3) * 100}%"></i><b>${q.nombre}</b></span>`).join('');
@@ -327,15 +342,14 @@ PLANES.forEach((p, n) => {
   if (p.id === 'pro') a.querySelector('.hero').insertAdjacentHTML('afterbegin', '<i class="glow"></i>');
   const mes = `<div class="card">${hd('calendar-days', 'Cada mes', 'Lo que trae tu plan')}${ok(CADA_MES[p.id])}<p class="nota">Lo que no se usa en el mes no pasa al siguiente.</p></div>`;
   const gi = `<div class="gi">${filas3(CIFRAS)}</div>`;
-  const no = (col) => `<div class="no${col ? ' no--col' : ''}"><h4>No incluye</h4><ul>${[...NO_COMUN.map((t) => [t]), ...NO_PLAN[p.id]].map(([t, e]) => `<li>${RAYA}<span>${t}${e ? `<em class="tagp">${e}</em>` : ''}</span></li>`).join('')}</ul></div>`;
-  a.querySelector('.c1').innerHTML = VARIANTE === 'b'
-    ? `<div class="cifras cifras--ancha"><div>${hd('flag', 'Cada campaña', 'Hasta 12 piezas')}</div>${gi}${ok(CAMPANA_PIE)}</div><div class="fila">${mes}${no(true)}</div>`
-    : `<div class="fila">${mes}<div class="cifras">${hd('flag', 'Cada campaña', 'Hasta 12 piezas')}${gi}${ok(CAMPANA_PIE)}</div></div>${no(false)}`;
+  const no = `<div class="no"><h4>No incluye</h4><ul>${[...NO_COMUN.map((t) => [t]), ...NO_PLAN[p.id]].map(([t, e]) => `<li>${RAYA}<span>${t}${e ? `<em class="tagp">${e}</em>` : ''}</span></li>`).join('')}</ul></div>`;
+  a.querySelector('.c1').innerHTML = `<div class="fila">${mes}<div class="cifras">${hd('flag', 'Cada campaña', 'Hasta 12 piezas')}${gi}${ok(CAMPANA_PIE)}</div></div>${no}`;
   document.body.appendChild(a);
   // ---- Hoja 2 ----
   const b = h2.content.cloneNode(true);
   const pg = b.querySelector('.page');
-  pg.classList.add(p.id, VARIANTE === 'b' ? 'dark' : 'light');
+  pg.classList.add(p.id, p.tonos[1] === 'oscura' ? 'dark' : 'light');
+  if (p.id === 'pro') pg.insertAdjacentHTML('afterbegin', '<i class="glow"></i>');
   b.querySelector('.eyebrow').textContent = `Plan ${p.nombre} · Al empezar`;
   b.querySelectorAll('[data-wa]').forEach((el) => { el.href = WA(p.nombre); });
   const dias = Array.from({ length: 7 }, (_, i) => `<span class="lt__d${i === 6 ? ' lt__d--pk' : ''}"><em>Día ${i + 1}</em><b>${i === 6 ? '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>' : ''}</b></span>`).join('');
