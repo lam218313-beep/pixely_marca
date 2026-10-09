@@ -271,23 +271,25 @@
 .lst li svg { width: 18px; height: 18px; padding: 3.5px; border-radius: 50%; background: #2A2A32; color: var(--t3); }
 .p7 .note { margin-top: 12px; }
 
-/* ===== 8. Hablemos ===== */
-.end .arte { right: -290px; top: -30px; width: 580px; }
-.end h1 { position: relative; margin-top: 64px; }
-.end .lead { position: relative; font-size: var(--fs-sub); max-width: 420px; }
-.contact { position: relative; display: grid; grid-template-columns: 1fr 200px; gap: 24px; margin-top: 30px; align-items: start; }
-.contact dl { display: grid; gap: 14px; }
-.contact dt { color: var(--pink); }
-.contact dd { margin-top: 4px; font: 700 var(--fs-lead) Manrope; color: var(--p1); }
-.contact dd a { display: inline-flex; align-items: center; gap: 8px; }
-.contact dd a::after { content: '→'; color: var(--pink); }
-.contact dd small { display: block; font: 600 var(--fs-body) Manrope; color: var(--p2); margin-top: 3px; }
-.qr { display: block; padding: 14px; border-radius: var(--r); background: #fff; border: 1px solid var(--pline); text-align: center; }
-.qr img { width: 100%; display: block; }
-.qr p { margin-top: 8px; font: 700 var(--fs-body)/1.35 Manrope; color: var(--p2); }
-.end .frame { position: relative; margin: 30px 0 28px; flex: 1; min-height: 0; }
-.end .frame img { object-position: center 30%; }
-.end .badge { left: 22px; bottom: 22px; }
+/* ===== 8. Hablemos (9 oct, opción B): foto (29) con insignia (18) arriba y, al cierre, la tarjeta rosa «Hablemos» (28) y el pie (25) ===== */
+.end > .wm { position: relative; }
+.foto8 { position: relative; flex: 1; min-height: 0; margin: 26px 0 22px; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px var(--pline); } /* elemento 29 */
+.foto8 > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%; }
+.foto8 .ins { left: 18px; bottom: 16px; }
+/* Elemento 28 · todo en una tarjeta rosa: «Hablemos.», una línea, el botón negro y el QR; debajo, los contactos en una fila */
+.hb { margin-bottom: 18px; }
+.hb__rosa { position: relative; display: grid; grid-template-columns: 1fr 156px; gap: 24px; align-items: center; padding: 30px 28px 30px 34px; border-radius: var(--r-lg); background: var(--pink); color: #fff; }
+.hb__h { display: block; font: 700 var(--fs-display)/1 Unbounded; letter-spacing: -.05em; }
+.hb__h i { color: #0A0A0C; font-style: normal; }
+.hb__l { margin-top: 12px; max-width: 380px; color: rgba(255,255,255,.9); font: 500 var(--fs-lead)/1.5 Manrope; }
+.hb__btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 12px 22px 12px 18px; border-radius: 99px; background: #0A0A0C; color: #fff; font: 800 var(--fs-body) Manrope; }
+.hb__btn svg { width: 18px; height: 18px; }
+.hb__qr { display: block; padding: 10px; border-radius: 18px; background: #fff; }
+.hb__qr img { display: block; width: 100%; }
+.hb__dl { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; margin: 14px 0 0; padding: 0 6px; }
+.hb__dl dt { color: var(--pink); font: 800 var(--fs-label) Manrope; letter-spacing: .16em; text-transform: uppercase; }
+.hb__dl dd { margin: 4px 0 0; color: var(--p1); font: 700 var(--fs-lead) Manrope; }
+.end .note { margin-top: 10px; padding: 0 6px; }
 </style>
 </head>
 <body>
@@ -396,21 +398,22 @@
 
 <!-- 8. Hablemos -->
 <section class="page light end">
-  <img class="arte" src="../../public/elementos/01-claro.svg" alt="">
-  <div style="position:relative"><span class="wm">pixely<b>.</b></span></div>
-  <h1 class="h1">Hablemos<span class="dot">.</span></h1>
-  <p class="lead">Cuéntanos de tu negocio y <em class="k">te recomendamos el plan que te conviene</em>.</p>
-  <div class="contact">
-    <dl>
-      <div><dt class="lbl">WhatsApp</dt><dd><a href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8">+51 949 268 607</a></dd></div>
-      <div><dt class="lbl">Web</dt><dd><a href="https://pixely.pe">pixely.pe</a></dd></div>
-      <div><dt class="lbl">Correo</dt><dd><a href="mailto:hola@pixely.pe">hola@pixely.pe</a></dd></div>
-      <div><dt class="lbl">Redes</dt><dd><a href="https://www.instagram.com/pixely_pe">@pixely_pe</a><small>Instagram, TikTok, YouTube y X · Facebook y LinkedIn: Pixely</small></dd></div>
+  <span class="wm">pixely<b>.</b></span>
+  <div class="foto8"><img src="img/panadero.jpg" alt=""><span class="ins"><i><svg data-i="smartphone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></i>Tú decides cada pieza</span></div>
+  <div class="hb">
+    <div class="hb__rosa">
+      <div><b class="hb__h">Hablemos<i>.</i></b><p class="hb__l">Cuéntanos de tu negocio y te recomendamos el plan que te conviene.</p><a class="hb__btn" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><svg data-i="message" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escríbenos por WhatsApp</a></div>
+      <a class="hb__qr" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><img src="../comun/qr-whatsapp.svg" alt="QR de WhatsApp"></a>
+    </div>
+    <dl class="hb__dl">
+      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8">+51 949 268 607</a></dd></div>
+      <div><dt>Web</dt><dd><a href="https://pixely.pe">pixely.pe</a></dd></div>
+      <div><dt>Correo</dt><dd><a href="mailto:hola@pixely.pe">hola@pixely.pe</a></dd></div>
+      <div><dt>Redes</dt><dd><a href="https://www.instagram.com/pixely_pe">@pixely_pe</a></dd></div>
     </dl>
-    <a class="qr" href="https://wa.me/51949268607?text=%C2%A1Hola%20Pixely%21%20%F0%9F%91%8B%20Quiero%20que%20mi%20negocio%20destaque%20%E2%9C%A8"><img src="../comun/qr-whatsapp.svg" alt=""><p>Escanea y escríbenos por WhatsApp</p></a>
+    <p class="note">Redes: @pixely_pe en Instagram, TikTok, YouTube y X; Pixely en Facebook y LinkedIn. Syntesia Labs E.I.R.L. · RUC 20616010787.</p>
   </div>
-  <div class="frame"><img src="img/panadero.jpg" alt=""><span class="badge"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Tu marca se decide aquí</span></div>
-  <div class="foot"><span class="wm">pixely<b>.</b></span><span>Syntesia Labs E.I.R.L. · RUC 20616010787</span><span>08 / 08</span></div>
+  <div class="pie"><span class="wm">pixely<b>.</b><small>pixely.pe</small></span><span class="n">08<small>/08</small></span></div>
 </section>
 
 <script src="../comun/orbs.js"></script>
