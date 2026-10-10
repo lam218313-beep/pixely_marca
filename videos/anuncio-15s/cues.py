@@ -44,6 +44,15 @@ GOLPES = {
 GOLPES['redoble'] = [b(18 + i / 4) for i in range(6)]
 GOLPES['respiro'] = b(19.5)
 
+# Las semicorcheas impares caen a medio fotograma (7,5 fotogramas por semicorchea). Para que imagen y sonido coincidan
+# exacto, todo golpe se ajusta al inicio de su fotograma (adelanto máximo de 8 ms en el sonido: imperceptible).
+def _q(t):
+    import math
+    return math.floor(t * FPS + 1e-6) / FPS
+
+
+GOLPES = {k: ([_q(x) for x in v] if isinstance(v, list) else _q(v)) for k, v in GOLPES.items()}
+
 
 def plano(t):
     for a, z, n in PLANOS:

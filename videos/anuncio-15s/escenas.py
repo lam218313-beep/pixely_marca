@@ -164,7 +164,7 @@ def scene_A(c, t):
             if t < te:
                 break
             k = t - te
-            r = 13 * spring(k, 0.45, 36) * (1.25 if i == 7 else 1)
+            r = 13 * (0.45 + 0.55 * spring(k, 0.45, 36)) * (1.25 if i == 7 else 1)
             pts_on.append((px, py))
             if i > 0:
                 x0, y0 = PTS[i - 1]
@@ -175,7 +175,7 @@ def scene_A(c, t):
                 c.drawCircle(px, py, 14 + 46 * out_cubic(ring), paint(WHITE if i < 7 else PINK, 0.55 * (1 - ring), stroke=3))
         for i, (px, py) in enumerate(pts_on):
             k = t - G['puntos'][i]
-            r = 13 * spring(k, 0.45, 36) * (1.3 if i == 7 else 1)
+            r = 13 * (0.45 + 0.55 * spring(k, 0.45, 36)) * (1.3 if i == 7 else 1)
             c.drawCircle(px, py, max(r, 0), paint(PINK if i == 7 else WHITE))
             if i == 7:
                 glow(c, px, py, 120, PINK, 0.35 * clamp(k / 0.2))
@@ -265,7 +265,7 @@ def scene_B(c, t):
     k = t - G['funciona']
     if k >= 0 and collapse < 1:
         x, yb = bar_rect(3)
-        s = spring(k, 0.45, 32)
+        s = 0.5 + 0.5 * spring(k, 0.45, 32)
         px, py = x + BW / 2, yb - BMAX - 64
         c.save()
         c.translate(px, py)
@@ -505,7 +505,7 @@ def scene_C_doce(c, t):
         k = t - tf
         if k < 0:
             continue
-        s = out_back(clamp(k / 0.17), 2.0)
+        s = lerp(0.5, 1.0, out_back(clamp(k / 0.17), 2.0))
         rot = (6 if i % 2 else -6) * (1 - out_cubic(clamp(k / 0.25)))
         c.save()
         c.translate(x + 103, y + 103)
@@ -628,7 +628,7 @@ def scene_D(c, t):
         c.restore()
     k = t - G['cta']
     if k >= 0:
-        s = spring(k, 0.5, 22)
+        s = 0.55 + 0.45 * spring(k, 0.5, 22)
         txt = 'Escríbenos · pixely.pe'
         tw = text_width(txt, 'manx', 44, 0.0)
         pw, ph = tw + 72 + 52, 104
