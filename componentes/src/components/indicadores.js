@@ -38,7 +38,7 @@ export default [
     usar: ['Sobre fondo negro. Una por bloque.'],
     evitar: ['Párrafos dentro de la insignia.'],
     stage: 'ink',
-    html: `<div class="s-wrap"><span class="w-badge"><i></i>Aprobación en tu celular</span><span class="w-plan-badge">Delegación total</span></div>`,
+    html: `<div class="s-wrap"><span class="w-badge"><i></i>Aprobación en tu celular</span><span class="w-plan-badge">Nosotros publicamos</span></div>`,
     css: `.w-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:var(--raised);font:800 .78rem Manrope;letter-spacing:.08em;text-transform:uppercase}
 .w-badge i{width:8px;height:8px;border-radius:50%;background:var(--pink)}
 .w-plan-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--pink);font:600 .72rem Unbounded;letter-spacing:.06em;text-transform:uppercase}

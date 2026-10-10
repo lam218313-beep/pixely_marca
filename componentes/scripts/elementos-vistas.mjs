@@ -149,8 +149,8 @@ const vista17 = (p) => {
     ${pieza('m-resultado', 0.209, 0.743, 0.33, 0.25, 'left:12%;top:62%;width:20%', 3, 'La mejor del mes')}</div>`);
 };
 
-// ---------- 09 · Piezas por plan (rediseño 9 oct) ----------
-const PLANES = [['Lite', 6, 2, 2], ['Basic', 8, 4, 3], ['Pro', 12, 8, 5]];
+// ---------- 09 · Piezas por plan (rediseño 9 oct; cantidades de los planes aprobados el 9 oct: imágenes o historias, reels y redes) ----------
+const PLANES = [['Lite', 11, 1, 2], ['Basic', 22, 2, 3], ['Pro', 44, 4, 5]];
 // Qué días del mes (28) llevan pieza y cuáles de esas son reels, repartidos parejo.
 const mes = (f, r) => {
   const n = f + r, dias = new Set(Array.from({ length: n }, (_, i) => Math.floor((i * 28) / n)));
@@ -158,10 +158,10 @@ const mes = (f, r) => {
   let k = 0;
   return Array.from({ length: 28 }, (_, d) => (dias.has(d) ? (reels.has(k++) ? 'r' : 'f') : ''));
 };
-const ley09 = '<p class="gp9"><span><i></i>Imagen o carrusel</span><span><i class="r"></i>Reel</span></p>';
+const ley09 = '<p class="gp9"><span><i></i>Imagen o historia</span><span><i class="r"></i>Reel</span></p>';
 const vista09 = (p) => dosVersiones((claro) => {
   if (p.id === 'calendario') return caja(claro, 'Así se ve tu mes', `<div class="gcal">${PLANES.map(([n, f, r]) => `<div><b class="gcal__n">${n}<span>${f + r} piezas</span></b><div class="gcal__m">${[...'LMMJVSD'].map((d) => `<em>${d}</em>`).join('')}${mes(f, r).map((c) => `<i class="${c}"></i>`).join('')}</div><span class="gcal__d">${f} imágenes · ${r} reels</span></div>`).join('')}</div>${ley09}`);
-  if (p.id === 'barras') return caja(claro, 'Piezas al mes', `<div class="gb9">${PLANES.map(([n, f, r]) => `<div class="gb9__f"><b>${n}</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 74px) * ${(f + r) / 20})"><i style="flex:${f}">${f}</i><i class="r" style="flex:${r}">${r}</i></span><em>${f + r}<small> al mes</small></em></div></div>`).join('')}</div>${ley09}`);
+  if (p.id === 'barras') return caja(claro, 'Piezas al mes, como máximo', `<div class="gb9">${PLANES.map(([n, f, r]) => `<div class="gb9__f"><b>${n}</b><div class="gb9__t"><span class="gb9__b" style="width:calc((100% - 74px) * ${(f + r) / 48})"><i style="flex:${f}">${f}</i><i class="r" style="flex:${r}">${r}</i></span><em>${f + r}<small> al mes</small></em></div></div>`).join('')}</div>${ley09}`);
   return caja(claro, 'Piezas al mes', `<div class="gn9">${PLANES.map(([n, f, r, s]) => `<div><span class="gn9__p">${n}</span><b>${f + r}</b><span class="gn9__u">piezas al mes</span><span class="gn9__b"><i style="flex:${f}"></i><i class="r" style="flex:${r}"></i></span><span class="gn9__l">${ic('image', 13, 2.2)}${f} imágenes</span><span class="gn9__l r">${ic('play', 13, 2.4)}${r} reels</span><span class="gn9__l">${ic('share', 13, 2.2)}En ${s} redes</span></div>`).join('')}</div>`);
 });
 
@@ -238,15 +238,18 @@ const vista21 = (p) => {
   ].join('');
 };
 
-// ---------- 22 · Lista incluido / no incluido (datos del servicio de Planes v2, en revisión) ----------
+// ---------- 22 · Lista incluido / no incluido (planes aprobados el 9 oct; las mismas filas que la página 6 del brochure) ----------
 const SI = 1, NO = 0;
 const FILAS = [
-  ['Estudio de mercado de tu nicho', [SI, SI, SI]],
-  ['Vigilancia de tu competencia', ['Mensual', 'Quincenal', 'Semanal']],
-  ['Reels con guion y edición', ['2', '4', '8']],
-  ['Calendario con día y hora', [NO, SI, SI]],
-  ['Publicamos por ti', [NO, NO, SI]],
-  ['Resultados frente a tu competencia', [NO, NO, SI]],
+  ['Campañas al mes', ['1', '2', '4']],
+  ['Reels al mes, si nos mandas los clips', ['1', '2', '4']],
+  ['Textos listos para tus redes', ['2 redes', '3 redes', 'Hasta 5']],
+  ['Rondas de cambios por pieza', ['1', '2', '2']],
+  ['Calendario de publicación', ['Fecha sugerida', 'Día y orden', 'Día y orden']],
+  ['Estudio de mercado', ['Al empezar', 'Al empezar', 'Cada mes']],
+  ['Apruebas cada pieza en Pixely Partners', [SI, SI, SI]],
+  ['Publicamos en Instagram y Facebook', [NO, NO, SI]],
+  ['Resultados de cada pieza en Instagram', [NO, NO, SI]],
 ];
 const desde = (v) => (v[1] === NO ? 'Solo Pro' : 'Desde Basic');
 const vista22 = (p) => {
@@ -541,7 +544,7 @@ export const vistasCSS = `
 .gp9{display:flex;gap:16px;margin:0;color:#8A8A96;font:700 11px Manrope}.gp9 span{display:inline-flex;align-items:center;gap:6px}.gp9 i{width:10px;height:10px;border-radius:3px;background:#B4B4BE}.g--claro .gp9 i{background:#0A0A0C}.gp9 i.r{background:#EB0C6E}
 .gb9{display:grid;gap:12px}.gb9__f{display:grid;grid-template-columns:50px 1fr;align-items:center}.gb9__f>b{font:700 13px Unbounded;letter-spacing:-.02em}
 .gb9__t{display:flex;align-items:center;gap:10px}.gb9__b{display:flex;gap:2px;height:30px}
-.gb9__b i{display:grid;place-items:center;border-radius:6px;background:#B4B4BE;color:#0A0A0C;font:700 12px Unbounded;font-style:normal}.gb9__b i.r{background:#EB0C6E;color:#fff}
+.gb9__b i{display:grid;place-items:center;border-radius:6px;background:#B4B4BE;color:#0A0A0C;font:700 12px Unbounded;font-style:normal}.gb9__b i.r{min-width:22px;background:#EB0C6E;color:#fff}
 .g--claro .gb9__b i{background:#0A0A0C;color:#fff}.g--claro .gb9__b i.r{background:#EB0C6E}
 .gb9__t em{white-space:nowrap;font:700 16px Unbounded;font-style:normal;letter-spacing:-.03em}.gb9__t em small{margin-left:3px;color:#8A8A96;font:700 10.5px Manrope;letter-spacing:0}
 .gn9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gn9>div{display:grid;gap:6px;align-content:start;padding:12px;border-radius:10px;box-shadow:inset 0 0 0 1px #26262E}.g--claro .gn9>div{box-shadow:inset 0 0 0 1px #E4E4EA}
