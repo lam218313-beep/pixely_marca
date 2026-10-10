@@ -70,7 +70,7 @@ def ffmpeg_cmd(out, audio):
     # este ffmpeg (el del repo de videos) no trae el lector de video crudo: los fotogramas viajan como PNG sin pérdida
     return [ff, '-y', '-hide_banner', '-loglevel', 'error', '-f', 'image2pipe', '-vcodec', 'png', '-framerate', str(FPS),
             '-i', '-', '-i', audio, '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'slow', '-crf', '15',
-            '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.2', '-x264-params', 'keyint=60:min-keyint=60',
+            '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.2', '-x264-params', 'keyint=60:min-keyint=60:colorprim=bt709:transfer=bt709:colormatrix=bt709',
             '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709',
             '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-t', str(DUR), '-movflags', '+faststart', out]
 

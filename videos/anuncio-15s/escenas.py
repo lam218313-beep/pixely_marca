@@ -164,7 +164,7 @@ def scene_A(c, t):
             if t < te:
                 break
             k = t - te
-            r = 13 * spring(k, 0.45, 26) * (1.25 if i == 7 else 1)
+            r = 13 * spring(k, 0.45, 36) * (1.25 if i == 7 else 1)
             pts_on.append((px, py))
             if i > 0:
                 x0, y0 = PTS[i - 1]
@@ -175,7 +175,7 @@ def scene_A(c, t):
                 c.drawCircle(px, py, 14 + 46 * out_cubic(ring), paint(WHITE if i < 7 else PINK, 0.55 * (1 - ring), stroke=3))
         for i, (px, py) in enumerate(pts_on):
             k = t - G['puntos'][i]
-            r = 13 * spring(k, 0.45, 26) * (1.3 if i == 7 else 1)
+            r = 13 * spring(k, 0.45, 36) * (1.3 if i == 7 else 1)
             c.drawCircle(px, py, max(r, 0), paint(PINK if i == 7 else WHITE))
             if i == 7:
                 glow(c, px, py, 120, PINK, 0.35 * clamp(k / 0.2))
@@ -265,7 +265,7 @@ def scene_B(c, t):
     k = t - G['funciona']
     if k >= 0 and collapse < 1:
         x, yb = bar_rect(3)
-        s = spring(k, 0.45, 24)
+        s = spring(k, 0.45, 32)
         px, py = x + BW / 2, yb - BMAX - 64
         c.save()
         c.translate(px, py)
@@ -505,8 +505,8 @@ def scene_C_doce(c, t):
         k = t - tf
         if k < 0:
             continue
-        s = out_back(clamp(k / 0.24), 2.2)
-        rot = (6 if i % 2 else -6) * (1 - out_cubic(clamp(k / 0.3)))
+        s = out_back(clamp(k / 0.17), 2.0)
+        rot = (6 if i % 2 else -6) * (1 - out_cubic(clamp(k / 0.25)))
         c.save()
         c.translate(x + 103, y + 103)
         c.rotate(rot)
@@ -550,6 +550,11 @@ LG_Y = 1000          # línea base del logo
 
 
 def scene_D(c, t):
+    ki = t - G['impacto']
+    if 0 <= ki < 0.6:
+        e = out_expo(clamp(ki / 0.45))
+        glow(c, W / 2, LG_Y - 100, 300 + 1100 * e, PINK, 0.55 * (1 - clamp(ki / 0.5)))
+        c.drawCircle(W / 2, LG_Y - 100, 120 + 1000 * e, paint(PINK, 0.7 * (1 - clamp(ki / 0.45)), stroke=10 * (1 - e) + 2))
     k13 = t - 12.6
     glow(c, W + 80, H + 140, 1500, PINK, 0.30 * out_cubic(clamp(k13 / 0.9)))
     glow(c, -200, -200, 1000, PINK, 0.10 * out_cubic(clamp(k13 / 0.9)))
@@ -564,7 +569,7 @@ def scene_D(c, t):
             kk = t - te
             if kk < 0:
                 continue
-            s = spring(kk, 0.5, 24)
+            s = spring(kk, 0.5, 30)
             dy = -260 * (1 - s)
             c.save()
             c.translate(LG_X, LG_Y + dy)
@@ -638,12 +643,12 @@ def scene_D(c, t):
 
 
 # ---------------- salida de un plano (látigo) ----------------
-def whip_out(t, t_cut, dur=0.18):
-    return -1350 * in_cubic(prog(t, t_cut - dur, dur))
+def whip_out(t, t_cut, dur=0.16):
+    return -1000 * in_cubic(prog(t, t_cut - dur, dur))
 
 
-def whip_in(t, t_cut, dur=0.22):
-    return 1350 * (1 - out_expo(prog(t, t_cut, dur)))
+def whip_in(t, t_cut, dur=0.2):
+    return 700 * (1 - out_expo(prog(t, t_cut, dur)))
 
 
 def draw(c, t, shot_name=None):
