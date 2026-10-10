@@ -1,7 +1,8 @@
 """Mapa de golpes del anuncio. Lo usan la música y la imagen: un solo reloj para las dos.
 
 120 BPM a 60 fps: un tiempo = 0,5 s = 30 fotogramas exactos; una semicorchea = 0,125 s = 7,5 fotogramas.
-Todo golpe importante cae en un tiempo o en una corchea (15 fotogramas), así coincide con el inicio de un fotograma.
+Los golpes en tiempos y corcheas caen en fotogramas exactos; las semicorcheas impares (7,5 fotogramas) se ajustan al
+inicio de su fotograma al final de este archivo, para que música e imagen coincidan exacto.
 """
 BPM = 120
 FPS = 60

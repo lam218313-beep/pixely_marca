@@ -74,6 +74,7 @@ Las frases son verdaderas y salen de lo aprobado: el estudio de mercado, la estr
 ### Herramientas
 - **Python + numpy** para la música, la acumulación de submuestras y el grano.
 - **skia** para dibujar los vectores, con las fuentes TTF oficiales.
+- **OpenCV** solo para leer el MP4 en la revisión.
 - **ffmpeg** solo para codificar: H.264 High 4.2, CRF 15, yuv420p, color BT.709, AAC de 256 kbps y `faststart`. Es el binario que ya trae el repositorio de videos.
 
 ---
@@ -109,19 +110,56 @@ Las frases son verdaderas y salen de lo aprobado: el estudio de mercado, la estr
    - El impacto de los 12 s era débil en imagen: le sumé un estallido rosa.
    - Algunas apariciones tardaban 3-4 fotogramas en llegar a su tamaño: las aceleré.
    - Las etiquetas de color BT.709 no quedaban marcadas en el archivo: las corregí.
-10. **Render v2 y revisión final** (sección 5).
+10. **Render v2 y revisión de cerca:** recorté el fotograma anterior, el del golpe y el siguiente en los golpes que la medición marcaba tarde:
+    - El dato 2, el sello y el impacto ya coincidían.
+    - Las semicorcheas impares caían a medio fotograma: ajusté los golpes al fotograma exacto, en la música y en la imagen.
+    - La píldora «Este funciona», el llamado y las piezas nacían en tamaño 0: ahora arrancan a la mitad de su tamaño, para que el golpe se vea en el primer fotograma.
+11. **Render v3 y revisión final** (sección 5). Es la versión entregada.
 
 ---
 
 ## 5. Revisión del MP4 final
 
-{REVISION}
+La revisión la hace `revisar.py` sobre el archivo final. Lo que mide se guarda en `revision/` (no se sube al repositorio; se regenera).
+
+**Especificaciones** (ffprobe)
+- **Video:** H.264 High, nivel 4.2, 1080 × 1920, 60/1 fps, yuv420p, color BT.709. Tiene **900 fotogramas** y dura **15,000 s**.
+- **Audio:** AAC 48 kHz estéreo, 256 kbps.
+- **Peso:** 23,5 MB.
+
+**Volumen** (ffmpeg loudnorm sobre el MP4)
+- **-13,9 LUFS** integrados, con picos reales de **-4,4 dBTP** y rango de 2,4 LU.
+
+**Sincronía golpe-imagen** (los 66 golpes del mapa)
+- **Cómo se mide:** para cada golpe se busca el inicio del cambio de imagen en la zona exacta del elemento (el dato, la barra, el nodo, la pieza, la letra…), fotograma a fotograma. El inicio del sonido se busca con el flujo espectral en ventanas de 1 fotograma.
+- **Resultado:** **56 de 66 golpes coinciden al fotograma, con 16,7 ms de margen.** Los 10 restantes no son errores:
+  - **0,0 s:** es el primer fotograma y no hay uno anterior contra el cual medir.
+  - **4,0 s y 10,37 s (látigo y empuje):** la imagen se desplaza durante varios fotogramas y el *whoosh* empieza antes, por diseño.
+  - **9,75 s (respiro):** es un silencio, no un golpe.
+  - **10,0 s (sello):** la imagen se mueve 3 fotogramas antes porque el sello cae, y el sonido sube 2 fotogramas antes por el platillo al revés que lleva al golpe. El toque y el impacto coinciden en el fotograma 600, comprobado de cerca en `revision/golpes_de_cerca.png`.
+  - **10,5 s (primera pieza):** coincide con el final del empuje.
+  - **12,0 s (impacto y primera letra):** la imagen coincide exacto. El sonido marca 2 fotogramas antes por el platillo al revés.
+  - **13,25 s (rebote):** el punto sube y baja antes de volver a tocar; el toque coincide.
+- **Arreglo de las semicorcheas impares:** caían a medio fotograma (7,5 fotogramas por semicorchea). Ahora todos los golpes se ajustan al inicio de su fotograma, en la música y en la imagen.
+
+**Cortes** (fotogramas 240, 480 y 720)
+- Cada fotograma pertenece a un solo plano: el obturador se abre en el corte y las submuestras se limitan al plano. No hay fundidos ni fotogramas mezclados.
+- Se revisaron a ojo el fotograma anterior, el del corte y el siguiente (`revision/corte_*.png`).
+
+**Desenfoque de movimiento**
+- `revision/desenfoque.png` compara 1 muestra contra 32 en el celular que sube, el sello que cae y el punto rosa.
+
+**Revisión visual**
+- La hoja de contactos (`revision/hoja_contactos.png`) tiene un fotograma cada 0,5 s. Confirma que los textos son legibles, que las zonas seguras se respetan y que no hay recortes ni superposiciones.
 
 ---
 
 ## 6. Tiempo total
 
-{TIEMPO}
+Unas **1 h 04 min**, desde el encargo hasta la entrega, medido con el reloj de la máquina.
+- **Renders completos:** tres, de unos 7 minutos cada uno en 4 núcleos: v1, v2 y v3 final.
+- **Pruebas de escenas:** varias rondas de fotogramas sueltos.
+- **Música:** tres versiones, sin contar los ajustes de volumen.
 
 ---
 
