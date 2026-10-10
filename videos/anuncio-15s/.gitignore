@@ -1,0 +1,8 @@
+# salidas intermedias (se regeneran con los scripts)
+prueba/
+revision/
+__pycache__/
+*.log
+anuncio_v*.mp4
+musica.wav
+ver_audio.png
